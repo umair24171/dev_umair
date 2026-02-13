@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useForm, ValidationError } from '@formspree/react';
 
 // ─── Animated Star Field Canvas ───
@@ -59,14 +59,12 @@ const CountUp = ({ end, suffix = '' }: { end: number; suffix?: string }) => {
       ([entry]) => {
         if (entry.isIntersecting && !hasAnimated) {
           setHasAnimated(true);
-          let start = 0;
           const duration = 1200;
           const startTime = performance.now();
 
           const animate = (currentTime: number) => {
             const elapsed = currentTime - startTime;
             const progress = Math.min(elapsed / duration, 1);
-            // easeOutQuart for smooth deceleration
             const eased = 1 - Math.pow(1 - progress, 4);
             const current = Math.floor(eased * end);
             setVal(current);
@@ -103,7 +101,8 @@ const WhatsAppButton = () => {
 
   return (
     <a
-      href="https://wa.me/923000000000?text=Hi%20Umair!%20I%20visited%20your%20website%20and%20I%27m%20interested%20in%20getting%20an%20app%20built."
+      // TODO: Replace with your real WhatsApp number
+      href="https://wa.me/923067128817?text=Hi%20Umair!%20I%20visited%20your%20website%20and%20I%27m%20interested%20in%20getting%20an%20app%20built."
       target="_blank"
       rel="noopener noreferrer"
       className="fixed bottom-6 right-6 z-50 w-14 h-14 bg-[#25D366] rounded-full flex items-center justify-center shadow-lg shadow-green-500/30 hover:shadow-green-500/50 hover:scale-110 transition-all duration-300 animate-[bounceIn_0.5s_ease-out]"
@@ -112,9 +111,85 @@ const WhatsAppButton = () => {
       <svg viewBox="0 0 32 32" className="w-7 h-7 fill-white">
         <path d="M16.004 0h-.008C7.174 0 0 7.176 0 16.004c0 3.502 1.14 6.742 3.072 9.372L1.062 31.29l6.166-1.976A15.91 15.91 0 0016.004 32C24.826 32 32 24.826 32 16.004 32 7.176 24.826 0 16.004 0zm9.302 22.602c-.388 1.094-1.938 2.002-3.164 2.266-.84.178-1.938.32-5.632-1.21-4.726-1.956-7.77-6.756-8.004-7.07-.226-.314-1.894-2.52-1.894-4.808s1.196-3.41 1.622-3.876c.388-.424.852-.532 1.136-.532.282 0 .566.004.812.014.262.012.612-.098.958.73.354.852 1.21 2.942 1.316 3.158.108.216.178.468.036.748-.142.282-.214.458-.428.706-.214.248-.45.554-.644.744-.214.214-.436.446-.188.874.248.428 1.104 1.82 2.37 2.948 1.63 1.45 3.004 1.9 3.432 2.112.428.214.678.178.926-.108.248-.282 1.064-1.236 1.348-1.662.282-.428.566-.354.958-.214.39.142 2.48 1.17 2.908 1.382.428.214.712.32.82.496.106.178.106 1.024-.282 2.116z" />
       </svg>
-      {/* Pulse ring */}
       <span className="absolute w-full h-full rounded-full bg-[#25D366] animate-ping opacity-20" />
     </a>
+  );
+};
+
+// ─── Phone Mockup Component ───
+const PhoneMockup = ({ gradient, appName, screens }: { gradient: string; appName: string; screens: string[] }) => {
+  return (
+    <div className="relative w-[140px] h-[280px] md:w-[160px] md:h-[320px] flex-shrink-0">
+      {/* Phone Frame */}
+      <div className="absolute inset-0 rounded-[24px] border-2 border-white/10 bg-[#0a0d18] shadow-2xl overflow-hidden">
+        {/* Notch */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-16 h-5 bg-[#0a0d18] rounded-b-xl z-10" />
+        {/* Screen Content - Gradient placeholder */}
+        <div className={`absolute inset-[3px] rounded-[21px] bg-gradient-to-br ${gradient} overflow-hidden`}>
+          {/* App UI Simulation */}
+          <div className="absolute inset-0 flex flex-col p-3 pt-7">
+            {/* Status bar dots */}
+            <div className="flex justify-between items-center mb-3 px-1">
+              <div className="text-[8px] font-bold text-white/90">9:41</div>
+              <div className="flex gap-0.5">
+                <div className="w-3 h-1.5 rounded-sm bg-white/70" />
+                <div className="w-1.5 h-1.5 rounded-full bg-white/70" />
+              </div>
+            </div>
+            {/* App name */}
+            <div className="text-[10px] font-bold text-white mb-2">{appName}</div>
+            {/* Simulated UI elements */}
+            {screens.map((type, i) => {
+              if (type === 'card') return (
+                <div key={i} className="bg-white/15 backdrop-blur-sm rounded-lg p-2 mb-1.5">
+                  <div className="h-1.5 w-3/4 bg-white/30 rounded-full mb-1" />
+                  <div className="h-1 w-1/2 bg-white/20 rounded-full" />
+                </div>
+              );
+              if (type === 'list') return (
+                <div key={i} className="space-y-1 mb-1.5">
+                  {[1,2,3].map(j => (
+                    <div key={j} className="flex items-center gap-1.5">
+                      <div className="w-4 h-4 rounded-md bg-white/20" />
+                      <div className="flex-1">
+                        <div className="h-1 w-3/4 bg-white/25 rounded-full mb-0.5" />
+                        <div className="h-1 w-1/2 bg-white/15 rounded-full" />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              );
+              if (type === 'chat') return (
+                <div key={i} className="space-y-1 mb-1.5">
+                  <div className="bg-white/20 rounded-lg rounded-bl-none p-1.5 w-3/4">
+                    <div className="h-1 w-full bg-white/30 rounded-full mb-0.5" />
+                    <div className="h-1 w-2/3 bg-white/20 rounded-full" />
+                  </div>
+                  <div className="bg-white/10 rounded-lg rounded-br-none p-1.5 w-2/3 ml-auto">
+                    <div className="h-1 w-full bg-white/25 rounded-full" />
+                  </div>
+                </div>
+              );
+              if (type === 'hero') return (
+                <div key={i} className="bg-white/10 rounded-xl p-2 mb-1.5 flex-1">
+                  <div className="h-2 w-2/3 bg-white/30 rounded-full mb-1.5" />
+                  <div className="h-1 w-full bg-white/15 rounded-full mb-0.5" />
+                  <div className="h-1 w-4/5 bg-white/15 rounded-full mb-2" />
+                  <div className="h-5 w-16 bg-white/25 rounded-full" />
+                </div>
+              );
+              return null;
+            })}
+            {/* Bottom nav */}
+            <div className="mt-auto flex justify-around pt-2 border-t border-white/10">
+              {[1,2,3,4].map(j => (
+                <div key={j} className={`w-3 h-3 rounded-full ${j === 1 ? 'bg-white/50' : 'bg-white/15'}`} />
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };
 
@@ -131,12 +206,10 @@ const MobileMenu = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
 
   return (
     <>
-      {/* Backdrop */}
       <div
         className={`fixed inset-0 bg-black/60 backdrop-blur-sm z-[90] transition-opacity duration-300 ${isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
         onClick={onClose}
       />
-      {/* Menu Panel */}
       <div className={`fixed top-0 right-0 h-full w-[280px] bg-[#0a0d18] border-l border-white/10 z-[100] transition-transform duration-300 ease-out ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
         <div className="flex justify-between items-center p-6 border-b border-white/5">
           <div className="flex items-center gap-2.5">
@@ -182,10 +255,47 @@ const MobileMenu = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
 
 // ─── Data ───
 const apps = [
-  { name: 'Muslifie', desc: 'Muslim travel marketplace connecting travelers with verified local guides. Stripe payments, real-time chat, 70+ languages.', tags: ['Flutter', 'Next.js', 'Node.js', 'Stripe', 'MongoDB'], ios: 'https://apps.apple.com/us/app/muslifie/id6749224199', android: 'https://play.google.com/store/apps/details?id=com.app.muslifie&hl=en', web: 'https://www.muslifie.com/', users: 'Live', color: 'from-blue-500 to-cyan-400' },
-  { name: 'FarahGPT', desc: 'AI Islamic education platform with 7 AI personalities, habit tracking, and personalized learning for 2,100+ active users.', tags: ['Flutter', 'AI/RAG', 'Firebase', 'RevenueCat'], ios: 'https://apps.apple.com/pk/app/farahgpt/id6746275409', android: 'https://play.google.com/store/apps/details?id=com.app.farahgpt', users: '2,100+', color: 'from-purple-500 to-pink-400' },
-  { name: 'MyAiPal', desc: 'AI-powered wellness companion with mental health support, journaling, and personalized guidance with subscriptions.', tags: ['Flutter', 'OpenAI', 'Firebase', 'RevenueCat'], ios: 'https://apps.apple.com/us/app/myaipal/id6753610068', android: 'https://play.google.com/store/apps/details?id=com.app.myaipal&hl=en', users: 'Live', color: 'from-emerald-500 to-teal-400' },
-  { name: 'Voisbe', desc: 'Voice-first social network — audio posts, voice comments, rich media backgrounds. Instagram for voice.', tags: ['Flutter', 'Firebase', 'Node.js', 'Audio'], ios: 'https://apps.apple.com/us/app/voisbe/id6702029635', android: 'https://play.google.com/store/search?q=Voisbe&c=apps&hl=en', users: 'Live', color: 'from-orange-500 to-rose-400' },
+  {
+    name: 'Muslifie',
+    desc: 'Muslim travel marketplace connecting travelers with verified local guides. Stripe payments, real-time chat, 70+ languages.',
+    tags: ['Flutter', 'Next.js', 'Node.js', 'Stripe', 'MongoDB'],
+    ios: 'https://apps.apple.com/us/app/muslifie/id6749224199',
+    android: 'https://play.google.com/store/apps/details?id=com.app.muslifie&hl=en',
+    web: 'https://www.muslifie.com/',
+    users: 'Live',
+    color: 'from-blue-500 to-cyan-400',
+    screens: ['hero', 'list', 'card'] as string[],
+  },
+  {
+    name: 'FarahGPT',
+    desc: 'AI Islamic education platform with 7 AI personalities, habit tracking, and personalized learning for 2,100+ active users.',
+    tags: ['Flutter', 'AI/RAG', 'Firebase', 'RevenueCat'],
+    ios: 'https://apps.apple.com/pk/app/farahgpt/id6746275409',
+    android: 'https://play.google.com/store/apps/details?id=com.app.farahgpt',
+    users: '2,100+',
+    color: 'from-purple-500 to-pink-400',
+    screens: ['chat', 'card', 'list'] as string[],
+  },
+  {
+    name: 'MyAiPal',
+    desc: 'AI-powered wellness companion with mental health support, journaling, and personalized guidance with subscriptions.',
+    tags: ['Flutter', 'OpenAI', 'Firebase', 'RevenueCat'],
+    ios: 'https://apps.apple.com/us/app/myaipal/id6753610068',
+    android: 'https://play.google.com/store/apps/details?id=com.app.myaipal&hl=en',
+    users: 'Live',
+    color: 'from-emerald-500 to-teal-400',
+    screens: ['hero', 'chat', 'card'] as string[],
+  },
+  {
+    name: 'Voisbe',
+    desc: 'Voice-first social network — audio posts, voice comments, rich media backgrounds. Instagram for voice.',
+    tags: ['Flutter', 'Firebase', 'Node.js', 'Audio'],
+    ios: 'https://apps.apple.com/us/app/voisbe/id6702029635',
+    android: 'https://play.google.com/store/search?q=Voisbe&c=apps&hl=en',
+    users: 'Live',
+    color: 'from-orange-500 to-rose-400',
+    screens: ['list', 'hero', 'card'] as string[],
+  },
 ];
 
 const services = [
@@ -199,12 +309,6 @@ const pricing = [
   { name: 'Starter', price: '3,000', sub: 'Perfect for MVPs', features: ['Simple app (10-12 screens)', 'Firebase backend', 'iOS + Android deployment', '30 days delivery', '1 month bug support'], highlight: false },
   { name: 'Professional', price: '6,000', sub: 'For growing businesses', features: ['Complex app (20+ screens)', 'Custom Node.js backend', 'Next.js admin panel', 'Stripe payment integration', '45 days delivery', '3 months support'], highlight: true },
   { name: 'Enterprise', price: '12,000', sub: 'Full-scale platforms', features: ['Marketplace / booking platform', 'AI features (chat, recs, etc)', 'Full admin dashboard', 'Multi-language (70+)', '60 days delivery', '6 months support'], highlight: false },
-];
-
-const reviews = [
-  { name: 'Muhammad A.', role: 'Startup Founder', text: 'Delivered our marketplace app ahead of schedule. The quality of code and attention to detail exceeded our expectations.', rating: 5 },
-  { name: 'Sarah K.', role: 'Product Manager', text: 'Professional, responsive, and delivered exactly what we needed. The AI integration was seamless and our users love it!', rating: 5 },
-  { name: 'Ahmed R.', role: 'Business Owner', text: "From concept to App Store in just 6 weeks. Umair's expertise saved us months of work. Worth every penny!", rating: 5 },
 ];
 
 // ─── Main Page ───
@@ -230,17 +334,14 @@ export default function Home() {
             <span className="text-xl font-extrabold tracking-tight">Dev.Umair</span>
           </div>
           <div className="flex items-center gap-8">
-            {/* Desktop Nav */}
             <div className="hidden md:flex gap-7">
               {['Services', 'Portfolio', 'Pricing'].map(s => (
                 <a key={s} href={`#${s.toLowerCase()}`} className="text-sm font-medium text-white/50 hover:text-white transition-colors">{s}</a>
               ))}
             </div>
-            {/* Desktop CTA */}
             <a href="#contact" className="hidden sm:inline-flex bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-2.5 rounded-full font-bold text-sm hover:shadow-lg hover:shadow-purple-500/40 transition-all hover:-translate-y-0.5">
               Get Started →
             </a>
-            {/* Mobile Hamburger */}
             <button
               onClick={() => setMenuOpen(true)}
               className="md:hidden w-10 h-10 flex flex-col items-center justify-center gap-1.5"
@@ -254,41 +355,33 @@ export default function Home() {
         </div>
       </nav>
 
-      {/* Mobile Menu */}
       <MobileMenu isOpen={menuOpen} onClose={() => setMenuOpen(false)} />
 
       {/* ─── HERO ─── */}
       <section className="relative min-h-[900px] flex items-center overflow-hidden">
         <StarField />
-
-        {/* Glow Orbs */}
         <div className="absolute -top-[10%] left-[60%] w-[600px] h-[600px] rounded-full bg-purple-500/20 blur-[80px] pointer-events-none animate-[float_6s_ease-in-out_infinite_alternate]" />
         <div className="absolute top-[30%] -left-[10%] w-[500px] h-[500px] rounded-full bg-pink-500/15 blur-[80px] pointer-events-none animate-[float_8s_ease-in-out_infinite_alternate]" />
         <div className="absolute top-[60%] left-[70%] w-[400px] h-[400px] rounded-full bg-blue-500/15 blur-[80px] pointer-events-none animate-[float_10s_ease-in-out_infinite_alternate]" />
 
-        {/* Orbital Rings */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full border border-purple-500/[0.08] pointer-events-none" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full border border-purple-500/[0.05] pointer-events-none" />
 
         <div className="relative z-10 max-w-[1200px] mx-auto px-6 pt-[140px] pb-20 text-center w-full">
-          {/* Badge */}
           <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-purple-500/10 border border-purple-500/20 mb-8 animate-[fadeUp_0.6s_ease-out]">
             <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
             <span className="text-sm font-medium text-purple-300">15+ Apps Live in Production</span>
           </div>
 
-          {/* Headline */}
           <h1 className="text-[clamp(36px,6vw,80px)] font-black leading-[1.05] tracking-[-2px] mb-6 animate-[fadeUp_0.8s_ease-out]">
             I build apps that<br />
             <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent">people actually use.</span>
           </h1>
 
-          {/* Subhead */}
           <p className="text-lg md:text-xl text-white/40 max-w-[600px] mx-auto mb-10 font-normal leading-relaxed animate-[fadeUp_1s_ease-out]">
             Full-stack Flutter developer with a track record of shipping real products. From concept to App Store — no fluff, just results.
           </p>
 
-          {/* CTAs */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-20 animate-[fadeUp_1.2s_ease-out]">
             <a href="#contact" className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-8 py-4 rounded-full font-bold text-lg hover:shadow-2xl hover:shadow-purple-500/40 transition-all hover:-translate-y-0.5 inline-flex items-center justify-center gap-2">
               Book Free Call <span className="text-xl">→</span>
@@ -348,7 +441,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── PORTFOLIO ─── */}
+      {/* ─── PORTFOLIO (Updated with Phone Mockups) ─── */}
       <section id="portfolio" className="bg-purple-500/[0.03]">
         <div className="max-w-[1200px] mx-auto px-6 py-24">
           <div className="text-center mb-16">
@@ -360,23 +453,30 @@ export default function Home() {
             {apps.map((app, i) => (
               <div key={i} className="bg-white/[0.03] backdrop-blur-xl border border-white/[0.06] rounded-2xl overflow-hidden transition-all duration-400 hover:border-purple-500/30 hover:bg-white/[0.05] hover:-translate-y-1">
                 <div className={`h-1 bg-gradient-to-r ${app.color}`} />
-                <div className="p-6 md:p-7">
-                  <div className="flex justify-between items-center mb-3">
-                    <h3 className="text-xl md:text-[22px] font-bold">{app.name}</h3>
-                    <span className="px-3 py-1 rounded-full text-[11px] font-semibold bg-green-500/15 text-green-400 border border-green-500/20 whitespace-nowrap">
-                      {app.users} users
-                    </span>
+                <div className="p-6 md:p-7 flex gap-5">
+                  {/* Phone Mockup */}
+                  <div className="hidden sm:block">
+                    <PhoneMockup gradient={app.color} appName={app.name} screens={app.screens} />
                   </div>
-                  <p className="text-sm text-white/35 leading-relaxed mb-4">{app.desc}</p>
-                  <div className="flex flex-wrap gap-1.5 mb-5">
-                    {app.tags.map((t, j) => (
-                      <span key={j} className="px-3 py-1 rounded-full text-[12px] font-medium bg-purple-500/15 text-purple-300 border border-purple-500/20">{t}</span>
-                    ))}
-                  </div>
-                  <div className="flex gap-4">
-                    <a href={app.ios} target="_blank" rel="noopener noreferrer" className="text-[13px] font-medium text-purple-400 hover:text-purple-300 transition-colors">App Store ↗</a>
-                    <a href={app.android} target="_blank" rel="noopener noreferrer" className="text-[13px] font-medium text-purple-400 hover:text-purple-300 transition-colors">Play Store ↗</a>
-                    {app.web && <a href={app.web} target="_blank" rel="noopener noreferrer" className="text-[13px] font-medium text-purple-400 hover:text-purple-300 transition-colors">Website ↗</a>}
+                  {/* App Info */}
+                  <div className="flex-1 min-w-0">
+                    <div className="flex justify-between items-center mb-3">
+                      <h3 className="text-xl md:text-[22px] font-bold">{app.name}</h3>
+                      <span className="px-3 py-1 rounded-full text-[11px] font-semibold bg-green-500/15 text-green-400 border border-green-500/20 whitespace-nowrap">
+                        {app.users} users
+                      </span>
+                    </div>
+                    <p className="text-sm text-white/35 leading-relaxed mb-4">{app.desc}</p>
+                    <div className="flex flex-wrap gap-1.5 mb-5">
+                      {app.tags.map((t, j) => (
+                        <span key={j} className="px-3 py-1 rounded-full text-[12px] font-medium bg-purple-500/15 text-purple-300 border border-purple-500/20">{t}</span>
+                      ))}
+                    </div>
+                    <div className="flex gap-4">
+                      <a href={app.ios} target="_blank" rel="noopener noreferrer" className="text-[13px] font-medium text-purple-400 hover:text-purple-300 transition-colors">App Store ↗</a>
+                      <a href={app.android} target="_blank" rel="noopener noreferrer" className="text-[13px] font-medium text-purple-400 hover:text-purple-300 transition-colors">Play Store ↗</a>
+                      {app.web && <a href={app.web} target="_blank" rel="noopener noreferrer" className="text-[13px] font-medium text-purple-400 hover:text-purple-300 transition-colors">Website ↗</a>}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -452,28 +552,76 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── REVIEWS ─── */}
+      {/* ─── REAL SOCIAL PROOF (Replaced fake testimonials) ─── */}
       <section className="max-w-[1200px] mx-auto px-6 py-24">
         <div className="text-center mb-16">
-          <p className="text-sm font-semibold text-purple-500 uppercase tracking-[2px] mb-3">Testimonials</p>
-          <h2 className="text-[clamp(28px,4vw,48px)] font-extrabold tracking-tight">What clients say</h2>
+          <p className="text-sm font-semibold text-purple-500 uppercase tracking-[2px] mb-3">Proof</p>
+          <h2 className="text-[clamp(28px,4vw,48px)] font-extrabold tracking-tight mb-4">Results speak louder than words</h2>
+          <p className="text-base md:text-lg text-white/35 max-w-[500px] mx-auto">Real numbers from real apps — verified on the App Store and Google Play.</p>
         </div>
-        <div className="grid md:grid-cols-3 gap-5">
-          {reviews.map((r, i) => (
-            <div key={i} className="bg-white/[0.03] backdrop-blur-xl border border-white/[0.06] rounded-2xl p-6 md:p-7">
-              <div className="flex gap-0.5 mb-4">
-                {Array(r.rating).fill(0).map((_, j) => <span key={j} className="text-yellow-400 text-base">★</span>)}
-              </div>
-              <p className="text-[14px] md:text-[15px] text-white/45 leading-[1.7] mb-5 italic">&quot;{r.text}&quot;</p>
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center font-bold text-base">{r.name[0]}</div>
-                <div>
-                  <div className="text-sm font-semibold">{r.name}</div>
-                  <div className="text-[12px] text-white/25">{r.role}</div>
-                </div>
+
+        {/* Results Grid */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-12">
+          {/* Result Card 1 */}
+          <div className="bg-white/[0.03] backdrop-blur-xl border border-white/[0.06] rounded-2xl p-7 hover:border-purple-500/30 transition-all">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-500 to-pink-400 flex items-center justify-center text-lg font-bold">F</div>
+              <div>
+                <div className="text-sm font-bold">FarahGPT</div>
+                <div className="text-[11px] text-white/30">AI Islamic Education</div>
               </div>
             </div>
-          ))}
+            <div className="text-3xl font-extrabold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent mb-2">2,100+</div>
+            <p className="text-sm text-white/40 leading-relaxed">Active users and growing. Built from scratch with 7 AI personalities, habit tracking, subscription model via RevenueCat, and a full RAG chat system.</p>
+            <div className="mt-4 flex gap-2">
+              <span className="px-2.5 py-1 rounded-full text-[10px] font-semibold bg-green-500/15 text-green-400 border border-green-500/20">iOS Live</span>
+              <span className="px-2.5 py-1 rounded-full text-[10px] font-semibold bg-green-500/15 text-green-400 border border-green-500/20">Android Live</span>
+            </div>
+          </div>
+
+          {/* Result Card 2 */}
+          <div className="bg-white/[0.03] backdrop-blur-xl border border-white/[0.06] rounded-2xl p-7 hover:border-purple-500/30 transition-all">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-400 flex items-center justify-center text-lg font-bold">M</div>
+              <div>
+                <div className="text-sm font-bold">Muslifie</div>
+                <div className="text-[11px] text-white/30">Travel Marketplace</div>
+              </div>
+            </div>
+            <div className="text-3xl font-extrabold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent mb-2">Full Platform</div>
+            <p className="text-sm text-white/40 leading-relaxed">Complete marketplace with Stripe Connect payments, real-time chat, 70+ language translations, guide verification system, and a Next.js admin panel.</p>
+            <div className="mt-4 flex gap-2">
+              <span className="px-2.5 py-1 rounded-full text-[10px] font-semibold bg-green-500/15 text-green-400 border border-green-500/20">iOS Live</span>
+              <span className="px-2.5 py-1 rounded-full text-[10px] font-semibold bg-green-500/15 text-green-400 border border-green-500/20">Android Live</span>
+              <span className="px-2.5 py-1 rounded-full text-[10px] font-semibold bg-blue-500/15 text-blue-400 border border-blue-500/20">Web Live</span>
+            </div>
+          </div>
+
+          {/* Result Card 3 */}
+          <div className="bg-white/[0.03] backdrop-blur-xl border border-white/[0.06] rounded-2xl p-7 hover:border-purple-500/30 transition-all">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-400 flex items-center justify-center text-lg font-bold">A</div>
+              <div>
+                <div className="text-sm font-bold">MyAiPal</div>
+                <div className="text-[11px] text-white/30">AI Wellness Companion</div>
+              </div>
+            </div>
+            <div className="text-3xl font-extrabold bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent mb-2">AI-Powered</div>
+            <p className="text-sm text-white/40 leading-relaxed">Wellness app with OpenAI integration, journaling system, personalized guidance, and a full subscription model. Live on both app stores.</p>
+            <div className="mt-4 flex gap-2">
+              <span className="px-2.5 py-1 rounded-full text-[10px] font-semibold bg-green-500/15 text-green-400 border border-green-500/20">iOS Live</span>
+              <span className="px-2.5 py-1 rounded-full text-[10px] font-semibold bg-green-500/15 text-green-400 border border-green-500/20">Android Live</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Verification Banner */}
+        <div className="bg-white/[0.02] border border-white/[0.06] rounded-2xl p-6 flex flex-col sm:flex-row items-center justify-center gap-4 text-center sm:text-left">
+          <div className="text-2xl">🔍</div>
+          <div>
+            <p className="text-sm font-semibold text-white/60">Don&apos;t take my word for it — verify everything yourself</p>
+            <p className="text-[13px] text-white/30 mt-1">Every app listed above is live and searchable on the Apple App Store and Google Play Store right now.</p>
+          </div>
         </div>
       </section>
 
@@ -528,9 +676,28 @@ export default function Home() {
                     type="tel"
                     id="phone"
                     name="phone"
-                    placeholder="WhatsApp Number (optional)"
+                    placeholder="WhatsApp / Phone Number"
                     className="w-full px-[18px] py-3.5 rounded-xl border border-white/10 bg-white/5 text-white text-[15px] outline-none focus:border-purple-500/50 transition-colors placeholder:text-white/25"
                   />
+                </div>
+                {/* Budget Range Selector */}
+                <div>
+                  <select
+                    id="budget"
+                    name="budget"
+                    className="w-full px-[18px] py-3.5 rounded-xl border border-white/10 bg-white/5 text-white text-[15px] outline-none focus:border-purple-500/50 transition-colors appearance-none"
+                    defaultValue=""
+                    style={{ color: 'rgba(255,255,255,0.25)' }}
+                    onFocus={(e) => { e.target.style.color = 'white'; }}
+                    onChange={(e) => { e.target.style.color = e.target.value ? 'white' : 'rgba(255,255,255,0.25)'; }}
+                  >
+                    <option value="" disabled>Select your budget range</option>
+                    <option value="under-3k" style={{ color: 'white', backgroundColor: '#0a0d18' }}>Under $3,000</option>
+                    <option value="3k-6k" style={{ color: 'white', backgroundColor: '#0a0d18' }}>$3,000 – $6,000</option>
+                    <option value="6k-12k" style={{ color: 'white', backgroundColor: '#0a0d18' }}>$6,000 – $12,000</option>
+                    <option value="12k-plus" style={{ color: 'white', backgroundColor: '#0a0d18' }}>$12,000+</option>
+                    <option value="not-sure" style={{ color: 'white', backgroundColor: '#0a0d18' }}>Not sure yet</option>
+                  </select>
                 </div>
                 <div>
                   <textarea
@@ -569,7 +736,7 @@ export default function Home() {
             <a href="https://www.linkedin.com/in/umair-bilal-/" target="_blank" rel="noopener noreferrer" className="text-[13px] text-white/30 hover:text-purple-400 transition-colors">LinkedIn</a>
             <a href="https://github.com/umair24171" target="_blank" rel="noopener noreferrer" className="text-[13px] text-white/30 hover:text-purple-400 transition-colors">GitHub</a>
           </div>
-          <p className="text-[12px] text-white/15">© 2025 Dev.Umair. All rights reserved.</p>
+          <p className="text-[12px] text-white/15">© 2026 Dev.Umair. All rights reserved.</p>
         </div>
       </footer>
 
