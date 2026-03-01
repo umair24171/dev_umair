@@ -224,7 +224,7 @@ const MobileMenu = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
           </button>
         </div>
         <nav className="p-6 space-y-2">
-          {['Services', 'Portfolio', 'Pricing', 'Contact'].map((item) => (
+          {['Services', 'Portfolio', 'Agents', 'Pricing', 'Contact'].map((item) => (
             <a
               key={item}
               href={`#${item.toLowerCase()}`}
@@ -313,6 +313,65 @@ const services = [
   { icon: '💳', title: 'Payments & Growth', desc: 'Monetization systems with Stripe, RevenueCat, and analytics.', features: ['Stripe Connect', 'In-app purchases', 'Subscription systems', 'Analytics dashboards'] },
 ];
 
+const agents = [
+  {
+    name: 'Gold Trading System',
+    status: 'Live 24/7',
+    statusColor: 'green',
+    desc: '4 sub-agents trading XAU/USD live. Trained on 1.4M candles (6 years of data). Swing agent runs 24/7; NY + London scalpers fire at market open; News Bias agent filters high-impact events to avoid bad trades.',
+    stats: [
+      { label: 'Win Rate', value: '51%+' },
+      { label: 'Profit Factor', value: '1.89' },
+      { label: 'Annual Return', value: '~115R' },
+      { label: 'Sub-agents', value: '4' },
+    ],
+    tags: ['Node.js', 'TwelveData API', 'Forex Factory', 'Render', 'Discord'],
+    color: 'from-yellow-500 to-amber-400',
+  },
+  {
+    name: 'AI Content Pipeline',
+    status: 'Runs 2x Daily',
+    statusColor: 'blue',
+    desc: 'Fully automated content engine. Researches trending topics from RSS + GitHub + NewsAPI → Gemini scores and picks the best → writes LinkedIn posts, Twitter threads, Instagram captions → auto-posts. Zero human input.',
+    stats: [
+      { label: 'Platforms', value: '4' },
+      { label: 'Runs/Day', value: '2×' },
+      { label: 'Human input', value: 'Zero' },
+      { label: 'Content types', value: '3' },
+    ],
+    tags: ['Node.js', 'Gemini 2.5', 'LinkedIn API', 'Twitter API', 'Google Sheets'],
+    color: 'from-blue-500 to-cyan-400',
+  },
+  {
+    name: 'Blog Writer Agent',
+    status: 'Mon / Wed / Fri',
+    statusColor: 'purple',
+    desc: 'SEO-first blog automation for this site. Targets real search queries, runs 7 quality checks before publishing (keyword placement, word count, FAQ section, code blocks), commits to GitHub → Vercel auto-deploys.',
+    stats: [
+      { label: 'Words/Post', value: '1500+' },
+      { label: 'SEO Checks', value: '7' },
+      { label: 'Topics queued', value: '15' },
+      { label: 'Deploy time', value: '~2 min' },
+    ],
+    tags: ['Node.js', 'Gemini 2.5', 'Octokit', 'GitHub Actions', 'Vercel'],
+    color: 'from-purple-500 to-pink-400',
+  },
+  {
+    name: 'Job Hunting Agent',
+    status: 'On Demand',
+    statusColor: 'green',
+    desc: 'Scrapes job listings automatically, scores each against my skills using AI, saves high-match opportunities to Google Sheets, and fires a WhatsApp notification via Twilio so I never miss a good lead.',
+    stats: [
+      { label: 'Sources', value: 'Multi' },
+      { label: 'Scoring', value: 'AI' },
+      { label: 'Alert channel', value: 'WhatsApp' },
+      { label: 'Storage', value: 'Sheets' },
+    ],
+    tags: ['Puppeteer', 'Gemini', 'Twilio', 'Google Sheets', 'GitHub Actions'],
+    color: 'from-emerald-500 to-teal-400',
+  },
+];
+
 const pricing = [
   { name: 'Starter', price: '3,000', sub: 'Perfect for MVPs', features: ['Simple app (10-12 screens)', 'Firebase backend', 'iOS + Android deployment', '30 days delivery', '1 month bug support'], highlight: false },
   { name: 'Professional', price: '6,000', sub: 'For growing businesses', features: ['Complex app (20+ screens)', 'Custom Node.js backend', 'Next.js admin panel', 'Stripe payment integration', '45 days delivery', '3 months support'], highlight: true },
@@ -343,7 +402,7 @@ export default function Home() {
           </div>
           <div className="flex items-center gap-8">
             <div className="hidden md:flex gap-7">
-              {['Services', 'Portfolio', 'Pricing'].map(s => (
+              {['Services', 'Portfolio', 'Agents', 'Pricing'].map(s => (
                 <a key={s} href={`#${s.toLowerCase()}`} className="text-sm font-medium text-white/50 hover:text-white transition-colors">{s}</a>
               ))}
               <Link href="/blog" className="text-sm font-medium text-white/50 hover:text-white transition-colors">Blog</Link>
@@ -491,6 +550,63 @@ export default function Home() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ─── AGENTS ─── */}
+      <section id="agents" className="max-w-[1200px] mx-auto px-6 py-24">
+        <div className="text-center mb-16">
+          <p className="text-sm font-semibold text-purple-500 uppercase tracking-[2px] mb-3">Agents</p>
+          <h2 className="text-[clamp(28px,4vw,48px)] font-extrabold tracking-tight mb-4">AI Agents. Running while I sleep.</h2>
+          <p className="text-base md:text-lg text-white/35 max-w-[560px] mx-auto">Not just apps — autonomous systems that trade, write, post, and hunt for jobs 24/7 without me touching them.</p>
+        </div>
+        <div className="grid md:grid-cols-2 gap-5">
+          {agents.map((agent, i) => (
+            <div key={i} className="bg-white/[0.03] backdrop-blur-xl border border-white/[0.06] rounded-2xl overflow-hidden transition-all duration-400 hover:border-purple-500/30 hover:bg-white/[0.05] hover:-translate-y-1">
+              <div className={`h-1 bg-gradient-to-r ${agent.color}`} />
+              <div className="p-6 md:p-7">
+                {/* Header */}
+                <div className="flex justify-between items-start mb-4">
+                  <div>
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className={`w-1.5 h-1.5 rounded-full ${
+                        agent.statusColor === 'green' ? 'bg-green-400 animate-pulse' :
+                        agent.statusColor === 'blue' ? 'bg-blue-400 animate-pulse' :
+                        'bg-purple-400 animate-pulse'
+                      }`} />
+                      <span className={`text-[11px] font-semibold uppercase tracking-wider ${
+                        agent.statusColor === 'green' ? 'text-green-400' :
+                        agent.statusColor === 'blue' ? 'text-blue-400' :
+                        'text-purple-400'
+                      }`}>{agent.status}</span>
+                    </div>
+                    <h3 className="text-xl font-bold">{agent.name}</h3>
+                  </div>
+                  <span className="text-2xl">🤖</span>
+                </div>
+
+                {/* Description */}
+                <p className="text-sm text-white/35 leading-relaxed mb-5">{agent.desc}</p>
+
+                {/* Stats grid */}
+                <div className="grid grid-cols-4 gap-2 mb-5 p-3 bg-white/[0.03] rounded-xl border border-white/[0.04]">
+                  {agent.stats.map((s, j) => (
+                    <div key={j} className="text-center">
+                      <div className={`text-base font-extrabold bg-gradient-to-r ${agent.color} bg-clip-text text-transparent`}>{s.value}</div>
+                      <div className="text-[10px] text-white/25 mt-0.5 leading-tight">{s.label}</div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Tech stack tags */}
+                <div className="flex flex-wrap gap-1.5">
+                  {agent.tags.map((t, j) => (
+                    <span key={j} className="px-2.5 py-1 rounded-full text-[11px] font-medium bg-white/[0.05] text-white/40 border border-white/[0.07]">{t}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 

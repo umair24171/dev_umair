@@ -157,6 +157,52 @@ const TOPIC_POOL = [
     tags: ['Flutter', 'Firebase', 'Notifications'],
     gradient: 'from-cyan-500 to-teal-400',
   },
+  // ─── Agent / Automation topics ───
+  {
+    topic: 'How I built a live gold trading bot that runs 24/7 on $7/month',
+    primaryKeyword: 'automated trading bot nodejs',
+    secondaryKeywords: ['xauusd trading bot', 'forex trading automation nodejs', 'algorithmic trading bot 2026'],
+    searchIntent: 'informational — developer or trader curious about trading automation',
+    targetAudience: 'Developers interested in fintech and trading automation',
+    tags: ['Node.js', 'Trading', 'Automation', 'AI'],
+    gradient: 'from-yellow-500 to-amber-400',
+  },
+  {
+    topic: 'Building an AI content pipeline that posts to LinkedIn and Twitter automatically',
+    primaryKeyword: 'ai content pipeline automation',
+    secondaryKeywords: ['automate linkedin posts', 'ai social media automation', 'gemini content generation nodejs'],
+    searchIntent: 'how-to — developer or founder wanting to automate personal brand content',
+    targetAudience: 'Developers and solopreneurs wanting automated LinkedIn presence',
+    tags: ['Node.js', 'AI', 'Automation', 'LinkedIn'],
+    gradient: 'from-blue-500 to-cyan-400',
+  },
+  {
+    topic: 'AI agents vs simple scripts: what I learned building 4 live autonomous systems',
+    primaryKeyword: 'ai agents for developers 2026',
+    secondaryKeywords: ['building ai agents nodejs', 'autonomous ai systems', 'ai agent vs script', 'llm agents tutorial'],
+    searchIntent: 'informational — developer evaluating whether to build agents or simple automation',
+    targetAudience: 'Developers exploring AI agent architecture',
+    tags: ['AI', 'Automation', 'Node.js', 'Gemini'],
+    gradient: 'from-violet-500 to-purple-400',
+  },
+  {
+    topic: 'GitHub Actions as a free cron job: how I run 4 AI agents for $0/month',
+    primaryKeyword: 'github actions automation nodejs',
+    secondaryKeywords: ['github actions cron job', 'free cron job hosting', 'github actions scheduled workflow'],
+    searchIntent: 'how-to — developer wanting to schedule automation without paying for servers',
+    targetAudience: 'Indie developers building automation on a budget',
+    tags: ['GitHub Actions', 'Automation', 'Node.js', 'DevOps'],
+    gradient: 'from-slate-500 to-zinc-400',
+  },
+  {
+    topic: 'How I automated my entire personal brand as a Flutter developer',
+    primaryKeyword: 'personal branding automation developer',
+    secondaryKeywords: ['developer personal brand strategy', 'automate developer content', 'ai personal branding 2026'],
+    searchIntent: 'informational — developer who wants visibility without spending hours on content',
+    targetAudience: 'Flutter and mobile developers trying to attract clients organically',
+    tags: ['Automation', 'AI', 'Personal Brand', 'Career'],
+    gradient: 'from-pink-500 to-rose-400',
+  },
 ];
 
 // ─── Load published registry from GitHub ───
@@ -261,11 +307,19 @@ function runSeoChecks(post, topicData) {
 async function generatePost(topicData) {
   const model = gemini.getGenerativeModel({ model: 'gemini-2.5-flash' });
 
-  const prompt = `You are Umair Bilal — a Senior Flutter developer from Pakistan with 3+ years experience shipping 15+ production apps:
+  const prompt = `You are Umair Bilal — a Senior Flutter developer and AI automation builder from Pakistan with 3+ years experience:
+
+Apps you've shipped (15+ in production):
 - Muslifie: Muslim travel marketplace (Stripe Connect, real-time chat, 70+ languages, iOS + Android live)
 - FarahGPT: AI Islamic education app (5,100+ users, 7 AI personalities, RAG system, RevenueCat)
 - MyAiPal: AI wellness companion (OpenAI integration, journaling, iOS + Android live)
 - Voisbe: Voice-first social network (audio posts, Firebase, Node.js backend)
+
+AI Agents you've built and run live:
+- Gold Trading System: 4 sub-agents trading XAU/USD 24/7 — 51%+ win rate, 1.89 profit factor, ~115R/year, trained on 1.4M candles
+- AI Content Pipeline: fully automated — researches topics, writes LinkedIn + Twitter + Instagram content, auto-posts 2x daily, zero human input
+- Blog Writer Agent: this agent — SEO-targeted posts, 7 quality checks, commits to GitHub, Vercel auto-deploys Mon/Wed/Fri
+- Job Hunting Agent: scrapes listings, AI-scores them, saves to Sheets, sends WhatsApp alerts via Twilio
 
 Write a LONG, deeply technical blog post (1500-2000 words minimum) targeting this EXACT search query:
 
