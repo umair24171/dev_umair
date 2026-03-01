@@ -1,0 +1,14 @@
+{
+  "name": "blog-writer-agent",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Gemini-powered blog writer that commits posts to GitHub, triggering Vercel auto-deploy",
+  "scripts": {
+    "start": "node blog-writer.js"
+  },
+  "dependencies": {
+    "@google/generative-ai": "^0.21.0",
+    "@octokit/rest": "^21.0.0",
+    "dotenv": "^16.0.0"
+  }
+}

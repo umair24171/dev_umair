@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
+import Link from 'next/link';
 import { useForm, ValidationError } from '@formspree/react';
 
 // ─── Animated Star Field Canvas ───
@@ -233,6 +234,13 @@ const MobileMenu = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
               {item}
             </a>
           ))}
+          <Link
+            href="/blog"
+            onClick={onClose}
+            className="block py-3 px-4 text-[15px] font-medium text-white/60 hover:text-white hover:bg-white/5 rounded-xl transition-all"
+          >
+            Blog
+          </Link>
         </nav>
         <div className="p-6 mt-4">
           <a
@@ -338,6 +346,7 @@ export default function Home() {
               {['Services', 'Portfolio', 'Pricing'].map(s => (
                 <a key={s} href={`#${s.toLowerCase()}`} className="text-sm font-medium text-white/50 hover:text-white transition-colors">{s}</a>
               ))}
+              <Link href="/blog" className="text-sm font-medium text-white/50 hover:text-white transition-colors">Blog</Link>
             </div>
             <a href="#contact" className="hidden sm:inline-flex bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-2.5 rounded-full font-bold text-sm hover:shadow-lg hover:shadow-purple-500/40 transition-all hover:-translate-y-0.5">
               Get Started →
@@ -370,7 +379,7 @@ export default function Home() {
         <div className="relative z-10 max-w-[1200px] mx-auto px-6 pt-[140px] pb-20 text-center w-full">
           <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-purple-500/10 border border-purple-500/20 mb-8 animate-[fadeUp_0.6s_ease-out]">
             <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-            <span className="text-sm font-medium text-purple-300">15+ Apps Live in Production</span>
+            <span className="text-sm font-medium text-purple-300">20+ Apps Live in Production</span>
           </div>
 
           <h1 className="text-[clamp(36px,6vw,80px)] font-black leading-[1.05] tracking-[-2px] mb-6 animate-[fadeUp_0.8s_ease-out]">

@@ -21,3 +21,152 @@ body {
   background: var(--background);
   color: var(--foreground);
 }
+
+/* ─── Blog post prose styling ─── */
+.prose-custom {
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 17px;
+  line-height: 1.8;
+}
+
+.prose-custom h2 {
+  font-size: clamp(22px, 3vw, 30px);
+  font-weight: 800;
+  color: white;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  letter-spacing: -0.5px;
+}
+
+.prose-custom h3 {
+  font-size: clamp(18px, 2.5vw, 24px);
+  font-weight: 700;
+  color: white;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.prose-custom p {
+  margin-bottom: 1.5rem;
+}
+
+.prose-custom a {
+  color: #a78bfa;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.2s;
+}
+
+.prose-custom a:hover {
+  color: #c4b5fd;
+}
+
+.prose-custom strong {
+  color: white;
+  font-weight: 700;
+}
+
+.prose-custom ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 1.5rem;
+}
+
+.prose-custom ul li {
+  padding-left: 1.5rem;
+  position: relative;
+  margin-bottom: 0.6rem;
+}
+
+.prose-custom ul li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: #a78bfa;
+  font-weight: 600;
+}
+
+.prose-custom ol {
+  counter-reset: list;
+  padding: 0;
+  margin-bottom: 1.5rem;
+}
+
+.prose-custom ol li {
+  counter-increment: list;
+  padding-left: 2rem;
+  position: relative;
+  margin-bottom: 0.6rem;
+}
+
+.prose-custom ol li::before {
+  content: counter(list) '.';
+  position: absolute;
+  left: 0;
+  color: #a78bfa;
+  font-weight: 700;
+}
+
+.prose-custom code {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  padding: 2px 8px;
+  font-size: 14px;
+  font-family: 'Fira Code', 'Cascadia Code', monospace;
+  color: #c4b5fd;
+}
+
+.prose-custom pre {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  overflow-x: auto;
+  margin-bottom: 1.5rem;
+}
+
+.prose-custom pre code {
+  background: none;
+  border: none;
+  padding: 0;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.prose-custom blockquote {
+  border-left: 3px solid #a78bfa;
+  padding-left: 1.25rem;
+  margin: 1.5rem 0;
+  color: rgba(255, 255, 255, 0.45);
+  font-style: italic;
+}
+
+.prose-custom table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.5rem;
+  font-size: 15px;
+}
+
+.prose-custom th {
+  text-align: left;
+  padding: 10px 14px;
+  background: rgba(139, 92, 246, 0.15);
+  color: white;
+  font-weight: 700;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.prose-custom td {
+  padding: 10px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.prose-custom hr {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  margin: 2.5rem 0;
+}
