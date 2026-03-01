@@ -270,17 +270,17 @@ const apps = [
     ios: 'https://apps.apple.com/us/app/muslifie/id6749224199',
     android: 'https://play.google.com/store/apps/details?id=com.app.muslifie&hl=en',
     web: 'https://www.muslifie.com/',
-    users: 'Live',
+    users: '200+ companies',
     color: 'from-blue-500 to-cyan-400',
     screens: ['hero', 'list', 'card'] as string[],
   },
   {
     name: 'FarahGPT',
-    desc: 'AI Islamic education platform with 7 AI personalities, habit tracking, and personalized learning for 2,100+ active users.',
+    desc: 'AI Islamic education platform with 7 AI personalities, habit tracking, and personalized learning for 5,100+ active users.',
     tags: ['Flutter', 'AI/RAG', 'Firebase', 'RevenueCat'],
     ios: 'https://apps.apple.com/pk/app/farahgpt/id6746275409',
     android: 'https://play.google.com/store/apps/details?id=com.app.farahgpt',
-    users: '2,100+',
+    users: '5,100+',
     color: 'from-purple-500 to-pink-400',
     screens: ['chat', 'card', 'list'] as string[],
   },
@@ -696,7 +696,7 @@ export default function Home() {
                 <div className="text-[11px] text-white/30">AI Islamic Education</div>
               </div>
             </div>
-            <div className="text-3xl font-extrabold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent mb-2">2,100+</div>
+            <div className="text-3xl font-extrabold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent mb-2">5,100+</div>
             <p className="text-sm text-white/40 leading-relaxed">Active users and growing. Built from scratch with 7 AI personalities, habit tracking, subscription model via RevenueCat, and a full RAG chat system.</p>
             <div className="mt-4 flex gap-2">
               <span className="px-2.5 py-1 rounded-full text-[10px] font-semibold bg-green-500/15 text-green-400 border border-green-500/20">iOS Live</span>
@@ -713,8 +713,8 @@ export default function Home() {
                 <div className="text-[11px] text-white/30">Travel Marketplace</div>
               </div>
             </div>
-            <div className="text-3xl font-extrabold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent mb-2">Full Platform</div>
-            <p className="text-sm text-white/40 leading-relaxed">Complete marketplace with Stripe Connect payments, real-time chat, 70+ language translations, guide verification system, and a Next.js admin panel.</p>
+            <div className="text-3xl font-extrabold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent mb-2">200+ Companies</div>
+            <p className="text-sm text-white/40 leading-relaxed">International companies onboarded. Complete marketplace with Stripe Connect payments, real-time chat, 70+ language translations, guide verification, and a Next.js admin panel.</p>
             <div className="mt-4 flex gap-2">
               <span className="px-2.5 py-1 rounded-full text-[10px] font-semibold bg-green-500/15 text-green-400 border border-green-500/20">iOS Live</span>
               <span className="px-2.5 py-1 rounded-full text-[10px] font-semibold bg-green-500/15 text-green-400 border border-green-500/20">Android Live</span>
