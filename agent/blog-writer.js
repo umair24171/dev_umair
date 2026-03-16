@@ -1,8 +1,9 @@
 // ─────────────────────────────────────────────
-//  Blog Writer Agent — Dev.Umair Personal Brand
-//  SEO-first: keyword targeting + uniqueness guard + quality gate
+//  Blog Writer Agent — Trending Topics Edition
+//  Searches the internet daily for trending tech/dev topics
+//  Generates SEO-optimized posts via Gemini and auto-deploys via GitHub
 //  Run: node agent/blog-writer.js
-//  Schedule: GitHub Actions Mon/Wed/Fri
+//  Schedule: GitHub Actions — Daily at 9:00 AM PKT
 // ─────────────────────────────────────────────
 
 import { GoogleGenerativeAI } from '@google/generative-ai';
@@ -13,197 +14,118 @@ dotenv.config();
 const gemini = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
 
-const REPO_OWNER = process.env.GITHUB_OWNER;
-const REPO_NAME  = process.env.GITHUB_REPO;
-const BRANCH     = 'main';
-const REGISTRY_PATH = 'agent/published-topics.json'; // tracks what's been published
+const REPO_OWNER    = process.env.GITHUB_OWNER;
+const REPO_NAME     = process.env.GITHUB_REPO;
+const BRANCH        = 'main';
+const REGISTRY_PATH = 'agent/published-topics.json';
 
-// ─── SEO-first topic pool ───
-// Each entry has a primaryKeyword (exact search query), secondaryKeywords (LSI),
-// searchIntent, and targetAudience so Gemini can write with ranking in mind.
-const TOPIC_POOL = [
-  {
-    topic: 'Flutter performance optimization: from 5 seconds to under 100ms',
-    primaryKeyword: 'flutter performance optimization',
-    secondaryKeywords: ['flutter app slow', 'flutter rendering lag', 'flutter jank fix', 'flutter frame rate'],
-    searchIntent: 'informational — developer trying to fix a slow Flutter app',
-    targetAudience: 'Flutter developers with production apps',
-    tags: ['Flutter', 'Performance', 'Firebase'],
-    gradient: 'from-blue-500 to-cyan-400',
-  },
-  {
-    topic: 'RevenueCat Flutter integration: subscriptions from scratch to App Store',
-    primaryKeyword: 'revenuecat flutter integration',
-    secondaryKeywords: ['flutter in-app purchases', 'flutter subscription model', 'revenuecat setup ios android'],
-    searchIntent: 'navigational/how-to — developer wants to add subscriptions',
-    targetAudience: 'Flutter indie developers monetizing apps',
-    tags: ['Flutter', 'RevenueCat', 'Monetization'],
-    gradient: 'from-purple-500 to-pink-400',
-  },
-  {
-    topic: 'Firebase vs Supabase for Flutter: honest comparison in 2026',
-    primaryKeyword: 'firebase vs supabase flutter',
-    secondaryKeywords: ['flutter backend comparison', 'supabase flutter tutorial', 'firebase flutter 2026'],
-    searchIntent: 'commercial — developer choosing a backend for new app',
-    targetAudience: 'Flutter developers starting a new project',
-    tags: ['Flutter', 'Firebase', 'Backend'],
-    gradient: 'from-orange-500 to-yellow-400',
-  },
-  {
-    topic: 'App Store rejection: 7 reasons my Flutter app got rejected and how I fixed them',
-    primaryKeyword: 'app store rejection flutter',
-    secondaryKeywords: ['apple app store review guidelines', 'flutter app rejected', 'app store submission tips'],
-    searchIntent: 'informational — developer whose app just got rejected',
-    targetAudience: 'Flutter developers submitting to App Store for first time',
-    tags: ['App Store', 'iOS', 'Flutter'],
-    gradient: 'from-red-500 to-rose-400',
-  },
-  {
-    topic: 'Real-time chat Flutter Firestore: building production messaging in one week',
-    primaryKeyword: 'real-time chat flutter firestore',
-    secondaryKeywords: ['flutter chat app tutorial', 'firestore real-time updates', 'flutter messaging feature'],
-    searchIntent: 'how-to — developer adding chat to an existing app',
-    targetAudience: 'Flutter developers building social or marketplace apps',
-    tags: ['Flutter', 'Firebase', 'Chat'],
-    gradient: 'from-cyan-500 to-blue-400',
-  },
-  {
-    topic: 'Flutter AI chatbot integration: adding Claude or GPT to any Flutter app',
-    primaryKeyword: 'flutter ai chatbot integration',
-    secondaryKeywords: ['flutter openai api', 'flutter claude api', 'flutter llm integration', 'ai flutter app'],
-    searchIntent: 'how-to — developer adding an AI feature to their app',
-    targetAudience: 'Flutter developers building AI-powered apps',
-    tags: ['Flutter', 'AI', 'OpenAI'],
-    gradient: 'from-violet-500 to-purple-400',
-  },
-  {
-    topic: 'Riverpod vs Bloc vs GetX: which Flutter state management actually scales',
-    primaryKeyword: 'flutter state management comparison 2026',
-    secondaryKeywords: ['riverpod vs bloc', 'flutter getx vs riverpod', 'best state management flutter'],
-    searchIntent: 'commercial — developer choosing state management for new project',
-    targetAudience: 'Flutter developers scaling past MVP',
-    tags: ['Flutter', 'State Management', 'Architecture'],
-    gradient: 'from-green-500 to-emerald-400',
-  },
-  {
-    topic: 'Stripe Connect Flutter: building a marketplace payment system from scratch',
-    primaryKeyword: 'stripe connect flutter',
-    secondaryKeywords: ['flutter stripe payments', 'flutter marketplace payments', 'stripe connect tutorial 2026'],
-    searchIntent: 'how-to — developer building a two-sided marketplace',
-    targetAudience: 'Flutter developers building marketplace or gig economy apps',
-    tags: ['Flutter', 'Stripe', 'Payments'],
-    gradient: 'from-indigo-500 to-blue-400',
-  },
-  {
-    topic: 'Flutter app architecture: how I structure production apps with 20+ screens',
-    primaryKeyword: 'flutter app architecture production',
-    secondaryKeywords: ['flutter folder structure', 'flutter clean architecture', 'flutter project structure 2026'],
-    searchIntent: 'informational — developer planning architecture for serious project',
-    targetAudience: 'Intermediate Flutter developers building their first real app',
-    tags: ['Flutter', 'Architecture', 'Clean Code'],
-    gradient: 'from-slate-500 to-gray-400',
-  },
-  {
-    topic: 'How to hire a Flutter developer: what to look for and red flags to avoid',
-    primaryKeyword: 'hire flutter developer',
-    secondaryKeywords: ['flutter developer for hire', 'flutter freelancer', 'how to find flutter developer'],
-    searchIntent: 'commercial — startup or business looking to hire',
-    targetAudience: 'Non-technical founders and product managers',
-    tags: ['Flutter', 'Hiring', 'Freelancing'],
-    gradient: 'from-amber-500 to-orange-400',
-  },
-  {
-    topic: 'Flutter RAG system: building retrieval-augmented generation for mobile apps',
-    primaryKeyword: 'flutter rag system',
-    secondaryKeywords: ['rag mobile app flutter', 'retrieval augmented generation flutter', 'flutter vector search'],
-    searchIntent: 'how-to — developer building AI-powered search or Q&A in mobile',
-    targetAudience: 'Advanced Flutter developers building AI features',
-    tags: ['Flutter', 'AI', 'RAG'],
-    gradient: 'from-purple-500 to-indigo-400',
-  },
-  {
-    topic: 'Flutter developer Pakistan: freelancing rates, clients, and lessons from 3 years',
-    primaryKeyword: 'flutter developer pakistan',
-    secondaryKeywords: ['flutter freelancer pakistan', 'flutter developer salary pakistan', 'hire flutter developer pakistan'],
-    searchIntent: 'informational/commercial — companies searching for Pakistani dev talent',
-    targetAudience: 'International clients + Pakistani developers',
-    tags: ['Flutter', 'Career', 'Freelancing'],
-    gradient: 'from-emerald-500 to-teal-400',
-  },
-  {
-    topic: 'Getting first 1000 Flutter app users: what worked and what was a waste of time',
-    primaryKeyword: 'flutter app user growth',
-    secondaryKeywords: ['flutter app marketing', 'how to get app users', 'flutter app store optimization'],
-    searchIntent: 'informational — indie developer struggling with user acquisition',
-    targetAudience: 'Flutter indie developers post-launch',
-    tags: ['Growth', 'Mobile', 'ASO'],
-    gradient: 'from-yellow-500 to-orange-400',
-  },
-  {
-    topic: 'Flutter offline support: Hive vs Isar vs SQLite for local storage in 2026',
-    primaryKeyword: 'flutter local storage 2026',
-    secondaryKeywords: ['flutter hive vs isar', 'flutter sqlite', 'flutter offline first'],
-    searchIntent: 'commercial — developer choosing local storage solution',
-    targetAudience: 'Flutter developers building apps that need offline support',
-    tags: ['Flutter', 'Storage', 'Offline'],
-    gradient: 'from-rose-500 to-pink-400',
-  },
-  {
-    topic: 'Flutter push notifications: Firebase FCM setup that actually works in 2026',
-    primaryKeyword: 'flutter push notifications firebase',
-    secondaryKeywords: ['flutter fcm setup', 'firebase cloud messaging flutter', 'flutter notifications ios android'],
-    searchIntent: 'how-to — developer setting up push notifications',
-    targetAudience: 'Flutter developers adding engagement features',
-    tags: ['Flutter', 'Firebase', 'Notifications'],
-    gradient: 'from-cyan-500 to-teal-400',
-  },
-  // ─── Agent / Automation topics ───
-  {
-    topic: 'How I built a live gold trading bot that runs 24/7 on $7/month',
-    primaryKeyword: 'automated trading bot nodejs',
-    secondaryKeywords: ['xauusd trading bot', 'forex trading automation nodejs', 'algorithmic trading bot 2026'],
-    searchIntent: 'informational — developer or trader curious about trading automation',
-    targetAudience: 'Developers interested in fintech and trading automation',
-    tags: ['Node.js', 'Trading', 'Automation', 'AI'],
-    gradient: 'from-yellow-500 to-amber-400',
-  },
-  {
-    topic: 'Building an AI content pipeline that posts to LinkedIn and Twitter automatically',
-    primaryKeyword: 'ai content pipeline automation',
-    secondaryKeywords: ['automate linkedin posts', 'ai social media automation', 'gemini content generation nodejs'],
-    searchIntent: 'how-to — developer or founder wanting to automate personal brand content',
-    targetAudience: 'Developers and solopreneurs wanting automated LinkedIn presence',
-    tags: ['Node.js', 'AI', 'Automation', 'LinkedIn'],
-    gradient: 'from-blue-500 to-cyan-400',
-  },
-  {
-    topic: 'AI agents vs simple scripts: what I learned building 4 live autonomous systems',
-    primaryKeyword: 'ai agents for developers 2026',
-    secondaryKeywords: ['building ai agents nodejs', 'autonomous ai systems', 'ai agent vs script', 'llm agents tutorial'],
-    searchIntent: 'informational — developer evaluating whether to build agents or simple automation',
-    targetAudience: 'Developers exploring AI agent architecture',
-    tags: ['AI', 'Automation', 'Node.js', 'Gemini'],
-    gradient: 'from-violet-500 to-purple-400',
-  },
-  {
-    topic: 'GitHub Actions as a free cron job: how I run 4 AI agents for $0/month',
-    primaryKeyword: 'github actions automation nodejs',
-    secondaryKeywords: ['github actions cron job', 'free cron job hosting', 'github actions scheduled workflow'],
-    searchIntent: 'how-to — developer wanting to schedule automation without paying for servers',
-    targetAudience: 'Indie developers building automation on a budget',
-    tags: ['GitHub Actions', 'Automation', 'Node.js', 'DevOps'],
-    gradient: 'from-slate-500 to-zinc-400',
-  },
-  {
-    topic: 'How I automated my entire personal brand as a Flutter developer',
-    primaryKeyword: 'personal branding automation developer',
-    secondaryKeywords: ['developer personal brand strategy', 'automate developer content', 'ai personal branding 2026'],
-    searchIntent: 'informational — developer who wants visibility without spending hours on content',
-    targetAudience: 'Flutter and mobile developers trying to attract clients organically',
-    tags: ['Automation', 'AI', 'Personal Brand', 'Career'],
-    gradient: 'from-pink-500 to-rose-400',
-  },
+// ─── Gradient pool for cover images ───
+const GRADIENTS = [
+  'from-blue-500 to-cyan-400',
+  'from-purple-500 to-pink-400',
+  'from-orange-500 to-yellow-400',
+  'from-green-500 to-emerald-400',
+  'from-red-500 to-rose-400',
+  'from-violet-500 to-purple-400',
+  'from-indigo-500 to-blue-400',
+  'from-cyan-500 to-teal-400',
+  'from-amber-500 to-orange-400',
+  'from-slate-500 to-gray-400',
+  'from-pink-500 to-rose-400',
+  'from-emerald-500 to-teal-400',
+  'from-yellow-500 to-orange-400',
 ];
+
+// ─── Fetch trending stories from Hacker News ───
+async function fetchHackerNewsTrends() {
+  try {
+    console.log('🔍 Fetching Hacker News top stories...');
+    const topRes = await fetch('https://hacker-news.firebaseio.com/v0/topstories.json');
+    const topIds = await topRes.json();
+    const ids    = topIds.slice(0, 30);
+
+    const stories = await Promise.all(
+      ids.map(id =>
+        fetch(`https://hacker-news.firebaseio.com/v0/item/${id}.json`)
+          .then(r => r.json())
+          .catch(() => null)
+      )
+    );
+
+    return stories
+      .filter(s => s && s.title && s.score > 50 && s.type === 'story')
+      .map(s => ({
+        title:  s.title,
+        url:    s.url || `https://news.ycombinator.com/item?id=${s.id}`,
+        score:  s.score,
+        source: 'HackerNews',
+      }));
+  } catch (err) {
+    console.warn('⚠️  HackerNews fetch failed:', err.message);
+    return [];
+  }
+}
+
+// ─── Fetch trending posts from Dev.to ───
+async function fetchDevToTrends() {
+  try {
+    console.log('🔍 Fetching Dev.to trending articles...');
+    const res      = await fetch('https://dev.to/api/articles?top=1&per_page=20');
+    const articles = await res.json();
+
+    return articles
+      .filter(a => a.positive_reactions_count > 50)
+      .map(a => ({
+        title:  a.title,
+        url:    a.url,
+        score:  a.positive_reactions_count,
+        tags:   a.tag_list,
+        source: 'DevTo',
+      }));
+  } catch (err) {
+    console.warn('⚠️  Dev.to fetch failed:', err.message);
+    return [];
+  }
+}
+
+// ─── Fetch trending repos from GitHub (new repos gaining stars fast) ───
+async function fetchGitHubTrending() {
+  try {
+    console.log('🔍 Fetching GitHub trending repos...');
+    const yesterday = new Date();
+    yesterday.setDate(yesterday.getDate() - 1);
+    const dateStr = yesterday.toISOString().split('T')[0];
+
+    const res  = await fetch(
+      `https://api.github.com/search/repositories?q=created:>${dateStr}&sort=stars&order=desc&per_page=10`,
+      { headers: { 'Accept': 'application/vnd.github.v3+json' } }
+    );
+    const data = await res.json();
+
+    return (data.items || []).map(r => ({
+      title:  `${r.name}: ${r.description || 'New trending open-source repo'}`,
+      url:    r.html_url,
+      score:  r.stargazers_count,
+      source: 'GitHub',
+    }));
+  } catch (err) {
+    console.warn('⚠️  GitHub trending fetch failed:', err.message);
+    return [];
+  }
+}
+
+// ─── Aggregate all trending sources ───
+async function gatherTrendingTopics() {
+  const [hn, devto, gh] = await Promise.all([
+    fetchHackerNewsTrends(),
+    fetchDevToTrends(),
+    fetchGitHubTrending(),
+  ]);
+
+  const all = [...hn, ...devto, ...gh];
+  console.log(`\n📊 Gathered ${all.length} trending items (HN: ${hn.length}, Dev.to: ${devto.length}, GitHub: ${gh.length})`);
+  return all;
+}
 
 // ─── Load published registry from GitHub ───
 async function loadPublishedRegistry() {
@@ -232,144 +154,157 @@ async function saveRegistry(registry, sha) {
   });
 }
 
-// ─── Pick a topic guaranteed to be unique ───
-async function pickTopic() {
-  const { registry, sha } = await loadPublishedRegistry();
-  const publishedKeywords = new Set(registry.published.map(p => p.primaryKeyword));
+// ─── Use Gemini to intelligently pick the best trending topic ───
+async function pickTrendingTopicWithGemini(trendingItems, publishedSlugs) {
+  const model = gemini.getGenerativeModel({ model: 'gemini-2.5-flash' });
 
-  // Filter out topics whose primaryKeyword has been used
-  const unused = TOPIC_POOL.filter(t => !publishedKeywords.has(t.primaryKeyword));
+  const itemsList = trendingItems
+    .slice(0, 40)
+    .map((t, i) => `${i + 1}. [${t.source}] ${t.title} (score: ${t.score})`)
+    .join('\n');
 
-  if (unused.length === 0) {
-    // All topics exhausted — reset registry and start over
-    console.log('⚠️  All topics used. Resetting registry...');
-    registry.published = [];
-    await saveRegistry(registry, sha);
-    return TOPIC_POOL[Math.floor(Math.random() * TOPIC_POOL.length)];
-  }
+  const alreadyPublished = publishedSlugs.slice(-30).join(', ');
 
-  // Pick randomly from unused topics
-  return { topic: unused[Math.floor(Math.random() * unused.length)], registrySha: sha, registry };
+  const prompt = `You are a tech blog strategist. Your job is to pick the SINGLE best topic from today's trending tech/developer news for a high-traffic blog post.
+
+Here are today's trending topics across Hacker News, Dev.to, and GitHub:
+
+${itemsList}
+
+Recently published topics to AVOID duplicating: ${alreadyPublished || 'none yet'}
+
+Pick the ONE topic that would make the best long-form technical blog post today. Prioritise:
+1. AI, machine learning, LLMs, developer tools — these get the most search traffic
+2. Topics developers actively Google (how-to, comparison, tutorial angles work best)
+3. Trending news that has a practical, actionable angle for developers
+4. Avoid pure business/funding news unless it has strong developer implications
+
+Output ONLY this XML format, nothing else:
+
+<selectedTopic>The exact trending topic or angle you chose</selectedTopic>
+<primaryKeyword>the main SEO keyword phrase (3-6 words) developers would search</primaryKeyword>
+<secondaryKeywords>keyword1, keyword2, keyword3, keyword4</secondaryKeywords>
+<searchIntent>informational/how-to/comparison — describe who is searching and why</searchIntent>
+<targetAudience>who this post is for</targetAudience>
+<angle>the specific hook that makes this post worth reading today</angle>
+<tags>Tag1, Tag2, Tag3, Tag4</tags>`;
+
+  const result = await model.generateContent(prompt);
+  const text   = result.response.text();
+
+  const extract = (tag) => {
+    const match = text.match(new RegExp(`<${tag}>([\\s\\S]*?)<\\/${tag}>`));
+    if (!match) throw new Error(`Missing <${tag}> in Gemini topic-picker response`);
+    return match[1].trim();
+  };
+
+  return {
+    topic:             extract('selectedTopic'),
+    primaryKeyword:    extract('primaryKeyword'),
+    secondaryKeywords: extract('secondaryKeywords').split(',').map(s => s.trim()),
+    searchIntent:      extract('searchIntent'),
+    targetAudience:    extract('targetAudience'),
+    angle:             extract('angle'),
+    tags:              extract('tags').split(',').map(s => s.trim()),
+    gradient:          GRADIENTS[Math.floor(Math.random() * GRADIENTS.length)],
+  };
 }
 
 // ─── SEO quality check ───
 function runSeoChecks(post, topicData) {
-  const issues = [];
+  const issues  = [];
   const content = post.content.toLowerCase();
-  const title = post.title.toLowerCase();
+  const title   = post.title.toLowerCase();
   const keyword = topicData.primaryKeyword.toLowerCase();
+  const kwWords = keyword.split(' ').filter(w => w.length > 3);
 
-  // 1. Primary keyword in title
-  if (!title.includes(keyword.split(' ')[0]) && !title.includes(keyword.split(' ')[1] || '')) {
-    issues.push(`Title missing primary keyword: "${topicData.primaryKeyword}"`);
+  if (!kwWords.some(w => title.includes(w))) {
+    issues.push(`Title may be missing primary keyword: "${topicData.primaryKeyword}"`);
   }
 
-  // 2. Primary keyword in first 200 chars of content
-  if (!content.substring(0, 200).includes(keyword.split(' ')[0])) {
+  if (!content.substring(0, 200).includes(kwWords[0] || keyword)) {
     issues.push('Primary keyword not in opening paragraph');
   }
 
-  // 3. Word count (aim for 1200+ for Google ranking)
   const wordCount = post.content.split(/\s+/).length;
   if (wordCount < 1000) {
     issues.push(`Too short: ${wordCount} words (minimum 1000 for SEO)`);
   }
 
-  // 4. Has at least 3 H2 headings
   const h2Count = (post.content.match(/^## /gm) || []).length;
   if (h2Count < 3) {
-    issues.push(`Only ${h2Count} H2 headings — needs at least 3 for structure`);
+    issues.push(`Only ${h2Count} H2 headings — needs at least 3`);
   }
 
-  // 5. Has a code block
   if (!post.content.includes('```')) {
-    issues.push('No code blocks — technical posts need code examples');
+    issues.push('No code blocks — consider adding code examples');
   }
 
-  // 6. Has FAQ section
-  if (!content.includes('faq') && !content.includes('frequently asked') && !content.includes('## questions')) {
+  if (!content.includes('faq') && !content.includes('frequently asked') && !content.includes('## question')) {
     issues.push('No FAQ section — missed rich snippet opportunity');
   }
 
-  // 7. Excerpt under 160 chars
   if (post.excerpt.length > 160) {
-    issues.push(`Excerpt too long: ${post.excerpt.length} chars (max 160 for meta description)`);
+    issues.push(`Excerpt too long: ${post.excerpt.length} chars (max 160)`);
     post.excerpt = post.excerpt.substring(0, 157) + '...';
   }
 
-  const wordCountFinal = post.content.split(/\s+/).length;
-  return { issues, wordCount: wordCountFinal };
+  return { issues, wordCount: post.content.split(/\s+/).length };
 }
 
-// ─── Generate SEO-optimized post with Gemini ───
-// Uses XML delimiters instead of JSON to avoid escaping issues with
-// markdown content (code blocks, quotes, backticks inside a JSON string).
+// ─── Generate the full blog post with Gemini ───
 async function generatePost(topicData) {
   const model = gemini.getGenerativeModel({ model: 'gemini-2.5-flash' });
 
-  const prompt = `You are Umair Bilal — a Senior Flutter developer and AI automation builder from Pakistan with 3+ years experience:
+  const prompt = `You are a senior tech blogger and developer writing for devumair.vercel.app.
 
-Apps you've shipped (15+ in production):
-- Muslifie: Muslim travel marketplace (Stripe Connect, real-time chat, 70+ languages, iOS + Android live)
-- FarahGPT: AI Islamic education app (5,100+ users, 7 AI personalities, RAG system, RevenueCat)
-- MyAiPal: AI wellness companion (OpenAI integration, journaling, iOS + Android live)
-- Voisbe: Voice-first social network (audio posts, Firebase, Node.js backend)
+Write a LONG, deeply engaging, SEO-optimized blog post about this trending tech topic:
 
-AI Agents you've built and run live:
-- Gold Trading System: 4 sub-agents trading XAU/USD 24/7 — 51%+ win rate, 1.89 profit factor, ~115R/year, trained on 1.4M candles
-- AI Content Pipeline: fully automated — researches topics, writes LinkedIn + Twitter + Instagram content, auto-posts 2x daily, zero human input
-- Blog Writer Agent: this agent — SEO-targeted posts, 7 quality checks, commits to GitHub, Vercel auto-deploys Mon/Wed/Fri
-- Job Hunting Agent: scrapes listings, AI-scores them, saves to Sheets, sends WhatsApp alerts via Twilio
-
-Write a LONG, deeply technical blog post (1500-2000 words minimum) targeting this EXACT search query:
-
+TOPIC: ${topicData.topic}
+ANGLE: ${topicData.angle}
 PRIMARY KEYWORD: "${topicData.primaryKeyword}"
-SECONDARY KEYWORDS to weave in naturally: ${topicData.secondaryKeywords.join(', ')}
+SECONDARY KEYWORDS (weave in naturally): ${topicData.secondaryKeywords.join(', ')}
 SEARCH INTENT: ${topicData.searchIntent}
 TARGET AUDIENCE: ${topicData.targetAudience}
-TOPIC ANGLE: ${topicData.topic}
 
-─── SEO RULES (non-negotiable) ───
+─── SEO RULES ───
 1. PRIMARY KEYWORD must appear: in the title, in the first 100 words, and in at least 2 H2 headings
-2. Use SECONDARY KEYWORDS naturally — minimum 2 appearances each, never forced
-3. Write AT LEAST 1500 words — Google ranks longer, more comprehensive posts higher
-4. Use REAL numbers: percentages, load times, user counts, code line counts — specificity builds trust
-5. Include at least 4 H2 (##) headings with keyword-rich text
-6. Include at least 2 code blocks with real, working code
-7. End with a ## Frequently Asked Questions section with 3-4 Q&As — this triggers Google's People Also Ask box
-8. The meta excerpt must be exactly 140-155 characters, include the primary keyword, and create urgency/curiosity
+2. Weave in secondary keywords naturally — min 2 appearances each
+3. Write AT LEAST 1500 words — aim for 1800-2200
+4. Use real numbers, research stats, benchmarks wherever possible
+5. Include at least 4 H2 headings (##)
+6. Include at least 2 code blocks if technical (real, working code)
+7. End with ## Frequently Asked Questions — 3-4 Q&As (triggers Google PAA box)
+8. Excerpt must be 140-155 characters, include the primary keyword
 
 ─── VOICE & STYLE ───
-- Write like a developer sharing a war story — specific, direct, opinionated
-- Share real mistakes you made (shows authenticity, builds trust)
-- Include real numbers from YOUR apps: "FarahGPT dropped from 4.2s to 180ms", "Muslifie had 200+ guide profiles"
-- Use "I", "we", "my app" — first person throughout
-- Technical enough to be credible, readable enough for a non-expert to follow
-- No generic advice — every tip must come from a real situation
+- Expert developer voice — specific, opinionated, data-driven
+- Not generic advice — back everything with real examples or stats
+- Accessible for a mid-level developer, credible for a senior one
+- First person occasionally to add authenticity
 
 ─── STRUCTURE ───
-## [Problem/Hook — include primary keyword]
-## What I Tried First (That Didn't Work)
-## The Fix That Actually Worked — [include primary keyword]
-## [Deep technical section with code]
-## Results: Before and After
-## [Tips/Lessons section]
+Opening hook paragraph (no heading) — immediately addresses the reader's pain/interest
+## [Background/Context — with primary keyword]
+## [How It Works / Core Concepts]
+## [Practical Implementation or Deep Dive]
+## [Comparison, Gotchas, or Advanced Tips]
+## [What This Means for You / Takeaways]
 ## Frequently Asked Questions
 
 ─── OUTPUT FORMAT ───
-Return ONLY the following format with XML-style tags. No explanation, no preamble:
+Return ONLY this XML format, no preamble:
 
-<title>SEO-optimized title containing primary keyword, compelling, under 65 chars</title>
-<excerpt>140-155 char meta description with primary keyword and a hook that makes people click</excerpt>
+<title>SEO-optimized title with primary keyword, under 65 chars</title>
+<excerpt>140-155 char meta description with primary keyword and a compelling hook</excerpt>
 <readTime>X min read</readTime>
 <content>
-full markdown post here — 1500-2000+ words, with real code blocks, real numbers, FAQ section at the end
+full markdown post — 1500-2200+ words, code blocks where relevant, FAQ at end
 </content>`;
 
   const result = await model.generateContent(prompt);
-  const text = result.response.text();
+  const text   = result.response.text();
 
-  // Parse XML-delimited fields — handles any content inside (backticks, quotes, newlines)
   const extract = (tag) => {
     const match = text.match(new RegExp(`<${tag}>([\\s\\S]*?)<\\/${tag}>`));
     if (!match) throw new Error(`Missing <${tag}> tag in Gemini response`);
@@ -377,14 +312,14 @@ full markdown post here — 1500-2000+ words, with real code blocks, real number
   };
 
   return {
-    title: extract('title'),
-    excerpt: extract('excerpt'),
+    title:    extract('title'),
+    excerpt:  extract('excerpt'),
     readTime: extract('readTime'),
-    content: extract('content'),
+    content:  extract('content'),
   };
 }
 
-// ─── Create slug from title ───
+// ─── Create URL-safe slug from title ───
 function slugify(title) {
   return title
     .toLowerCase()
@@ -398,8 +333,8 @@ function slugify(title) {
 // ─── Commit blog post to GitHub ───
 async function commitPost(slug, fileContent) {
   const filePath = `content/posts/${slug}.md`;
-
   let sha;
+
   try {
     const { data } = await octokit.repos.getContent({
       owner: REPO_OWNER, repo: REPO_NAME, path: filePath, ref: BRANCH,
@@ -421,29 +356,31 @@ async function commitPost(slug, fileContent) {
 }
 
 // ─── Discord notification ───
-async function notifyDiscord(title, slug, wordCount, seoIssues) {
+async function notifyDiscord(title, slug, wordCount, seoIssues, topicData) {
   if (!process.env.DISCORD_WEBHOOK_URL) return;
 
   const statusEmoji = seoIssues.length === 0 ? '✅' : '⚠️';
-  const issueText = seoIssues.length === 0
+  const issueText   = seoIssues.length === 0
     ? 'All SEO checks passed!'
-    : `${seoIssues.length} minor issues: ${seoIssues.join(' | ')}`;
+    : `${seoIssues.length} issues: ${seoIssues.join(' | ')}`;
 
   await fetch(process.env.DISCORD_WEBHOOK_URL, {
-    method: 'POST',
+    method:  'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
       embeds: [{
-        title: '📝 New Blog Post Published!',
+        title:       '📝 New Trending Blog Post Published!',
         description: `**${title}**`,
-        color: seoIssues.length === 0 ? 0x22C55E : 0xF59E0B,
+        color:       seoIssues.length === 0 ? 0x22C55E : 0xF59E0B,
         fields: [
-          { name: '🔗 URL', value: `https://devumair.vercel.app/blog/${slug}`, inline: false },
-          { name: '📊 Word Count', value: `${wordCount} words`, inline: true },
-          { name: `${statusEmoji} SEO Check`, value: issueText, inline: false },
-          { name: '⚡ Status', value: 'Deploying via Vercel (~2 min)', inline: true },
+          { name: '🔥 Trending Topic', value: topicData.topic,         inline: false },
+          { name: '🔗 URL',            value: `https://devumair.vercel.app/blog/${slug}`, inline: false },
+          { name: '📊 Word Count',     value: `${wordCount} words`,    inline: true },
+          { name: '🎯 Keyword',        value: topicData.primaryKeyword, inline: true },
+          { name: `${statusEmoji} SEO`, value: issueText,              inline: false },
+          { name: '⚡ Status',         value: 'Deploying via Vercel (~2 min)', inline: true },
         ],
-        footer: { text: 'Dev.Umair Blog Agent' },
+        footer:    { text: 'Dev.Umair Blog Agent — Trending Topics Edition' },
         timestamp: new Date().toISOString(),
       }]
     }),
@@ -453,16 +390,28 @@ async function notifyDiscord(title, slug, wordCount, seoIssues) {
 // ─── Main pipeline ───
 async function run() {
   try {
-    console.log('🚀 Blog Writer Agent starting...\n');
+    console.log('🚀 Blog Writer Agent (Trending Topics Edition) starting...\n');
 
-    // 1. Pick unused topic
-    const result = await pickTopic();
-    const { topic: topicData, registrySha, registry } = result;
-    console.log(`📌 Topic: ${topicData.topic}`);
-    console.log(`🎯 Primary keyword: "${topicData.primaryKeyword}"`);
-    console.log(`🔍 Search intent: ${topicData.searchIntent}\n`);
+    // 1. Gather trending topics from the internet
+    const trendingItems = await gatherTrendingTopics();
 
-    // 2. Generate post (retry once if JSON parse fails)
+    if (trendingItems.length === 0) {
+      throw new Error('No trending topics found from any source. Check network connectivity.');
+    }
+
+    // 2. Load registry to avoid repeating topics
+    const { registry, sha: registrySha } = await loadPublishedRegistry();
+    const publishedSlugs = registry.published.map(p => p.slug || p.primaryKeyword || '');
+
+    // 3. Ask Gemini to pick the best topic
+    console.log('\n🧠 Asking Gemini to pick the best trending topic for today...');
+    const topicData = await pickTrendingTopicWithGemini(trendingItems, publishedSlugs);
+    console.log(`\n📌 Selected: ${topicData.topic}`);
+    console.log(`🎯 Keyword: "${topicData.primaryKeyword}"`);
+    console.log(`🔍 Intent: ${topicData.searchIntent}`);
+    console.log(`👥 Audience: ${topicData.targetAudience}\n`);
+
+    // 4. Generate full blog post (retry once on failure)
     console.log('✍️  Generating SEO-optimized post with Gemini...');
     let post;
     try {
@@ -473,7 +422,7 @@ async function run() {
     }
     console.log(`✅ Generated: "${post.title}"`);
 
-    // 3. Run SEO quality checks
+    // 5. SEO quality checks
     console.log('\n🔍 Running SEO checks...');
     const { issues, wordCount } = runSeoChecks(post, topicData);
     if (issues.length === 0) {
@@ -483,13 +432,12 @@ async function run() {
       issues.forEach(i => console.log(`   • ${i}`));
     }
 
-    // Hard fail: word count too low (don't publish junk)
     if (wordCount < 700) {
       throw new Error(`Post too short (${wordCount} words). Minimum is 700. Not publishing.`);
     }
 
-    // 4. Build frontmatter
-    const slug = slugify(post.title);
+    // 6. Build final markdown file with frontmatter
+    const slug  = slugify(post.title);
     const today = new Date().toISOString().split('T')[0];
 
     const fileContent = `---
@@ -504,27 +452,28 @@ coverGradient: "${topicData.gradient}"
 
 ${post.content}`;
 
-    // 5. Commit post to GitHub → Vercel auto-deploys
+    // 7. Commit to GitHub → Vercel auto-deploys
     console.log('\n📦 Committing to GitHub...');
     await commitPost(slug, fileContent);
 
-    // 6. Update registry so this topic is never repeated
+    // 8. Update registry
     registry.published.push({
-      primaryKeyword: topicData.primaryKeyword,
       slug,
-      title: post.title,
-      date: today,
+      primaryKeyword: topicData.primaryKeyword,
+      title:          post.title,
+      topic:          topicData.topic,
+      date:           today,
       wordCount,
     });
     registry.lastRun = new Date().toISOString();
     await saveRegistry(registry, registrySha);
-    console.log('📋 Registry updated — topic marked as published');
+    console.log('📋 Registry updated');
 
-    // 7. Notify Discord
-    await notifyDiscord(post.title, slug, wordCount, issues);
+    // 9. Notify Discord
+    await notifyDiscord(post.title, slug, wordCount, issues, topicData);
 
     console.log(`\n🎉 Done! Live in ~2 min: https://devumair.vercel.app/blog/${slug}`);
-    console.log(`📊 Stats: ${wordCount} words | ${topicData.tags.join(', ')}`);
+    console.log(`📊 Stats: ${wordCount} words | Tags: ${topicData.tags.join(', ')}`);
 
   } catch (err) {
     console.error('\n❌ Agent error:', err.message);
