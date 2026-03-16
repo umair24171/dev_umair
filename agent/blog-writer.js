@@ -14,8 +14,8 @@ dotenv.config();
 const gemini = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
 
-const REPO_OWNER    = process.env.GITHUB_OWNER;
-const REPO_NAME     = process.env.GITHUB_REPO;
+const REPO_OWNER    = process.env.REPO_OWNER || process.env.GITHUB_OWNER;
+const REPO_NAME     = process.env.REPO_NAME  || process.env.GITHUB_REPO;
 const BRANCH        = 'main';
 const REGISTRY_PATH = 'agent/published-topics.json';
 
