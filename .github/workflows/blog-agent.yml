@@ -2,7 +2,7 @@ name: Blog Writer Agent
 
 on:
   schedule:
-    # Mon, Wed, Fri at 9:00 AM PKT (4:00 UTC)
+    # Every day at 9:00 AM PKT (4:00 UTC) — searches internet for trending topics
     - cron: '0 4 * * *'
   workflow_dispatch: # Manual trigger from GitHub UI
 
