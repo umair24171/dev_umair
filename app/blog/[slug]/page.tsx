@@ -18,10 +18,28 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title: `${post.title} | Dev.Umair`,
     description: post.excerpt,
+    alternates: {
+      canonical: `https://devumair.vercel.app/blog/${slug}`,
+    },
     openGraph: {
       title: post.title,
       description: post.excerpt,
       url: `https://devumair.vercel.app/blog/${slug}`,
+      type: 'article',
+      images: [
+        {
+          url: `https://devumair.vercel.app/og-image.png`,
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.title,
+      description: post.excerpt,
+      images: [`https://devumair.vercel.app/og-image.png`],
     },
   };
 }
@@ -33,8 +51,39 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
   const htmlContent = marked(post.content) as string;
 
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: post.title,
+    description: post.excerpt,
+    author: {
+      '@type': 'Person',
+      name: 'Umair Bilal',
+      url: 'https://devumair.vercel.app',
+    },
+    datePublished: post.date,
+    dateModified: post.date,
+    url: `https://devumair.vercel.app/blog/${slug}`,
+    publisher: {
+      '@type': 'Person',
+      name: 'Umair Bilal',
+      url: 'https://devumair.vercel.app',
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `https://devumair.vercel.app/blog/${slug}`,
+    },
+    image: 'https://devumair.vercel.app/og-image.png',
+  };
+
   return (
     <div className="min-h-screen bg-[#06080f] text-white overflow-x-hidden">
+
+      {/* JSON-LD Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
 
       {/* ─── NAV ─── */}
       <nav className="fixed top-0 w-full z-50 bg-[#06080f]/85 backdrop-blur-xl border-b border-white/5">
