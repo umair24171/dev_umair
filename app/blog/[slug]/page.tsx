@@ -15,9 +15,14 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const post = getPostBySlug(slug);
   if (!post) return {};
+
+  const ogImageUrl = `https://devumair.vercel.app/blog/${slug}/opengraph-image`;
+
   return {
     title: `${post.title} | Dev.Umair`,
     description: post.excerpt,
+    keywords: post.keywords?.length ? post.keywords : post.tags,
+    authors: [{ name: 'Umair Bilal', url: 'https://devumair.vercel.app' }],
     alternates: {
       canonical: `https://devumair.vercel.app/blog/${slug}`,
     },
@@ -25,10 +30,14 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       title: post.title,
       description: post.excerpt,
       url: `https://devumair.vercel.app/blog/${slug}`,
+      siteName: 'Dev.Umair',
       type: 'article',
+      publishedTime: post.date,
+      authors: ['Umair Bilal'],
+      tags: post.tags,
       images: [
         {
-          url: `https://devumair.vercel.app/og-image.png`,
+          url: ogImageUrl,
           width: 1200,
           height: 630,
           alt: post.title,
@@ -39,7 +48,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       card: 'summary_large_image',
       title: post.title,
       description: post.excerpt,
-      images: [`https://devumair.vercel.app/og-image.png`],
+      creator: '@umairbilal',
+      images: [ogImageUrl],
     },
   };
 }
@@ -51,29 +61,43 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
   const htmlContent = marked(post.content) as string;
 
+  const postUrl   = `https://devumair.vercel.app/blog/${slug}`;
+  const ogImageUrl = `${postUrl}/opengraph-image`;
+
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Article',
     headline: post.title,
     description: post.excerpt,
+    keywords: (post.keywords?.length ? post.keywords : post.tags).join(', '),
     author: {
       '@type': 'Person',
       name: 'Umair Bilal',
       url: 'https://devumair.vercel.app',
+      sameAs: ['https://devumair.vercel.app'],
     },
     datePublished: post.date,
     dateModified: post.date,
-    url: `https://devumair.vercel.app/blog/${slug}`,
+    url: postUrl,
     publisher: {
-      '@type': 'Person',
-      name: 'Umair Bilal',
+      '@type': 'Organization',
+      name: 'Dev.Umair',
       url: 'https://devumair.vercel.app',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://devumair.vercel.app/og-image.png',
+      },
     },
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': `https://devumair.vercel.app/blog/${slug}`,
+      '@id': postUrl,
     },
-    image: 'https://devumair.vercel.app/og-image.png',
+    image: {
+      '@type': 'ImageObject',
+      url: ogImageUrl,
+      width: 1200,
+      height: 630,
+    },
   };
 
   return (
