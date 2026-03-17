@@ -10,6 +10,7 @@ export interface PostMeta {
   excerpt: string;
   date: string;
   tags: string[];
+  keywords: string[];
   readTime: string;
   coverGradient?: string;
 }
@@ -35,6 +36,7 @@ export function getAllPosts(): PostMeta[] {
       excerpt: data.excerpt || '',
       date: data.date || '',
       tags: data.tags || [],
+      keywords: data.keywords || data.tags || [],
       readTime: data.readTime || '5 min read',
       coverGradient: data.coverGradient || 'from-purple-500 to-pink-500',
     } as PostMeta;
