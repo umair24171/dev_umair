@@ -74,6 +74,11 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://devumair.vercel.app",
   },
+
+  // Google Search Console verification
+  verification: {
+    google: "tHr48mzJn6BFes-GzZidXnfAmtIwQZwF29IWsEt78dM",
+  },
 };
 
 export default function RootLayout({
