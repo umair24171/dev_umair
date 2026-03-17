@@ -30,7 +30,15 @@
       "topic": "How to Build Complete Godot Games with Claude AI: A Practical Guide",
       "date": "2026-03-17",
       "wordCount": 3296
+    },
+    {
+      "slug": "local-llm-video-captioning-private-powerful-open-source",
+      "primaryKeyword": "local LLM video captioning",
+      "title": "Local LLM Video Captioning: Private, Powerful, Open-Source",
+      "topic": "Building Local AI Video Captioning Tools with Open Source LLMs",
+      "date": "2026-03-17",
+      "wordCount": 4076
     }
   ],
-  "lastRun": "2026-03-17T05:21:32.272Z"
+  "lastRun": "2026-03-17T18:19:34.959Z"
 }
