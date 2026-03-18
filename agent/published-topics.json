@@ -38,7 +38,15 @@
       "topic": "Building Local AI Video Captioning Tools with Open Source LLMs",
       "date": "2026-03-17",
       "wordCount": 4076
+    },
+    {
+      "slug": "mistral-forge-tutorial-build-llm-apps-faster",
+      "primaryKeyword": "Mistral Forge tutorial",
+      "title": "Mistral Forge Tutorial: Build LLM Apps Faster",
+      "topic": "Mistral AI Releases Forge",
+      "date": "2026-03-18",
+      "wordCount": 3258
     }
   ],
-  "lastRun": "2026-03-17T18:19:34.959Z"
+  "lastRun": "2026-03-18T05:25:30.752Z"
 }
