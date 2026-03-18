@@ -46,7 +46,15 @@
       "topic": "Mistral AI Releases Forge",
       "date": "2026-03-18",
       "wordCount": 3258
+    },
+    {
+      "slug": "the-ultimate-llm-prompt-engineering-guide-get-shit-done-with-meta",
+      "primaryKeyword": "LLM prompt engineering guide",
+      "title": "The Ultimate LLM Prompt Engineering Guide: Get Shit Done with Meta-Prompting",
+      "topic": "Get Shit Done: A meta-prompting, context engineering and spec-driven dev system",
+      "date": "2026-03-18",
+      "wordCount": 3380
     }
   ],
-  "lastRun": "2026-03-18T05:25:30.752Z"
+  "lastRun": "2026-03-18T15:09:16.316Z"
 }
