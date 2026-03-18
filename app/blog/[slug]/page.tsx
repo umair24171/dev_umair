@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { getPostBySlug, getAllPosts } from '@/lib/posts';
+import { getPostBySlug, getAllPosts, getRelatedPosts } from '@/lib/posts';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { marked } from 'marked';
@@ -59,6 +59,8 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   const post = getPostBySlug(slug);
   if (!post) notFound();
 
+  const relatedPosts = getRelatedPosts(slug, post.tags, 3);
+
   const htmlContent = marked(post.content) as string;
 
   const postUrl   = `https://devumair.vercel.app/blog/${slug}`;
@@ -72,9 +74,13 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     keywords: (post.keywords?.length ? post.keywords : post.tags).join(', '),
     author: {
       '@type': 'Person',
-      name: 'Umair Bilal',
+      name: 'Umair',
+      jobTitle: 'Senior Flutter Developer',
       url: 'https://devumair.vercel.app',
-      sameAs: ['https://devumair.vercel.app'],
+      sameAs: [
+        'https://github.com/umair24171',
+        'https://devumair.vercel.app',
+      ],
     },
     datePublished: post.date,
     dateModified: post.date,
@@ -151,7 +157,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         <div className="flex items-center gap-4 pb-8 border-b border-white/[0.06] mb-8">
           <div className="w-9 h-9 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center font-bold text-sm">U</div>
           <div>
-            <p className="text-sm font-semibold">Umair Bilal</p>
+            <p className="text-sm font-semibold">Umair <span className="text-white/40 font-normal text-[12px]">· Senior Flutter Developer</span></p>
             <p className="text-[12px] text-white/30">{new Date(post.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })} · {post.readTime}</p>
           </div>
         </div>
@@ -173,6 +179,43 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             Book Free Call →
           </Link>
         </div>
+
+        {/* ─── RELATED POSTS ─── */}
+        {relatedPosts.length > 0 && (
+          <div className="mt-16">
+            <h2 className="text-xl font-bold mb-6 text-white/80">Related Posts</h2>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {relatedPosts.map((related) => (
+                <Link
+                  key={related.slug}
+                  href={`/blog/${related.slug}`}
+                  className="group bg-white/[0.03] border border-white/[0.06] rounded-xl overflow-hidden hover:border-purple-500/30 hover:bg-white/[0.05] hover:-translate-y-0.5 transition-all duration-300"
+                >
+                  <div className={`h-0.5 bg-gradient-to-r ${related.coverGradient}`} />
+                  <div className="p-5">
+                    <div className="flex flex-wrap gap-1.5 mb-3">
+                      {related.tags.slice(0, 2).map((tag) => (
+                        <span key={tag} className="px-2 py-0.5 rounded-full text-[10px] font-medium bg-purple-500/15 text-purple-300 border border-purple-500/20">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    <h3 className="text-sm font-bold leading-snug mb-2 group-hover:text-purple-300 transition-colors line-clamp-2">
+                      {related.title}
+                    </h3>
+                    <p className="text-[11px] text-white/30 line-clamp-2 mb-3">{related.excerpt}</p>
+                    <div className="flex items-center justify-between pt-3 border-t border-white/[0.06]">
+                      <span className="text-[11px] text-white/25">
+                        {new Date(related.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                      </span>
+                      <span className="text-[11px] text-white/25">{related.readTime}</span>
+                    </div>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
       </article>
 
       <footer className="border-t border-white/5 py-10 px-6 text-center">

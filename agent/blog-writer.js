@@ -227,8 +227,8 @@ function runSeoChecks(post, topicData) {
   }
 
   const wordCount = post.content.split(/\s+/).length;
-  if (wordCount < 1000) {
-    issues.push(`Too short: ${wordCount} words (minimum 1000 for SEO)`);
+  if (wordCount < 800) {
+    issues.push(`Too short: ${wordCount} words (minimum 800)`);
   }
 
   const h2Count = (post.content.match(/^## /gm) || []).length;
@@ -256,9 +256,9 @@ function runSeoChecks(post, topicData) {
 async function generatePost(topicData) {
   const model = gemini.getGenerativeModel({ model: 'gemini-2.5-flash' });
 
-  const prompt = `You are a senior tech blogger and developer writing for devumair.vercel.app.
+  const prompt = `You are Umair, a Senior Flutter Developer with 4+ years of experience shipping production apps on iOS and Android. You write for your personal portfolio blog at devumair.vercel.app. Your posts are opinionated, practical, and grounded in real-world Flutter/mobile development experience.
 
-Write a LONG, deeply engaging, SEO-optimized blog post about this trending tech topic:
+Write a LONG, deeply engaging, SEO-optimized blog post about this trending tech topic — always connecting it back to Flutter, mobile development, or the practical reality a working Flutter developer faces:
 
 TOPIC: ${topicData.topic}
 ANGLE: ${topicData.angle}
@@ -273,24 +273,28 @@ TARGET AUDIENCE: ${topicData.targetAudience}
 3. Write AT LEAST 1500 words — aim for 1800-2200
 4. Use real numbers, research stats, benchmarks wherever possible
 5. Include at least 4 H2 headings (##)
-6. Include at least 2 code blocks if technical (real, working code)
+6. Include at least 2 code blocks if technical (real, working Flutter/Dart code preferred)
 7. End with ## Frequently Asked Questions — 3-4 Q&As (triggers Google PAA box)
 8. Excerpt must be 140-155 characters, include the primary keyword
 
 ─── VOICE & STYLE ───
-- Expert developer voice — specific, opinionated, data-driven
-- Not generic advice — back everything with real examples or stats
+- Write as Umair — a Senior Flutter Developer with 4+ years building production apps
+- Speak from real experience: "In my Flutter projects...", "I ran into this exact issue when...", "After shipping 15+ apps..."
+- Opinionated and specific — no generic filler advice
 - Accessible for a mid-level developer, credible for a senior one
-- First person occasionally to add authenticity
+- Reference Flutter, Dart, mobile app specifics wherever the topic allows
 
-─── STRUCTURE ───
-Opening hook paragraph (no heading) — immediately addresses the reader's pain/interest
+─── STRUCTURE (REQUIRED — every post must have all three) ───
+**INTRO** (no heading): A compelling hook paragraph that grabs attention immediately — state the problem, the stakes, and why this matters RIGHT NOW. Written in first person as Umair. Minimum 80 words.
+
 ## [Background/Context — with primary keyword]
 ## [How It Works / Core Concepts]
 ## [Practical Implementation or Deep Dive]
-## [Comparison, Gotchas, or Advanced Tips]
+## [Comparison, Gotchas, or Advanced Tips from a Flutter Dev Perspective]
 ## [What This Means for You / Takeaways]
 ## Frequently Asked Questions
+
+**CONCLUSION** (after FAQ or as the final paragraph under Takeaways): A strong wrap-up paragraph that ties everything together, restates the key insight, and ends with a clear call to action or forward-looking statement. Minimum 60 words.
 
 ─── OUTPUT FORMAT ───
 Return ONLY this XML format, no preamble:
@@ -299,7 +303,7 @@ Return ONLY this XML format, no preamble:
 <excerpt>140-155 char meta description with primary keyword and a compelling hook</excerpt>
 <readTime>X min read</readTime>
 <content>
-full markdown post — 1500-2200+ words, code blocks where relevant, FAQ at end
+full markdown post — 1500-2200+ words, Flutter/Dart code blocks where relevant, real intro + conclusion, FAQ at end
 </content>`;
 
   const result = await model.generateContent(prompt);
@@ -353,6 +357,55 @@ async function commitPost(slug, fileContent) {
   });
 
   console.log(`✅ Committed: ${filePath}`);
+}
+
+// ─── Cross-post to Dev.to for backlinks ───
+async function crossPostToDevTo(post, topicData, slug) {
+  if (!process.env.DEV_TO_API_KEY) {
+    console.log('ℹ️  DEV_TO_API_KEY not set — skipping Dev.to cross-post');
+    return null;
+  }
+
+  try {
+    console.log('📤 Cross-posting to Dev.to...');
+
+    // Prepend canonical notice so readers click through to devumair.vercel.app
+    const canonicalUrl = `https://devumair.vercel.app/blog/${slug}`;
+    const devToBody = `> *This article was originally published on [devumair.vercel.app](${canonicalUrl}).*\n\n${post.content}`;
+
+    const payload = {
+      article: {
+        title:          post.title,
+        body_markdown:  devToBody,
+        published:      true,
+        canonical_url:  canonicalUrl,
+        description:    post.excerpt,
+        tags:           topicData.tags.slice(0, 4).map(t => t.toLowerCase().replace(/[^a-z0-9]/g, '')),
+      },
+    };
+
+    const res = await fetch('https://dev.to/api/articles', {
+      method:  'POST',
+      headers: {
+        'Content-Type':  'application/json',
+        'api-key':       process.env.DEV_TO_API_KEY,
+      },
+      body: JSON.stringify(payload),
+    });
+
+    if (!res.ok) {
+      const errText = await res.text();
+      console.warn(`⚠️  Dev.to cross-post failed (${res.status}): ${errText}`);
+      return null;
+    }
+
+    const data = await res.json();
+    console.log(`✅ Dev.to post live: ${data.url}`);
+    return data.url;
+  } catch (err) {
+    console.warn('⚠️  Dev.to cross-post error:', err.message);
+    return null;
+  }
 }
 
 // ─── Discord notification ───
@@ -432,8 +485,8 @@ async function run() {
       issues.forEach(i => console.log(`   • ${i}`));
     }
 
-    if (wordCount < 700) {
-      throw new Error(`Post too short (${wordCount} words). Minimum is 700. Not publishing.`);
+    if (wordCount < 800) {
+      throw new Error(`Post too short (${wordCount} words). Minimum is 800. Not publishing.`);
     }
 
     // 6. Build final markdown file with frontmatter
@@ -456,7 +509,10 @@ ${post.content}`;
     console.log('\n📦 Committing to GitHub...');
     await commitPost(slug, fileContent);
 
-    // 8. Update registry
+    // 8. Cross-post to Dev.to for backlinks
+    const devToUrl = await crossPostToDevTo(post, topicData, slug);
+
+    // 9. Update registry
     registry.published.push({
       slug,
       primaryKeyword: topicData.primaryKeyword,
@@ -464,15 +520,17 @@ ${post.content}`;
       topic:          topicData.topic,
       date:           today,
       wordCount,
+      devToUrl:       devToUrl || null,
     });
     registry.lastRun = new Date().toISOString();
     await saveRegistry(registry, registrySha);
     console.log('📋 Registry updated');
 
-    // 9. Notify Discord
+    // 10. Notify Discord
     await notifyDiscord(post.title, slug, wordCount, issues, topicData);
 
     console.log(`\n🎉 Done! Live in ~2 min: https://devumair.vercel.app/blog/${slug}`);
+    if (devToUrl) console.log(`🔗 Dev.to mirror: ${devToUrl}`);
     console.log(`📊 Stats: ${wordCount} words | Tags: ${topicData.tags.join(', ')}`);
 
   } catch (err) {

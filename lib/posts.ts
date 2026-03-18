@@ -46,6 +46,21 @@ export function getAllPosts(): PostMeta[] {
   return posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 }
 
+// ─── Return up to `limit` posts that share at least one tag with the given slug ───
+export function getRelatedPosts(currentSlug: string, tags: string[], limit = 3): PostMeta[] {
+  const all = getAllPosts().filter((p) => p.slug !== currentSlug);
+
+  const scored = all.map((post) => ({
+    ...post,
+    score: post.tags.filter((t) => tags.includes(t)).length,
+  }));
+
+  return scored
+    .filter((p) => p.score > 0)
+    .sort((a, b) => b.score - a.score || new Date(b.date).getTime() - new Date(a.date).getTime())
+    .slice(0, limit);
+}
+
 export function getPostBySlug(slug: string): Post | null {
   const extensions = ['.mdx', '.md'];
   let filePath = '';
