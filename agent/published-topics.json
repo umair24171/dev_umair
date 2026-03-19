@@ -54,7 +54,16 @@
       "topic": "Get Shit Done: A meta-prompting, context engineering and spec-driven dev system",
       "date": "2026-03-18",
       "wordCount": 3380
+    },
+    {
+      "slug": "unleash-large-ai-models-extend-gpu-vram-with-system-ram-nvidia-gr",
+      "primaryKeyword": "extend GPU VRAM system RAM",
+      "title": "Unleash Large AI Models: Extend GPU VRAM with System RAM (Nvidia Greenboost)",
+      "topic": "Nvidia greenboost: transparently extend GPU VRAM using system RAM/NVMe",
+      "date": "2026-03-19",
+      "wordCount": 4296,
+      "devToUrl": "https://dev.to/umair24171/unleash-large-ai-models-extend-gpu-vram-with-system-ram-nvidia-greenboost-2l28"
     }
   ],
-  "lastRun": "2026-03-18T15:09:16.316Z"
+  "lastRun": "2026-03-19T05:22:30.295Z"
 }
