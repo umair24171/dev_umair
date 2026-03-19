@@ -3,12 +3,16 @@ import { getAllPosts } from '@/lib/posts';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Blog — Flutter, AI & Mobile Dev | Dev.Umair',
+  title: 'Blog — Flutter, AI & Mobile Dev | BuildZn',
   description: 'Real lessons from shipping 15+ production apps. Flutter, Firebase, AI integration, App Store deployment, and indie dev insights.',
+  alternates: {
+    canonical: 'https://www.buildzn.com/blog',
+  },
   openGraph: {
-    title: 'Blog — Flutter, AI & Mobile Dev | Dev.Umair',
+    title: 'Blog — Flutter, AI & Mobile Dev | BuildZn',
     description: 'Real lessons from shipping 15+ production apps.',
-    url: 'https://devumair.vercel.app/blog',
+    url: 'https://www.buildzn.com/blog',
+    siteName: 'BuildZn',
   },
 };
 
@@ -23,7 +27,7 @@ export default function BlogPage() {
         <div className="max-w-[1200px] mx-auto px-6 flex justify-between items-center h-[70px]">
           <Link href="/" className="flex items-center gap-2.5">
             <div className="w-9 h-9 rounded-[10px] bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center font-extrabold text-lg">U</div>
-            <span className="text-xl font-extrabold tracking-tight">Dev.Umair</span>
+            <span className="text-xl font-extrabold tracking-tight">BuildZn</span>
           </Link>
           <div className="flex items-center gap-6">
             <Link href="/#services" className="hidden md:block text-sm font-medium text-white/50 hover:text-white transition-colors">Services</Link>
@@ -101,7 +105,7 @@ export default function BlogPage() {
 
       {/* ─── FOOTER ─── */}
       <footer className="border-t border-white/5 py-10 px-6 text-center">
-        <p className="text-[12px] text-white/15">© 2026 Dev.Umair. All rights reserved.</p>
+        <p className="text-[12px] text-white/15">© 2026 BuildZn. All rights reserved.</p>
       </footer>
     </div>
   );

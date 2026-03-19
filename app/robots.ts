@@ -9,7 +9,7 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ['/api/'],
       },
     ],
-    sitemap: 'https://devumair.vercel.app/sitemap.xml',
-    host: 'https://devumair.vercel.app',
+    sitemap: 'https://www.buildzn.com/sitemap.xml',
+    host: 'https://www.buildzn.com',
   };
 }

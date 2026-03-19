@@ -215,7 +215,7 @@ const MobileMenu = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
         <div className="flex justify-between items-center p-6 border-b border-white/5">
           <div className="flex items-center gap-2.5">
             <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center font-extrabold text-sm">U</div>
-            <span className="font-bold">Dev.Umair</span>
+            <span className="font-bold">BuildZn</span>
           </div>
           <button onClick={onClose} className="w-10 h-10 flex items-center justify-center text-white/50 hover:text-white transition-colors" aria-label="Close menu">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
@@ -398,7 +398,7 @@ export default function Home() {
         <div className="max-w-[1200px] mx-auto px-6 flex justify-between items-center h-[70px]">
           <div className="flex items-center gap-2.5">
             <div className="w-9 h-9 rounded-[10px] bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center font-extrabold text-lg">U</div>
-            <span className="text-xl font-extrabold tracking-tight">Dev.Umair</span>
+            <span className="text-xl font-extrabold tracking-tight">BuildZn</span>
           </div>
           <div className="flex items-center gap-8">
             <div className="hidden md:flex gap-7">
@@ -854,14 +854,14 @@ export default function Home() {
         <div className="max-w-[1200px] mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="flex items-center gap-2.5">
             <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center font-extrabold text-base">U</div>
-            <span className="font-bold">Dev.Umair</span>
+            <span className="font-bold">BuildZn</span>
           </div>
           <div className="flex gap-6">
             <a href="mailto:umairbilal207@gmail.com" className="text-[13px] text-white/30 hover:text-purple-400 transition-colors">Email</a>
             <a href="https://www.linkedin.com/in/umair-bilal-/" target="_blank" rel="noopener noreferrer" className="text-[13px] text-white/30 hover:text-purple-400 transition-colors">LinkedIn</a>
             <a href="https://github.com/umair24171" target="_blank" rel="noopener noreferrer" className="text-[13px] text-white/30 hover:text-purple-400 transition-colors">GitHub</a>
           </div>
-          <p className="text-[12px] text-white/15">© 2026 Dev.Umair. All rights reserved.</p>
+          <p className="text-[12px] text-white/15">© 2026 BuildZn. All rights reserved.</p>
         </div>
       </footer>
 

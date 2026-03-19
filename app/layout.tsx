@@ -11,7 +11,7 @@ const plusJakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Professional Flutter App Development | Dev.Umair",
+  title: "Professional Flutter App Development | BuildZn",
   description: "Get your mobile app built and launched in 30-60 days. 15+ apps live on iOS & Android. Full-stack Flutter development with proven results.",
   keywords: [
     "flutter developer",
@@ -26,25 +26,27 @@ export const metadata: Metadata = {
     "startup app developer",
     "AI app development",
     "cross platform app development",
+    "BuildZn",
+    "buildzn.com",
   ],
-  authors: [{ name: "Umair Bilal", url: "https://devumair.vercel.app" }],
+  authors: [{ name: "Umair Bilal", url: "https://www.buildzn.com" }],
   creator: "Umair Bilal",
-  metadataBase: new URL("https://devumair.vercel.app"),
+  metadataBase: new URL("https://www.buildzn.com"),
 
   // Open Graph — Facebook, LinkedIn, WhatsApp previews
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://devumair.vercel.app",
-    siteName: "Dev.Umair",
-    title: "I Build Apps That People Actually Use | Dev.Umair",
+    url: "https://www.buildzn.com",
+    siteName: "BuildZn",
+    title: "I Build Apps That People Actually Use | BuildZn",
     description: "Full-stack Flutter developer with 15+ apps live on App Store & Play Store. From concept to launch in 30-60 days. Book a free consultation.",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Dev.Umair — Professional Flutter App Development",
+        alt: "BuildZn — Professional Flutter App Development",
       },
     ],
   },
@@ -52,10 +54,10 @@ export const metadata: Metadata = {
   // Twitter Card
   twitter: {
     card: "summary_large_image",
-    title: "I Build Apps That People Actually Use | Dev.Umair",
+    title: "I Build Apps That People Actually Use | BuildZn",
     description: "Full-stack Flutter developer with 15+ apps live on App Store & Play Store. Book a free consultation.",
     images: ["/og-image.png"],
-    creator: "@umairbilal", // Update with your actual Twitter handle
+    creator: "@umairbilal",
   },
 
   // Robots
@@ -73,7 +75,7 @@ export const metadata: Metadata = {
 
   // Additional
   alternates: {
-    canonical: "https://devumair.vercel.app",
+    canonical: "https://www.buildzn.com",
   },
 
   // Google Search Console verification

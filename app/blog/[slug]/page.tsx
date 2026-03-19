@@ -16,21 +16,21 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const post = getPostBySlug(slug);
   if (!post) return {};
 
-  const ogImageUrl = `https://devumair.vercel.app/blog/${slug}/opengraph-image`;
+  const ogImageUrl = `https://www.buildzn.com/blog/${slug}/opengraph-image`;
 
   return {
-    title: `${post.title} | Dev.Umair`,
+    title: `${post.title} | BuildZn`,
     description: post.excerpt,
     keywords: post.keywords?.length ? post.keywords : post.tags,
-    authors: [{ name: 'Umair Bilal', url: 'https://devumair.vercel.app' }],
+    authors: [{ name: 'Umair Bilal', url: 'https://www.buildzn.com' }],
     alternates: {
-      canonical: `https://devumair.vercel.app/blog/${slug}`,
+      canonical: `https://www.buildzn.com/blog/${slug}`,
     },
     openGraph: {
       title: post.title,
       description: post.excerpt,
-      url: `https://devumair.vercel.app/blog/${slug}`,
-      siteName: 'Dev.Umair',
+      url: `https://www.buildzn.com/blog/${slug}`,
+      siteName: 'BuildZn',
       type: 'article',
       publishedTime: post.date,
       authors: ['Umair Bilal'],
@@ -63,7 +63,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
   const htmlContent = marked(post.content) as string;
 
-  const postUrl   = `https://devumair.vercel.app/blog/${slug}`;
+  const postUrl   = `https://www.buildzn.com/blog/${slug}`;
   const ogImageUrl = `${postUrl}/opengraph-image`;
 
   const jsonLd = {
@@ -76,10 +76,10 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       '@type': 'Person',
       name: 'Umair',
       jobTitle: 'Senior Flutter Developer',
-      url: 'https://devumair.vercel.app',
+      url: 'https://www.buildzn.com',
       sameAs: [
         'https://github.com/umair24171',
-        'https://devumair.vercel.app',
+        'https://www.buildzn.com',
       ],
     },
     datePublished: post.date,
@@ -87,11 +87,11 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     url: postUrl,
     publisher: {
       '@type': 'Organization',
-      name: 'Dev.Umair',
-      url: 'https://devumair.vercel.app',
+      name: 'BuildZn',
+      url: 'https://www.buildzn.com',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://devumair.vercel.app/og-image.png',
+        url: 'https://www.buildzn.com/og-image.png',
       },
     },
     mainEntityOfPage: {
@@ -120,7 +120,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         <div className="max-w-[1200px] mx-auto px-6 flex justify-between items-center h-[70px]">
           <Link href="/" className="flex items-center gap-2.5">
             <div className="w-9 h-9 rounded-[10px] bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center font-extrabold text-lg">U</div>
-            <span className="text-xl font-extrabold tracking-tight">Dev.Umair</span>
+            <span className="text-xl font-extrabold tracking-tight">BuildZn</span>
           </Link>
           <div className="flex items-center gap-6">
             <Link href="/blog" className="text-sm font-medium text-white/50 hover:text-white transition-colors">← All Posts</Link>
@@ -219,7 +219,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       </article>
 
       <footer className="border-t border-white/5 py-10 px-6 text-center">
-        <p className="text-[12px] text-white/15">© 2026 Dev.Umair. All rights reserved.</p>
+        <p className="text-[12px] text-white/15">© 2026 BuildZn. All rights reserved.</p>
       </footer>
     </div>
   );

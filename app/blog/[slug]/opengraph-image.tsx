@@ -8,7 +8,7 @@ export default async function Image({ params }: { params: Promise<{ slug: string
   const { slug } = await params;
   const post = getPostBySlug(slug);
 
-  const title   = post?.title   ?? 'Dev.Umair Blog';
+  const title   = post?.title   ?? 'BuildZn Blog';
   const excerpt = post?.excerpt ?? 'Flutter development, AI, and software engineering insights.';
   const tags    = post?.tags    ?? ['Flutter', 'Development'];
   const date    = post?.date
@@ -57,7 +57,7 @@ export default async function Image({ params }: { params: Promise<{ slug: string
             fontSize: '24px', fontWeight: '900', color: 'white',
           }}>U</div>
           <div style={{ display: 'flex', flexDirection: 'column' }}>
-            <span style={{ color: 'white', fontWeight: '800', fontSize: '22px', lineHeight: '1' }}>Dev.Umair</span>
+            <span style={{ color: 'white', fontWeight: '800', fontSize: '22px', lineHeight: '1' }}>BuildZn</span>
             <span style={{ color: 'rgba(255,255,255,0.4)', fontSize: '14px', marginTop: '4px' }}>Flutter Developer & AI Builder</span>
           </div>
         </div>

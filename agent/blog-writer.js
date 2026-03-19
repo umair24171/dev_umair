@@ -256,7 +256,7 @@ function runSeoChecks(post, topicData) {
 async function generatePost(topicData) {
   const model = gemini.getGenerativeModel({ model: 'gemini-2.5-flash' });
 
-  const prompt = `You are Umair, a Senior Flutter Developer with 4+ years of experience shipping production apps on iOS and Android. You write for your personal portfolio blog at devumair.vercel.app. Your posts are opinionated, practical, and grounded in real-world Flutter/mobile development experience.
+  const prompt = `You are Umair, a Senior Flutter Developer with 4+ years of experience shipping production apps on iOS and Android. You write for your personal portfolio blog at www.buildzn.com. Your posts are opinionated, practical, and grounded in real-world Flutter/mobile development experience.
 
 Write a LONG, deeply engaging, SEO-optimized blog post about this trending tech topic — always connecting it back to Flutter, mobile development, or the practical reality a working Flutter developer faces:
 
@@ -369,9 +369,9 @@ async function crossPostToDevTo(post, topicData, slug) {
   try {
     console.log('📤 Cross-posting to Dev.to...');
 
-    // Prepend canonical notice so readers click through to devumair.vercel.app
-    const canonicalUrl = `https://devumair.vercel.app/blog/${slug}`;
-    const devToBody = `> *This article was originally published on [devumair.vercel.app](${canonicalUrl}).*\n\n${post.content}`;
+    // Prepend canonical notice so readers click through to www.buildzn.com
+    const canonicalUrl = `https://www.buildzn.com/blog/${slug}`;
+    const devToBody = `> *This article was originally published on [BuildZn](${canonicalUrl}).*\n\n${post.content}`;
 
     const payload = {
       article: {
@@ -427,13 +427,13 @@ async function notifyDiscord(title, slug, wordCount, seoIssues, topicData) {
         color:       seoIssues.length === 0 ? 0x22C55E : 0xF59E0B,
         fields: [
           { name: '🔥 Trending Topic', value: topicData.topic,         inline: false },
-          { name: '🔗 URL',            value: `https://devumair.vercel.app/blog/${slug}`, inline: false },
+          { name: '🔗 URL',            value: `https://www.buildzn.com/blog/${slug}`, inline: false },
           { name: '📊 Word Count',     value: `${wordCount} words`,    inline: true },
           { name: '🎯 Keyword',        value: topicData.primaryKeyword, inline: true },
           { name: `${statusEmoji} SEO`, value: issueText,              inline: false },
           { name: '⚡ Status',         value: 'Deploying via Vercel (~2 min)', inline: true },
         ],
-        footer:    { text: 'Dev.Umair Blog Agent — Trending Topics Edition' },
+        footer:    { text: 'BuildZn Blog Agent — Trending Topics Edition' },
         timestamp: new Date().toISOString(),
       }]
     }),
@@ -529,7 +529,7 @@ ${post.content}`;
     // 10. Notify Discord
     await notifyDiscord(post.title, slug, wordCount, issues, topicData);
 
-    console.log(`\n🎉 Done! Live in ~2 min: https://devumair.vercel.app/blog/${slug}`);
+    console.log(`\n🎉 Done! Live in ~2 min: https://www.buildzn.com/blog/${slug}`);
     if (devToUrl) console.log(`🔗 Dev.to mirror: ${devToUrl}`);
     console.log(`📊 Stats: ${wordCount} words | Tags: ${topicData.tags.join(', ')}`);
 
