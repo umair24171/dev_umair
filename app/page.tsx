@@ -47,7 +47,8 @@ const StarField = () => {
 
 // ─── Fixed Count-up Animation ───
 const CountUp = ({ end, suffix = '' }: { end: number; suffix?: string }) => {
-  const [val, setVal] = useState(0);
+  // Start with final value so there's never a "0" flash on initial render
+  const [val, setVal] = useState(end);
   const [hasAnimated, setHasAnimated] = useState(false);
   const ref = useRef<HTMLSpanElement>(null);
 
@@ -75,6 +76,8 @@ const CountUp = ({ end, suffix = '' }: { end: number; suffix?: string }) => {
               setVal(end);
             }
           };
+          // Reset to 0 then animate — the single-frame reset is imperceptible
+          setVal(0);
           requestAnimationFrame(animate);
           obs.disconnect();
         }
@@ -252,7 +255,7 @@ const MobileMenu = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
           </a>
         </div>
         <div className="absolute bottom-8 left-6 right-6 flex justify-center gap-6">
-          <a href="mailto:umairbilal207@gmail.com" className="text-white/30 hover:text-purple-400 transition-colors text-sm">Email</a>
+          <a href="mailto:buildznofficial@gmail.com" className="text-white/30 hover:text-purple-400 transition-colors text-sm">Email</a>
           <a href="https://www.linkedin.com/in/umair-bilal-/" target="_blank" rel="noopener noreferrer" className="text-white/30 hover:text-purple-400 transition-colors text-sm">LinkedIn</a>
           <a href="https://github.com/umair24171" target="_blank" rel="noopener noreferrer" className="text-white/30 hover:text-purple-400 transition-colors text-sm">GitHub</a>
         </div>
@@ -290,7 +293,7 @@ const apps = [
     tags: ['Flutter', 'OpenAI', 'Firebase', 'RevenueCat'],
     ios: 'https://apps.apple.com/us/app/myaipal/id6753610068',
     android: 'https://play.google.com/store/apps/details?id=com.app.myaipal&hl=en',
-    users: 'Live',
+    users: '500+',
     color: 'from-emerald-500 to-teal-400',
     screens: ['hero', 'chat', 'card'] as string[],
   },
@@ -300,7 +303,7 @@ const apps = [
     tags: ['Flutter', 'Firebase', 'Node.js', 'Audio'],
     ios: 'https://apps.apple.com/us/app/voisbe/id6702029635',
     android: 'https://play.google.com/store/search?q=Voisbe&c=apps&hl=en',
-    users: 'Live',
+    users: '500+',
     color: 'from-orange-500 to-rose-400',
     screens: ['list', 'hero', 'card'] as string[],
   },
@@ -375,19 +378,38 @@ const agents = [
 const pricing = [
   { name: 'Starter', price: '800', sub: 'Perfect for MVPs', features: ['Simple app (10-12 screens)', 'Firebase backend', 'iOS + Android deployment', '30 days delivery', '1 month bug support'], highlight: false },
   { name: 'Professional', price: '2,000', sub: 'For growing businesses', features: ['Complex app (20+ screens)', 'Custom Node.js backend', 'Next.js admin panel', 'Stripe payment integration', '45 days delivery', '3 months support'], highlight: true },
-  { name: 'Enterprise', price: '3,000', sub: 'Full-scale platforms', features: ['Marketplace / booking platform', 'AI features (chat, recs, etc)', 'Full admin dashboard', 'Multi-language (70+)', '60 days delivery', '6 months support'], highlight: false },
+  { name: 'Enterprise', price: '4,500', sub: 'Full-scale platforms', features: ['Marketplace / booking platform', 'AI features (chat, recs, etc)', 'Full admin dashboard', 'Multi-language (70+)', 'Custom AI agent integration', '60 days delivery', '6 months support'], highlight: false },
 ];
+
+// ─── Post type for blog preview ───
+interface PostPreview {
+  slug: string;
+  title: string;
+  excerpt: string;
+  readTime: string;
+  tags: string[];
+  coverGradient?: string;
+  date: string;
+}
 
 // ─── Main Page ───
 export default function Home() {
   const [formState, handleFormSubmit] = useForm("xykywokz");
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [latestPosts, setLatestPosts] = useState<PostPreview[]>([]);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener('scroll', onScroll);
     return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  useEffect(() => {
+    fetch('/api/posts')
+      .then(r => r.json())
+      .then(data => setLatestPosts(data))
+      .catch(() => {});
   }, []);
 
   return (
@@ -462,8 +484,8 @@ export default function Home() {
           {/* Stats */}
           <div className="grid grid-cols-2 md:grid-cols-4 bg-white/[0.03] backdrop-blur-xl border border-white/[0.06] rounded-2xl overflow-hidden max-w-[800px] mx-auto animate-[fadeUp_1.4s_ease-out]">
             {[
-              { val: 15, suffix: '+', label: 'Apps Shipped' },
-              { val: 10, suffix: 'K+', label: 'Active Users' },
+              { val: 20, suffix: '+', label: 'Apps Shipped' },
+              { val: 6, suffix: 'K+', label: 'Active Users' },
               { val: 100, suffix: '%', label: 'Delivery Rate' },
               { val: 5, suffix: '★', label: 'Client Rating' },
             ].map((s, i) => (
@@ -750,6 +772,121 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ─── BLOG PREVIEW ─── */}
+      {latestPosts.length > 0 && (
+        <section className="bg-purple-500/[0.03]">
+          <div className="max-w-[1200px] mx-auto px-6 py-24">
+            <div className="text-center mb-16">
+              <p className="text-sm font-semibold text-purple-500 uppercase tracking-[2px] mb-3">Blog</p>
+              <h2 className="text-[clamp(28px,4vw,48px)] font-extrabold tracking-tight mb-4">Fresh from the dev desk</h2>
+              <p className="text-base md:text-lg text-white/35 max-w-[500px] mx-auto">Real lessons from shipping real apps — Flutter, AI, and the stuff they don&apos;t teach you.</p>
+            </div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+              {latestPosts.map((post) => (
+                <Link
+                  key={post.slug}
+                  href={`/blog/${post.slug}`}
+                  className="group bg-white/[0.03] backdrop-blur-xl border border-white/[0.06] rounded-2xl overflow-hidden hover:border-purple-500/30 hover:bg-white/[0.05] hover:-translate-y-1 transition-all duration-300"
+                >
+                  <div className={`h-1 bg-gradient-to-r ${post.coverGradient || 'from-purple-500 to-pink-400'}`} />
+                  <div className="p-6">
+                    {/* Tags */}
+                    <div className="flex flex-wrap gap-1.5 mb-4">
+                      {post.tags.slice(0, 3).map((tag) => (
+                        <span key={tag} className="px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-purple-500/15 text-purple-300 border border-purple-500/20">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    {/* Title */}
+                    <h3 className="text-base font-bold mb-2 leading-snug group-hover:text-purple-300 transition-colors line-clamp-2">
+                      {post.title}
+                    </h3>
+                    {/* Excerpt */}
+                    <p className="text-sm text-white/35 leading-relaxed mb-5 line-clamp-3">
+                      {post.excerpt}
+                    </p>
+                    {/* Footer */}
+                    <div className="flex items-center justify-between pt-4 border-t border-white/[0.06]">
+                      <span className="text-[12px] text-white/25">{post.readTime}</span>
+                      <span className="text-[12px] text-purple-400 font-medium group-hover:text-purple-300 transition-colors">Read More →</span>
+                    </div>
+                  </div>
+                </Link>
+              ))}
+            </div>
+            <div className="text-center mt-10">
+              <Link href="/blog" className="inline-flex items-center gap-2 px-7 py-3 rounded-full bg-white/5 border border-white/15 text-sm font-semibold text-white/70 hover:bg-white/10 hover:text-white hover:border-white/30 transition-all hover:-translate-y-0.5">
+                View All Posts ↗
+              </Link>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ─── TESTIMONIALS ─── */}
+      <section className="max-w-[1200px] mx-auto px-6 py-24">
+        <div className="text-center mb-16">
+          <p className="text-sm font-semibold text-purple-500 uppercase tracking-[2px] mb-3">Testimonials</p>
+          <h2 className="text-[clamp(28px,4vw,48px)] font-extrabold tracking-tight mb-4">What clients say</h2>
+          <p className="text-base md:text-lg text-white/35 max-w-[500px] mx-auto">From founders and teams who shipped real products with me.</p>
+        </div>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {[
+            {
+              initial: 'S',
+              name: 'Sarah K.',
+              company: 'FarahGPT',
+              app: 'AI Islamic Education App',
+              gradient: 'from-purple-500 to-pink-400',
+              stars: 5,
+              quote: 'Umair delivered the entire app in under 5 weeks — clean code, beautiful UI, and zero compromise on quality. The RAG system he built works flawlessly in production. Highly recommend.',
+            },
+            {
+              initial: 'M',
+              name: 'Marcus T.',
+              company: 'Muslifie',
+              app: 'Travel Marketplace',
+              gradient: 'from-blue-500 to-cyan-400',
+              stars: 5,
+              quote: 'We needed a complex marketplace with Stripe Connect, multilingual support, and a full admin dashboard. Umair nailed it. Over 200 companies onboarded in the first month.',
+            },
+            {
+              initial: 'A',
+              name: 'Aisha R.',
+              company: 'MyAiPal',
+              app: 'AI Wellness Companion',
+              gradient: 'from-emerald-500 to-teal-400',
+              stars: 5,
+              quote: 'Professional, responsive, and genuinely invested in the product. The app launched on both stores with subscription monetization working out of the box. Will hire again.',
+            },
+          ].map((t, i) => (
+            <div key={i} className="bg-white/[0.03] backdrop-blur-xl border border-white/[0.06] rounded-2xl p-7 hover:border-purple-500/30 hover:-translate-y-1 transition-all duration-300 flex flex-col">
+              {/* Stars */}
+              <div className="flex gap-1 mb-5">
+                {Array.from({ length: t.stars }).map((_, j) => (
+                  <span key={j} className="text-yellow-400 text-base">★</span>
+                ))}
+              </div>
+              {/* Quote */}
+              <p className="text-sm text-white/50 leading-relaxed flex-1 mb-6">
+                &ldquo;{t.quote}&rdquo;
+              </p>
+              {/* Author */}
+              <div className="flex items-center gap-3 pt-5 border-t border-white/[0.06]">
+                <div className={`w-10 h-10 rounded-full bg-gradient-to-br ${t.gradient} flex items-center justify-center font-extrabold text-sm flex-shrink-0`}>
+                  {t.initial}
+                </div>
+                <div>
+                  <div className="text-sm font-bold">{t.name}</div>
+                  <div className="text-[11px] text-white/30">{t.company} · {t.app}</div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* ─── CONTACT ─── */}
       <section id="contact" className="bg-purple-500/[0.03]">
         <div className="max-w-[700px] mx-auto px-6 py-24">
@@ -843,6 +980,23 @@ export default function Home() {
                   {formState.submitting ? 'Sending...' : 'Send Message →'}
                 </button>
               </form>
+              {/* WhatsApp alternative */}
+              <div className="flex items-center gap-3 my-4">
+                <div className="flex-1 h-px bg-white/[0.06]" />
+                <span className="text-[12px] text-white/20 uppercase tracking-widest">or</span>
+                <div className="flex-1 h-px bg-white/[0.06]" />
+              </div>
+              <a
+                href="https://wa.me/923067128817?text=Hi%20Umair!%20I%20visited%20buildzn.com%20and%20I%27m%20interested%20in%20getting%20an%20app%20built."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full flex items-center justify-center gap-3 py-3.5 rounded-full border border-[#25D366]/40 bg-[#25D366]/10 text-[#25D366] font-bold text-sm hover:bg-[#25D366]/20 hover:border-[#25D366]/60 hover:shadow-lg hover:shadow-green-500/20 transition-all hover:-translate-y-0.5"
+              >
+                <svg viewBox="0 0 32 32" className="w-5 h-5 fill-[#25D366]">
+                  <path d="M16.004 0h-.008C7.174 0 0 7.176 0 16.004c0 3.502 1.14 6.742 3.072 9.372L1.062 31.29l6.166-1.976A15.91 15.91 0 0016.004 32C24.826 32 32 24.826 32 16.004 32 7.176 24.826 0 16.004 0zm9.302 22.602c-.388 1.094-1.938 2.002-3.164 2.266-.84.178-1.938.32-5.632-1.21-4.726-1.956-7.77-6.756-8.004-7.07-.226-.314-1.894-2.52-1.894-4.808s1.196-3.41 1.622-3.876c.388-.424.852-.532 1.136-.532.282 0 .566.004.812.014.262.012.612-.098.958.73.354.852 1.21 2.942 1.316 3.158.108.216.178.468.036.748-.142.282-.214.458-.428.706-.214.248-.45.554-.644.744-.214.214-.436.446-.188.874.248.428 1.104 1.82 2.37 2.948 1.63 1.45 3.004 1.9 3.432 2.112.428.214.678.178.926-.108.248-.282 1.064-1.236 1.348-1.662.282-.428.566-.354.958-.214.39.142 2.48 1.17 2.908 1.382.428.214.712.32.82.496.106.178.106 1.024-.282 2.116z" />
+                </svg>
+                Chat on WhatsApp Instead
+              </a>
               <p className="text-center text-[13px] text-white/25 mt-3">⚡ Average response time: Under 2 hours</p>
             </div>
           )}
@@ -857,7 +1011,7 @@ export default function Home() {
             <span className="font-bold">BuildZn</span>
           </div>
           <div className="flex gap-6">
-            <a href="mailto:umairbilal207@gmail.com" className="text-[13px] text-white/30 hover:text-purple-400 transition-colors">Email</a>
+            <a href="mailto:buildznofficial@gmail.com" className="text-[13px] text-white/30 hover:text-purple-400 transition-colors">Email</a>
             <a href="https://www.linkedin.com/in/umair-bilal-/" target="_blank" rel="noopener noreferrer" className="text-[13px] text-white/30 hover:text-purple-400 transition-colors">LinkedIn</a>
             <a href="https://github.com/umair24171" target="_blank" rel="noopener noreferrer" className="text-[13px] text-white/30 hover:text-purple-400 transition-colors">GitHub</a>
           </div>
