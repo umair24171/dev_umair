@@ -165,28 +165,39 @@ async function pickTrendingTopicWithGemini(trendingItems, publishedSlugs) {
 
   const alreadyPublished = publishedSlugs.slice(-30).join(', ');
 
-  const prompt = `You are a tech blog strategist. Your job is to pick the SINGLE best topic from today's trending tech/developer news for a high-traffic blog post.
+  const prompt = `You are an SEO strategist for a senior developer's tech blog. Pick the SINGLE best topic from today's trending items to write about.
 
-Here are today's trending topics across Hacker News, Dev.to, and GitHub:
-
+TRENDING ITEMS:
 ${itemsList}
 
-Recently published topics to AVOID duplicating: ${alreadyPublished || 'none yet'}
+ALREADY PUBLISHED (avoid): ${alreadyPublished || 'none'}
 
-Pick the ONE topic that would make the best long-form technical blog post today. Prioritise:
-1. AI, machine learning, LLMs, developer tools — these get the most search traffic
-2. Topics developers actively Google (how-to, comparison, tutorial angles work best)
-3. Trending news that has a practical, actionable angle for developers
-4. Avoid pure business/funding news unless it has strong developer implications
+PRIORITY ORDER:
+1. Problems devs are stuck on — errors, blockers, setup failures
+2. High-intent comparisons — tools, frameworks, AI models
+3. Practical AI/dev productivity — real workflows, not theory
+4. Emerging tools — only if you can show real usage
+5. Trending news — only if it answers "how do I use this today?"
 
-Output ONLY this XML format, nothing else:
+KEYWORD VALIDATION:
+- Must have Reddit threads or StackOverflow discussions (real demand signal)
+- Prefer problem modifiers: fix, not working, without X, how to actually
+- Target 500–1500 search volume sweet spot — not viral, not dead
+- AVOID topics dominated by official docs, AWS/Vercel/Google blogs, major SaaS sites
+- GREEN LIGHT if SERP has Reddit, Medium, dev.to, small dev blogs
 
-<selectedTopic>The exact trending topic or angle you chose</selectedTopic>
-<primaryKeyword>the main SEO keyword phrase (3-6 words) developers would search</primaryKeyword>
-<secondaryKeywords>keyword1, keyword2, keyword3, keyword4</secondaryKeywords>
-<searchIntent>informational/how-to/comparison — describe who is searching and why</searchIntent>
-<targetAudience>who this post is for</targetAudience>
-<angle>the specific hook that makes this post worth reading today</angle>
+HARD RULES:
+- NO generic news or announcements
+- NO theory without implementation
+- Must pass: "Would a dev copy-paste this into Google at 2am?"
+
+Output ONLY this XML, nothing else:
+<selectedTopic>topic</selectedTopic>
+<primaryKeyword>3-6 word SEO keyword</primaryKeyword>
+<secondaryKeywords>kw1, kw2, kw3, kw4</secondaryKeywords>
+<searchIntent>who is searching and why</searchIntent>
+<targetAudience>who this is for</targetAudience>
+<angle>specific hook that makes this worth reading today</angle>
 <tags>Tag1, Tag2, Tag3, Tag4</tags>`;
 
   const result = await model.generateContent(prompt);
@@ -256,55 +267,62 @@ function runSeoChecks(post, topicData) {
 async function generatePost(topicData) {
   const model = gemini.getGenerativeModel({ model: 'gemini-2.5-flash' });
 
-  const prompt = `You are Umair, a Senior Flutter Developer with 4+ years of experience shipping production apps on iOS and Android. You write for your personal portfolio blog at www.buildzn.com. Your posts are opinionated, practical, and grounded in real-world Flutter/mobile development experience.
-
-Write a LONG, deeply engaging, SEO-optimized blog post about this trending tech topic — always connecting it back to Flutter, mobile development, or the practical reality a working Flutter developer faces:
+  const prompt = `You are a senior developer writing for your personal tech blog. Write a deeply practical, SEO-optimized post that ranks on Google and actually helps developers.
 
 TOPIC: ${topicData.topic}
 ANGLE: ${topicData.angle}
 PRIMARY KEYWORD: "${topicData.primaryKeyword}"
-SECONDARY KEYWORDS (weave in naturally): ${topicData.secondaryKeywords.join(', ')}
+SECONDARY KEYWORDS: ${topicData.secondaryKeywords.join(', ')}
 SEARCH INTENT: ${topicData.searchIntent}
 TARGET AUDIENCE: ${topicData.targetAudience}
 
-─── SEO RULES ───
-1. PRIMARY KEYWORD must appear: in the title, in the first 100 words, and in at least 2 H2 headings
-2. Weave in secondary keywords naturally — min 2 appearances each
-3. Write AT LEAST 1500 words — aim for 1800-2200
-4. Use real numbers, research stats, benchmarks wherever possible
-5. Include at least 4 H2 headings (##)
-6. Include at least 2 code blocks if technical (real, working Flutter/Dart code preferred)
-7. End with ## Frequently Asked Questions — 3-4 Q&As (triggers Google PAA box)
-8. Excerpt must be 140-155 characters, include the primary keyword
+TITLE RULES:
+- Primary keyword must appear in title
+- Add a constraint or outcome: "without GPU", "in 5 minutes", "production ready", "Node.js only"
+- Use proven formulas:
+  "How to [X] without [pain]"
+  "[Tool A] vs [Tool B] 2026 (Tested)"
+  "Fix [Error]: Step-by-Step Guide"
+  "Build [X] with [Y] — Full Guide"
+  "Best [X] for [use case] 2026"
+- Under 65 characters
+- Must trigger curiosity OR urgency
 
-─── VOICE & STYLE ───
-- Write as Umair — a Senior Flutter Developer with 4+ years building production apps
-- Speak from real experience: "In my Flutter projects...", "I ran into this exact issue when...", "After shipping 15+ apps..."
-- Opinionated and specific — no generic filler advice
-- Accessible for a mid-level developer, credible for a senior one
-- Reference Flutter, Dart, mobile app specifics wherever the topic allows
+SEO RULES:
+- Primary keyword in title, first 100 words, and 2+ H2 headings
+- Secondary keywords woven in naturally, 2+ times each
+- 1500–2200 words minimum
+- 4+ H2 headings
+- 2+ real copy-paste ready code blocks
+- Excerpt: 140–155 chars, includes primary keyword
 
-─── STRUCTURE (REQUIRED — every post must have all three) ───
-**INTRO** (no heading): A compelling hook paragraph that grabs attention immediately — state the problem, the stakes, and why this matters RIGHT NOW. Written in first person as Umair. Minimum 80 words.
+STRUCTURE (required, in this order):
+1. INTRO (no heading): State the exact problem in first 100 words. Why it matters now. First person voice.
+2. ## Background/Context (with primary keyword)
+3. ## How It Works / Core Concepts
+4. ## Step-by-Step Implementation
+5. ## Common Errors + Fixes
+6. ## Optimization Tips
+7. ## Frequently Asked Questions (3-4 Q&As — triggers Google PAA)
+8. CONCLUSION: Wrap up, restate key insight, clear CTA
 
-## [Background/Context — with primary keyword]
-## [How It Works / Core Concepts]
-## [Practical Implementation or Deep Dive]
-## [Comparison, Gotchas, or Advanced Tips from a Flutter Dev Perspective]
-## [What This Means for You / Takeaways]
-## Frequently Asked Questions
+CONTENT RULES:
+- Every code block must be copy-paste ready, no pseudocode
+- Include real error messages devs actually see
+- Add benchmarks or numbers wherever possible
+- Personal experience angle: "I ran into this when...", "In production I found..."
+- No fluff intros, no "In today's world..." nonsense
+- Internal link opportunity: mention related topics naturally (for future posts to link back)
 
-**CONCLUSION** (after FAQ or as the final paragraph under Takeaways): A strong wrap-up paragraph that ties everything together, restates the key insight, and ends with a clear call to action or forward-looking statement. Minimum 60 words.
+VOICE:
+- Senior dev sharing real lessons — opinionated, specific, no generic advice
+- Accessible for mid-level, credible for senior
 
-─── OUTPUT FORMAT ───
-Return ONLY this XML format, no preamble:
-
-<title>SEO-optimized title with primary keyword, under 65 chars</title>
-<excerpt>140-155 char meta description with primary keyword and a compelling hook</excerpt>
+Output ONLY this XML, nothing else:
+<title>title here</title>
+<excerpt>140-155 char meta description</excerpt>
 <readTime>X min read</readTime>
-<content>
-full markdown post — 1500-2200+ words, Flutter/Dart code blocks where relevant, real intro + conclusion, FAQ at end
-</content>`;
+<content>full markdown post</content>`;
 
   const result = await model.generateContent(prompt);
   const text   = result.response.text();
