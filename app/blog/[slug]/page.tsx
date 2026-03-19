@@ -16,20 +16,20 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const post = getPostBySlug(slug);
   if (!post) return {};
 
-  const ogImageUrl = `https://www.buildzn.com/blog/${slug}/opengraph-image`;
+  const ogImageUrl = `https://devumair.vercel.app/blog/${slug}/opengraph-image`;
 
   return {
     title: `${post.title} | BuildZn`,
     description: post.excerpt,
     keywords: post.keywords?.length ? post.keywords : post.tags,
-    authors: [{ name: 'Umair Bilal', url: 'https://www.buildzn.com' }],
+    authors: [{ name: 'Umair Bilal', url: 'https://devumair.vercel.app' }],
     alternates: {
-      canonical: `https://www.buildzn.com/blog/${slug}`,
+      canonical: `https://devumair.vercel.app/blog/${slug}`,
     },
     openGraph: {
       title: post.title,
       description: post.excerpt,
-      url: `https://www.buildzn.com/blog/${slug}`,
+      url: `https://devumair.vercel.app/blog/${slug}`,
       siteName: 'BuildZn',
       type: 'article',
       publishedTime: post.date,
@@ -63,7 +63,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
   const htmlContent = marked(post.content) as string;
 
-  const postUrl   = `https://www.buildzn.com/blog/${slug}`;
+  const postUrl   = `https://devumair.vercel.app/blog/${slug}`;
   const ogImageUrl = `${postUrl}/opengraph-image`;
 
   const jsonLd = {
@@ -74,12 +74,12 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     keywords: (post.keywords?.length ? post.keywords : post.tags).join(', '),
     author: {
       '@type': 'Person',
-      name: 'Umair',
+      name: 'Umair Bilal',
       jobTitle: 'Senior Flutter Developer',
-      url: 'https://www.buildzn.com',
+      url: 'https://devumair.vercel.app',
       sameAs: [
         'https://github.com/umair24171',
-        'https://www.buildzn.com',
+        'https://devumair.vercel.app',
       ],
     },
     datePublished: post.date,
@@ -88,10 +88,10 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     publisher: {
       '@type': 'Organization',
       name: 'BuildZn',
-      url: 'https://www.buildzn.com',
+      url: 'https://devumair.vercel.app',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://www.buildzn.com/og-image.png',
+        url: 'https://devumair.vercel.app/og-image.png',
       },
     },
     mainEntityOfPage: {
