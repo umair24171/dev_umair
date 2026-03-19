@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { getPostBySlug, getAllPosts, getRelatedPosts } from '@/lib/posts';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
@@ -91,7 +92,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       url: 'https://www.buildzn.com',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://www.buildzn.com/og-image.png',
+        url: 'https://www.buildzn.com/logo.svg',
+        width: 240,
+        height: 60,
       },
     },
     mainEntityOfPage: {
@@ -118,9 +121,8 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       {/* ─── NAV ─── */}
       <nav className="fixed top-0 w-full z-50 bg-[#06080f]/85 backdrop-blur-xl border-b border-white/5">
         <div className="max-w-[1200px] mx-auto px-6 flex justify-between items-center h-[70px]">
-          <Link href="/" className="flex items-center gap-2.5">
-            <div className="w-9 h-9 rounded-[10px] bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center font-extrabold text-lg">U</div>
-            <span className="text-xl font-extrabold tracking-tight">BuildZn</span>
+          <Link href="/" className="flex items-center">
+            <Image src="/logo.svg" alt="BuildZn" width={130} height={33} priority />
           </Link>
           <div className="flex items-center gap-6">
             <Link href="/blog" className="text-sm font-medium text-white/50 hover:text-white transition-colors">← All Posts</Link>
