@@ -80,7 +80,7 @@ export const metadata: Metadata = {
 
   // Google Search Console verification
   verification: {
-    google: "tHr48mzJn6BFes-GzZidXnfAmtIwQZwF29IWsEt78dM",
+    google: "DxcZGz0CMVtxATKxT5aQgk2uyzSkSqBXDcKhbV7lu6U",
   },
 };
 
