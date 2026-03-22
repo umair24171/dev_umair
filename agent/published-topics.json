@@ -63,7 +63,16 @@
       "date": "2026-03-19",
       "wordCount": 4296,
       "devToUrl": "https://dev.to/umair24171/unleash-large-ai-models-extend-gpu-vram-with-system-ram-nvidia-greenboost-2l28"
+    },
+    {
+      "slug": "floci-local-aws-development-cut-costs-ship-faster",
+      "primaryKeyword": "Floci local AWS development",
+      "title": "Floci Local AWS Development: Cut Costs, Ship Faster",
+      "topic": "Floci – A free, open-source local AWS emulator",
+      "date": "2026-03-22",
+      "wordCount": 2632,
+      "devToUrl": "https://dev.to/umair24171/floci-local-aws-development-cut-costs-ship-faster-58k6"
     }
   ],
-  "lastRun": "2026-03-19T05:22:30.295Z"
+  "lastRun": "2026-03-22T05:18:53.998Z"
 }
