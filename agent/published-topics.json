@@ -72,7 +72,16 @@
       "date": "2026-03-22",
       "wordCount": 2632,
       "devToUrl": "https://dev.to/umair24171/floci-local-aws-development-cut-costs-ship-faster-58k6"
+    },
+    {
+      "slug": "run-397b-llm-on-your-laptop-the-no-bs-guide",
+      "primaryKeyword": "run large LLM on laptop",
+      "title": "Run 397B LLM on Your Laptop: The No-BS Guide",
+      "topic": "Flash-MoE: Running a 397B Parameter Model on a Laptop",
+      "date": "2026-03-23",
+      "wordCount": 2351,
+      "devToUrl": "https://dev.to/umair24171/run-397b-llm-on-your-laptop-the-no-bs-guide-5pk"
     }
   ],
-  "lastRun": "2026-03-22T05:18:53.998Z"
+  "lastRun": "2026-03-23T05:29:24.789Z"
 }
