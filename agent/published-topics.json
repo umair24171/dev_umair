@@ -81,7 +81,16 @@
       "date": "2026-03-23",
       "wordCount": 2351,
       "devToUrl": "https://dev.to/umair24171/run-397b-llm-on-your-laptop-the-no-bs-guide-5pk"
+    },
+    {
+      "slug": "localstack-alternatives-what-works-after-account-lock",
+      "primaryKeyword": "LocalStack alternatives",
+      "title": "LocalStack Alternatives: What Works After Account Lock?",
+      "topic": "LocalStack Changes: Navigating the Shift to Account-Required and Archived Repo",
+      "date": "2026-03-24",
+      "wordCount": 2570,
+      "devToUrl": "https://dev.to/umair24171/localstack-alternatives-what-works-after-account-lock-2e5e"
     }
   ],
-  "lastRun": "2026-03-23T05:29:24.789Z"
+  "lastRun": "2026-03-24T05:29:18.605Z"
 }
