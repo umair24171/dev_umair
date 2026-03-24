@@ -105,4 +105,4 @@ If your app feels slow, add logging to every data fetch and look at where time i
 
 ---
 
-*Building a Flutter app and hitting performance walls? [Drop me a message](https://devumair.vercel.app/#contact) — I've probably hit the same wall.*
+*Building a Flutter app and hitting performance walls? [Drop me a message](https://www.buildzn.com/#contact) — I've probably hit the same wall.*
