@@ -916,7 +916,8 @@ export default function Home() {
         </section>
       )}
 
-      {/* ─── TESTIMONIALS ─── */}
+{/* ─── TESTIMONIALS (disabled — change false → true to re-enable when real testimonials are ready) ─── */}
+      {false && (
       <section className="max-w-[1200px] mx-auto px-6 py-24">
         <div className="text-center mb-16">
           <p className="text-sm font-semibold text-purple-500 uppercase tracking-[2px] mb-3">Testimonials</p>
@@ -1015,6 +1016,7 @@ export default function Home() {
 
         </div>
       </section>
+      )}
 
       {/* ─── FAQ ─── */}
       <section className="max-w-[860px] mx-auto px-6 py-24">
