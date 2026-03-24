@@ -165,38 +165,72 @@ async function pickTrendingTopicWithGemini(trendingItems, publishedSlugs) {
 
   const alreadyPublished = publishedSlugs.slice(-30).join(', ');
 
-  const prompt = `You are an SEO strategist for a senior developer's tech blog. Pick the SINGLE best topic from today's trending items to write about.
+  // ─── TARGET TOPIC TEMPLATES (3x/week, targeting freelance clients, recruiters, Flutter devs) ───
+  // Each post must serve at least one of these audiences:
+  // A) Freelance clients: non-technical founders/PMs researching Flutter development
+  // B) Recruiters: hiring managers looking for senior Flutter developers
+  // C) Flutter devs: developers who might refer or collaborate
+  //
+  // Mandatory topic patterns (rotate through these):
+  // - "Flutter vs [React Native / Xamarin / Swift / Kotlin] for [use case]"
+  // - "How to build [feature] in Flutter without [pain point]"
+  // - "How much does a Flutter app cost in [year]" (and variants)
+  // - "I built [app] in [X] days — here's exactly how"
+  // - "Flutter Firebase vs Supabase — which is better for [use case]"
+  // - "Building AI agents with Node.js — what I learned"
+  // - "Flutter + [Stripe / RevenueCat / Gemini / OpenAI] — full integration guide"
+  // - "From idea to App Store in [X] weeks — the real timeline"
+  // - "Why startups choose Flutter in [year]"
+  // - "[Feature]: how to implement it in Flutter from scratch"
 
-TRENDING ITEMS:
+  const prompt = `You are an SEO and content strategist for a senior Flutter developer's freelance portfolio blog (buildzn.com).
+
+The blog serves THREE audiences — pick a topic that serves at least one:
+- CLIENTS: Non-technical founders/PMs researching Flutter development costs, timelines, and what's possible. Topics like "how much does a Flutter app cost", "Flutter vs React Native for startups", "how to hire a Flutter developer".
+- RECRUITERS: Hiring managers looking for senior Flutter talent. Topics that demonstrate expertise: "building AI-powered Flutter apps", "Flutter + Stripe integration", "Supabase vs Firebase for Flutter".
+- FLUTTER DEVS: Developers who might share the post or refer clients. Practical how-to content with real code.
+
+TRENDING ITEMS (use these for inspiration or pick one directly):
 ${itemsList}
 
 ALREADY PUBLISHED (avoid): ${alreadyPublished || 'none'}
 
-PRIORITY ORDER:
-1. Problems devs are stuck on — errors, blockers, setup failures
-2. High-intent comparisons — tools, frameworks, AI models
-3. Practical AI/dev productivity — real workflows, not theory
-4. Emerging tools — only if you can show real usage
-5. Trending news — only if it answers "how do I use this today?"
+MANDATORY TOPIC TEMPLATES (must match one of these patterns):
+1. "Flutter vs [React Native / Xamarin / native iOS / Kotlin] for [use case]"
+2. "How to build [feature] in Flutter without [pain point]"
+3. "How much does a Flutter app cost in [year]" (or variants: "Flutter app development cost", "how to budget for Flutter app")
+4. "I built [app type] in [X] weeks — here's exactly how"
+5. "Flutter [Firebase / Supabase / Stripe / RevenueCat / Gemini / OpenAI] — complete integration guide"
+6. "Building AI agents with Node.js — what I learned"
+7. "From idea to App Store in [X] weeks — the real Flutter timeline"
+8. "Why [startups / founders / companies] choose Flutter in [year]"
+9. "How to hire a Flutter developer — what to look for"
+10. "[Flutter feature] from scratch — step by step"
+
+TOPIC SELECTION RULES:
+- FIRST PRIORITY: Client-attraction topics (costs, comparisons, hiring, timelines) — these directly generate leads
+- SECOND PRIORITY: Recruiter-visible topics (expertise demos, senior-level technical posts)
+- THIRD PRIORITY: Developer posts (for shares and referrals)
+- NEVER pick pure tech news, crypto, or topics unrelated to Flutter/mobile/Node.js/AI development
+- Must pass: "Would a startup founder or Flutter recruiter find this in Google?"
+- Target 500–2000 search volume keywords — practical, not viral
 
 KEYWORD VALIDATION:
-- Must have Reddit threads or StackOverflow discussions (real demand signal)
-- Prefer problem modifiers: fix, not working, without X, how to actually
-- Target 500–1500 search volume sweet spot — not viral, not dead
-- AVOID topics dominated by official docs, AWS/Vercel/Google blogs, major SaaS sites
-- GREEN LIGHT if SERP has Reddit, Medium, dev.to, small dev blogs
+- Prefer commercial intent keywords: "hire Flutter developer", "Flutter app cost", "Flutter vs React Native"
+- Include year (2026) in cost/comparison posts for freshness
+- AVOID purely academic or theoretical topics
 
 HARD RULES:
-- NO generic news or announcements
-- NO theory without implementation
-- Must pass: "Would a dev copy-paste this into Google at 2am?"
+- Every post MUST target freelance clients, recruiters, or Flutter devs
+- No generic programming news without Flutter/mobile angle
+- Must include real code or real numbers
 
 Output ONLY this XML, nothing else:
 <selectedTopic>topic</selectedTopic>
 <primaryKeyword>3-6 word SEO keyword</primaryKeyword>
 <secondaryKeywords>kw1, kw2, kw3, kw4</secondaryKeywords>
 <searchIntent>who is searching and why</searchIntent>
-<targetAudience>who this is for</targetAudience>
+<targetAudience>clients OR recruiters OR flutter-devs (pick primary)</targetAudience>
 <angle>specific hook that makes this worth reading today</angle>
 <tags>Tag1, Tag2, Tag3, Tag4</tags>`;
 
@@ -267,9 +301,14 @@ function runSeoChecks(post, topicData) {
 async function generatePost(topicData) {
   const model = gemini.getGenerativeModel({ model: 'gemini-2.5-flash' });
 
-  const prompt = `You are Umair — senior Flutter/Node.js dev from Pakistan. 
-  20+ production apps shipped. Built FarahGPT (5100 users), Muslifie (Muslim travel marketplace), a 5-agent gold trading system.
+  const prompt = `You are Umair — senior Flutter/Node.js dev from Pakistan.
+  4+ years experience. 20+ production apps shipped. Built FarahGPT (5,100+ users), Muslifie (Muslim travel marketplace with 200+ companies), a 5-agent gold trading system.
   You write like a dev venting/helping on Slack. Direct, opinionated, zero fluff.
+
+  AUDIENCE AWARENESS: This post targets "${topicData.targetAudience}".
+  - If "clients": write in plain English, explain jargon, focus on outcomes (cost, timeline, quality). Include a CTA to book a call at the end.
+  - If "recruiters": demonstrate senior-level thinking, architecture decisions, and real production experience. Mention specific apps and numbers.
+  - If "flutter-devs": dive into technical detail with working code. No hand-holding.
   
   TOPIC: ${topicData.topic}
   ANGLE: ${topicData.angle}

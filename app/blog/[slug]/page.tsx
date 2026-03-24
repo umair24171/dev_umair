@@ -173,12 +173,31 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           dangerouslySetInnerHTML={{ __html: htmlContent }}
         />
 
+        {/* Author Bio Block */}
+        <div className="mt-12 p-6 bg-white/[0.03] border border-white/[0.06] rounded-2xl flex gap-5 items-start">
+          <div className="w-12 h-12 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center font-bold text-base flex-shrink-0">U</div>
+          <div>
+            <p className="text-sm font-bold mb-1">Umair Bilal</p>
+            <p className="text-[13px] text-white/40 leading-relaxed">
+              Senior Flutter Developer with 4+ years experience and 20+ apps shipped to App Store and Google Play. Founder of{' '}
+              <a href="https://apps.apple.com/pk/app/farahgpt/id6746275409" target="_blank" rel="noopener noreferrer" className="text-purple-400 hover:text-purple-300">FarahGPT</a>{' '}
+              (5,100+ users) and{' '}
+              <a href="https://www.muslifie.com" target="_blank" rel="noopener noreferrer" className="text-purple-400 hover:text-purple-300">Muslifie</a>{' '}
+              (200+ verified companies). Full-stack: Flutter, Node.js, Next.js, AI, Stripe, RevenueCat, Firebase, MongoDB.
+            </p>
+            <div className="flex gap-4 mt-3">
+              <a href="https://www.linkedin.com/in/umair-bilal-/" target="_blank" rel="noopener noreferrer" className="text-[12px] text-purple-400 hover:text-purple-300 font-medium transition-colors">LinkedIn →</a>
+              <a href="https://www.buildzn.com" className="text-[12px] text-purple-400 hover:text-purple-300 font-medium transition-colors">BuildZn →</a>
+            </div>
+          </div>
+        </div>
+
         {/* CTA at bottom */}
-        <div className="mt-16 p-8 bg-gradient-to-br from-purple-500/10 to-pink-500/10 border border-purple-500/20 rounded-2xl text-center">
+        <div className="mt-8 p-8 bg-gradient-to-br from-purple-500/10 to-pink-500/10 border border-purple-500/20 rounded-2xl text-center">
           <h3 className="text-xl font-bold mb-2">Need a Flutter developer?</h3>
-          <p className="text-white/40 text-sm mb-5">I build production apps from scratch — iOS, Android, AI features, payments. Let&apos;s talk.</p>
+          <p className="text-white/40 text-sm mb-5">I build production apps from scratch — iOS, Android, AI features, payments. Fixed price, App Store guaranteed.</p>
           <Link href="/#contact" className="inline-flex bg-gradient-to-r from-purple-500 to-pink-500 text-white px-7 py-3 rounded-full font-bold text-sm hover:shadow-lg hover:shadow-purple-500/40 transition-all hover:-translate-y-0.5">
-            Book Free Call →
+            Get a Free Proposal →
           </Link>
         </div>
 

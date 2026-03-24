@@ -199,6 +199,28 @@ const PhoneMockup = ({ gradient, appName, screens }: { gradient: string; appName
 };
 
 // ─── Mobile Menu ───
+// ─── FAQ Accordion Item ───
+const FAQItem = ({ q, a }: { q: string; a: string }) => {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className="bg-white/[0.03] border border-white/[0.06] rounded-2xl overflow-hidden hover:border-purple-500/20 transition-all">
+      <button
+        onClick={() => setOpen(!open)}
+        className="w-full flex items-center justify-between gap-4 px-7 py-5 text-left"
+        aria-expanded={open}
+      >
+        <span className="text-sm md:text-base font-semibold text-white/80">{q}</span>
+        <span className={`text-purple-400 text-lg font-bold flex-shrink-0 transition-transform duration-200 ${open ? 'rotate-45' : ''}`}>+</span>
+      </button>
+      {open && (
+        <div className="px-7 pb-6">
+          <p className="text-sm text-white/45 leading-relaxed">{a}</p>
+        </div>
+      )}
+    </div>
+  );
+};
+
 const MobileMenu = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) => {
   useEffect(() => {
     if (isOpen) {
@@ -244,6 +266,22 @@ const MobileMenu = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
           >
             Blog
           </Link>
+          <Link
+            href="/about"
+            onClick={onClose}
+            className="block py-3 px-4 text-[15px] font-medium text-white/60 hover:text-white hover:bg-white/5 rounded-xl transition-all"
+          >
+            About
+          </Link>
+          <a
+            href="https://www.linkedin.com/in/umair-bilal-/"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={onClose}
+            className="block py-3 px-4 text-[15px] font-medium text-emerald-400 hover:text-emerald-300 hover:bg-emerald-500/5 rounded-xl transition-all"
+          >
+            Also open to senior remote Flutter roles →
+          </a>
         </nav>
         <div className="p-6 mt-4">
           <a
@@ -251,7 +289,7 @@ const MobileMenu = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
             onClick={onClose}
             className="block text-center bg-gradient-to-r from-purple-500 to-pink-500 text-white py-3.5 rounded-full font-bold text-sm hover:shadow-lg hover:shadow-purple-500/40 transition-all"
           >
-            Book Free Call →
+            Get a Free Proposal →
           </a>
         </div>
         <div className="absolute bottom-8 left-6 right-6 flex justify-center gap-6">
@@ -268,7 +306,7 @@ const MobileMenu = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
 const apps = [
   {
     name: 'Muslifie',
-    desc: 'Muslim travel marketplace connecting travelers with verified local guides. Stripe payments, real-time chat, 70+ languages.',
+    desc: 'Muslim travel marketplace with 200+ verified international companies, Stripe Connect payouts, and 70+ language support. Features real-time chat, guide verification, and private tour booking. Built with Flutter and Node.js.',
     tags: ['Flutter', 'Next.js', 'Node.js', 'Stripe', 'MongoDB'],
     ios: 'https://apps.apple.com/us/app/muslifie/id6749224199',
     android: 'https://play.google.com/store/apps/details?id=com.app.muslifie&hl=en',
@@ -279,8 +317,8 @@ const apps = [
   },
   {
     name: 'FarahGPT',
-    desc: 'AI Islamic education platform with 7 AI personalities, habit tracking, and personalized learning for 5,100+ active users.',
-    tags: ['Flutter', 'AI/RAG', 'Firebase', 'RevenueCat'],
+    desc: 'Islamic habit-building app with 5,100+ active users. Features 7 AI personalities, streak tracking, RAG chat, and Ramadan Mode. Built with Flutter and Supabase. Live on iOS and Android.',
+    tags: ['Flutter', 'AI/RAG', 'Supabase', 'RevenueCat'],
     ios: 'https://apps.apple.com/pk/app/farahgpt/id6746275409',
     android: 'https://play.google.com/store/apps/details?id=com.app.farahgpt',
     users: '5,100+',
@@ -289,8 +327,8 @@ const apps = [
   },
   {
     name: 'MyAiPal',
-    desc: 'AI-powered wellness companion with mental health support, journaling, and personalized guidance with subscriptions.',
-    tags: ['Flutter', 'OpenAI', 'Firebase', 'RevenueCat'],
+    desc: 'AI wellness and voice journaling companion with Gemini-powered conversations. Subscription-based with RevenueCat. Live on iOS and Android.',
+    tags: ['Flutter', 'Gemini', 'Firebase', 'RevenueCat'],
     ios: 'https://apps.apple.com/us/app/myaipal/id6753610068',
     android: 'https://play.google.com/store/apps/details?id=com.app.myaipal&hl=en',
     users: '500+',
@@ -299,7 +337,7 @@ const apps = [
   },
   {
     name: 'Voisbe',
-    desc: 'Voice-first social network — audio posts, voice comments, rich media backgrounds. Instagram for voice.',
+    desc: 'Voice-first social network for authentic audio sharing. Live on iOS.',
     tags: ['Flutter', 'Firebase', 'Node.js', 'Audio'],
     ios: 'https://apps.apple.com/us/app/voisbe/id6702029635',
     android: 'https://play.google.com/store/search?q=Voisbe&c=apps&hl=en',
@@ -422,11 +460,15 @@ export default function Home() {
             <Image src="/logo.svg" alt="BuildZn" width={130} height={33} priority />
           </Link>
           <div className="flex items-center gap-8">
-            <div className="hidden md:flex gap-7">
+            <div className="hidden md:flex gap-5 items-center">
               {['Services', 'Portfolio', 'Agents', 'Pricing'].map(s => (
                 <a key={s} href={`#${s.toLowerCase()}`} className="text-sm font-medium text-white/50 hover:text-white transition-colors">{s}</a>
               ))}
               <Link href="/blog" className="text-sm font-medium text-white/50 hover:text-white transition-colors">Blog</Link>
+              <Link href="/about" className="text-sm font-medium text-white/50 hover:text-white transition-colors">About</Link>
+              <a href="https://www.linkedin.com/in/umair-bilal-/" target="_blank" rel="noopener noreferrer" className="text-[11px] font-semibold text-emerald-400 hover:text-emerald-300 transition-colors border border-emerald-500/30 px-2.5 py-1 rounded-full bg-emerald-500/10 hover:bg-emerald-500/20 whitespace-nowrap">
+                Open to Remote Roles →
+              </a>
             </div>
             <a href="#contact" className="hidden sm:inline-flex bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-2.5 rounded-full font-bold text-sm hover:shadow-lg hover:shadow-purple-500/40 transition-all hover:-translate-y-0.5">
               Get Started →
@@ -463,20 +505,27 @@ export default function Home() {
           </div>
 
           <h1 className="text-[clamp(36px,6vw,80px)] font-black leading-[1.05] tracking-[-2px] mb-6 animate-[fadeUp_0.8s_ease-out]">
-            I build apps that<br />
-            <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent">people actually use.</span>
+            Your Flutter App.<br />
+            <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent">Live on Both Stores.</span><br />
+            Fixed Price.
           </h1>
 
-          <p className="text-lg md:text-xl text-white/40 max-w-[600px] mx-auto mb-10 font-normal leading-relaxed animate-[fadeUp_1s_ease-out]">
-            Full-stack Flutter developer with a track record of shipping real products. From concept to App Store — no fluff, just results.
+          <p className="text-lg md:text-xl text-white/40 max-w-[620px] mx-auto mb-6 font-normal leading-relaxed animate-[fadeUp_1s_ease-out]">
+            No disappearing developers. No scope creep. No surprise invoices. You get a senior Flutter dev who has shipped 20+ apps — and a fixed-price contract that guarantees App Store delivery.
           </p>
+
+          {/* Availability Badge */}
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/10 border border-green-500/25 mb-8 animate-[fadeUp_1.1s_ease-out]">
+            <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+            <span className="text-sm font-medium text-green-300">🟢 Open to 2 new projects — April 2026</span>
+          </div>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-20 animate-[fadeUp_1.2s_ease-out]">
             <a href="#contact" className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-8 py-4 rounded-full font-bold text-lg hover:shadow-2xl hover:shadow-purple-500/40 transition-all hover:-translate-y-0.5 inline-flex items-center justify-center gap-2">
-              Book Free Call <span className="text-xl">→</span>
+              Get a Free Proposal <span className="text-xl">→</span>
             </a>
             <a href="#portfolio" className="bg-white/5 backdrop-blur-sm text-white px-8 py-4 rounded-full font-semibold text-lg border border-white/15 hover:bg-white/10 hover:border-white/30 transition-all hover:-translate-y-0.5 inline-flex items-center justify-center gap-2">
-              See Live Apps ↗
+              See If Your Project Fits →
             </a>
           </div>
 
@@ -484,7 +533,7 @@ export default function Home() {
           <div className="grid grid-cols-2 md:grid-cols-4 bg-white/[0.03] backdrop-blur-xl border border-white/[0.06] rounded-2xl overflow-hidden max-w-[800px] mx-auto animate-[fadeUp_1.4s_ease-out]">
             {[
               { val: 20, suffix: '+', label: 'Apps Shipped' },
-              { val: 6, suffix: 'K+', label: 'Active Users' },
+              { val: 6100, suffix: '+', label: 'Users Across 4 Apps' },
               { val: 100, suffix: '%', label: 'Delivery Rate' },
               { val: 5, suffix: '★', label: 'Client Rating' },
             ].map((s, i) => (
@@ -629,38 +678,82 @@ export default function Home() {
             </div>
           ))}
         </div>
+
+        {/* Agents CTA */}
+        <div className="mt-12 bg-gradient-to-br from-purple-500/10 to-pink-500/10 border border-purple-500/25 rounded-2xl p-8 text-center">
+          <p className="text-white/60 text-base md:text-lg leading-relaxed max-w-[680px] mx-auto mb-6">
+            If I build agents that trade live markets and auto-publish content — <span className="text-white font-semibold">imagine what I can build for your product.</span>
+          </p>
+          <a href="#contact" className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white px-7 py-3.5 rounded-full font-bold text-sm hover:shadow-lg hover:shadow-purple-500/40 transition-all hover:-translate-y-0.5">
+            Book a Call →
+          </a>
+        </div>
       </section>
 
       {/* ─── PROCESS ─── */}
       <section className="max-w-[1200px] mx-auto px-6 py-24">
         <div className="text-center mb-16">
           <p className="text-sm font-semibold text-purple-500 uppercase tracking-[2px] mb-3">Process</p>
-          <h2 className="text-[clamp(28px,4vw,48px)] font-extrabold tracking-tight">Idea to App Store in 4 steps</h2>
+          <h2 className="text-[clamp(28px,4vw,48px)] font-extrabold tracking-tight mb-4">How Muslifie went from idea to 200+ companies</h2>
+          <p className="text-base text-white/35 max-w-[580px] mx-auto">A real delivery story — not a marketing timeline.</p>
         </div>
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-          {[
-            { num: '01', title: 'Discovery Call', desc: 'Free 15-30 min consultation to understand your vision and goals.', icon: '🎯' },
-            { num: '02', title: 'Proposal & Plan', desc: 'Detailed quote with timeline, milestones and deliverables in 24 hours.', icon: '📋' },
-            { num: '03', title: 'Build & Iterate', desc: "Weekly updates and demos. You're involved at every step of development.", icon: '⚡' },
-            { num: '04', title: 'Launch & Grow', desc: 'App Store deployment, QA testing, and ongoing support included.', icon: '🚀' },
-          ].map((step, i) => (
-            <div key={i} className="text-center py-6 px-4 md:py-8 md:px-6">
-              <div className="text-4xl md:text-5xl mb-3">{step.icon}</div>
-              <span className="text-[12px] font-bold text-purple-500 tracking-[2px]">{step.num}</span>
-              <h3 className="text-base md:text-lg font-bold my-2">{step.title}</h3>
-              <p className="text-xs md:text-sm text-white/35 leading-relaxed">{step.desc}</p>
-            </div>
-          ))}
+        <div className="max-w-[860px] mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-8">
+            {[
+              { day: 'Day 1', title: 'Discovery Call', desc: 'Scoped the full marketplace — guide verification, Stripe Connect payouts, multilingual support, real-time chat. Left the call with a clear product vision.', icon: '🎯', color: 'from-purple-500 to-pink-400' },
+              { day: 'Day 3', title: 'Full Proposal', desc: 'Delivered a detailed proposal with mockups, milestone breakdown, and fixed price. No surprises, no vague estimates.', icon: '📋', color: 'from-blue-500 to-cyan-400' },
+              { day: 'Week 2', title: 'MVP Backend Live', desc: 'MongoDB schema, REST APIs, Stripe Connect integration, and guide onboarding flow all running in production.', icon: '⚡', color: 'from-emerald-500 to-teal-400' },
+              { day: 'Week 4', title: 'Flutter App on TestFlight', desc: 'Full Flutter app with real-time chat, 70+ language support, and private tour booking — on TestFlight for client review.', icon: '📱', color: 'from-orange-500 to-amber-400' },
+              { day: 'Week 6', title: 'Live on Both Stores', desc: 'App Store and Google Play approved. 200+ international travel companies onboarded in the first month post-launch.', icon: '🚀', color: 'from-pink-500 to-rose-400' },
+              { day: 'Ongoing', title: 'Support & Iteration', desc: 'Bug support, feature additions, and performance optimization. The product keeps growing without starting from zero.', icon: '🔄', color: 'from-violet-500 to-purple-400' },
+            ].map((step, i) => (
+              <div key={i} className="bg-white/[0.03] backdrop-blur-xl border border-white/[0.06] rounded-2xl p-6 hover:border-purple-500/30 transition-all">
+                <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r ${step.color} text-white text-[11px] font-bold tracking-wider uppercase mb-4`}>
+                  {step.day}
+                </div>
+                <div className="text-2xl mb-3">{step.icon}</div>
+                <h3 className="text-base font-bold mb-2">{step.title}</h3>
+                <p className="text-xs text-white/35 leading-relaxed">{step.desc}</p>
+              </div>
+            ))}
+          </div>
+          <div className="bg-white/[0.02] border border-white/[0.06] rounded-2xl p-6 text-center">
+            <p className="text-white/50 text-sm">Your project gets the same approach — <span className="text-white font-semibold">fixed price, real milestones, App Store or your money back.</span></p>
+            <a href="#contact" className="inline-flex mt-4 items-center gap-2 text-purple-400 hover:text-purple-300 font-semibold text-sm transition-colors">
+              Start your project →
+            </a>
+          </div>
         </div>
       </section>
 
       {/* ─── PRICING ─── */}
       <section id="pricing" className="bg-purple-500/[0.03]">
         <div className="max-w-[1200px] mx-auto px-6 py-24">
-          <div className="text-center mb-16">
+          <div className="text-center mb-10">
             <p className="text-sm font-semibold text-purple-500 uppercase tracking-[2px] mb-3">Pricing</p>
             <h2 className="text-[clamp(28px,4vw,48px)] font-extrabold tracking-tight mb-4">Transparent pricing. No surprises.</h2>
             <p className="text-base text-white/35">50% upfront, 50% on delivery. All prices in USD.</p>
+          </div>
+
+          {/* Market Comparison */}
+          <div className="max-w-[760px] mx-auto mb-12 bg-white/[0.03] border border-white/[0.06] rounded-2xl p-6 md:p-8">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
+              <div className="py-2">
+                <p className="text-[11px] font-bold text-white/30 uppercase tracking-[1.5px] mb-2">Upwork Freelancer</p>
+                <p className="text-2xl font-extrabold text-white/50">$25–60<span className="text-base font-normal">/hr</span></p>
+                <p className="text-[11px] text-white/25 mt-1">Hourly, no delivery guarantee</p>
+              </div>
+              <div className="py-2 sm:border-x border-white/[0.07]">
+                <p className="text-[11px] font-bold text-white/30 uppercase tracking-[1.5px] mb-2">Mobile Agency</p>
+                <p className="text-2xl font-extrabold text-white/50">$15k–50k</p>
+                <p className="text-[11px] text-white/25 mt-1">Per project, slow, bloated teams</p>
+              </div>
+              <div className="py-2">
+                <p className="text-[11px] font-bold text-purple-400 uppercase tracking-[1.5px] mb-2">BuildZn</p>
+                <p className="text-2xl font-extrabold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">Fixed Price</p>
+                <p className="text-[11px] text-purple-300/60 mt-1">App Store delivery guaranteed</p>
+              </div>
+            </div>
           </div>
           <div className="grid md:grid-cols-3 gap-5 items-start">
             {pricing.map((p, i) => (
@@ -830,58 +923,138 @@ export default function Home() {
           <h2 className="text-[clamp(28px,4vw,48px)] font-extrabold tracking-tight mb-4">What clients say</h2>
           <p className="text-base md:text-lg text-white/35 max-w-[500px] mx-auto">From founders and teams who shipped real products with me.</p>
         </div>
+        {/* ─── SCREENSHOT-STYLE TESTIMONIALS ─────────────────────────────────
+            Replace each placeholder below with a real testimonial screenshot.
+            For each card:
+            1. Get a screenshot from LinkedIn recommendation or DM
+            2. Save image to /public/testimonials/testimonial-1.png (etc.)
+            3. Replace the placeholder div with an <Image> component
+            4. Add the real name, company, LinkedIn URL, and quote
+            ─────────────────────────────────────────────────────────────── */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {[
-            {
-              initial: 'S',
-              name: 'Sarah K.',
-              company: 'FarahGPT',
-              app: 'AI Islamic Education App',
-              gradient: 'from-purple-500 to-pink-400',
-              stars: 5,
-              quote: 'Umair delivered the entire app in under 5 weeks — clean code, beautiful UI, and zero compromise on quality. The RAG system he built works flawlessly in production. Highly recommend.',
-            },
-            {
-              initial: 'M',
-              name: 'Marcus T.',
-              company: 'Muslifie',
-              app: 'Travel Marketplace',
-              gradient: 'from-blue-500 to-cyan-400',
-              stars: 5,
-              quote: 'We needed a complex marketplace with Stripe Connect, multilingual support, and a full admin dashboard. Umair nailed it. Over 200 companies onboarded in the first month.',
-            },
-            {
-              initial: 'A',
-              name: 'Aisha R.',
-              company: 'MyAiPal',
-              app: 'AI Wellness Companion',
-              gradient: 'from-emerald-500 to-teal-400',
-              stars: 5,
-              quote: 'Professional, responsive, and genuinely invested in the product. The app launched on both stores with subscription monetization working out of the box. Will hire again.',
-            },
-          ].map((t, i) => (
-            <div key={i} className="bg-white/[0.03] backdrop-blur-xl border border-white/[0.06] rounded-2xl p-7 hover:border-purple-500/30 hover:-translate-y-1 transition-all duration-300 flex flex-col">
-              {/* Stars */}
-              <div className="flex gap-1 mb-5">
-                {Array.from({ length: t.stars }).map((_, j) => (
-                  <span key={j} className="text-yellow-400 text-base">★</span>
-                ))}
-              </div>
-              {/* Quote */}
-              <p className="text-sm text-white/50 leading-relaxed flex-1 mb-6">
-                &ldquo;{t.quote}&rdquo;
-              </p>
-              {/* Author */}
-              <div className="flex items-center gap-3 pt-5 border-t border-white/[0.06]">
-                <div className={`w-10 h-10 rounded-full bg-gradient-to-br ${t.gradient} flex items-center justify-center font-extrabold text-sm flex-shrink-0`}>
-                  {t.initial}
-                </div>
-                <div>
-                  <div className="text-sm font-bold">{t.name}</div>
-                  <div className="text-[11px] text-white/30">{t.company} · {t.app}</div>
-                </div>
+
+          {/* TESTIMONIAL 1 — [REPLACE WITH REAL TESTIMONIAL] */}
+          <div className="bg-white/[0.03] backdrop-blur-xl border border-dashed border-purple-500/30 rounded-2xl p-7 hover:border-purple-500/50 transition-all duration-300 flex flex-col">
+            <div className="flex gap-1 mb-4">
+              {[1,2,3,4,5].map(j => <span key={j} className="text-yellow-400 text-base">★</span>)}
+            </div>
+            {/* SCREENSHOT PLACEHOLDER — replace this div with your testimonial screenshot */}
+            <div className="flex-1 mb-5 bg-white/[0.03] border border-white/[0.06] rounded-xl p-4 flex items-center justify-center min-h-[120px]">
+              <div className="text-center">
+                <div className="text-3xl mb-2">📸</div>
+                <p className="text-[11px] text-white/25 font-medium">[REPLACE WITH REAL TESTIMONIAL]</p>
+                <p className="text-[10px] text-white/15 mt-1">Screenshot from LinkedIn or DM</p>
               </div>
             </div>
+            {/* Quote placeholder */}
+            <p className="text-sm text-white/50 leading-relaxed mb-5 italic">
+              &ldquo;Add a real quote from your client here.&rdquo;
+            </p>
+            <div className="flex items-center gap-3 pt-4 border-t border-white/[0.06]">
+              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-500 to-pink-400 flex items-center justify-center font-extrabold text-sm flex-shrink-0">?</div>
+              <div>
+                <div className="text-sm font-bold text-white/40">[Client Name]</div>
+                <div className="text-[11px] text-white/25">[Company] · [Project]</div>
+                {/* Add LinkedIn profile URL below */}
+                <a href="https://www.linkedin.com/in/" target="_blank" rel="noopener noreferrer" className="text-[10px] text-purple-400/50 hover:text-purple-400 transition-colors">[LinkedIn Profile →]</a>
+              </div>
+            </div>
+          </div>
+
+          {/* TESTIMONIAL 2 — [REPLACE WITH REAL TESTIMONIAL] */}
+          <div className="bg-white/[0.03] backdrop-blur-xl border border-dashed border-blue-500/30 rounded-2xl p-7 hover:border-blue-500/50 transition-all duration-300 flex flex-col">
+            <div className="flex gap-1 mb-4">
+              {[1,2,3,4,5].map(j => <span key={j} className="text-yellow-400 text-base">★</span>)}
+            </div>
+            {/* SCREENSHOT PLACEHOLDER */}
+            <div className="flex-1 mb-5 bg-white/[0.03] border border-white/[0.06] rounded-xl p-4 flex items-center justify-center min-h-[120px]">
+              <div className="text-center">
+                <div className="text-3xl mb-2">📸</div>
+                <p className="text-[11px] text-white/25 font-medium">[REPLACE WITH REAL TESTIMONIAL]</p>
+                <p className="text-[10px] text-white/15 mt-1">Screenshot from LinkedIn or DM</p>
+              </div>
+            </div>
+            <p className="text-sm text-white/50 leading-relaxed mb-5 italic">
+              &ldquo;Add a real quote from your client here.&rdquo;
+            </p>
+            <div className="flex items-center gap-3 pt-4 border-t border-white/[0.06]">
+              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-cyan-400 flex items-center justify-center font-extrabold text-sm flex-shrink-0">?</div>
+              <div>
+                <div className="text-sm font-bold text-white/40">[Client Name]</div>
+                <div className="text-[11px] text-white/25">[Company] · [Project]</div>
+                <a href="https://www.linkedin.com/in/" target="_blank" rel="noopener noreferrer" className="text-[10px] text-purple-400/50 hover:text-purple-400 transition-colors">[LinkedIn Profile →]</a>
+              </div>
+            </div>
+          </div>
+
+          {/* TESTIMONIAL 3 — [REPLACE WITH REAL TESTIMONIAL] */}
+          <div className="bg-white/[0.03] backdrop-blur-xl border border-dashed border-emerald-500/30 rounded-2xl p-7 hover:border-emerald-500/50 transition-all duration-300 flex flex-col">
+            <div className="flex gap-1 mb-4">
+              {[1,2,3,4,5].map(j => <span key={j} className="text-yellow-400 text-base">★</span>)}
+            </div>
+            {/* SCREENSHOT PLACEHOLDER */}
+            <div className="flex-1 mb-5 bg-white/[0.03] border border-white/[0.06] rounded-xl p-4 flex items-center justify-center min-h-[120px]">
+              <div className="text-center">
+                <div className="text-3xl mb-2">📸</div>
+                <p className="text-[11px] text-white/25 font-medium">[REPLACE WITH REAL TESTIMONIAL]</p>
+                <p className="text-[10px] text-white/15 mt-1">Screenshot from LinkedIn or DM</p>
+              </div>
+            </div>
+            <p className="text-sm text-white/50 leading-relaxed mb-5 italic">
+              &ldquo;Add a real quote from your client here.&rdquo;
+            </p>
+            <div className="flex items-center gap-3 pt-4 border-t border-white/[0.06]">
+              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-500 to-teal-400 flex items-center justify-center font-extrabold text-sm flex-shrink-0">?</div>
+              <div>
+                <div className="text-sm font-bold text-white/40">[Client Name]</div>
+                <div className="text-[11px] text-white/25">[Company] · [Project]</div>
+                <a href="https://www.linkedin.com/in/" target="_blank" rel="noopener noreferrer" className="text-[10px] text-purple-400/50 hover:text-purple-400 transition-colors">[LinkedIn Profile →]</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      {/* ─── FAQ ─── */}
+      <section className="max-w-[860px] mx-auto px-6 py-24">
+        <div className="text-center mb-14">
+          <p className="text-sm font-semibold text-purple-500 uppercase tracking-[2px] mb-3">FAQ</p>
+          <h2 className="text-[clamp(28px,4vw,48px)] font-extrabold tracking-tight mb-4">Common questions, straight answers</h2>
+          <p className="text-base text-white/35 max-w-[500px] mx-auto">Everything you need to know before booking a call.</p>
+        </div>
+        <div className="space-y-4">
+          {[
+            {
+              q: 'How much does a Flutter app cost?',
+              a: 'BuildZn projects start at $800 for a simple MVP (10–12 screens, Firebase backend, iOS + Android). A full-featured app with custom backend, payments, and AI features typically runs $2,500–$5,000. All prices are fixed — no hourly billing, no scope creep surprises. Compare that to a mobile agency charging $15,000–$50,000 for the same output.',
+            },
+            {
+              q: 'How long does it take to build a Flutter app?',
+              a: 'Simple apps (10–15 screens): 3–4 weeks. Full-featured apps with backend, payments, and AI: 5–8 weeks. Muslifie — a full marketplace with Stripe Connect, real-time chat, and 70+ language support — went from discovery call to App Store in 6 weeks.',
+            },
+            {
+              q: 'Do you build for both iOS and Android?',
+              a: 'Yes, always. Flutter produces a single codebase that runs natively on both platforms. Every BuildZn package includes iOS and Android deployment — no extra cost for the second platform.',
+            },
+            {
+              q: "What's included in each package?",
+              a: 'All packages include: Flutter app (iOS + Android), backend integration, App Store and Google Play submission, 1 month of bug support post-launch. Growth and Scale packages add custom Node.js backends, AI features, admin dashboards, and Stripe/RevenueCat integration.',
+            },
+            {
+              q: 'How does the fixed-price model work?',
+              a: "You pay 50% upfront and 50% on delivery. The scope is locked in your proposal — no surprise invoices, no hourly tracking. If I can't deliver what was agreed, you get your money back. Simple.",
+            },
+            {
+              q: 'Can you handle the backend too?',
+              a: 'Yes. Full-stack is the default. Node.js APIs, MongoDB or Supabase databases, Firebase, AWS — whatever fits your product. You get one developer who owns the whole stack instead of coordinating between a frontend and backend team.',
+            },
+            {
+              q: 'What if I need changes after delivery?',
+              a: 'Every package includes 1 month of bug support after launch. For new features or extended support, we scope a follow-on project at the same fixed-price model. No open-ended retainers unless you want one.',
+            },
+          ].map((item, i) => (
+            <FAQItem key={i} q={item.q} a={item.a} />
           ))}
         </div>
       </section>
