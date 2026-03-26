@@ -1,6 +1,6 @@
 ---
 title: "Local LLM Video Captioning: Private, Powerful, Open-Source"
-excerpt: "Discover how to build robust, privacy-focused local LLM video captioning tools using open-source models without cloud APIs."
+excerpt: "Run LLM video captioning 100% locally — no API costs, no data leaks. Complete setup guide with open-source models that match cloud quality."
 date: "2026-03-17"
 tags: ["AI", "LLM", "Machine Learning", "Video Processing", "Open Source", "Developer Tools", "Local AI", "Python"]
 keywords: ["local LLM video captioning", "open source AI captioning", "offline video transcription", "privacy-focused LLM video", "AI video tools"]
