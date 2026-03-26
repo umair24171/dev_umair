@@ -379,8 +379,17 @@ async function generatePost(topicData) {
   const text   = result.response.text();
 
   const extract = (tag) => {
-    const match = text.match(new RegExp(`<${tag}>([\\s\\S]*?)<\\/${tag}>`));
-    if (!match) throw new Error(`Missing <${tag}> tag in Gemini response`);
+    // Use greedy match for <content> — the markdown body often contains
+    // XML-like strings (frontmatter samples, HTML snippets, closing tags)
+    // that cause a non-greedy *? to terminate too early.
+    // Greedy *  always captures up to the LAST closing tag, which is correct
+    // since each field appears exactly once in the response.
+    const pattern = new RegExp(`<${tag}>([\\s\\S]*)<\\/${tag}>`);
+    const match   = text.match(pattern);
+    if (!match) {
+      console.error(`⚠️  Gemini response snippet (first 500 chars):\n${text.substring(0, 500)}`);
+      throw new Error(`Missing <${tag}> tag in Gemini response`);
+    }
     return match[1].trim();
   };
 
