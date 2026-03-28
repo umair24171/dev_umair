@@ -349,6 +349,14 @@ async function generatePost(topicData) {
   - Mention 1-2 related topics naturally (internal linking)
   - Secondary keywords woven in 2x each — naturally, not stuffed
   
+  ━━━ TRENDING CONTEXT ━━━
+  The reader found this post by Googling a specific problem RIGHT NOW. They are not browsing — they need an answer in the next 30 seconds or they hit back. Rules:
+  - Answer the exact question in the FIRST paragraph — no warmup
+  - Write like you solved this problem last week and you're telling a friend
+  - Every H2 should answer a sub-question the reader has in their head
+  - If they can get the answer without scrolling — you win the ranking
+  - Speed to value beats everything else
+
   ━━━ BANNED PHRASES ━━━
   "in today's world", "rapidly evolving", "deep dive", "let's explore", "revolutionize",
   "game-changer", "production-ready", "best practices", "leverage", "utilize",
