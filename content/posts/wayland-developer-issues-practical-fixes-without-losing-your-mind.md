@@ -1,6 +1,6 @@
 ---
-title: "Wayland Black Screen & Crash Fixes That Actually Work (2026)"
-excerpt: "Wayland breaking your Linux workflow? These are the exact fixes that solved black screens, app crashes, and GPU issues on real production machines."
+title: "Wayland Black Screen, Crashes & GPU Fixes That Actually Work (2026)"
+excerpt: "Wayland breaking your Linux setup? These are the exact fixes for black screens, app crashes, XWayland issues and GPU problems — tested on real machines in 2026."
 date: "2026-03-20"
 tags: ["Wayland", "Linux", "X11", "Desktop", "Developer Tools"]
 keywords: ["wayland developer issues", "wayland screen sharing fix", "wayland black screen fix", "x11 wayland migration", "linux desktop wayland problems", "wayland compatibility tools"]
