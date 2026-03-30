@@ -144,7 +144,16 @@
       "date": "2026-03-29",
       "wordCount": 1743,
       "devToUrl": "https://dev.to/umair24171/flutter-supabase-chat-app-in-6-weeks-my-blueprint-1p7a"
+    },
+    {
+      "slug": "how-i-stopped-ai-scraping-my-flutter-apps-data-clients-you-need-t",
+      "primaryKeyword": "secure Flutter app development",
+      "title": "How I Stopped AI Scraping My Flutter App's Data (Clients: You Need This)",
+      "topic": "How to Build Secure Flutter Apps Without AI Data Scraping Risks",
+      "date": "2026-03-30",
+      "wordCount": 2083,
+      "devToUrl": "https://dev.to/umair24171/how-i-stopped-ai-scraping-my-flutter-apps-data-clients-you-need-this-1jah"
     }
   ],
-  "lastRun": "2026-03-29T05:42:34.479Z"
+  "lastRun": "2026-03-30T03:23:39.140Z"
 }
