@@ -4,7 +4,7 @@ excerpt: "Struggling with unreliable Flutter AI? Dive into Claude Code insights 
 date: "2026-04-01"
 tags: ["Flutter", "AI", "LLM", "Prompt Engineering", "Claude Code", "System Design", "Mobile Development", "Production Apps"]
 keywords: ["Flutter AI prompt engineering", "Claude Code insights", "robust Flutter AI", "LLM prompt patterns Flutter", "AI app development best practices", "production-grade Flutter AI"]
-readTime: "10 min read"
+readTime: "12 min read"
 coverGradient: "from-emerald-500 to-teal-400"
 ---
 
