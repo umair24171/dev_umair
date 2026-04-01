@@ -180,7 +180,16 @@
       "date": "2026-03-31",
       "wordCount": 2332,
       "devToUrl": "https://dev.to/umair24171/flutter-app-cost-2026-my-freelancer-breakdown-3hc8"
+    },
+    {
+      "slug": "fixing-flutter-ai-claudes-prompt-patterns-that-work",
+      "primaryKeyword": "Flutter AI prompt engineering",
+      "title": "Fixing Flutter AI: Claude's Prompt Patterns That Work",
+      "topic": "How to Build Robust AI Features in Flutter: Applying Claude Code's Advanced Prompt Patterns",
+      "date": "2026-04-01",
+      "wordCount": 2274,
+      "devToUrl": "https://dev.to/umair24171/fixing-flutter-ai-claudes-prompt-patterns-that-work-336g"
     }
   ],
-  "lastRun": "2026-03-31T05:43:29.023Z"
+  "lastRun": "2026-04-01T05:54:38.320Z"
 }
