@@ -4,7 +4,7 @@ excerpt: "We built a Flutter AI virtual try-on app feature in 6 weeks for an e-c
 date: "2026-04-02"
 tags: ["Flutter", "AI", "E-commerce", "Computer Vision", "Case Study", "App Development", "Freelance"]
 keywords: ["Flutter AI virtual try-on app", "build virtual try-on Flutter", "Flutter e-commerce AI", "AI fashion app development", "Flutter computer vision retail"]
-readTime: "9 min read"
+readTime: "12 min read"
 coverGradient: "from-purple-500 to-pink-400"
 ---
 
