@@ -189,7 +189,16 @@
       "date": "2026-04-01",
       "wordCount": 2274,
       "devToUrl": "https://dev.to/umair24171/fixing-flutter-ai-claudes-prompt-patterns-that-work-336g"
+    },
+    {
+      "slug": "flutter-ai-virtual-try-on-6-week-build-zero-bs",
+      "primaryKeyword": "Flutter AI virtual try-on app",
+      "title": "Flutter AI Virtual Try-On: 6-Week Build, Zero BS",
+      "topic": "I Built an AI Virtual Try-On App Feature in Flutter in 6 Weeks — Here's Exactly How",
+      "date": "2026-04-02",
+      "wordCount": 2306,
+      "devToUrl": "https://dev.to/umair24171/flutter-ai-virtual-try-on-6-week-build-zero-bs-4ee6"
     }
   ],
-  "lastRun": "2026-04-01T05:54:38.320Z"
+  "lastRun": "2026-04-02T05:40:47.787Z"
 }
