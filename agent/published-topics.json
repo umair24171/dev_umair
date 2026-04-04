@@ -207,7 +207,16 @@
       "date": "2026-04-03",
       "wordCount": 2057,
       "devToUrl": "https://dev.to/umair24171/why-flutter-on-device-ai-cuts-costs-boosts-privacy-gemma-4-494d"
+    },
+    {
+      "slug": "nodejs-ai-agents-backend-what-actually-works-at-scale",
+      "primaryKeyword": "Node.js AI agents backend",
+      "title": "Node.js AI Agents Backend: What Actually Works at Scale",
+      "topic": "Building AI Agents with Node.js for Your Flutter App's Backend — What I Learned About Scaling & Performance",
+      "date": "2026-04-04",
+      "wordCount": 1704,
+      "devToUrl": "https://dev.to/umair24171/nodejs-ai-agents-backend-what-actually-works-at-scale-43lh"
     }
   ],
-  "lastRun": "2026-04-03T05:40:52.937Z"
+  "lastRun": "2026-04-04T05:20:43.828Z"
 }
