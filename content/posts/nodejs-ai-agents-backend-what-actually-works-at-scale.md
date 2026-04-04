@@ -4,7 +4,7 @@ excerpt: "Building a scalable Node.js AI agents backend for Flutter apps is toug
 date: "2026-04-04"
 tags: ["Node.js", "AI Agents", "Backend Development", "Flutter", "Scalability", "Performance", "Freelance", "Technical Deep Dive"]
 keywords: ["Node.js AI agents backend", "Flutter AI backend", "scaling AI agents", "Node.js AI app architecture", "building AI agents with Node.js", "AI agent performance"]
-readTime: "10 min read"
+readTime: "9 min read"
 coverGradient: "from-emerald-500 to-teal-400"
 ---
 
