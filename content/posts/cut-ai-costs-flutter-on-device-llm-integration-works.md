@@ -4,7 +4,7 @@ excerpt: "Slash AI API costs and boost data privacy in your apps. We built a Flu
 date: "2026-04-06"
 tags: ["Flutter", "On-Device AI", "LLM", "Gemma", "Data Privacy", "Cost Optimization", "AI Integration", "Mobile Development"]
 keywords: ["Flutter on-device LLM integration", "Gemma Flutter local AI", "privacy-first Flutter AI", "cost-effective AI app Flutter", "offline AI Flutter app", "no-cloud AI Flutter"]
-readTime: "9 min read"
+readTime: "13 min read"
 coverGradient: "from-slate-500 to-gray-400"
 ---
 
