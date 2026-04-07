@@ -234,7 +234,16 @@
       "date": "2026-04-06",
       "wordCount": 2404,
       "devToUrl": "https://dev.to/umair24171/cut-ai-costs-flutter-on-device-llm-integration-works-5fhh"
+    },
+    {
+      "slug": "cut-ai-costs-flutter-local-speech-to-text-for-privacy",
+      "primaryKeyword": "Flutter local speech to text",
+      "title": "Cut AI Costs: Flutter Local Speech to Text for Privacy",
+      "topic": "How to build secure, private voice AI in Flutter without cloud API costs",
+      "date": "2026-04-07",
+      "wordCount": 2521,
+      "devToUrl": "https://dev.to/umair24171/cut-ai-costs-flutter-local-speech-to-text-for-privacy-2o3f"
     }
   ],
-  "lastRun": "2026-04-06T05:57:59.293Z"
+  "lastRun": "2026-04-07T05:46:40.134Z"
 }
