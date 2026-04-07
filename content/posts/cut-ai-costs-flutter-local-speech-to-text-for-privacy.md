@@ -4,7 +4,7 @@ excerpt: "Drastically reduce cloud API bills & boost user privacy. Learn how Flu
 date: "2026-04-07"
 tags: ["Flutter", "AI", "On-Device AI", "Privacy", "Cost Savings", "Speech Recognition", "Mobile Development", "Startup", "Freelance"]
 keywords: ["Flutter local speech to text", "private voice AI Flutter", "on-device speech recognition Flutter", "Flutter offline AI", "reduce AI app costs"]
-readTime: "9 min read"
+readTime: "13 min read"
 coverGradient: "from-red-500 to-rose-400"
 ---
 
