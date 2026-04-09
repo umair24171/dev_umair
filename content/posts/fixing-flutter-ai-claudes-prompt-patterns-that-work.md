@@ -1,6 +1,6 @@
 ---
-title: "Fixing Flutter AI: Claude's Prompt Patterns That Work"
-excerpt: "Struggling with unreliable Flutter AI? Dive into Claude Code insights on advanced prompt engineering and system design for robust LLM features."
+title: "Flutter AI Prompt Engineering: Claude's Patterns That Work"
+excerpt: "Master Flutter AI prompt engineering with Claude's battle-tested patterns for reliable, production-grade LLM features in your app."
 date: "2026-04-01"
 tags: ["Flutter", "AI", "LLM", "Prompt Engineering", "Claude Code", "System Design", "Mobile Development", "Production Apps"]
 keywords: ["Flutter AI prompt engineering", "Claude Code insights", "robust Flutter AI", "LLM prompt patterns Flutter", "AI app development best practices", "production-grade Flutter AI"]
@@ -299,3 +299,10 @@ Move all LLM interactions to a backend service (like Node.js). This allows you t
 Directly in Flutter? Not efficiently for complex multi-agent systems. You'd quickly hit performance and security issues (API keys on client). A simple "agent" could be a single LLM call with dynamic prompt changes based on user input. For true multi-agent systems (like my 5-agent gold trading system), you need a robust backend to orchestrate agent communication, state management, and tool execution. Flutter would then act as the UI for this backend agent system.
 
 Anyway, applying these **Claude Code insights** to your *Flutter AI prompt engineering* isn't about magic. It's about designing LLM interactions like any other software system: with clear interfaces, modularity, and error handling. This is how you move from "it sometimes works" to genuinely **robust Flutter AI** features that developers and users can depend on. The difference between a demo and FarahGPT's thousands of users often boils down to these architectural details.
+
+---
+
+## Further Reading
+
+- [Flutter AI Virtual Try-On App: Build & Deploy in 6 Weeks](/blog/flutter-ai-virtual-try-on-6-week-build-zero-bs)
+- [Your Ultimate LLM Architecture Guide for Developers](/blog/your-ultimate-llm-architecture-guide-for-developers)
