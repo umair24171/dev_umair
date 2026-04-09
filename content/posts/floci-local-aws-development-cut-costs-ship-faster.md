@@ -361,3 +361,10 @@ You need to explicitly configure your AWS SDK clients (e.g., `SQSClient`, `S3Cli
 Yes, absolutely. Because it's Docker-based and truly open-source, you can spin up Floci containers as part of your CI/CD pipeline to run integration tests against a local AWS environment, saving costs and speeding up test execution.
 
 Look, this isn't rocket science, but getting your local `Floci local AWS development` environment humming smoothly makes a huge difference. For `offline AWS testing` and serious `reduce AWS dev costs` on serverless applications, Floci is an underrated gem. It's fast, free, and gets the job done for 90% of what you need day-to-day. Stop paying AWS for your dev cycles and get your feedback loops tight. Go spin up Floci; your wallet and your sanity will thank you.
+
+---
+
+## Further Reading
+
+- [Node.js AI Agents Backend: What Actually Works at Scale](/blog/nodejs-ai-agents-backend-what-actually-works-at-scale)
+- [Flutter AI Too Pricey? How to Slash GPU Costs Now](/blog/flutter-ai-too-pricey-how-to-slash-gpu-costs-now)
