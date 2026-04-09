@@ -184,3 +184,10 @@ Beyond just making it *work*, you need to optimize. For me, **AI agent performan
 **For short, stateless agent tasks, yes, serverless is great. But for long-running, stateful conversational agents, dedicated worker instances (like EC2 or DigitalOcean Droplets running BullMQ workers) often offer more control, better cold-start times, and can be more cost-effective at higher volumes.**
 
 Building a robust, scalable **Node.js AI agents backend** for a Flutter app isn't a weekend project. It requires careful architectural decisions, especially around decoupling long-running AI processes from your main API. If you're building a new AI-powered Flutter application, don't skip the queues and persistent state management. Trust me, your future self (and your users) will thank you when it's time to actually scale.
+
+---
+
+## Further Reading
+
+- [Flutter AI Too Pricey? How to Slash GPU Costs Now](/blog/flutter-ai-too-pricey-how-to-slash-gpu-costs-now)
+- [Cut AI Costs: Flutter On-Device LLM Integration Works](/blog/cut-ai-costs-flutter-on-device-llm-integration-works)
