@@ -398,7 +398,19 @@ async function generatePost(topicData) {
       console.error(`⚠️  Gemini response snippet (first 500 chars):\n${text.substring(0, 500)}`);
       throw new Error(`Missing <${tag}> tag in Gemini response`);
     }
-    return match[1].trim();
+
+    // Sanitize: strip any stray XML/HTML tags Gemini may have leaked into the
+    // extracted value (e.g. a </title> or <excerpt>…</excerpt> block that
+    // bleeds in when the greedy regex overshoots), then trim outer whitespace.
+    let value = match[1].replace(/<\/?[a-zA-Z][^>]*>/g, '').trim();
+
+    // For single-line fields, also collapse internal newlines into a space so
+    // the value never introduces a multi-line YAML key that breaks the build.
+    if (tag === 'title' || tag === 'excerpt' || tag === 'readTime') {
+      value = value.replace(/\s*\n\s*/g, ' ').trim();
+    }
+
+    return value;
   };
 
   return {

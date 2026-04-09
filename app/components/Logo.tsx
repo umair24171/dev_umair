@@ -15,12 +15,18 @@ export default function Logo({ width = 130, height = 33 }: LogoProps) {
 
   return (
     <svg
-      width={width}
-      height={height}
       viewBox="0 0 240 60"
       fill="none"
+      overflow="visible"
       xmlns="http://www.w3.org/2000/svg"
       aria-label="BuildZn"
+      style={{
+        display: 'block',
+        width,
+        height,
+        minWidth: width,
+        flexShrink: 0,
+      }}
     >
       <defs>
         {/* Icon tile background: purple → cyan diagonal */}

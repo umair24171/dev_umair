@@ -114,7 +114,7 @@ export default function AboutPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#06080f] text-white overflow-x-hidden">
+    <div className="min-h-screen bg-[#06080f] text-white [overflow-x:clip]">
 
       {/* JSON-LD */}
       <script
@@ -125,7 +125,7 @@ export default function AboutPage() {
       {/* NAV */}
       <nav className="fixed top-0 w-full z-50 bg-[#06080f]/85 backdrop-blur-xl border-b border-white/5">
         <div className="max-w-[1200px] mx-auto px-6 flex justify-between items-center h-[70px]">
-          <Link href="/" className="flex items-center flex-shrink-0">
+          <Link href="/" className="flex items-center flex-shrink-0 overflow-visible" style={{ minWidth: 130 }}>
             <Logo width={130} height={33} />
           </Link>
           <div className="flex items-center gap-6">
