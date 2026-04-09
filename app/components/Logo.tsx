@@ -10,7 +10,6 @@ interface LogoProps {
 export default function Logo({ width = 130, height = 33 }: LogoProps) {
   const uid = useId().replace(/:/g, '');
   const bgId   = `logoBg-${uid}`;
-  const bzId   = `logoBz-${uid}`;
 
   return (
     <svg
@@ -34,11 +33,6 @@ export default function Logo({ width = 130, height = 33 }: LogoProps) {
           <stop offset="100%" stopColor="#0891b2" />
         </linearGradient>
 
-        {/* BZ monogram: white → light periwinkle */}
-        <linearGradient id={bzId} x1="10" y1="20" x2="46" y2="44" gradientUnits="userSpaceOnUse">
-          <stop offset="0%" stopColor="#ffffff" />
-          <stop offset="100%" stopColor="#bfdbfe" />
-        </linearGradient>
       </defs>
 
       {/* ── Icon tile ── */}
@@ -53,7 +47,7 @@ export default function Logo({ width = 130, height = 33 }: LogoProps) {
         fontSize="24"
         fontWeight="800"
         letterSpacing="-1"
-        fill={`url(#${bzId})`}
+        fill="#ffffff"
       >
         BZ
       </text>
