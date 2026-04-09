@@ -1,34 +1,30 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 60" fill="none">
-  <!-- BZ Icon Mark -->
-  <g transform="translate(0, 4)">
-    <!-- Outer hexagonal/octagonal frame -->
-    <path d="M26 2 L42 2 L52 12 L52 40 L42 50 L10 50 L2 42 L2 10 Z"
-          fill="none" stroke="url(#iconGrad)" stroke-width="2.5" stroke-linejoin="round"/>
-    <!-- Inner diagonal slash (Z element) -->
-    <line x1="12" y1="38" x2="42" y2="14" stroke="url(#iconGrad)" stroke-width="2.5" stroke-linecap="round"/>
-    <!-- B top horizontal -->
-    <line x1="12" y1="14" x2="32" y2="14" stroke="url(#iconGrad)" stroke-width="2.5" stroke-linecap="round"/>
-    <!-- B middle horizontal -->
-    <line x1="12" y1="26" x2="30" y2="26" stroke="url(#iconGrad)" stroke-width="2.5" stroke-linecap="round"/>
-    <!-- B bottom / Z bottom horizontal -->
-    <line x1="12" y1="38" x2="42" y2="38" stroke="url(#iconGrad)" stroke-width="2.5" stroke-linecap="round"/>
-    <!-- B vertical left stem -->
-    <line x1="12" y1="14" x2="12" y2="38" stroke="url(#iconGrad)" stroke-width="2.5" stroke-linecap="round"/>
-  </g>
-  <!-- Wordmark -->
-  <!-- "Build" in white -->
-  <text x="68" y="42" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-size="28" font-weight="800" letter-spacing="-0.5" fill="#ffffff">Build</text>
-  <!-- "Zn" in cyan -->
-  <text x="140" y="42" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-size="28" font-weight="800" letter-spacing="-0.5" fill="url(#textGrad)">Zn</text>
-  <!-- Gradients -->
   <defs>
-    <linearGradient id="iconGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#22d3ee"/>
-      <stop offset="100%" stop-color="#06b6d4"/>
+    <linearGradient id="iconBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7c3aed"/>
+      <stop offset="100%" stop-color="#0891b2"/>
     </linearGradient>
     <linearGradient id="textGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#22d3ee"/>
-      <stop offset="100%" stop-color="#06b6d4"/>
+      <stop offset="0%" stop-color="#a78bfa"/>
+      <stop offset="100%" stop-color="#22d3ee"/>
     </linearGradient>
   </defs>
+
+  <!-- Icon tile: bold filled geometric BZ monogram -->
+  <rect x="2" y="4" width="52" height="52" rx="12" fill="url(#iconBg)"/>
+
+  <!-- Top horizontal bar (shared: B top + Z top) -->
+  <rect x="10" y="12" width="36" height="7" rx="2" fill="white"/>
+  <!-- Left vertical stem (B spine) -->
+  <rect x="10" y="12" width="7" height="36" rx="2" fill="white"/>
+  <!-- Middle horizontal bar (B middle bump) -->
+  <rect x="10" y="26" width="22" height="6" rx="2" fill="white"/>
+  <!-- Diagonal slash (Z diagonal, top-right to bottom-left) -->
+  <polygon points="46,12 46,20.5 10,48 10,39.5" fill="white"/>
+  <!-- Bottom horizontal bar (shared: B bottom + Z bottom) -->
+  <rect x="10" y="41" width="36" height="7" rx="2" fill="white"/>
+
+  <!-- Wordmark -->
+  <text x="68" y="42" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-size="28" font-weight="800" letter-spacing="-0.5" fill="#ffffff">Build</text>
+  <text x="140" y="42" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-size="28" font-weight="800" letter-spacing="-0.5" fill="url(#textGrad)">Zn</text>
 </svg>

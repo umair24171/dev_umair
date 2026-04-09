@@ -456,8 +456,8 @@ export default function Home() {
       {/* ─── NAV ─── */}
       <nav className={`fixed top-0 w-full z-50 transition-all duration-400 ${scrolled ? 'bg-[#06080f]/85 backdrop-blur-xl border-b border-white/5' : 'bg-transparent'}`}>
         <div className="max-w-[1200px] mx-auto px-6 flex justify-between items-center h-[70px]">
-          <Link href="/" className="flex items-center">
-            <Image src="/logo.svg" alt="BuildZn" width={130} height={33} priority />
+          <Link href="/" className="flex items-center flex-shrink-0">
+            <Image src="/logo.svg" alt="BuildZn" width={130} height={33} priority style={{ minWidth: 130 }} />
           </Link>
           <div className="flex items-center gap-8">
             <div className="hidden md:flex gap-5 items-center">
