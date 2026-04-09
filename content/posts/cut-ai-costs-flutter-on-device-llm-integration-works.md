@@ -196,3 +196,10 @@ Apps that need real-time, private, or cost-free AI capabilities. Think:
 This **Flutter on-device LLM integration** isn't just a trend; it's the future for building sustainable, private AI features into your mobile apps. We've proven it with apps like FarahGPT and Muslifie – cutting costs, boosting privacy, and delivering blazing-fast AI experiences. If you're tired of huge cloud bills or worried about user data, this is the path forward. My team has gone through all the headaches, so you don't have to.
 
 If you’re building a Flutter app and serious about leveraging advanced AI without the cloud overhead, let’s talk. **Book a free 30-min call** with me to discuss how we can implement a **cost-effective AI app Flutter** solution for your business, just like we did for others.
+
+---
+
+## Further Reading
+
+- [Cost-Effective Flutter AI Apps: How to Slash GPU Costs Now](/blog/flutter-ai-too-pricey-how-to-slash-gpu-costs-now)
+- [Cut AI Costs: Flutter Local Speech to Text for Privacy](/blog/cut-ai-costs-flutter-local-speech-to-text-for-privacy)
