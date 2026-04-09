@@ -107,42 +107,13 @@ export default function NotFound() {
       <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', justifyContent: 'center' }}>
         <Link
           href="/"
-          style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: 8,
-            padding: '12px 24px',
-            background: '#00D9FF',
-            color: '#0A0E27',
-            fontWeight: 700,
-            fontSize: 15,
-            borderRadius: 8,
-            textDecoration: 'none',
-            transition: 'opacity 0.2s',
-          }}
-          onMouseOver={(e) => ((e.currentTarget as HTMLAnchorElement).style.opacity = '0.85')}
-          onMouseOut={(e) => ((e.currentTarget as HTMLAnchorElement).style.opacity = '1')}
+          className="inline-flex items-center gap-2 px-6 py-3 bg-[#00D9FF] text-[#0A0E27] font-bold text-[15px] rounded-lg no-underline transition-opacity duration-200 hover:opacity-80"
         >
           ← Back to home
         </Link>
         <Link
           href="/blog"
-          style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: 8,
-            padding: '12px 24px',
-            background: 'rgba(255,255,255,0.06)',
-            color: '#E2E8F0',
-            fontWeight: 600,
-            fontSize: 15,
-            borderRadius: 8,
-            textDecoration: 'none',
-            border: '1px solid rgba(255,255,255,0.1)',
-            transition: 'background 0.2s',
-          }}
-          onMouseOver={(e) => ((e.currentTarget as HTMLAnchorElement).style.background = 'rgba(255,255,255,0.1)')}
-          onMouseOut={(e) => ((e.currentTarget as HTMLAnchorElement).style.background = 'rgba(255,255,255,0.06)')}
+          className="inline-flex items-center gap-2 px-6 py-3 bg-white/[0.06] text-[#E2E8F0] font-semibold text-[15px] rounded-lg no-underline border border-white/10 transition-colors duration-200 hover:bg-white/10"
         >
           Read the blog →
         </Link>
@@ -169,13 +140,7 @@ export default function NotFound() {
           <Link
             key={href}
             href={href}
-            style={{
-              color: 'rgba(226,232,240,0.4)',
-              textDecoration: 'none',
-              transition: 'color 0.2s',
-            }}
-            onMouseOver={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = '#00D9FF')}
-            onMouseOut={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = 'rgba(226,232,240,0.4)')}
+            className="text-white/40 no-underline transition-colors duration-200 hover:text-[#00D9FF]"
           >
             {label}
           </Link>
