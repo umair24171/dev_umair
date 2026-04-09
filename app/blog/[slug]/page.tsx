@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import Image from 'next/image';
+import Logo from '../../components/Logo';
 import { getPostBySlug, getAllPosts, getRelatedPosts } from '@/lib/posts';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
@@ -122,7 +122,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       <nav className="fixed top-0 w-full z-50 bg-[#06080f]/85 backdrop-blur-xl border-b border-white/5">
         <div className="max-w-[1200px] mx-auto px-6 flex justify-between items-center h-[70px]">
           <Link href="/" className="flex items-center flex-shrink-0">
-            <Image src="/logo.svg" alt="BuildZn" width={130} height={33} priority style={{ minWidth: 130 }} />
+            <Logo width={130} height={33} />
           </Link>
           <div className="flex items-center gap-6">
             <Link href="/blog" className="text-sm font-medium text-white/50 hover:text-white transition-colors">← All Posts</Link>

@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
+import Logo from './components/Logo';
 import { useForm, ValidationError } from '@formspree/react';
 
 // ─── Animated Star Field Canvas ───
@@ -240,7 +240,7 @@ const MobileMenu = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
       <div className={`fixed top-0 right-0 h-full w-[280px] bg-[#0a0d18] border-l border-white/10 z-[100] transition-transform duration-300 ease-out ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
         <div className="flex justify-between items-center p-6 border-b border-white/5">
           <Link href="/" className="flex items-center">
-            <Image src="/logo.svg" alt="BuildZn" width={110} height={28} />
+            <Logo width={110} height={28} />
           </Link>
           <button onClick={onClose} className="w-10 h-10 flex items-center justify-center text-white/50 hover:text-white transition-colors" aria-label="Close menu">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
@@ -457,7 +457,7 @@ export default function Home() {
       <nav className={`fixed top-0 w-full z-50 transition-all duration-400 ${scrolled ? 'bg-[#06080f]/85 backdrop-blur-xl border-b border-white/5' : 'bg-transparent'}`}>
         <div className="max-w-[1200px] mx-auto px-6 flex justify-between items-center h-[70px]">
           <Link href="/" className="flex items-center flex-shrink-0">
-            <Image src="/logo.svg" alt="BuildZn" width={130} height={33} priority style={{ minWidth: 130 }} />
+            <Logo width={130} height={33} />
           </Link>
           <div className="flex items-center gap-8">
             <div className="hidden md:flex gap-5 items-center">
@@ -1181,7 +1181,7 @@ export default function Home() {
       <footer className="border-t border-white/5 py-12 px-6">
         <div className="max-w-[1200px] mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
           <Link href="/" className="flex items-center">
-            <Image src="/logo.svg" alt="BuildZn" width={110} height={28} />
+            <Logo width={110} height={28} />
           </Link>
           <div className="flex gap-6">
             <a href="mailto:buildznofficial@gmail.com" className="text-[13px] text-white/30 hover:text-purple-400 transition-colors">Email</a>
