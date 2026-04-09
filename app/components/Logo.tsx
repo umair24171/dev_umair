@@ -11,7 +11,6 @@ export default function Logo({ width = 130, height = 33 }: LogoProps) {
   const uid = useId().replace(/:/g, '');
   const bgId   = `logoBg-${uid}`;
   const bzId   = `logoBz-${uid}`;
-  const znId   = `logoZn-${uid}`;
 
   return (
     <svg
@@ -39,12 +38,6 @@ export default function Logo({ width = 130, height = 33 }: LogoProps) {
         <linearGradient id={bzId} x1="10" y1="20" x2="46" y2="44" gradientUnits="userSpaceOnUse">
           <stop offset="0%" stopColor="#ffffff" />
           <stop offset="100%" stopColor="#bfdbfe" />
-        </linearGradient>
-
-        {/* Wordmark "Zn" accent: violet → cyan */}
-        <linearGradient id={znId} x1="140" y1="20" x2="175" y2="45" gradientUnits="userSpaceOnUse">
-          <stop offset="0%" stopColor="#a78bfa" />
-          <stop offset="100%" stopColor="#22d3ee" />
         </linearGradient>
       </defs>
 
@@ -84,7 +77,7 @@ export default function Logo({ width = 130, height = 33 }: LogoProps) {
         fontSize="28"
         fontWeight="800"
         letterSpacing="-0.5"
-        fill={`url(#${znId})`}
+        fill="#a78bfa"
       >
         Zn
       </text>
