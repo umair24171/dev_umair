@@ -1,5 +1,5 @@
 ---
-title: "Flutter AI Virtual Try-On: 6-Week Build, Zero BS"
+title: "Flutter AI Virtual Try-On App: 6-Week Build, Zero BS"
 excerpt: "We built a Flutter AI virtual try-on app feature in 6 weeks for an e-commerce client. Here’s the real plan, cost factors, and what actually works."
 date: "2026-04-02"
 tags: ["Flutter", "AI", "E-commerce", "Computer Vision", "Case Study", "App Development", "Freelance"]
@@ -242,3 +242,10 @@ Look, building a **Flutter AI virtual try-on app** feature in 6 weeks is ambitio
 Ready to add this to your app, or need help figuring out your next big Flutter/AI feature? Let's chat.
 
 [Book a Free 15-Minute Discovery Call with Umair](https://your-calendly-link.com) (or whatever your CTA is)
+
+---
+
+## Further Reading
+
+- [Flutter AI Prompt Engineering: Claude's Patterns That Work](/blog/fixing-flutter-ai-claudes-prompt-patterns-that-work)
+- [Flutter MVP Timeline: Idea to App Store in 10 Weeks](/blog/flutter-mvp-timeline-idea-to-app-store-in-10-weekstitle-excerptpl)
