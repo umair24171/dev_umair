@@ -193,3 +193,10 @@ Seriously. If you're building a new Flutter app or looking to upgrade an existin
 Don't wait until 2026 to figure this out when your competitors are already doing it. This technology is mature, reliable, and gives you unparalleled control. If you're ready to explore how to implement cost-effective, private voice features in your Flutter app, let's chat. I've done this for multiple clients, from internal tools to user-facing apps like Muslifie, and I can tell you exactly what it takes to get this running smoothly for your project.
 
 **Book a quick 15-min call to discuss your project: [Your Calendly/Booking Link Here]**
+
+---
+
+## Further Reading
+
+- [Cut AI Costs: Flutter On-Device LLM Integration Works](/blog/cut-ai-costs-flutter-on-device-llm-integration-works)
+- [Stop Leaks: Secure Flutter AI Apps, My Battle Plan](/blog/stop-leaks-secure-flutter-ai-apps-my-battle-plan)
