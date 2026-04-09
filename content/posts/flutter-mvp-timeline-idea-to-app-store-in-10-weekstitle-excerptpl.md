@@ -578,3 +578,10 @@ The absolute minimum is: a single core feature that solves one specific user pro
 Building an app is a journey, not a sprint, but the MVP phase *can* be a sprint. This **Flutter MVP timeline** is a battle-tested roadmap to get your idea into users' hands in just 10 weeks. It takes discipline, clear communication, and a ruthless focus on the core problem. If you stick to it, you'll be gathering real user feedback faster than you thought possible.
 
 Ready to build something amazing without the fluff? **Let's talk. Book a call with me to discuss your MVP.**
+
+---
+
+## Further Reading
+
+- [Flutter AI Virtual Try-On App: 6-Week Build, Zero BS](/blog/flutter-ai-virtual-try-on-6-week-build-zero-bs)
+- [8 Weeks to a Flutter Vertical SaaS MVP: Here's the Blueprint](/blog/8-weeks-to-a-flutter-vertical-saas-mvp-heres-the-blueprint)
