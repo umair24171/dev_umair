@@ -261,7 +261,16 @@
       "date": "2026-04-09",
       "wordCount": 5671,
       "devToUrl": null
+    },
+    {
+      "slug": "flutter-ai-agents-real-apis-no-over-engineering",
+      "primaryKeyword": "Flutter AI agents external APIs",
+      "title": "Flutter AI Agents: Real APIs (No Over-Engineering)",
+      "topic": "How to Build Flutter AI Agents That Use External APIs Without Over-Engineering",
+      "date": "2026-04-10",
+      "wordCount": 2389,
+      "devToUrl": "https://dev.to/umair24171/flutter-ai-agents-real-apis-no-over-engineering-796"
     }
   ],
-  "lastRun": "2026-04-09T05:48:43.940Z"
+  "lastRun": "2026-04-10T05:56:26.696Z"
 }
