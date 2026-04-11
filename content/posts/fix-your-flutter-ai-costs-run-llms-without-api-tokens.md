@@ -4,7 +4,7 @@ excerpt: "Cut Flutter AI costs and boost privacy by integrating LLMs without API
 date: "2026-04-11"
 tags: ["Flutter AI", "LLM Integration", "Cost Savings", "Data Privacy", "Open Source AI", "Senior Developer"]
 keywords: ["Flutter AI without API token", "Flutter LLM cost", "Flutter private AI", "Flutter open-source LLM", "API-free AI Flutter"]
-readTime: "13 min read"
+readTime: "16 min read"
 coverGradient: "from-emerald-500 to-teal-400"
 ---
 
