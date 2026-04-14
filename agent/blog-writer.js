@@ -154,9 +154,48 @@ async function saveRegistry(registry, sha) {
   });
 }
 
+// ─── Retry wrapper for Gemini 503 / overload errors ───
+// Tries gemini-2.5-flash first, then falls back to gemini-2.0-flash and
+// gemini-1.5-flash with exponential backoff between attempts.
+async function callGeminiWithRetry(promptFn, {
+  models     = ['gemini-2.5-flash', 'gemini-2.0-flash', 'gemini-1.5-flash'],
+  maxRetries = 3,
+  baseDelay  = 15_000,  // 15 s
+} = {}) {
+  const isOverload = (err) =>
+    /503|Service Unavailable|high demand|overloaded/i.test(err?.message || '');
+
+  for (let m = 0; m < models.length; m++) {
+    const modelName = models[m];
+    const model     = gemini.getGenerativeModel({ model: modelName });
+
+    for (let attempt = 1; attempt <= maxRetries; attempt++) {
+      try {
+        if (m > 0 || attempt > 1) {
+          console.log(`   🤖 ${modelName} — attempt ${attempt}/${maxRetries}`);
+        }
+        return await promptFn(model);
+      } catch (err) {
+        const isLast = m === models.length - 1 && attempt === maxRetries;
+        if (isOverload(err) && !isLast) {
+          const delay = baseDelay * attempt;          // 15 s → 30 s → 45 s
+          console.warn(`   ⚠️  ${modelName} overloaded (503). Waiting ${delay / 1000}s…`);
+          await new Promise(r => setTimeout(r, delay));
+        } else if (isOverload(err) && attempt === maxRetries && m < models.length - 1) {
+          // Exhausted retries on this model — move to the next
+          console.warn(`   ⚠️  ${modelName} — all ${maxRetries} retries failed. Trying fallback model…`);
+          break;
+        } else {
+          throw err;   // Non-overload error → propagate immediately
+        }
+      }
+    }
+  }
+  throw new Error('All Gemini models exhausted after retries. Cannot proceed.');
+}
+
 // ─── Use Gemini to intelligently pick the best trending topic ───
 async function pickTrendingTopicWithGemini(trendingItems, publishedSlugs) {
-  const model = gemini.getGenerativeModel({ model: 'gemini-2.5-flash' });
 
   const itemsList = trendingItems
     .slice(0, 40)
@@ -234,8 +273,9 @@ Output ONLY this XML, nothing else:
 <angle>specific hook that makes this worth reading today</angle>
 <tags>Tag1, Tag2, Tag3, Tag4</tags>`;
 
-  const result = await model.generateContent(prompt);
-  const text   = result.response.text();
+  const text = await callGeminiWithRetry(
+    (model) => model.generateContent(prompt).then(r => r.response.text())
+  );
 
   const extract = (tag) => {
     const match = text.match(new RegExp(`<${tag}>([\\s\\S]*?)<\\/${tag}>`));
@@ -299,7 +339,6 @@ function runSeoChecks(post, topicData) {
 
 // ─── Generate the full blog post with Gemini ───
 async function generatePost(topicData) {
-  const model = gemini.getGenerativeModel({ model: 'gemini-2.5-flash' });
 
   const prompt = `You are Umair — senior Flutter/Node.js dev from Pakistan.
   4+ years experience. 20+ production apps shipped. Built FarahGPT (5,100+ users), Muslifie (Muslim travel marketplace with 200+ companies), a 5-agent gold trading system.
@@ -383,8 +422,9 @@ async function generatePost(topicData) {
   <readTime>X min read</readTime>
   <content>full markdown post</content>`;
 
-  const result = await model.generateContent(prompt);
-  const text   = result.response.text();
+  const text = await callGeminiWithRetry(
+    (model) => model.generateContent(prompt).then(r => r.response.text())
+  );
 
   const extract = (tag) => {
     // Use greedy match for <content> — the markdown body often contains
@@ -562,15 +602,9 @@ async function run() {
     console.log(`🔍 Intent: ${topicData.searchIntent}`);
     console.log(`👥 Audience: ${topicData.targetAudience}\n`);
 
-    // 4. Generate full blog post (retry once on failure)
+    // 4. Generate full blog post (with auto-retry + model fallback via callGeminiWithRetry)
     console.log('✍️  Generating SEO-optimized post with Gemini...');
-    let post;
-    try {
-      post = await generatePost(topicData);
-    } catch (e) {
-      console.log('⚠️  First attempt failed, retrying...');
-      post = await generatePost(topicData);
-    }
+    const post = await generatePost(topicData);
     console.log(`✅ Generated: "${post.title}"`);
 
     // 5. SEO quality checks

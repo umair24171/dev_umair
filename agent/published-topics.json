@@ -261,7 +261,34 @@
       "date": "2026-04-09",
       "wordCount": 5671,
       "devToUrl": null
+    },
+    {
+      "slug": "flutter-ai-agents-real-apis-no-over-engineering",
+      "primaryKeyword": "Flutter AI agents external APIs",
+      "title": "Flutter AI Agents: Real APIs (No Over-Engineering)",
+      "topic": "How to Build Flutter AI Agents That Use External APIs Without Over-Engineering",
+      "date": "2026-04-10",
+      "wordCount": 2389,
+      "devToUrl": "https://dev.to/umair24171/flutter-ai-agents-real-apis-no-over-engineering-796"
+    },
+    {
+      "slug": "fix-your-flutter-ai-costs-run-llms-without-api-tokens",
+      "primaryKeyword": "Flutter AI without API token",
+      "title": "Fix Your Flutter AI Costs: Run LLMs Without API Tokens",
+      "topic": "How to Build LLM Features in Flutter Without Direct API Tokens – Cut Costs & Boost Privacy",
+      "date": "2026-04-11",
+      "wordCount": 3008,
+      "devToUrl": "https://dev.to/umair24171/fix-your-flutter-ai-costs-run-llms-without-api-tokens-9ih"
+    },
+    {
+      "slug": "flutter-vs-native-ai-apps-2026-pick-right-save-millions",
+      "primaryKeyword": "Flutter vs Native AI Apps 2026",
+      "title": "Flutter vs Native AI Apps 2026: Pick Right, Save Millions",
+      "topic": "Flutter vs Native iOS/Android for AI Apps in 2026: Cost, Performance, & Development Speed",
+      "date": "2026-04-12",
+      "wordCount": 2749,
+      "devToUrl": "https://dev.to/umair24171/flutter-vs-native-ai-apps-2026-pick-right-save-millions-g25"
     }
   ],
-  "lastRun": "2026-04-09T05:48:43.940Z"
+  "lastRun": "2026-04-12T05:52:53.294Z"
 }
