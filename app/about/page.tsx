@@ -3,14 +3,14 @@ import Link from 'next/link';
 import Logo from '../components/Logo';
 
 export const metadata: Metadata = {
-  title: 'About Umair Bilal — Senior Flutter Developer | BuildZn',
+  title: 'About Umair Bilal — Flutter & AI Engineer | BuildZn',
   description:
-    'Senior Flutter Developer with 4+ years experience, 20+ apps shipped to App Store & Google Play. Founder of FarahGPT (5,100+ users) and Muslifie. Open to senior remote Flutter roles.',
+    'Flutter & AI Engineer with 4+ years experience and 20+ production apps shipped. I build mobile apps, AI-powered systems, and full-stack SaaS. Flutter, Node.js, Next.js, Claude API, OpenAI, Firebase, MongoDB, Stripe, RevenueCat.',
   alternates: { canonical: 'https://www.buildzn.com/about' },
   openGraph: {
-    title: 'About Umair Bilal — Senior Flutter Developer | BuildZn',
+    title: 'About Umair Bilal — Flutter & AI Engineer | BuildZn',
     description:
-      'Senior Flutter Developer with 4+ years experience and 20+ apps shipped. Available for freelance projects and senior remote roles.',
+      'Flutter & AI Engineer with 4+ years experience and 20+ apps shipped. Available for freelance projects and senior remote roles.',
     url: 'https://www.buildzn.com/about',
     siteName: 'BuildZn',
     type: 'profile',
@@ -87,9 +87,9 @@ export default function AboutPage() {
     '@context': 'https://schema.org',
     '@type': 'Person',
     name: 'Umair Bilal',
-    jobTitle: 'Senior Flutter Developer',
+    jobTitle: 'Flutter & AI Engineer',
     description:
-      'Senior Flutter Developer with 4+ years experience and 20+ apps shipped to App Store and Google Play. Founder of FarahGPT and Muslifie.',
+      'Flutter & AI Engineer with 4+ years experience and 20+ production apps shipped. Builds mobile apps, AI-powered systems, and full-stack SaaS. Founder of FarahGPT and Muslifie.',
     url: 'https://www.buildzn.com',
     image: 'https://www.buildzn.com/og-image.png',
     worksFor: {
@@ -152,14 +152,14 @@ export default function AboutPage() {
             <h1 className="text-[clamp(36px,5vw,64px)] font-black leading-[1.05] tracking-[-2px] mb-6">
               Umair Bilal<br />
               <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent">
-                Senior Flutter Dev
+                Flutter &amp; AI Engineer
               </span>
             </h1>
             <p className="text-lg text-white/50 leading-relaxed mb-4">
-              4+ years building production mobile apps. 20+ apps shipped to App Store and Google Play. Based in Pakistan, working with clients worldwide.
+              Flutter &amp; AI Engineer with 4+ years experience and 20+ production apps shipped. I build mobile apps, AI-powered systems, and full-stack SaaS products. Based in Pakistan, working with clients worldwide.
             </p>
             <p className="text-base text-white/40 leading-relaxed mb-8">
-              I built FarahGPT (5,100+ active users) and Muslifie (200+ verified international companies) — and a handful of AI agents that run 24/7 without me touching them. I write, ship, and support real products.
+              I built FarahGPT (5,100+ active users) and Muslifie (200+ verified international companies), shipped NexusOS (AI agent governance SaaS), and run a 9-agent YouTube content pipeline and AI trading system 24/7. Full-stack: Flutter, Node.js, Next.js, AI APIs, Firebase, MongoDB, Stripe, RevenueCat.
             </p>
 
             {/* Key numbers */}

@@ -76,7 +76,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     author: {
       '@type': 'Person',
       name: 'Umair Bilal',
-      jobTitle: 'Senior Flutter Developer',
+      jobTitle: 'Flutter & AI Engineer',
       url: 'https://www.buildzn.com',
       sameAs: [
         'https://github.com/umair24171',
@@ -159,7 +159,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         <div className="flex items-center gap-4 pb-8 border-b border-white/[0.06] mb-8">
           <div className="w-9 h-9 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center font-bold text-sm">U</div>
           <div>
-            <p className="text-sm font-semibold">Umair <span className="text-white/40 font-normal text-[12px]">· Senior Flutter Developer</span></p>
+            <p className="text-sm font-semibold">Umair <span className="text-white/40 font-normal text-[12px]">· Flutter &amp; AI Engineer</span></p>
             <p className="text-[12px] text-white/30">{new Date(post.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })} · {post.readTime}</p>
           </div>
         </div>
@@ -179,11 +179,11 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           <div>
             <p className="text-sm font-bold mb-1">Umair Bilal</p>
             <p className="text-[13px] text-white/40 leading-relaxed">
-              Senior Flutter Developer with 4+ years experience and 20+ apps shipped to App Store and Google Play. Founder of{' '}
-              <a href="https://apps.apple.com/pk/app/farahgpt/id6746275409" target="_blank" rel="noopener noreferrer" className="text-purple-400 hover:text-purple-300">FarahGPT</a>{' '}
-              (5,100+ users) and{' '}
-              <a href="https://www.muslifie.com" target="_blank" rel="noopener noreferrer" className="text-purple-400 hover:text-purple-300">Muslifie</a>{' '}
-              (200+ verified companies). Full-stack: Flutter, Node.js, Next.js, AI, Stripe, RevenueCat, Firebase, MongoDB.
+              Flutter &amp; AI Engineer with 4+ years experience and 20+ production apps shipped. I build mobile apps, AI-powered systems, and full-stack SaaS. Founder of{' '}
+              <a href="https://www.buildzn.com" target="_blank" rel="noopener noreferrer" className="text-purple-400 hover:text-purple-300">BuildZn</a>{' '}
+              and{' '}
+              <a href="https://www.buildzn.com" target="_blank" rel="noopener noreferrer" className="text-purple-400 hover:text-purple-300">NexusOS</a>{' '}
+              (AI agent governance SaaS). Full-stack: Flutter, Node.js, Next.js, AI APIs, Firebase, MongoDB, Stripe, RevenueCat.
             </p>
             <div className="flex gap-4 mt-3">
               <a href="https://www.linkedin.com/in/umair-bilal-/" target="_blank" rel="noopener noreferrer" className="text-[12px] text-purple-400 hover:text-purple-300 font-medium transition-colors">LinkedIn →</a>

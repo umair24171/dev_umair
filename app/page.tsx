@@ -348,10 +348,10 @@ const apps = [
 ];
 
 const services = [
-  { icon: '📱', title: 'Mobile Apps', desc: 'Cross-platform Flutter apps with native performance, deployed to both stores.', features: ['iOS & Android', 'App Store deployment', 'Push notifications', 'Offline support'] },
-  { icon: '⚡', title: 'AI Integration', desc: 'Smart features powered by OpenAI, custom RAG systems, and ML models.', features: ['ChatGPT / Claude API', 'AI chatbots', 'RAG systems', 'Smart recommendations'] },
-  { icon: '🌐', title: 'Backend & Admin', desc: 'Scalable Node.js APIs with beautiful Next.js admin dashboards.', features: ['REST APIs', 'Admin panels', 'Real-time features', 'Database design'] },
-  { icon: '💳', title: 'Payments & Growth', desc: 'Monetization systems with Stripe, RevenueCat, and analytics.', features: ['Stripe Connect', 'In-app purchases', 'Subscription systems', 'Analytics dashboards'] },
+  { icon: '📱', title: 'Flutter Mobile App', desc: 'Full production Flutter apps built for iOS & Android — App Store ready, with native performance.', features: ['iOS & Android', 'App Store deployment', 'Push notifications', 'Offline-first architecture'] },
+  { icon: '⚡', title: 'AI Feature Integration', desc: 'Add LLM-powered features to your existing app or product — chat, RAG, agents, recommendations.', features: ['Claude / OpenAI / Gemini API', 'RAG systems', 'Multi-agent pipelines', 'Smart recommendations'] },
+  { icon: '🌐', title: 'Full-Stack SaaS', desc: 'Complete SaaS products with Node.js backend, Next.js dashboard, Stripe payments, and auth.', features: ['Node.js + Next.js', 'Admin dashboard', 'Stripe subscriptions', 'Auth & onboarding'] },
+  { icon: '🤖', title: 'Agent & Automation Systems', desc: 'Multi-agent pipelines, bots, and automation systems that run 24/7 without human input.', features: ['Multi-agent pipelines', 'Automated workflows', 'Discord / Slack bots', 'CI/CD + GitHub Actions'] },
 ];
 
 const agents = [
@@ -501,17 +501,17 @@ export default function Home() {
         <div className="relative z-10 max-w-[1200px] mx-auto px-6 pt-[140px] pb-20 text-center w-full">
           <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-purple-500/10 border border-purple-500/20 mb-8 animate-[fadeUp_0.6s_ease-out]">
             <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-            <span className="text-sm font-medium text-purple-300">20+ Apps Live in Production</span>
+            <span className="text-sm font-medium text-purple-300">Flutter &amp; AI Engineer · 20+ Apps Live in Production</span>
           </div>
 
           <h1 className="text-[clamp(36px,6vw,80px)] font-black leading-[1.05] tracking-[-2px] mb-6 animate-[fadeUp_0.8s_ease-out]">
-            Your Flutter App.<br />
-            <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent">Live on Both Stores.</span><br />
+            Flutter Apps. AI Systems.<br />
+            <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent">Full-Stack SaaS.</span><br />
             Fixed Price.
           </h1>
 
           <p className="text-lg md:text-xl text-white/40 max-w-[620px] mx-auto mb-6 font-normal leading-relaxed animate-[fadeUp_1s_ease-out]">
-            No disappearing developers. No scope creep. No surprise invoices. You get a senior Flutter dev who has shipped 20+ apps — and a fixed-price contract that guarantees App Store delivery.
+            I build production mobile apps, AI-powered systems, and full-stack SaaS products — from idea to App Store. Fixed price. No surprises.
           </p>
 
           {/* Availability Badge */}
@@ -520,7 +520,7 @@ export default function Home() {
             <span className="text-sm font-medium text-green-300">🟢 Open to 2 new projects — April 2026</span>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-20 animate-[fadeUp_1.2s_ease-out]">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-[fadeUp_1.2s_ease-out]">
             <a href="#contact" className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-8 py-4 rounded-full font-bold text-lg hover:shadow-2xl hover:shadow-purple-500/40 transition-all hover:-translate-y-0.5 inline-flex items-center justify-center gap-2">
               Get a Free Proposal <span className="text-xl">→</span>
             </a>
@@ -528,6 +528,9 @@ export default function Home() {
               See If Your Project Fits →
             </a>
           </div>
+          <p className="text-sm text-white/25 mt-4 mb-16 animate-[fadeUp_1.3s_ease-out]">
+            Whether you need a Flutter app, an AI integration, or a full SaaS — fixed price, production guaranteed.
+          </p>
 
           {/* Stats */}
           <div className="grid grid-cols-2 md:grid-cols-4 bg-white/[0.03] backdrop-blur-xl border border-white/[0.06] rounded-2xl overflow-hidden max-w-[800px] mx-auto animate-[fadeUp_1.4s_ease-out]">
@@ -554,6 +557,35 @@ export default function Home() {
           Deployed on &nbsp;•&nbsp; Apple App Store &nbsp;•&nbsp; Google Play Store &nbsp;•&nbsp; Web &nbsp;•&nbsp; Firebase &nbsp;•&nbsp; AWS
         </span>
       </div>
+
+      {/* ─── SKILLS GRID ─── */}
+      <section id="skills" className="max-w-[1200px] mx-auto px-6 py-20">
+        <div className="text-center mb-12">
+          <p className="text-sm font-semibold text-purple-500 uppercase tracking-[2px] mb-3">Tech Stack</p>
+          <h2 className="text-[clamp(24px,3.5vw,40px)] font-extrabold tracking-tight">Everything I ship with</h2>
+        </div>
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+          {[
+            { category: 'Mobile', icon: '📱', items: ['Flutter', 'iOS', 'Android', 'Dart'] },
+            { category: 'Backend', icon: '🌐', items: ['Node.js', 'Next.js', 'Express'] },
+            { category: 'AI & Agents', icon: '🤖', items: ['Claude API', 'OpenAI', 'LLM Integration', 'Agent Pipelines'] },
+            { category: 'Databases', icon: '🗄️', items: ['Firebase', 'MongoDB', 'Supabase'] },
+            { category: 'Payments', icon: '💳', items: ['Stripe', 'RevenueCat'] },
+            { category: 'Infra', icon: '⚙️', items: ['Vercel', 'Render', 'GitHub Actions'] },
+          ].map((group, i) => (
+            <div key={i} className="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-5 hover:border-purple-500/20 transition-all">
+              <p className="text-[10px] font-bold text-purple-400 uppercase tracking-[1.5px] mb-3">{group.category}</p>
+              <div className="flex flex-wrap gap-1.5">
+                {group.items.map((item, j) => (
+                  <span key={j} className="px-2.5 py-1 rounded-full text-[11px] font-medium bg-white/[0.04] text-white/45 border border-white/[0.07]">
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
 
       {/* ─── SERVICES ─── */}
       <section id="services" className="max-w-[1200px] mx-auto px-6 py-24">
