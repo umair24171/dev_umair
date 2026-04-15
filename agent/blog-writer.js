@@ -439,30 +439,55 @@ Output ONLY this XML:
 <readTime>X min read</readTime>
 <content>full markdown post</content>`;
 
-  const text = await callGeminiWithRetry(
-    (model) => model.generateContent(prompt).then(r => r.response.text())
+  const rawText = await callGeminiWithRetry(
+    (model) => model.generateContent({
+      contents: [{ role: 'user', parts: [{ text: prompt }] }],
+      generationConfig: { maxOutputTokens: 8192, temperature: 0.9 },
+    }).then(r => r.response.text())
   );
 
+  // Strip markdown code fences Gemini sometimes wraps the whole response in
+  // (e.g. ```xml … ``` or ```markdown … ```) before we parse the XML tags.
+  const text = rawText
+    .replace(/^```(?:xml|markdown|md|text)?\s*/i, '')
+    .replace(/\s*```\s*$/, '')
+    .trim();
+
   const extract = (tag) => {
-    // Use greedy match for <content> — the markdown body often contains
-    // XML-like strings (frontmatter samples, HTML snippets, closing tags)
-    // that cause a non-greedy *? to terminate too early.
-    // Greedy *  always captures up to the LAST closing tag, which is correct
-    // since each field appears exactly once in the response.
+    // Use greedy match so the regex captures up to the LAST closing tag —
+    // needed because the markdown body can contain XML-like strings that would
+    // cause a non-greedy *? to terminate too early.
     const pattern = new RegExp(`<${tag}>([\\s\\S]*)<\\/${tag}>`);
-    const match   = text.match(pattern);
+    let match = text.match(pattern);
+
+    // Fallback for <content>: if the closing tag is absent (response got
+    // truncated by Gemini before it could emit </content>), capture everything
+    // from the opening tag to the end of the string rather than crashing.
+    if (!match && tag === 'content') {
+      const openPattern = new RegExp(`<${tag}>([\\s\\S]*)`);
+      match = text.match(openPattern);
+      if (match) {
+        console.warn('⚠️  </content> closing tag missing — response was likely truncated. Using full remainder.');
+      }
+    }
+
     if (!match) {
       console.error(`⚠️  Gemini response snippet (first 500 chars):\n${text.substring(0, 500)}`);
       throw new Error(`Missing <${tag}> tag in Gemini response`);
     }
 
-    // Sanitize: strip any stray XML/HTML tags Gemini may have leaked into the
-    // extracted value (e.g. a </title> or <excerpt>…</excerpt> block that
-    // bleeds in when the greedy regex overshoots), then trim outer whitespace.
-    let value = match[1].replace(/<\/?[a-zA-Z][^>]*>/g, '').trim();
+    let value = match[1].trim();
 
-    // For single-line fields, also collapse internal newlines into a space so
-    // the value never introduces a multi-line YAML key that breaks the build.
+    // For non-content fields only: strip any stray XML/HTML tags Gemini may
+    // have leaked in (e.g. a </title> that bleeds in when the greedy regex
+    // overshoots). Leave the <content> body untouched so markdown with inline
+    // HTML (<div>, <img>, code examples with angle brackets) survives intact.
+    if (tag !== 'content') {
+      value = value.replace(/<\/?[a-zA-Z][^>]*>/g, '').trim();
+    }
+
+    // For single-line fields, collapse internal newlines into a space so the
+    // value never introduces a multi-line YAML key that breaks the build.
     if (tag === 'title' || tag === 'excerpt' || tag === 'readTime') {
       value = value.replace(/\s*\n\s*/g, ' ').trim();
     }
