@@ -297,7 +297,16 @@
       "date": "2026-04-15",
       "wordCount": 2789,
       "devToUrl": null
+    },
+    {
+      "slug": "ai-chat-data-privacy-heppner-ruling-your-app",
+      "primaryKeyword": "AI chat data privacy",
+      "title": "AI Chat Data Privacy: Heppner Ruling & Your App",
+      "topic": "US v. Heppner Ruling: What 'No AI Chat Privilege' Means for Your App's Data Privacy",
+      "date": "2026-04-16",
+      "wordCount": 1937,
+      "devToUrl": "https://dev.to/umair24171/ai-chat-data-privacy-heppner-ruling-your-app-9e1"
     }
   ],
-  "lastRun": "2026-04-15T11:34:50.720Z"
+  "lastRun": "2026-04-16T06:01:06.522Z"
 }
