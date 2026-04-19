@@ -1,10 +1,10 @@
 ---
-title: "Fix Your AI Agent's Code: Senior Engineer Standards"
-excerpt: "Tired of AI code that acts like an intern? Master AGENTS.md to transform your AI coding agent into a senior engineer. Eliminate sycophancy and drive-by refac..."
+title: "AI agent senior engineer: Senior Engineer Standards's Code: Senior Engineer Standards"
+excerpt: "AI agent senior engineer: Tired of AI code that acts like an intern? Master AGENTS.md to transform your AI coding agent into a senior engineer. Eliminate syc..."
 date: "2026-04-19"
 tags: ["AI Agents", "Prompt Engineering", "AI Development", "Coding Tools", "Full-Stack", "Developer Productivity", "Claude Code", "Gemini CLI"]
 keywords: ["AI agent senior engineer", "AI coding agent best practices", "Claude Code workflow", "AI agent prompt engineering", "reliable AI code generation", "eliminate AI sycophancy", "Karpathy AI principles"]
-readTime: "10 min read"
+readTime: "11 min read"
 coverGradient: "from-amber-500 to-orange-400"
 ---
 
@@ -175,11 +175,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'AI agent senior engineer: Senior Engineer Standards',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'AI agent senior engineer: Senior Engineer Standards'),
     );
   }
 }
@@ -267,5 +267,8 @@ Not entirely, but it significantly reduces it. By requiring the agent to "Unders
 
 ### Is `AGENTS.md` just a longer system prompt?
 No. While it lives in the system prompt, `AGENTS.md` is a *contract*. It's a structured, version-controlled document that defines behavior across multiple interactions and agents, making the agent's actions predictable and aligned with senior engineering standards, rather than just a one-off instruction set.
+
+For more on related topics, check out [AI Chat Data Privacy: Heppner Ruling & Your App](/blog/ai-chat-data-privacy-heppner-ruling-your-app).
+
 
 Look, turning an AI coding agent into an actual **AI agent senior engineer** isn't about magic prompts. It's about establishing clear, enforceable rules of engagement, just like you would with a human team. `AGENTS.md` gives you that blueprint. Implement it, iterate on it, and watch your code quality jump.
