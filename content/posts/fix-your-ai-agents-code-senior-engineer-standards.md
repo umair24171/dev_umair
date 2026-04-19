@@ -1,5 +1,5 @@
 ---
-title: "AI agent senior engineer: Senior Engineer Standards's Code: Senior Engineer Standards"
+title: "AI Agent Senior Engineer: Raise Your Code's Standards"
 excerpt: "AI agent senior engineer: Tired of AI code that acts like an intern? Master AGENTS.md to transform your AI coding agent into a senior engineer. Eliminate syc..."
 date: "2026-04-19"
 tags: ["AI Agents", "Prompt Engineering", "AI Development", "Coding Tools", "Full-Stack", "Developer Productivity", "Claude Code", "Gemini CLI"]
