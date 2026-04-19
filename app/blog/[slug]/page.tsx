@@ -55,19 +55,62 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   };
 }
 
+// ─── Extract FAQ Q&A pairs from markdown for FAQPage JSON-LD ───
+// Looks for ## FAQs / ## FAQ / ## Frequently Asked Questions sections
+// and parses ### Question / **Question** patterns that follow.
+interface FaqEntry {
+  question: string;
+  answer: string;
+}
+
+function extractFaqs(markdown: string): FaqEntry[] {
+  const faqSectionMatch = markdown.match(
+    /^##\s+(?:faqs?|frequently asked questions|common questions)[\s\S]*?(?=^##\s+|\Z)/im
+  );
+  if (!faqSectionMatch) return [];
+
+  const section = faqSectionMatch[0];
+  const faqs: FaqEntry[] = [];
+
+  // Strategy 1: ### Question followed by answer
+  const h3Pattern = /^###\s+(.+?)$([\s\S]*?)(?=^###\s+|\Z)/gm;
+  let match: RegExpExecArray | null;
+  while ((match = h3Pattern.exec(section)) !== null) {
+    const q = match[1].trim().replace(/^\*+|\*+$/g, '');
+    const a = match[2].trim().replace(/\n{2,}/g, ' ').replace(/\s+/g, ' ');
+    if (q && a && q.length < 200 && a.length > 10) {
+      faqs.push({ question: q, answer: a.substring(0, 500) });
+    }
+  }
+
+  // Strategy 2: **Q: ...** or **Question** followed by answer (fallback)
+  if (faqs.length === 0) {
+    const boldPattern = /\*\*(?:Q:\s*)?(.+?\?)\*\*\s*([\s\S]*?)(?=\*\*|\Z)/g;
+    while ((match = boldPattern.exec(section)) !== null) {
+      const q = match[1].trim();
+      const a = match[2].trim().replace(/\n{2,}/g, ' ').replace(/\s+/g, ' ');
+      if (q && a && a.length > 10) {
+        faqs.push({ question: q, answer: a.substring(0, 500) });
+      }
+    }
+  }
+
+  return faqs.slice(0, 10); // Google recommends ≤ 10
+}
+
 export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const post = getPostBySlug(slug);
   if (!post) notFound();
 
   const relatedPosts = getRelatedPosts(slug, post.tags, 3);
-
   const htmlContent = marked(post.content) as string;
 
   const postUrl   = `https://www.buildzn.com/blog/${slug}`;
   const ogImageUrl = `${postUrl}/opengraph-image`;
 
-  const jsonLd = {
+  // Article JSON-LD
+  const articleJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Article',
     headline: post.title,
@@ -109,13 +152,53 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     },
   };
 
+  // FAQPage JSON-LD — extracted from the post itself
+  const faqs = extractFaqs(post.content);
+  const faqJsonLd = faqs.length > 0 ? {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map(f => ({
+      '@type': 'Question',
+      name: f.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: f.answer,
+      },
+    })),
+  } : null;
+
+  // Breadcrumb JSON-LD (small SEO boost, tells Google the site structure)
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.buildzn.com' },
+      { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.buildzn.com/blog' },
+      { '@type': 'ListItem', position: 3, name: post.title, item: postUrl },
+    ],
+  };
+
   return (
     <div className="min-h-screen bg-[#06080f] text-white [overflow-x:clip]">
 
-      {/* JSON-LD Structured Data */}
+      {/* JSON-LD: Article */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
+
+      {/* JSON-LD: FAQ (rich snippets) */}
+      {faqJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        />
+      )}
+
+      {/* JSON-LD: Breadcrumbs */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
 
       {/* ─── NAV ─── */}
