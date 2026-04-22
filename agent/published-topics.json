@@ -324,7 +324,17 @@
       "date": "2026-04-19",
       "wordCount": 2120,
       "devToUrl": "https://dev.to/umair24171/fix-your-ai-agents-code-senior-engineer-standards-2opb"
+    },
+    {
+      "slug": "how-i-built-llm-as-a-judge-security-caught-a-12k-farahgpt-bug",
+      "primaryKeyword": "llm as a judge security",
+      "title": "How I Built LLM as a Judge Security: Caught a $12K FarahGPT Bug",
+      "topic": "LLM-as-a-Judge: Securing AI Agents in Production with Node.js",
+      "uniqueClaim": "A concrete Node.js implementation example for an LLM-as-a-Judge proxy, demonstrating detection of a specific hallucination or misalignment error (e.g., unauthorized API call attempt, inappropriate content generation, or a \"bad\" trade decision from his gold trading agent) in one of Umair's projects. Includes practical numbers like latency overhead and detection rate for this specific error type.",
+      "date": "2026-04-22",
+      "wordCount": 2143,
+      "devToUrl": "https://dev.to/umair24171/how-i-built-llm-as-a-judge-security-caught-a-12k-farahgpt-bug-2koo"
     }
   ],
-  "lastRun": "2026-04-19T05:57:02.745Z"
+  "lastRun": "2026-04-22T05:59:51.809Z"
 }
