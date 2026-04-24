@@ -334,7 +334,17 @@
       "date": "2026-04-22",
       "wordCount": 2143,
       "devToUrl": "https://dev.to/umair24171/how-i-built-llm-as-a-judge-security-caught-a-12k-farahgpt-bug-2koo"
+    },
+    {
+      "slug": "slash-llm-costs-open-source-llm-api-gateway-for-14-providers",
+      "primaryKeyword": "open source LLM API gateway",
+      "title": "Slash LLM Costs: open source LLM API gateway for 14+ Providers",
+      "topic": "Slash LLM API Costs: Open Source Gateway for 14+ Free Providers",
+      "uniqueClaim": "How a unified OpenAI-compatible API gateway (like `free-llm-gateway`) can automatically route requests across 14+ free/cheap LLM providers, providing fallback and rate limiting to slash recurring AI costs by up to 80% for production apps like FarahGPT, based on real implementation challenges.",
+      "date": "2026-04-24",
+      "wordCount": 1949,
+      "devToUrl": "https://dev.to/umair24171/slash-llm-costs-open-source-llm-api-gateway-for-14-providers-554o"
     }
   ],
-  "lastRun": "2026-04-22T05:59:51.809Z"
+  "lastRun": "2026-04-24T06:07:30.481Z"
 }
