@@ -344,7 +344,17 @@
       "date": "2026-04-24",
       "wordCount": 1949,
       "devToUrl": "https://dev.to/umair24171/slash-llm-costs-open-source-llm-api-gateway-for-14-providers-554o"
+    },
+    {
+      "slug": "cancelled-claude-ai-agent-my-4-reasons-for-the-switch",
+      "primaryKeyword": "cancelled claude ai agent",
+      "title": "Cancelled Claude AI Agent: My 4 Reasons For The Switch",
+      "topic": "I Cancelled Claude: Why Anthropic's LLM Isn't Worth It for My AI Agents Anymore",
+      "uniqueClaim": "This post will present specific, observed degradation patterns in Claude's output or API behavior for AI agent tasks (e.g., increased hallucination rate on sequential prompts, higher token usage for equivalent context), coupled with an evaluation of how these issues impacted actual agent performance (e.g., specific task failure rates) and led to a concrete switch to a named alternative (e.g., DeepSeek v4 or a fine-tuned open-source model), including comparative cost or performance metrics.",
+      "date": "2026-04-25",
+      "wordCount": 1611,
+      "devToUrl": "https://dev.to/umair24171/cancelled-claude-ai-agent-my-4-reasons-for-the-switch-20ab"
     }
   ],
-  "lastRun": "2026-04-24T06:07:30.481Z"
+  "lastRun": "2026-04-25T05:47:03.185Z"
 }
