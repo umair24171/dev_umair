@@ -354,7 +354,17 @@
       "date": "2026-04-25",
       "wordCount": 1611,
       "devToUrl": "https://dev.to/umair24171/cancelled-claude-ai-agent-my-4-reasons-for-the-switch-20ab"
+    },
+    {
+      "slug": "fixing-qwen-36-4090-llamacpp-bug-18-toks-on-my-rtx-4090",
+      "primaryKeyword": "qwen 3.6 4090 llama.cpp bug",
+      "title": "Fixing Qwen 3.6 4090 llama.cpp Bug: 18 tok/s on My RTX 4090",
+      "topic": "Qwen 3.6-27B on RTX 4090: Fixing the Silent Corruption Bug in Llama.cpp",
+      "uniqueClaim": "Umair will detail the specific `llama.cpp` configuration parameters and steps that cause and fix the \"silent-corruption bug\" for `Qwen3.6-27B` on an `RTX 4090`, providing actual tokens/second benchmarks for successful and failed configurations.",
+      "date": "2026-04-26",
+      "wordCount": 2024,
+      "devToUrl": "https://dev.to/umair24171/fixing-qwen-36-4090-llamacpp-bug-18-toks-on-my-rtx-4090-5c25"
     }
   ],
-  "lastRun": "2026-04-25T05:47:03.185Z"
+  "lastRun": "2026-04-26T06:05:30.962Z"
 }
