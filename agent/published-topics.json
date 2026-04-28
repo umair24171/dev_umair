@@ -364,7 +364,17 @@
       "date": "2026-04-26",
       "wordCount": 2024,
       "devToUrl": "https://dev.to/umair24171/fixing-qwen-36-4090-llamacpp-bug-18-toks-on-my-rtx-4090-5c25"
+    },
+    {
+      "slug": "gemini-3-flash-my-ai-agent-benchmark-terminalbench-win-3-fixes",
+      "primaryKeyword": "ai agent benchmark terminalbench",
+      "title": "Gemini-3-Flash: My ai agent benchmark terminalbench Win & 3 Fixes",
+      "topic": "How I Built an AI Agent to Top TerminalBench on Gemini-3-Flash (And What Broke)",
+      "uniqueClaim": "This post will detail the specific architecture, prompt engineering techniques, and debugging process Umair used to build an AI agent that achieved a top score on the TerminalBench with Gemini-3-Flash-preview, outlining a specific unexpected integration bug with the Gemini API (or a different technical challenge like state management or tool orchestration that wasn't immediately obvious).",
+      "date": "2026-04-28",
+      "wordCount": 1841,
+      "devToUrl": "https://dev.to/umair24171/gemini-3-flash-my-ai-agent-benchmark-terminalbench-win-3-fixes-44eb"
     }
   ],
-  "lastRun": "2026-04-26T06:05:30.962Z"
+  "lastRun": "2026-04-28T06:27:56.748Z"
 }
