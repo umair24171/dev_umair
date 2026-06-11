@@ -384,7 +384,17 @@
       "date": "2026-04-29",
       "wordCount": 1749,
       "devToUrl": "https://dev.to/umair24171/how-claude-opus-cut-my-llm-costs-45-real-ai-agent-benchmarks-1289"
+    },
+    {
+      "slug": "rilable-ai-app-builder-review-why-it-fails-nested-tabs",
+      "primaryKeyword": "rilable AI app builder review",
+      "title": "Rilable AI App Builder Review: Why It Fails Nested Tabs",
+      "topic": "I Tried Rilable AI to Build a Flutter App: What It Gets Wrong (and Right)",
+      "uniqueClaim": "This post will demonstrate Rilable's specific shortcomings in handling a common Flutter navigation pattern (e.g., deeply nested tabs with dynamic state management) and show concrete examples of the messy, unmaintainable code it generates compared to a human-engineered Flutter equivalent.",
+      "date": "2026-06-11",
+      "wordCount": 2116,
+      "devToUrl": "https://dev.to/umair24171/rilable-ai-app-builder-review-why-it-fails-nested-tabs-32nc"
     }
   ],
-  "lastRun": "2026-04-29T06:21:42.990Z"
+  "lastRun": "2026-06-11T08:43:21.315Z"
 }
