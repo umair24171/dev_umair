@@ -394,7 +394,17 @@
       "date": "2026-06-11",
       "wordCount": 2116,
       "devToUrl": "https://dev.to/umair24171/rilable-ai-app-builder-review-why-it-fails-nested-tabs-32nc"
+    },
+    {
+      "slug": "build-cost-aware-ai-agent-3-laziest-dev-patterns",
+      "primaryKeyword": "build cost aware ai agent",
+      "title": "build cost aware AI agent: 3 Laziest Dev Patterns",
+      "topic": "How to Build Cost-Aware AI Agents: The 'Laziest Senior Dev' Patterns to Prevent Overspending",
+      "uniqueClaim": "This post will introduce and demonstrate specific \"Laziest Senior Dev\" agent design patterns Umair implements, such as \"explicit budget cap prompting,\" \"tiered action waterfalls,\" and \"pre-flight 'is this *truly* necessary' self-reflection checks,\" to actively prevent overspending and spiraling agent behavior, directly addressing the common problem of AI agents exceeding allocated resources.",
+      "date": "2026-06-12",
+      "wordCount": 1095,
+      "devToUrl": "https://dev.to/umair24171/build-cost-aware-ai-agent-3-laziest-dev-patterns-2a08"
     }
   ],
-  "lastRun": "2026-06-11T08:43:21.315Z"
+  "lastRun": "2026-06-12T08:22:22.423Z"
 }
