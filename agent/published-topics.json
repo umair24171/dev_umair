@@ -404,7 +404,17 @@
       "date": "2026-06-12",
       "wordCount": 1095,
       "devToUrl": "https://dev.to/umair24171/build-cost-aware-ai-agent-3-laziest-dev-patterns-2a08"
+    },
+    {
+      "slug": "how-i-built-an-ai-agent-video-voiceover-pipeline-nodejs-flutter",
+      "primaryKeyword": "ai agent video voiceover",
+      "title": "How I Built an AI Agent Video Voiceover Pipeline: Node.js + Flutter",
+      "topic": "How to Build an AI Agent for Video Content Creation: Download, Voice-over, Publish (Flutter/Node.js)",
+      "uniqueClaim": "I will share the actual Node.js agent orchestration code for managing a multi-stage AI video agent (download -> transcribe -> generate voiceover -> stitch -> prepare for publish) and reveal a robust error-handling pattern for voice-over generation failures, complete with real-world latency/cost benchmarks for a specific segment-level voice-over retry mechanism using two different LLMs.",
+      "date": "2026-06-13",
+      "wordCount": 2082,
+      "devToUrl": "https://dev.to/umair24171/how-i-built-an-ai-agent-video-voiceover-pipeline-nodejs-flutter-1pf8"
     }
   ],
-  "lastRun": "2026-06-12T08:22:22.423Z"
+  "lastRun": "2026-06-13T07:43:47.233Z"
 }
