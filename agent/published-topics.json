@@ -414,7 +414,17 @@
       "date": "2026-06-13",
       "wordCount": 2082,
       "devToUrl": "https://dev.to/umair24171/how-i-built-an-ai-agent-video-voiceover-pipeline-nodejs-flutter-1pf8"
+    },
+    {
+      "slug": "fixing-fablize-claude-opus-agent-skips-nodejs-blueprint",
+      "primaryKeyword": "Fablize Claude Opus agent",
+      "title": "Fixing Fablize Claude Opus Agent Skips: Node.js Blueprint",
+      "topic": "Fablize for Claude Opus: Enforcing AI Agent Completion & Verification in Node.js",
+      "uniqueClaim": "This post will demonstrate specific Node.js code examples showing how the Fablize plugin enforces a multi-step evidence-gathering and verification procedure for a Claude Opus agent, including examples of how the agent's behavior changes when evidence is insufficient or steps are skipped, leading to a measurable reduction in agent \"hallucinations\" or skipped actions.",
+      "date": "2026-06-14",
+      "wordCount": 2557,
+      "devToUrl": "https://dev.to/umair24171/fixing-fablize-claude-opus-agent-skips-nodejs-blueprint-1d7h"
     }
   ],
-  "lastRun": "2026-06-13T07:43:47.233Z"
+  "lastRun": "2026-06-14T08:13:40.862Z"
 }
