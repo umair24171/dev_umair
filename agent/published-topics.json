@@ -424,7 +424,17 @@
       "date": "2026-06-14",
       "wordCount": 2557,
       "devToUrl": "https://dev.to/umair24171/fixing-fablize-claude-opus-agent-skips-nodejs-blueprint-1d7h"
+    },
+    {
+      "slug": "5-guards-to-build-reliable-ai-agents-no-more-hallucinations",
+      "primaryKeyword": "build reliable AI agents",
+      "title": "5 Guards to build reliable AI agents: No More Hallucinations",
+      "topic": "Engineering Autonomous AI Agents: Practical Guards Against Reward-Hacking and Hallucination",
+      "uniqueClaim": "This post will provide code-level (or pseudo-code) blueprints and real-world lessons for implementing 'deterministic guard clauses' and 'pre-computation validation layers' within multi-agent loops to explicitly prevent agent reward-hacking and significantly reduce hallucination, based on Umair's experience building production AI agents.",
+      "date": "2026-06-15",
+      "wordCount": 2544,
+      "devToUrl": "https://dev.to/umair24171/5-guards-to-build-reliable-ai-agents-no-more-hallucinations-2daa"
     }
   ],
-  "lastRun": "2026-06-14T08:13:40.862Z"
+  "lastRun": "2026-06-15T10:22:44.682Z"
 }
