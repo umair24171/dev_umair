@@ -434,7 +434,17 @@
       "date": "2026-06-15",
       "wordCount": 2544,
       "devToUrl": "https://dev.to/umair24171/5-guards-to-build-reliable-ai-agents-no-more-hallucinations-2daa"
+    },
+    {
+      "slug": "my-2-month-local-llm-daily-coding-replacement-real-benchmarks",
+      "primaryKeyword": "local llm daily coding replacement",
+      "title": "My 2-Month local llm daily coding replacement: Real Benchmarks",
+      "topic": "My Experience Replacing Cloud LLMs (Claude/GPT) with Local Models for Daily Flutter & Node.js Coding",
+      "uniqueClaim": "Specific benchmarks (e.g., \"After 2 months, I found [Model X] with [Tool Y] provides 80% of Claude/GPT's utility for Flutter widget generation, but struggles with complex Node.js refactoring, saving $Z/month but costing X hours in setup and context switching latency.\") for common Flutter (Dart) and Node.js (TypeScript) coding tasks, highlighting specific model/tool combinations that do and don't work.",
+      "date": "2026-06-16",
+      "wordCount": 1750,
+      "devToUrl": "https://dev.to/umair24171/my-2-month-local-llm-daily-coding-replacement-real-benchmarks-54db"
     }
   ],
-  "lastRun": "2026-06-15T10:22:44.682Z"
+  "lastRun": "2026-06-16T09:23:08.685Z"
 }
