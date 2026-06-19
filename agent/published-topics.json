@@ -444,7 +444,17 @@
       "date": "2026-06-16",
       "wordCount": 1750,
       "devToUrl": "https://dev.to/umair24171/my-2-month-local-llm-daily-coding-replacement-real-benchmarks-54db"
+    },
+    {
+      "slug": "fixing-flutter-app-ui-testing-ai-agent-semantics-off-by-one",
+      "primaryKeyword": "flutter app ui testing ai agent",
+      "title": "Fixing Flutter App UI Testing AI Agent: Semantics & Off-by-One",
+      "topic": "Building AI Agents for Flutter App UI Testing: First Steps & Hard Truths",
+      "uniqueClaim": "This post will detail specific prompt engineering strategies for an LLM-based agent to interpret Flutter widget trees and generate UI interaction sequences, including a common \"off-by-one\" element selection bug encountered with `Semantics` widgets and how to fix it with specific `Accessibility` tree traversal techniques in a real Flutter project.",
+      "date": "2026-06-19",
+      "wordCount": 2004,
+      "devToUrl": "https://dev.to/umair24171/fixing-flutter-app-ui-testing-ai-agent-semantics-off-by-one-16d6"
     }
   ],
-  "lastRun": "2026-06-16T09:23:08.685Z"
+  "lastRun": "2026-06-19T09:05:56.075Z"
 }
