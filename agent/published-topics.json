@@ -454,7 +454,17 @@
       "date": "2026-06-19",
       "wordCount": 2004,
       "devToUrl": "https://dev.to/umair24171/fixing-flutter-app-ui-testing-ai-agent-semantics-off-by-one-16d6"
+    },
+    {
+      "slug": "free-local-ai-coding-agent-cut-dev-costs-90",
+      "primaryKeyword": "free local AI coding agent",
+      "title": "Free Local AI Coding Agent: Cut Dev Costs 90%",
+      "topic": "How to Run ChatGPT & Gemini as a Free Local Coding AI Agent (No Subscription)",
+      "uniqueClaim": "A step-by-step tutorial demonstrating how to specifically integrate and utilize CodePaidie (or the underlying principles) with specific commercial LLMs (e.g., GPT-4o through local API proxy, Gemini Pro via on-device/local inference) to create a *free, local coding AI environment* optimized for Flutter and Node.js tasks, including benchmarks for common dev workflows like code generation and debugging (e.g., 25 tok/s code generation latency on a mid-range laptop setup).",
+      "date": "2026-06-20",
+      "wordCount": 2779,
+      "devToUrl": "https://dev.to/umair24171/free-local-ai-coding-agent-cut-dev-costs-90-4bfp"
     }
   ],
-  "lastRun": "2026-06-19T09:05:56.075Z"
+  "lastRun": "2026-06-20T07:47:48.646Z"
 }
