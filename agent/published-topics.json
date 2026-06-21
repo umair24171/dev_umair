@@ -464,7 +464,17 @@
       "date": "2026-06-20",
       "wordCount": 2779,
       "devToUrl": "https://dev.to/umair24171/free-local-ai-coding-agent-cut-dev-costs-90-4bfp"
+    },
+    {
+      "slug": "how-i-get-gpt-55-pro-code-review-free-0-api-cost",
+      "primaryKeyword": "GPT-5.5 Pro code review free",
+      "title": "How I Get GPT-5.5 Pro Code Review Free: $0 API Cost",
+      "topic": "How to Get GPT-5.5 Pro Code Reviews for $0 API Cost (My Cloud-Hack Workflow)",
+      "uniqueClaim": "This post will present a specific, actionable workflow that leverages \"repomix-pack\" to extract context, structures prompts within Claude Code (or similar IDE-adjacent tool), and then feeds this *into the web-only interface of ChatGPT Pro (GPT-5.5)* to achieve high-quality, zero-API-cost AI code reviews, including concrete prompt examples and a simple shell script for context bundling.",
+      "date": "2026-06-21",
+      "wordCount": 2470,
+      "devToUrl": "https://dev.to/umair24171/how-i-get-gpt-55-pro-code-review-free-0-api-cost-5fk5"
     }
   ],
-  "lastRun": "2026-06-20T07:47:48.646Z"
+  "lastRun": "2026-06-21T08:27:06.941Z"
 }
