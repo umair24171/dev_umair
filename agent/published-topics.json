@@ -474,7 +474,17 @@
       "date": "2026-06-21",
       "wordCount": 2470,
       "devToUrl": "https://dev.to/umair24171/how-i-get-gpt-55-pro-code-review-free-0-api-cost-5fk5"
+    },
+    {
+      "slug": "building-a-human-ai-agent-workspace-flutter-nodejs-blueprint",
+      "primaryKeyword": "human ai agent workspace",
+      "title": "Building a Human AI Agent Workspace: Flutter + Node.js Blueprint",
+      "topic": "AgentSpace: Orchestrating Human-AI Agent Collaboration with Flutter & Node.js",
+      "uniqueClaim": "A Node.js backend blueprint for real-time human-agent task negotiation using WebSockets and a Flutter UI prototype for a shared \"agent canvas\" where humans can assign, monitor, and intervene in agent tasks with specific code examples.",
+      "date": "2026-06-22",
+      "wordCount": 2223,
+      "devToUrl": "https://dev.to/umair24171/building-a-human-ai-agent-workspace-flutter-nodejs-blueprint-k9n"
     }
   ],
-  "lastRun": "2026-06-21T08:27:06.941Z"
+  "lastRun": "2026-06-22T09:47:11.676Z"
 }
