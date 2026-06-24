@@ -484,7 +484,17 @@
       "date": "2026-06-22",
       "wordCount": 2223,
       "devToUrl": "https://dev.to/umair24171/building-a-human-ai-agent-workspace-flutter-nodejs-blueprint-k9n"
+    },
+    {
+      "slug": "local-ai-agent-browser-extension-hermes-in-120ms",
+      "primaryKeyword": "local AI agent browser extension",
+      "title": "Local AI Agent Browser Extension: Hermes in 120ms",
+      "topic": "Browser Extension for Local AI Agents: Connect Web Context to Hermes",
+      "uniqueClaim": "I'll provide the exact (simplified) JavaScript/Node.js code for a browser extension and local server to securely feed current web page data to a self-hosted AI agent like Hermes, demonstrating the performance and privacy gains over public LLMs for context-aware tasks.",
+      "date": "2026-06-24",
+      "wordCount": 2232,
+      "devToUrl": "https://dev.to/umair24171/local-ai-agent-browser-extension-hermes-in-120ms-6ga"
     }
   ],
-  "lastRun": "2026-06-22T09:47:11.676Z"
+  "lastRun": "2026-06-24T07:37:22.248Z"
 }
