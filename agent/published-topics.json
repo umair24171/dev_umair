@@ -494,7 +494,17 @@
       "date": "2026-06-24",
       "wordCount": 2232,
       "devToUrl": "https://dev.to/umair24171/local-ai-agent-browser-extension-hermes-in-120ms-6ga"
+    },
+    {
+      "slug": "glm-52-open-agent-benchmark-22-less-tool-failure",
+      "primaryKeyword": "GLM-5.2 open agent benchmark",
+      "title": "GLM-5.2 open agent benchmark: 22% Less Tool Failure",
+      "topic": "GLM-5.2 for Open AI Agents: My Benchmarks for Reliable Tool Use",
+      "uniqueClaim": "GLM-5.2's refined instruction following and improved function calling structure boosts multi-step tool-use reliability in my Node.js AI agents by 22% compared to Mixtral 8x7B, drastically reducing hallucinated API calls during benchmark tests.",
+      "date": "2026-06-25",
+      "wordCount": 1883,
+      "devToUrl": "https://dev.to/umair24171/glm-52-open-agent-benchmark-22-less-tool-failure-pd8"
     }
   ],
-  "lastRun": "2026-06-24T07:37:22.248Z"
+  "lastRun": "2026-06-25T07:40:43.971Z"
 }
