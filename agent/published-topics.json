@@ -504,7 +504,17 @@
       "date": "2026-06-25",
       "wordCount": 1883,
       "devToUrl": "https://dev.to/umair24171/glm-52-open-agent-benchmark-22-less-tool-failure-pd8"
+    },
+    {
+      "slug": "how-i-cut-ai-video-costs-80-build-flutter-ai-lecture-video-with-o",
+      "primaryKeyword": "build Flutter AI lecture video",
+      "title": "How I Cut AI Video Costs 80%: build Flutter AI lecture video with Ollama",
+      "topic": "Building an AI-Powered Lecture Video Creator with Flutter, Ollama, and FFmpeg",
+      "uniqueClaim": "I built a complete Flutter-based AI lecture video creator using Ollama for script generation and FFmpeg for visual synthesis, specifically tackling the 3 hardest synchronization challenges between dynamic text, TTS, and slide transitions to cut cloud API costs by 80%.",
+      "date": "2026-06-27",
+      "wordCount": 2347,
+      "devToUrl": "https://dev.to/umair24171/how-i-cut-ai-video-costs-80-build-flutter-ai-lecture-video-with-ollama-2cp2"
     }
   ],
-  "lastRun": "2026-06-25T07:40:43.971Z"
+  "lastRun": "2026-06-27T06:50:55.068Z"
 }
