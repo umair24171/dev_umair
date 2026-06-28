@@ -514,7 +514,17 @@
       "date": "2026-06-27",
       "wordCount": 2347,
       "devToUrl": "https://dev.to/umair24171/how-i-cut-ai-video-costs-80-build-flutter-ai-lecture-video-with-ollama-2cp2"
+    },
+    {
+      "slug": "3-phases-to-avoid-ai-project-failure-umairs-blueprint",
+      "primaryKeyword": "avoid AI project failure",
+      "title": "3 Phases to avoid AI project failure: Umair's Blueprint",
+      "topic": "Don't Be Ford: My Blueprint for Human-Centered AI Success",
+      "uniqueClaim": "This post will introduce Umair's \"3-Phase Human-AI Collaboration Blueprint\" for successful AI agent deployment, learned from shipping FarahGPT, explicitly countering the \"sacked humans\" approach by detailing specific \"AI-Human Handoff Metrics\" (e.g., a \"Cognitive Load Delta\" metric) he tracks to ensure optimal team performance and AI integration success.",
+      "date": "2026-06-28",
+      "wordCount": 1820,
+      "devToUrl": "https://dev.to/umair24171/3-phases-to-avoid-ai-project-failure-umairs-blueprint-11d8"
     }
   ],
-  "lastRun": "2026-06-27T06:50:55.068Z"
+  "lastRun": "2026-06-28T07:48:07.490Z"
 }
