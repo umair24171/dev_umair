@@ -524,7 +524,17 @@
       "date": "2026-06-28",
       "wordCount": 1820,
       "devToUrl": "https://dev.to/umair24171/3-phases-to-avoid-ai-project-failure-umairs-blueprint-11d8"
+    },
+    {
+      "slug": "llm-data-leaks-secure-llm-sensitive-data-exclusion-with-a-firewal",
+      "primaryKeyword": "secure LLM sensitive data exclusion",
+      "title": "LLM Data Leaks: secure LLM sensitive data exclusion with a Firewall",
+      "topic": "Secure LLM Data: Implementing Sensitive Information Exclusion in Your AI Agents (OpenAI Codex Lessons)",
+      "uniqueClaim": "Will provide a concrete Node.js code blueprint for an `LLM input firewall` that uses regex and semantic analysis to actively filter and redact specific types of sensitive data (e.g., internal project IDs, specific code snippets, PII) from user inputs or retrieved context *before* it ever touches an external (or internal) LLM API, directly addressing the challenge of preventing accidental data ingestion, a problem highlighted by the OpenAI Codex sensitive files issue.",
+      "date": "2026-06-29",
+      "wordCount": 1554,
+      "devToUrl": "https://dev.to/umair24171/llm-data-leaks-secure-llm-sensitive-data-exclusion-with-a-firewall-3io7"
     }
   ],
-  "lastRun": "2026-06-28T07:48:07.490Z"
+  "lastRun": "2026-06-29T08:55:57.711Z"
 }
