@@ -534,7 +534,17 @@
       "date": "2026-06-29",
       "wordCount": 1554,
       "devToUrl": "https://dev.to/umair24171/llm-data-leaks-secure-llm-sensitive-data-exclusion-with-a-firewall-3io7"
+    },
+    {
+      "slug": "primacpp-local-llm-benchmark-15-faster-than-llamacpp",
+      "primaryKeyword": "prima.cpp local llm benchmark",
+      "title": "prima.cpp local llm benchmark: 15% Faster Than llama.cpp",
+      "topic": "prima.cpp vs. llama.cpp: Real Benchmarks for Local LLM Inference on Consumer Hardware",
+      "uniqueClaim": "This post will provide direct, side-by-side tokens/second and memory usage benchmarks for at least three different LLM models (e.g., Llama 3 8B, Mistral 7B, a 70B model if feasible) run on specific consumer hardware configurations (RTX 4090, M2 Max/Ultra) using both `prima.cpp` and `llama.cpp`, identifying a specific performance delta (e.g., \"prima.cpp achieved X% higher tokens/sec for Llama 3 8B on my RTX 4090\").",
+      "date": "2026-06-30",
+      "wordCount": 2061,
+      "devToUrl": "https://dev.to/umair24171/primacpp-local-llm-benchmark-15-faster-than-llamacpp-4dla"
     }
   ],
-  "lastRun": "2026-06-29T08:55:57.711Z"
+  "lastRun": "2026-06-30T07:51:32.428Z"
 }
