@@ -544,7 +544,17 @@
       "date": "2026-06-30",
       "wordCount": 2061,
       "devToUrl": "https://dev.to/umair24171/primacpp-local-llm-benchmark-15-faster-than-llamacpp-4dla"
+    },
+    {
+      "slug": "detect-claude-ai-code-marking-why-chasing-it-is-a-distraction",
+      "primaryKeyword": "detect Claude AI code marking",
+      "title": "Detect Claude AI Code Marking: Why Chasing It Is a Distraction",
+      "topic": "Claude AI Output Marking: What it Means for Your AI Agents & Data Integrity (Node.js Perspective)",
+      "uniqueClaim": "This post will provide a specific Node.js code snippet/strategy for analyzing potential steganographic marks in Claude's output within an AI agent's workflow, and Umair's concrete opinion on its real-world impact on agent reliability and client data, rather than just explaining the concept.",
+      "date": "2026-07-01",
+      "wordCount": 2238,
+      "devToUrl": "https://dev.to/umair24171/detect-claude-ai-code-marking-why-chasing-it-is-a-distraction-o0b"
     }
   ],
-  "lastRun": "2026-06-30T07:51:32.428Z"
+  "lastRun": "2026-07-01T08:08:46.269Z"
 }
