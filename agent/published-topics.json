@@ -554,7 +554,17 @@
       "date": "2026-07-01",
       "wordCount": 2238,
       "devToUrl": "https://dev.to/umair24171/detect-claude-ai-code-marking-why-chasing-it-is-a-distraction-o0b"
+    },
+    {
+      "slug": "ai-coding-actual-productivity-my-20-slower-truth",
+      "primaryKeyword": "AI coding actual productivity",
+      "title": "AI coding actual productivity: My 20% slower truth",
+      "topic": "AI Coding: Why Devs *Feel* Faster But *Measure* Slower (My Truth)",
+      "uniqueClaim": "I will detail how in building my own complex AI agents (like Prax-Agent), certain AI-assisted coding tasks *felt* 20% faster but actually incurred 15-25% more debugging and refinement time due to subtle, AI-induced context errors, until I implemented a specific 'AI-aware testing' pattern that delivered real, measurable gains.",
+      "date": "2026-07-02",
+      "wordCount": 2092,
+      "devToUrl": "https://dev.to/umair24171/ai-coding-actual-productivity-my-20-slower-truth-4381"
     }
   ],
-  "lastRun": "2026-07-01T08:08:46.269Z"
+  "lastRun": "2026-07-02T07:27:58.175Z"
 }
