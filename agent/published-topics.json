@@ -564,7 +564,17 @@
       "date": "2026-07-02",
       "wordCount": 2092,
       "devToUrl": "https://dev.to/umair24171/ai-coding-actual-productivity-my-20-slower-truth-4381"
+    },
+    {
+      "slug": "flutter-local-ai-agent-blueprint-my-0-cloud-data-flow",
+      "primaryKeyword": "flutter local AI agent blueprint",
+      "title": "Flutter Local AI Agent Blueprint: My 0-Cloud Data Flow",
+      "topic": "Building a Fully Local Flutter AI Agent: The Privacy-First Blueprint for Your Data",
+      "uniqueClaim": "This post will detail a full-stack Flutter and lightweight local server (e.g., Node.js or Rust) blueprint to build a *multi-tool local AI agent* for personal knowledge management, specifically demonstrating how to integrate a local vector database (e.g., using `sqflite` for embeddings or a local server for specialized vector search) with an on-device LLM (like Gemma 2B via TFLite) to process and retrieve insights from *user-specific local document collections*, ensuring 100% data privacy and 0 external API calls for core agent functionality.",
+      "date": "2026-07-03",
+      "wordCount": 1991,
+      "devToUrl": "https://dev.to/umair24171/flutter-local-ai-agent-blueprint-my-0-cloud-data-flow-gbc"
     }
   ],
-  "lastRun": "2026-07-02T07:27:58.175Z"
+  "lastRun": "2026-07-03T06:59:13.788Z"
 }
