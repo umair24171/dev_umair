@@ -574,7 +574,17 @@
       "date": "2026-07-03",
       "wordCount": 1991,
       "devToUrl": "https://dev.to/umair24171/flutter-local-ai-agent-blueprint-my-0-cloud-data-flow-gbc"
+    },
+    {
+      "slug": "orchestrate-multiple-local-llms-rtx-4090-benchmarks",
+      "primaryKeyword": "orchestrate multiple local llms",
+      "title": "Orchestrate Multiple Local LLMs: RTX 4090 Benchmarks",
+      "topic": "Orchestrating Multiple Local LLMs for AI Agent Workflows: My Flutter + Node.js Benchmarks",
+      "uniqueClaim": "Specific real-world benchmarks (latency, throughput, resource utilization) for running 2-3 distinct local LLMs (e.g., CodeLlama for code, Llama-3 for general reasoning, Gemma for summarization) *simultaneously* on an RTX 4090 for a multi-agent Flutter/Node.js application, including patterns for managing concurrent inference requests and avoiding resource bottlenecks.",
+      "date": "2026-07-04",
+      "wordCount": 2335,
+      "devToUrl": "https://dev.to/umair24171/orchestrate-multiple-local-llms-rtx-4090-benchmarks-32ch"
     }
   ],
-  "lastRun": "2026-07-03T06:59:13.788Z"
+  "lastRun": "2026-07-04T06:44:52.491Z"
 }
