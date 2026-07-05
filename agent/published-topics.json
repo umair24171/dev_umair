@@ -584,7 +584,17 @@
       "date": "2026-07-04",
       "wordCount": 2335,
       "devToUrl": "https://dev.to/umair24171/orchestrate-multiple-local-llms-rtx-4090-benchmarks-32ch"
+    },
+    {
+      "slug": "why-ai-agents-fail-reasoning-tasks-token-clustering-theory",
+      "primaryKeyword": "AI agents fail reasoning tasks",
+      "title": "Why AI agents fail reasoning tasks: Token Clustering Theory",
+      "topic": "Why My AI Agents Fail Reasoning: Token Clustering Hypothesis for GPT-4o & Claude Opus",
+      "uniqueClaim": "This post will present a specific, detailed hypothesis (e.g., \"reasoning-token clustering\") with anecdotal evidence from Umair's actual AI agent builds (e.g., FarahGPT, gold trading system) to explain *why* top-tier commercial LLMs like GPT-4o and Claude Opus demonstrate degraded performance on complex reasoning tasks, going beyond simple \"hallucinations\" to diagnose a potential internal model optimization side effect.",
+      "date": "2026-07-05",
+      "wordCount": 2080,
+      "devToUrl": "https://dev.to/umair24171/why-ai-agents-fail-reasoning-tasks-token-clustering-theory-4gmi"
     }
   ],
-  "lastRun": "2026-07-04T06:44:52.491Z"
+  "lastRun": "2026-07-05T07:22:49.425Z"
 }
