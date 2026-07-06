@@ -594,7 +594,17 @@
       "date": "2026-07-05",
       "wordCount": 2080,
       "devToUrl": "https://dev.to/umair24171/why-ai-agents-fail-reasoning-tasks-token-clustering-theory-4gmi"
+    },
+    {
+      "slug": "fixing-tmux-dashboard-for-coding-agents-mobile-clipboard-30",
+      "primaryKeyword": "tmux dashboard coding agents",
+      "title": "Fixing tmux dashboard for coding agents: Mobile Clipboard + 30%",
+      "topic": "Tmux Dashboard for CLI Coding Agents: My Multi-User Ops Setup",
+      "uniqueClaim": "I'll detail my custom `tmux` session layout and `xterm.js` integration, including specific configuration snippets and a fix I implemented for `clipboard relay` on mobile, allowing me to monitor and debug 3+ concurrent CLI coding agents effectively from any device.",
+      "date": "2026-07-06",
+      "wordCount": 2512,
+      "devToUrl": "https://dev.to/umair24171/fixing-tmux-dashboard-for-coding-agents-mobile-clipboard-30-md2"
     }
   ],
-  "lastRun": "2026-07-05T07:22:49.425Z"
+  "lastRun": "2026-07-06T08:17:09.048Z"
 }
