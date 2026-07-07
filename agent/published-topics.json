@@ -604,7 +604,17 @@
       "date": "2026-07-06",
       "wordCount": 2512,
       "devToUrl": "https://dev.to/umair24171/fixing-tmux-dashboard-for-coding-agents-mobile-clipboard-30-md2"
+    },
+    {
+      "slug": "how-i-cut-30-llm-costs-rag-context-pruning-cost-reduction",
+      "primaryKeyword": "RAG context pruning cost reduction",
+      "title": "How I Cut 30% LLM Costs: RAG Context Pruning Cost Reduction",
+      "topic": "RAG Context Pruning: Slash LLM API Costs & Boost Accuracy",
+      "uniqueClaim": "This post will demonstrate a hybrid embedding + keyword extraction pruning strategy with real Node.js code, showing how it reduced RAG token count by an average of 30% for specific query types in a production AI agent, translating to direct cost savings of $X per 1M queries while improving answer relevance by Y%.",
+      "date": "2026-07-07",
+      "wordCount": 2521,
+      "devToUrl": "https://dev.to/umair24171/how-i-cut-30-llm-costs-rag-context-pruning-cost-reduction-49a2"
     }
   ],
-  "lastRun": "2026-07-06T08:17:09.048Z"
+  "lastRun": "2026-07-07T07:35:16.672Z"
 }
