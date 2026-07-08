@@ -614,7 +614,17 @@
       "date": "2026-07-07",
       "wordCount": 2521,
       "devToUrl": "https://dev.to/umair24171/how-i-cut-30-llm-costs-rag-context-pruning-cost-reduction-49a2"
+    },
+    {
+      "slug": "how-i-slashed-ai-agent-phone-calls-twilio-latency-to-250ms",
+      "primaryKeyword": "ai agent phone calls twilio",
+      "title": "How I Slashed ai agent phone calls twilio Latency to 250ms",
+      "topic": "Building a Real-Time AI Agent with Phone Call Capabilities (Twilio + OpenClaw)",
+      "uniqueClaim": "How I cut end-to-end AI agent voice call latency to 250ms with OpenClaw, Twilio, and OpenAI Realtime for natural full-duplex conversations, a 50% reduction from initial setups.",
+      "date": "2026-07-08",
+      "wordCount": 2215,
+      "devToUrl": "https://dev.to/umair24171/how-i-slashed-ai-agent-phone-calls-twilio-latency-to-250ms-16af"
     }
   ],
-  "lastRun": "2026-07-07T07:35:16.672Z"
+  "lastRun": "2026-07-08T06:25:09.935Z"
 }
