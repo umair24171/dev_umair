@@ -11,21 +11,23 @@ const plusJakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Professional Flutter App Development | BuildZn",
-  description: "Get your mobile app built and launched in 30-60 days. 15+ apps live on iOS & Android. Full-stack Flutter development with proven results.",
+  title: "AI Systems & Agent Engineer | BuildZn",
+  description: "I build AI agents, automated systems, and production apps that ship. 20+ apps live, agents running 24/7, fixed price with no surprises.",
   keywords: [
+    "AI agent developer",
+    "AI systems engineer",
+    "AI agent governance",
+    "LLM integration developer",
+    "agentic AI development",
+    "multi-agent systems",
     "flutter developer",
     "mobile app development",
     "ios app developer",
     "android app developer",
-    "react native developer",
     "hire app developer",
-    "freelance flutter developer",
-    "app development services",
+    "AI app development",
     "MVP development",
     "startup app developer",
-    "AI app development",
-    "cross platform app development",
     "BuildZn",
     "buildzn.com",
   ],
@@ -39,14 +41,14 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://www.buildzn.com",
     siteName: "BuildZn",
-    title: "I Build Apps That People Actually Use | BuildZn",
-    description: "Full-stack Flutter developer with 15+ apps live on App Store & Play Store. From concept to launch in 30-60 days. Book a free consultation.",
+    title: "AI Systems That Run Themselves. Apps People Actually Use. | BuildZn",
+    description: "I build AI agents, automation systems, and production mobile apps — 20+ apps live, agents running 24/7. Fixed price, book a free consultation.",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "BuildZn — Professional Flutter App Development",
+        alt: "BuildZn — AI Systems & Agent Engineer",
       },
     ],
   },
@@ -54,8 +56,8 @@ export const metadata: Metadata = {
   // Twitter Card
   twitter: {
     card: "summary_large_image",
-    title: "I Build Apps That People Actually Use | BuildZn",
-    description: "Full-stack Flutter developer with 15+ apps live on App Store & Play Store. Book a free consultation.",
+    title: "AI Systems That Run Themselves. Apps People Actually Use. | BuildZn",
+    description: "I build AI agents, automation systems, and production mobile apps. 20+ apps live, agents running 24/7. Book a free consultation.",
     images: ["/og-image.png"],
     creator: "@umairbilal",
   },
@@ -111,9 +113,9 @@ const siteJsonLd = {
       '@type': 'Person',
       '@id': 'https://www.buildzn.com/#person',
       name: 'Umair Bilal',
-      jobTitle: 'Senior Flutter Developer',
+      jobTitle: 'AI Systems & Agent Engineer',
       description:
-        'Senior Flutter Developer with 4+ years experience and 20+ apps shipped to App Store and Google Play. Founder of FarahGPT (5,100+ users) and Muslifie (200+ companies).',
+        'AI Systems & Agent Engineer with 4+ years experience building autonomous agent pipelines, LLM-integrated products, and 20+ apps shipped to App Store and Google Play. Built NexusOS (AI agent governance) and founded FarahGPT (5,100+ users) and Muslifie (200+ companies).',
       url: 'https://www.buildzn.com',
       image: 'https://www.buildzn.com/og-image.png',
       worksFor: { '@id': 'https://www.buildzn.com/#organization' },
@@ -123,8 +125,9 @@ const siteJsonLd = {
         'https://github.com/umair24171',
       ],
       knowsAbout: [
-        'Flutter', 'Dart', 'Mobile App Development', 'iOS Development',
-        'Android Development', 'Node.js', 'Next.js', 'AI Integration',
+        'AI Agents', 'Multi-Agent Systems', 'AI Agent Governance', 'LLM Integration',
+        'Agentic AI', 'Node.js', 'Flutter', 'Dart', 'Mobile App Development',
+        'iOS Development', 'Android Development', 'Next.js',
         'Stripe', 'RevenueCat', 'Firebase', 'MongoDB', 'Supabase',
       ],
     },
@@ -134,8 +137,30 @@ const siteJsonLd = {
       '@id': 'https://www.buildzn.com/#website',
       url: 'https://www.buildzn.com',
       name: 'BuildZn',
-      description: 'Professional Flutter app development. Fixed price. App Store guaranteed.',
+      description: 'AI agents, automation systems, and production apps. Fixed price. Shipped and guaranteed.',
       publisher: { '@id': 'https://www.buildzn.com/#organization' },
+    },
+    // Service — AI Agent & Systems Development
+    {
+      '@type': 'Service',
+      '@id': 'https://www.buildzn.com/#service-ai-agents',
+      name: 'AI Agent & Systems Development',
+      description:
+        'AI agent pipelines, LLM feature integration, and automation systems that run in production without human input. Chat, RAG, multi-agent workflows, and agent governance.',
+      provider: { '@id': 'https://www.buildzn.com/#organization' },
+      areaServed: 'Worldwide',
+      offers: [
+        {
+          '@type': 'Offer',
+          name: 'AI Feature Integration',
+          description: 'Add Claude, OpenAI, or Gemini-powered features to an existing app or product — chat, RAG, recommendations.',
+        },
+        {
+          '@type': 'Offer',
+          name: 'Agent & Automation Systems',
+          description: 'Multi-agent pipelines, bots, and automated workflows that run 24/7 without human input.',
+        },
+      ],
     },
     // Service — Flutter Development
     {

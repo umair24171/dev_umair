@@ -348,13 +348,27 @@ const apps = [
 ];
 
 const services = [
-  { icon: '📱', title: 'Flutter Mobile App', desc: 'Full production Flutter apps built for iOS & Android — App Store ready, with native performance.', features: ['iOS & Android', 'App Store deployment', 'Push notifications', 'Offline-first architecture'] },
   { icon: '⚡', title: 'AI Feature Integration', desc: 'Add LLM-powered features to your existing app or product — chat, RAG, agents, recommendations.', features: ['Claude / OpenAI / Gemini API', 'RAG systems', 'Multi-agent pipelines', 'Smart recommendations'] },
-  { icon: '🌐', title: 'Full-Stack SaaS', desc: 'Complete SaaS products with Node.js backend, Next.js dashboard, Stripe payments, and auth.', features: ['Node.js + Next.js', 'Admin dashboard', 'Stripe subscriptions', 'Auth & onboarding'] },
   { icon: '🤖', title: 'Agent & Automation Systems', desc: 'Multi-agent pipelines, bots, and automation systems that run 24/7 without human input.', features: ['Multi-agent pipelines', 'Automated workflows', 'Discord / Slack bots', 'CI/CD + GitHub Actions'] },
+  { icon: '🌐', title: 'Full-Stack SaaS', desc: 'Complete SaaS products with Node.js backend, Next.js dashboard, Stripe payments, and auth.', features: ['Node.js + Next.js', 'Admin dashboard', 'Stripe subscriptions', 'Auth & onboarding'] },
+  { icon: '📱', title: 'Flutter Mobile App', desc: 'Full production Flutter apps built for iOS & Android — App Store ready, with native performance.', features: ['iOS & Android', 'App Store deployment', 'Push notifications', 'Offline-first architecture'] },
 ];
 
 const agents = [
+  {
+    name: 'NexusOS',
+    status: 'Live Product',
+    statusColor: 'green',
+    desc: 'AI agent governance SaaS I designed and shipped myself — not a client project. A cryptographic kill switch, SHA256 audit logs, and anomaly detection for any AI agent running in production.',
+    stats: [
+      { label: 'Kill switch', value: 'Crypto' },
+      { label: 'Audit logs', value: 'SHA256' },
+      { label: 'Dashboard', value: 'Live' },
+      { label: 'SDKs', value: 'npm+PyPI' },
+    ],
+    tags: ['Node.js', 'Express', 'Next.js', 'Render', 'Vercel', 'LemonSqueezy'],
+    color: 'from-pink-500 to-purple-400',
+  },
   {
     name: 'Gold Trading System',
     status: 'Live 24/7',
@@ -501,17 +515,17 @@ export default function Home() {
         <div className="relative z-10 max-w-[1200px] mx-auto px-6 pt-[140px] pb-20 text-center w-full">
           <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-purple-500/10 border border-purple-500/20 mb-8 animate-[fadeUp_0.6s_ease-out]">
             <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-            <span className="text-sm font-medium text-purple-300">Flutter &amp; AI Engineer · 20+ Apps Live in Production</span>
+            <span className="text-sm font-medium text-purple-300">AI Systems &amp; Agent Engineer · 20+ Apps Live in Production</span>
           </div>
 
           <h1 className="text-[clamp(36px,6vw,80px)] font-black leading-[1.05] tracking-[-2px] mb-6 animate-[fadeUp_0.8s_ease-out]">
-            Flutter Apps. AI Systems.<br />
-            <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent">Full-Stack SaaS.</span><br />
+            AI Agents. Autonomous Systems.<br />
+            <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent">Apps People Actually Use.</span><br />
             Fixed Price.
           </h1>
 
           <p className="text-lg md:text-xl text-white/40 max-w-[620px] mx-auto mb-6 font-normal leading-relaxed animate-[fadeUp_1s_ease-out]">
-            I build production mobile apps, AI-powered systems, and full-stack SaaS products — from idea to App Store. Fixed price. No surprises.
+            I build AI agents, automation systems, mobile apps, and full-stack SaaS — from idea to launch. Fixed price. No surprises.
           </p>
 
           {/* Availability Badge */}
@@ -529,7 +543,7 @@ export default function Home() {
             </a>
           </div>
           <p className="text-sm text-white/25 mt-4 mb-16 animate-[fadeUp_1.3s_ease-out]">
-            Whether you need a Flutter app, an AI integration, or a full SaaS — fixed price, production guaranteed.
+            Whether you need an AI agent, a full SaaS platform, or a Flutter app — fixed price, production guaranteed.
           </p>
 
           {/* Stats */}
@@ -566,9 +580,9 @@ export default function Home() {
         </div>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
           {[
+            { category: 'AI & Agents', icon: '🤖', items: ['Claude API', 'OpenAI', 'LLM Integration', 'Agent Pipelines'] },
             { category: 'Mobile', icon: '📱', items: ['Flutter', 'iOS', 'Android', 'Dart'] },
             { category: 'Backend', icon: '🌐', items: ['Node.js', 'Next.js', 'Express'] },
-            { category: 'AI & Agents', icon: '🤖', items: ['Claude API', 'OpenAI', 'LLM Integration', 'Agent Pipelines'] },
             { category: 'Databases', icon: '🗄️', items: ['Firebase', 'MongoDB', 'Supabase'] },
             { category: 'Payments', icon: '💳', items: ['Stripe', 'RevenueCat'] },
             { category: 'Infra', icon: '⚙️', items: ['Vercel', 'Render', 'GitHub Actions'] },
@@ -714,7 +728,7 @@ export default function Home() {
         {/* Agents CTA */}
         <div className="mt-12 bg-gradient-to-br from-purple-500/10 to-pink-500/10 border border-purple-500/25 rounded-2xl p-8 text-center">
           <p className="text-white/60 text-base md:text-lg leading-relaxed max-w-[680px] mx-auto mb-6">
-            If I build agents that trade live markets and auto-publish content — <span className="text-white font-semibold">imagine what I can build for your product.</span>
+            If I build agents that trade live markets, auto-publish content, and govern their own kill switches — <span className="text-white font-semibold">imagine what I can build for your product.</span>
           </p>
           <a href="#contact" className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white px-7 py-3.5 rounded-full font-bold text-sm hover:shadow-lg hover:shadow-purple-500/40 transition-all hover:-translate-y-0.5">
             Book a Call →

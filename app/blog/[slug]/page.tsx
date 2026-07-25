@@ -277,8 +277,8 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
         {/* CTA at bottom */}
         <div className="mt-8 p-8 bg-gradient-to-br from-purple-500/10 to-pink-500/10 border border-purple-500/20 rounded-2xl text-center">
-          <h3 className="text-xl font-bold mb-2">Need a Flutter developer?</h3>
-          <p className="text-white/40 text-sm mb-5">I build production apps from scratch — iOS, Android, AI features, payments. Fixed price, App Store guaranteed.</p>
+          <h3 className="text-xl font-bold mb-2">Need this built, fixed, or automated?</h3>
+          <p className="text-white/40 text-sm mb-5">I build AI agents, automation systems, and production apps — from a single integration to a full platform. Fixed price, shipped and guaranteed.</p>
           <Link href="/#contact" className="inline-flex bg-gradient-to-r from-purple-500 to-pink-500 text-white px-7 py-3 rounded-full font-bold text-sm hover:shadow-lg hover:shadow-purple-500/40 transition-all hover:-translate-y-0.5">
             Get a Free Proposal →
           </Link>
