@@ -249,7 +249,7 @@ const MobileMenu = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
           </button>
         </div>
         <nav className="p-6 space-y-2">
-          {['Services', 'Portfolio', 'Agents', 'Pricing', 'Contact'].map((item) => (
+          {['Services', 'Portfolio', 'Pricing', 'Contact'].map((item) => (
             <a
               key={item}
               href={`#${item.toLowerCase()}`}
@@ -427,6 +427,12 @@ const agents = [
   },
 ];
 
+const automationPricing = [
+  { name: 'Starter Automation', price: '300', sub: 'One workflow, automated', features: ['1 automated workflow', 'Single AI/LLM integration', 'Scheduled or triggered runs', '1–2 weeks delivery', '2 weeks support'], highlight: false },
+  { name: 'Growth Automation', price: '700', sub: 'Multi-step pipeline', features: ['Multi-agent pipeline', '2–3 integrations (APIs, Slack, Sheets)', 'Dashboard or alerts', '2–3 weeks delivery', '1 month support'], highlight: true },
+  { name: 'Full System', price: '1,500', sub: 'Governed, production-grade', features: ['Multi-agent orchestration', 'Audit logs + kill switch', 'Custom dashboard', '3–4 weeks delivery', '2 months support'], highlight: false },
+];
+
 const pricing = [
   { name: 'Starter', price: '800', sub: 'Perfect for MVPs', features: ['Simple app (10-12 screens)', 'Firebase backend', 'iOS + Android deployment', '30 days delivery', '1 month bug support'], highlight: false },
   { name: 'Professional', price: '2,000', sub: 'For growing businesses', features: ['Complex app (20+ screens)', 'Custom Node.js backend', 'Next.js admin panel', 'Stripe payment integration', '45 days delivery', '3 months support'], highlight: true },
@@ -450,6 +456,7 @@ export default function Home() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [latestPosts, setLatestPosts] = useState<PostPreview[]>([]);
+  const availabilityMonth = new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
@@ -475,7 +482,7 @@ export default function Home() {
           </Link>
           <div className="flex items-center gap-8">
             <div className="hidden md:flex gap-5 items-center">
-              {['Services', 'Portfolio', 'Agents', 'Pricing'].map(s => (
+              {['Services', 'Portfolio', 'Pricing'].map(s => (
                 <a key={s} href={`#${s.toLowerCase()}`} className="text-sm font-medium text-white/50 hover:text-white transition-colors">{s}</a>
               ))}
               <Link href="/blog" className="text-sm font-medium text-white/50 hover:text-white transition-colors">Blog</Link>
@@ -531,7 +538,7 @@ export default function Home() {
           {/* Availability Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/10 border border-green-500/25 mb-8 animate-[fadeUp_1.1s_ease-out]">
             <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-            <span className="text-sm font-medium text-green-300">🟢 Open to 2 new projects — April 2026</span>
+            <span className="text-sm font-medium text-green-300">🟢 Open to 2 new projects — {availabilityMonth}</span>
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-[fadeUp_1.2s_ease-out]">
@@ -549,8 +556,8 @@ export default function Home() {
           {/* Stats */}
           <div className="grid grid-cols-2 md:grid-cols-4 bg-white/[0.03] backdrop-blur-xl border border-white/[0.06] rounded-2xl overflow-hidden max-w-[800px] mx-auto animate-[fadeUp_1.4s_ease-out]">
             {[
-              { val: 20, suffix: '+', label: 'Apps Shipped' },
-              { val: 6100, suffix: '+', label: 'Users Across 4 Apps' },
+              { val: 20, suffix: '+', label: 'Apps in Production' },
+              { val: 6100, suffix: '+', label: 'Total Users' },
               { val: 100, suffix: '%', label: 'Delivery Rate' },
               { val: 5, suffix: '★', label: 'Client Rating' },
             ].map((s, i) => (
@@ -666,10 +673,67 @@ export default function Home() {
               </div>
             ))}
           </div>
+
+          {/* Automation & AI Systems */}
+          <div className="text-center mt-20 mb-12">
+            <p className="text-sm font-semibold text-purple-500 uppercase tracking-[2px] mb-3">Automation &amp; AI Systems</p>
+            <h3 className="text-[clamp(22px,3.5vw,34px)] font-extrabold tracking-tight mb-3">Not client work — systems I built and run myself</h3>
+            <p className="text-base text-white/35 max-w-[560px] mx-auto">Same standard as the apps above: real, in production, checkable.</p>
+          </div>
+          <div className="grid md:grid-cols-2 gap-5">
+            {agents.map((agent, i) => (
+              <div key={i} className="bg-white/[0.03] backdrop-blur-xl border border-white/[0.06] rounded-2xl overflow-hidden transition-all duration-400 hover:border-purple-500/30 hover:bg-white/[0.05] hover:-translate-y-1">
+                <div className={`h-1 bg-gradient-to-r ${agent.color}`} />
+                <div className="p-6 md:p-7">
+                  {/* Header */}
+                  <div className="flex justify-between items-start mb-4">
+                    <div>
+                      <div className="flex items-center gap-2 mb-1">
+                        <span className={`w-1.5 h-1.5 rounded-full ${
+                          agent.statusColor === 'green' ? 'bg-green-400 animate-pulse' :
+                          agent.statusColor === 'blue' ? 'bg-blue-400 animate-pulse' :
+                          'bg-purple-400 animate-pulse'
+                        }`} />
+                        <span className={`text-[11px] font-semibold uppercase tracking-wider ${
+                          agent.statusColor === 'green' ? 'text-green-400' :
+                          agent.statusColor === 'blue' ? 'text-blue-400' :
+                          'text-purple-400'
+                        }`}>{agent.status}</span>
+                      </div>
+                      <h4 className="text-xl font-bold">{agent.name}</h4>
+                    </div>
+                    <span className="text-2xl">🤖</span>
+                  </div>
+
+                  {/* Description */}
+                  <p className="text-sm text-white/35 leading-relaxed mb-5">{agent.desc}</p>
+
+                  {/* Stats grid */}
+                  <div className="grid grid-cols-4 gap-2 mb-5 p-3 bg-white/[0.03] rounded-xl border border-white/[0.04]">
+                    {agent.stats.map((s, j) => (
+                      <div key={j} className="text-center">
+                        <div className={`text-base font-extrabold bg-gradient-to-r ${agent.color} bg-clip-text text-transparent`}>{s.value}</div>
+                        <div className="text-[10px] text-white/25 mt-0.5 leading-tight">{s.label}</div>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Tech stack tags */}
+                  <div className="flex flex-wrap gap-1.5">
+                    {agent.tags.map((t, j) => (
+                      <span key={j} className="px-2.5 py-1 rounded-full text-[11px] font-medium bg-white/[0.05] text-white/40 border border-white/[0.07]">{t}</span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+          <p className="text-center text-white/30 text-sm mt-10">Built the same way as everything else here — fixed price, real milestones. <a href="#contact" className="text-purple-400 hover:text-purple-300 font-medium transition-colors">Get a proposal →</a></p>
         </div>
       </section>
 
-      {/* ─── AGENTS ─── */}
+      {/* ─── AGENTS (disabled — content moved into Portfolio as "Automation & AI Systems"; change false → true to bring this standalone section back) ─── */}
+      {false && (
       <section id="agents" className="max-w-[1200px] mx-auto px-6 py-24">
         <div className="text-center mb-16">
           <p className="text-sm font-semibold text-purple-500 uppercase tracking-[2px] mb-3">Agents</p>
@@ -735,13 +799,14 @@ export default function Home() {
           </a>
         </div>
       </section>
+      )}
 
       {/* ─── PROCESS ─── */}
       <section className="max-w-[1200px] mx-auto px-6 py-24">
         <div className="text-center mb-16">
           <p className="text-sm font-semibold text-purple-500 uppercase tracking-[2px] mb-3">Process</p>
-          <h2 className="text-[clamp(28px,4vw,48px)] font-extrabold tracking-tight mb-4">How Muslifie went from idea to 200+ companies</h2>
-          <p className="text-base text-white/35 max-w-[580px] mx-auto">A real delivery story — not a marketing timeline.</p>
+          <h2 className="text-[clamp(28px,4vw,48px)] font-extrabold tracking-tight mb-4">How a project actually gets built</h2>
+          <p className="text-base text-white/35 max-w-[580px] mx-auto">Same process whether it&apos;s an AI agent or a mobile app. Example below: Muslifie, a travel marketplace, idea to 200+ companies onboarded.</p>
         </div>
         <div className="max-w-[860px] mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-8">
@@ -764,7 +829,7 @@ export default function Home() {
             ))}
           </div>
           <div className="bg-white/[0.02] border border-white/[0.06] rounded-2xl p-6 text-center">
-            <p className="text-white/50 text-sm">Your project gets the same approach — <span className="text-white font-semibold">fixed price, real milestones, App Store or your money back.</span></p>
+            <p className="text-white/50 text-sm">Your project gets the same approach — <span className="text-white font-semibold">fixed price, real milestones, delivered or your money back.</span></p>
             <a href="#contact" className="inline-flex mt-4 items-center gap-2 text-purple-400 hover:text-purple-300 font-semibold text-sm transition-colors">
               Start your project →
             </a>
@@ -785,21 +850,64 @@ export default function Home() {
           <div className="max-w-[760px] mx-auto mb-12 bg-white/[0.03] border border-white/[0.06] rounded-2xl p-6 md:p-8">
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
               <div className="py-2">
-                <p className="text-[11px] font-bold text-white/30 uppercase tracking-[1.5px] mb-2">Upwork Freelancer</p>
+                <p className="text-[11px] font-bold text-white/30 uppercase tracking-[1.5px] mb-2">Freelancer</p>
                 <p className="text-2xl font-extrabold text-white/50">$25–60<span className="text-base font-normal">/hr</span></p>
                 <p className="text-[11px] text-white/25 mt-1">Hourly, no delivery guarantee</p>
               </div>
               <div className="py-2 sm:border-x border-white/[0.07]">
-                <p className="text-[11px] font-bold text-white/30 uppercase tracking-[1.5px] mb-2">Mobile Agency</p>
-                <p className="text-2xl font-extrabold text-white/50">$15k–50k</p>
+                <p className="text-[11px] font-bold text-white/30 uppercase tracking-[1.5px] mb-2">Agency</p>
+                <p className="text-2xl font-extrabold text-white/50">$10k–50k</p>
                 <p className="text-[11px] text-white/25 mt-1">Per project, slow, bloated teams</p>
               </div>
               <div className="py-2">
                 <p className="text-[11px] font-bold text-purple-400 uppercase tracking-[1.5px] mb-2">BuildZn</p>
                 <p className="text-2xl font-extrabold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">Fixed Price</p>
-                <p className="text-[11px] text-purple-300/60 mt-1">App Store delivery guaranteed</p>
+                <p className="text-[11px] text-purple-300/60 mt-1">Delivery guaranteed</p>
               </div>
             </div>
+          </div>
+
+          {/* AI Automation & Agents pricing */}
+          <div className="text-center mb-8">
+            <p className="text-sm font-semibold text-purple-400 uppercase tracking-[1.5px]">AI Automation &amp; Agents</p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-5 items-start mb-20">
+            {automationPricing.map((p, i) => (
+              <div key={i} className={`rounded-3xl p-7 md:p-9 relative overflow-hidden transition-all duration-400 ${
+                p.highlight
+                  ? 'bg-gradient-to-br from-purple-500/20 to-pink-500/20 border border-purple-500/40 md:scale-[1.03] shadow-[0_0_30px_rgba(139,92,246,0.2)]'
+                  : 'bg-white/[0.03] border border-white/[0.06] hover:border-purple-500/20'
+              }`}>
+                {p.highlight && (
+                  <div className="absolute top-4 right-4 px-3.5 py-1 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-[11px] font-bold tracking-wider uppercase">
+                    Popular
+                  </div>
+                )}
+                <h3 className="text-lg font-semibold text-white/50 mb-1">{p.name}</h3>
+                <div className="text-4xl md:text-5xl font-extrabold tracking-tight mb-1">${p.price}</div>
+                <p className="text-sm text-white/25 mb-7">{p.sub}</p>
+                <div className="border-t border-white/[0.06] pt-6 mb-7">
+                  {p.features.map((f, j) => (
+                    <div key={j} className="flex items-center gap-2.5 mb-3">
+                      <span className={`text-sm ${p.highlight ? 'text-purple-400' : 'text-green-500'}`}>✓</span>
+                      <span className="text-sm text-white/45">{f}</span>
+                    </div>
+                  ))}
+                </div>
+                <a href="#contact" className={`block text-center rounded-full font-bold text-sm py-3.5 px-6 transition-all hover:-translate-y-0.5 ${
+                  p.highlight
+                    ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:shadow-lg hover:shadow-purple-500/40'
+                    : 'bg-white/5 border border-white/15 text-white hover:bg-white/10'
+                }`}>
+                  Get Started →
+                </a>
+              </div>
+            ))}
+          </div>
+
+          {/* Flutter Mobile Apps pricing */}
+          <div className="text-center mb-8">
+            <p className="text-sm font-semibold text-white/35 uppercase tracking-[1.5px]">Flutter Mobile Apps</p>
           </div>
           <div className="grid md:grid-cols-3 gap-5 items-start">
             {pricing.map((p, i) => (
@@ -1074,20 +1182,20 @@ export default function Home() {
         <div className="space-y-4">
           {[
             {
-              q: 'How much does a Flutter app cost?',
-              a: 'BuildZn projects start at $800 for a simple MVP (10–12 screens, Firebase backend, iOS + Android). A full-featured app with custom backend, payments, and AI features typically runs $2,500–$5,000. All prices are fixed — no hourly billing, no scope creep surprises. Compare that to a mobile agency charging $15,000–$50,000 for the same output.',
+              q: 'How much does an AI automation or agent system cost?',
+              a: 'A single automated workflow with one integration starts at $300. A multi-agent pipeline with a dashboard runs $700. A full governed system — multi-agent orchestration, audit logs, kill switch — is $1,500. All fixed price, no hourly billing.',
             },
             {
-              q: 'How long does it take to build a Flutter app?',
-              a: 'Simple apps (10–15 screens): 3–4 weeks. Full-featured apps with backend, payments, and AI: 5–8 weeks. Muslifie — a full marketplace with Stripe Connect, real-time chat, and 70+ language support — went from discovery call to App Store in 6 weeks.',
+              q: 'How long does it take to build one?',
+              a: 'A single automated workflow: 1–2 weeks. A multi-agent pipeline with a dashboard: 2–3 weeks. A full governed system with audit logging and a kill switch: 3–4 weeks. Timelines depend on how many of your existing tools it needs to plug into.',
+            },
+            {
+              q: 'What if I need a mobile app instead?',
+              a: 'That is still a core part of what I build. Flutter app pricing starts at $800 for a simple MVP (10–12 screens, Firebase backend, iOS + Android) and runs up to $4,500 for a full marketplace-style platform with a custom backend and AI features. Simple apps take 3–4 weeks; full-featured ones take 5–8 weeks.',
             },
             {
               q: 'Do you build for both iOS and Android?',
-              a: 'Yes, always. Flutter produces a single codebase that runs natively on both platforms. Every BuildZn package includes iOS and Android deployment — no extra cost for the second platform.',
-            },
-            {
-              q: "What's included in each package?",
-              a: 'All packages include: Flutter app (iOS + Android), backend integration, App Store and Google Play submission, 1 month of bug support post-launch. Growth and Scale packages add custom Node.js backends, AI features, admin dashboards, and Stripe/RevenueCat integration.',
+              a: 'Yes, always. Flutter produces a single codebase that runs natively on both platforms. Every app package includes iOS and Android deployment — no extra cost for the second platform.',
             },
             {
               q: 'How does the fixed-price model work?',
@@ -1098,8 +1206,12 @@ export default function Home() {
               a: 'Yes. Full-stack is the default. Node.js APIs, MongoDB or Supabase databases, Firebase, AWS — whatever fits your product. You get one developer who owns the whole stack instead of coordinating between a frontend and backend team.',
             },
             {
+              q: "What's included in each package?",
+              a: 'Automation packages include the agent or workflow build, integration with your existing tools, and monitoring setup, plus 2 weeks to 2 months of support depending on tier. App packages include the Flutter app (iOS + Android), backend integration, and App Store/Google Play submission, plus 1 to 6 months of support depending on tier — the Professional and Enterprise app tiers add a custom Node.js backend, AI features, and an admin dashboard.',
+            },
+            {
               q: 'What if I need changes after delivery?',
-              a: 'Every package includes 1 month of bug support after launch. For new features or extended support, we scope a follow-on project at the same fixed-price model. No open-ended retainers unless you want one.',
+              a: 'Every package includes bug support after launch (length depends on the tier). For new features or extended support, we scope a follow-on project at the same fixed-price model. No open-ended retainers unless you want one.',
             },
           ].map((item, i) => (
             <FAQItem key={i} q={item.q} a={item.a} />

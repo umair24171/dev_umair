@@ -152,13 +152,24 @@ const siteJsonLd = {
       offers: [
         {
           '@type': 'Offer',
-          name: 'AI Feature Integration',
-          description: 'Add Claude, OpenAI, or Gemini-powered features to an existing app or product — chat, RAG, recommendations.',
+          name: 'Starter Automation',
+          price: '300',
+          priceCurrency: 'USD',
+          description: 'One automated workflow, single AI/LLM integration, scheduled or triggered runs. 1-2 weeks delivery.',
         },
         {
           '@type': 'Offer',
-          name: 'Agent & Automation Systems',
-          description: 'Multi-agent pipelines, bots, and automated workflows that run 24/7 without human input.',
+          name: 'Growth Automation',
+          price: '700',
+          priceCurrency: 'USD',
+          description: 'Multi-agent pipeline with 2-3 integrations and a dashboard or alerts. 2-3 weeks delivery.',
+        },
+        {
+          '@type': 'Offer',
+          name: 'Full System',
+          price: '1500',
+          priceCurrency: 'USD',
+          description: 'Multi-agent orchestration with audit logs, kill switch, and a custom dashboard. 3-4 weeks delivery.',
         },
       ],
     },
@@ -181,15 +192,15 @@ const siteJsonLd = {
         },
         {
           '@type': 'Offer',
-          name: 'Growth',
-          price: '2500',
+          name: 'Professional',
+          price: '2000',
           priceCurrency: 'USD',
           description: 'Full-featured app with custom Node.js backend, payments, AI features, and admin dashboard.',
         },
         {
           '@type': 'Offer',
-          name: 'Scale',
-          price: '5000',
+          name: 'Enterprise',
+          price: '4500',
           priceCurrency: 'USD',
           description: 'Complex marketplace or platform — multi-role auth, Stripe Connect, real-time features, full QA.',
         },
@@ -202,18 +213,26 @@ const siteJsonLd = {
       mainEntity: [
         {
           '@type': 'Question',
-          name: 'How much does a Flutter app cost?',
+          name: 'How much does an AI automation or agent system cost?',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: 'BuildZn Flutter app projects start at $800 for a simple MVP (10–12 screens, Firebase backend, iOS + Android). A full-featured app with custom backend, payments, and AI features typically runs $2,500–$5,000. All prices are fixed — no hourly billing. Compare that to a mobile agency charging $15,000–$50,000 for the same output.',
+            text: 'A single automated workflow with one integration starts at $300. A multi-agent pipeline with a dashboard runs $700. A full governed system with multi-agent orchestration, audit logs, and a kill switch is $1,500. All fixed price, no hourly billing.',
           },
         },
         {
           '@type': 'Question',
-          name: 'How long does it take to build a Flutter app?',
+          name: 'How long does it take to build one?',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: 'Simple apps (10–15 screens): 3–4 weeks. Full-featured apps with backend, payments, and AI: 5–8 weeks. Muslifie — a full marketplace with Stripe Connect, real-time chat, and 70+ language support — went from discovery call to App Store in 6 weeks.',
+            text: 'A single automated workflow: 1-2 weeks. A multi-agent pipeline with a dashboard: 2-3 weeks. A full governed system with audit logging and a kill switch: 3-4 weeks. Timelines depend on how many existing tools it needs to plug into.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'What if I need a mobile app instead?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Flutter app development is still a core service. Pricing starts at $800 for a simple MVP (10-12 screens, Firebase backend, iOS + Android) and runs up to $4,500 for a full marketplace-style platform with a custom backend and AI features. Simple apps take 3-4 weeks; full-featured ones take 5-8 weeks.',
           },
         },
         {
@@ -221,15 +240,7 @@ const siteJsonLd = {
           name: 'Do you build for both iOS and Android?',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: 'Yes, always. Flutter produces a single codebase that runs natively on both platforms. Every BuildZn package includes iOS and Android deployment at no extra cost.',
-          },
-        },
-        {
-          '@type': 'Question',
-          name: "What's included in each package?",
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'All packages include: Flutter app (iOS + Android), backend integration, App Store and Google Play submission, and 1 month of bug support post-launch. Growth and Scale packages add custom Node.js backends, AI features, admin dashboards, and Stripe/RevenueCat integration.',
+            text: 'Yes, always. Flutter produces a single codebase that runs natively on both platforms. Every app package includes iOS and Android deployment at no extra cost.',
           },
         },
         {
@@ -237,7 +248,7 @@ const siteJsonLd = {
           name: 'How does the fixed-price model work?',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: 'You pay 50% upfront and 50% on delivery. The scope is locked in your proposal — no surprise invoices, no hourly tracking. If the agreed app cannot be delivered, you get your money back.',
+            text: 'You pay 50% upfront and 50% on delivery. The scope is locked in your proposal — no surprise invoices, no hourly tracking. If the agreed work cannot be delivered, you get your money back.',
           },
         },
         {
@@ -250,10 +261,18 @@ const siteJsonLd = {
         },
         {
           '@type': 'Question',
+          name: "What's included in each package?",
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Automation packages include the agent or workflow build, integration with your existing tools, and monitoring setup, plus 2 weeks to 2 months of support depending on tier. App packages include the Flutter app, backend integration, and store submission, plus 1 to 6 months of support depending on tier.',
+          },
+        },
+        {
+          '@type': 'Question',
           name: 'What if I need changes after delivery?',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: 'Every package includes 1 month of bug support after launch. For new features, we scope a follow-on project at the same fixed-price model.',
+            text: 'Every package includes bug support after launch, with the length depending on the tier. For new features, we scope a follow-on project at the same fixed-price model.',
           },
         },
       ],
