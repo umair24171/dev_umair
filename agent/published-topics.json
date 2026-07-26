@@ -634,7 +634,17 @@
       "date": "2026-07-09",
       "wordCount": 1898,
       "devToUrl": "https://dev.to/umair24171/evaluate-developer-skills-ai-era-my-3-chatgpt-red-flags-3mab"
+    },
+    {
+      "slug": "fixing-forge-os-nodejs-integration-40-agent-routing-boost",
+      "primaryKeyword": "forge-os node.js integration",
+      "title": "Fixing forge-os node.js integration: 40% Agent Routing Boost",
+      "topic": "Integrating Forge-OS: Open-Source AI Agent Control Plane with Node.js",
+      "uniqueClaim": "A Node.js blueprint for Forge-OS skill routing that efficiently manages complex multi-agent workflows, including a specific performance benchmark (e.g., latency reduction for complex task routing) Umair achieved compared to traditional custom orchestration, and a common configuration pitfall he fixed.",
+      "date": "2026-07-26",
+      "wordCount": 2079,
+      "devToUrl": "https://dev.to/umair24171/fixing-forge-os-nodejs-integration-40-agent-routing-boost-3jo0"
     }
   ],
-  "lastRun": "2026-07-09T07:34:44.306Z"
+  "lastRun": "2026-07-26T06:32:49.530Z"
 }
