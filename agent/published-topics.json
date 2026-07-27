@@ -644,7 +644,17 @@
       "date": "2026-07-26",
       "wordCount": 2079,
       "devToUrl": "https://dev.to/umair24171/fixing-forge-os-nodejs-integration-40-agent-routing-boost-3jo0"
+    },
+    {
+      "slug": "how-i-built-flutter-on-device-ai-clipboard-security-zero-cloud",
+      "primaryKeyword": "flutter on-device ai clipboard security",
+      "title": "How I Built Flutter On-Device AI Clipboard Security: Zero Cloud",
+      "topic": "Flutter On-Device AI: Real-time Clipboard Threat Detection for Mobile Apps",
+      "uniqueClaim": "A practical Flutter code example demonstrating an on-device TensorFlow Lite model for real-time, privacy-focused clipboard content analysis, specifically identifying and flagging common malicious patterns (like crypto wallet addresses) with zero cloud data transmission.",
+      "date": "2026-07-27",
+      "wordCount": 2241,
+      "devToUrl": "https://dev.to/umair24171/how-i-built-flutter-on-device-ai-clipboard-security-zero-cloud-cm"
     }
   ],
-  "lastRun": "2026-07-26T06:32:49.530Z"
+  "lastRun": "2026-07-27T06:59:51.469Z"
 }
