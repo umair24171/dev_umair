@@ -664,7 +664,17 @@
       "date": "2026-07-28",
       "wordCount": 1481,
       "devToUrl": "https://dev.to/umair24171/my-500-open-llm-fine-tuning-cost-beat-gpt-4-3m82"
+    },
+    {
+      "slug": "claude-ai-crypto-vulnerability-scan-the-padding-oracle-it-found",
+      "primaryKeyword": "Claude AI crypto vulnerability scan",
+      "title": "Claude AI Crypto Vulnerability Scan: The Padding Oracle It Found",
+      "topic": "Discovering Cryptographic Weaknesses with Claude: A Hands-On Security Audit",
+      "uniqueClaim": "I will provide specific, working Claude prompts used to uncover a common padding oracle vulnerability (e.g., in an AES implementation) and demonstrate how Claude's reasoning detected a subtle side-channel leakage related to error handling, a flaw missed by a leading static analysis tool.",
+      "date": "2026-07-29",
+      "wordCount": 2293,
+      "devToUrl": "https://dev.to/umair24171/claude-ai-crypto-vulnerability-scan-the-padding-oracle-it-found-2hkn"
     }
   ],
-  "lastRun": "2026-07-28T06:23:21.947Z"
+  "lastRun": "2026-07-29T06:28:09.773Z"
 }
