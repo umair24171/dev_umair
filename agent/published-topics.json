@@ -674,7 +674,17 @@
       "date": "2026-07-29",
       "wordCount": 2293,
       "devToUrl": "https://dev.to/umair24171/claude-ai-crypto-vulnerability-scan-the-padding-oracle-it-found-2hkn"
+    },
+    {
+      "slug": "how-i-ran-gemma-4-26b-on-m-series-mac-2gb-ram-18-toks",
+      "primaryKeyword": "gemma 4 26b m-series mac",
+      "title": "How I Ran Gemma 4 26B on M-Series Mac: 2GB RAM, 1.8 tok/s",
+      "topic": "Run Gemma 4 26B on M-Series Mac: 2GB RAM Performance Guide",
+      "uniqueClaim": "This post will provide the specific open-source engine configuration and exact tokens/second benchmark for running Gemma 4 26B on an M-series Mac while strictly limiting RAM usage to 2GB, a novel optimization not widely documented.",
+      "date": "2026-07-30",
+      "wordCount": 2122,
+      "devToUrl": "https://dev.to/umair24171/how-i-ran-gemma-4-26b-on-m-series-mac-2gb-ram-18-toks-2o11"
     }
   ],
-  "lastRun": "2026-07-29T06:28:09.773Z"
+  "lastRun": "2026-07-30T06:24:28.366Z"
 }
