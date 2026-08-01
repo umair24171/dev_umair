@@ -694,7 +694,17 @@
       "date": "2026-07-31",
       "wordCount": 2123,
       "devToUrl": "https://dev.to/umair24171/why-gpt-56-sol-business-failure-was-inevitable-my-fix-gfa"
+    },
+    {
+      "slug": "qm-multiplayer-ai-agent-tutorial-cut-latency-20-with-nodejs",
+      "primaryKeyword": "qm multiplayer AI agent tutorial",
+      "title": "qm multiplayer AI agent tutorial: Cut Latency 20% with Node.js",
+      "topic": "Building Multi-Agent AI Systems with qm: A Practical Guide",
+      "uniqueClaim": "This guide will showcase a specific `qm` workflow for a Node.js-based multi-agent system that reduced task completion latency by 20% compared to sequential execution, providing the exact `qm` configuration for a task delegation pattern.",
+      "date": "2026-08-01",
+      "wordCount": 1696,
+      "devToUrl": "https://dev.to/umair24171/qm-multiplayer-ai-agent-tutorial-cut-latency-20-with-nodejs-c4b"
     }
   ],
-  "lastRun": "2026-07-31T06:40:47.246Z"
+  "lastRun": "2026-08-01T06:25:19.321Z"
 }
