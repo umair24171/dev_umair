@@ -704,7 +704,17 @@
       "date": "2026-08-01",
       "wordCount": 1696,
       "devToUrl": "https://dev.to/umair24171/qm-multiplayer-ai-agent-tutorial-cut-latency-20-with-nodejs-c4b"
+    },
+    {
+      "slug": "how-i-built-a-durable-cloud-cell-ai-agent-0-idle-costs",
+      "primaryKeyword": "durable cloud cell ai agent",
+      "title": "How I Built a Durable Cloud Cell AI Agent: $0 Idle Costs",
+      "topic": "Leveraging Durable Cloud Cells for Cost-Effective, Persistent AI Agents",
+      "uniqueClaim": "A practical guide contrasting traditional container/local agent deployment with a \"durable cloud cell\" architecture (like OnCell/NanoClaw), demonstrating how to build an AI agent that remembers everything, is crash-proof, and costs ~$0 while idle, including a Node.js integration example.",
+      "date": "2026-08-02",
+      "wordCount": 2404,
+      "devToUrl": "https://dev.to/umair24171/how-i-built-a-durable-cloud-cell-ai-agent-0-idle-costs-4jn8"
     }
   ],
-  "lastRun": "2026-08-01T06:25:19.321Z"
+  "lastRun": "2026-08-02T06:29:57.492Z"
 }
