@@ -714,7 +714,17 @@
       "date": "2026-08-02",
       "wordCount": 2404,
       "devToUrl": "https://dev.to/umair24171/how-i-built-a-durable-cloud-cell-ai-agent-0-idle-costs-4jn8"
+    },
+    {
+      "slug": "fix-qwen38-max-flutter-performance-debug-25-fps-drop",
+      "primaryKeyword": "qwen3.8-max flutter performance debug",
+      "title": "Fix Qwen3.8-Max Flutter Performance Debug: 25% FPS Drop",
+      "topic": "Qwen3.8-Max for Flutter Performance Debugging: The Bottleneck it Actually Found",
+      "uniqueClaim": "Qwen3.8-Max, after a multi-turn dialogue, correctly identified an inefficient `InheritedWidget` rebuild pattern nested 3+ levels deep within my Flutter UI that was causing a 25% drop in FPS during scrolling, a subtlety missed by other LLMs I tested. I'll show the exact prompts and code changes.",
+      "date": "2026-08-03",
+      "wordCount": 2017,
+      "devToUrl": "https://dev.to/umair24171/fix-qwen38-max-flutter-performance-debug-25-fps-drop-1i1i"
     }
   ],
-  "lastRun": "2026-08-02T06:29:57.492Z"
+  "lastRun": "2026-08-03T06:56:43.408Z"
 }
