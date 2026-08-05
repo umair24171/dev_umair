@@ -724,7 +724,17 @@
       "date": "2026-08-03",
       "wordCount": 2017,
       "devToUrl": "https://dev.to/umair24171/fix-qwen38-max-flutter-performance-debug-25-fps-drop-1i1i"
+    },
+    {
+      "slug": "how-i-clean-web-content-llm-agents-nodejs-sparkfetch-blueprint",
+      "primaryKeyword": "clean web content LLM agents",
+      "title": "How I clean web content LLM agents: Node.js Sparkfetch blueprint",
+      "topic": "How I Clean Web Content for LLM Agents (Node.js + Sparkfetch Blueprint)",
+      "uniqueClaim": "This post will provide a specific Node.js blueprint and code examples for integrating Sparkfetch (or open-source alternatives with similar functionality) to programmatically extract and structure web page content, specifically addressing the challenges of dirty HTML causing LLM agent failures. It will include performance considerations for real-world agent pipelines, demonstrating how to achieve specific extraction precision for varying content types.",
+      "date": "2026-08-05",
+      "wordCount": 2102,
+      "devToUrl": "https://dev.to/umair24171/how-i-clean-web-content-llm-agents-nodejs-sparkfetch-blueprint-17e3"
     }
   ],
-  "lastRun": "2026-08-03T06:56:43.408Z"
+  "lastRun": "2026-08-05T06:24:39.815Z"
 }
