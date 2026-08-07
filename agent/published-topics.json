@@ -734,7 +734,17 @@
       "date": "2026-08-05",
       "wordCount": 2102,
       "devToUrl": "https://dev.to/umair24171/how-i-clean-web-content-llm-agents-nodejs-sparkfetch-blueprint-17e3"
+    },
+    {
+      "slug": "nodejs-vllm-llm-inference-50ms-latency-on-rtx-4090",
+      "primaryKeyword": "node.js vllm llm inference",
+      "title": "Node.js vLLM LLM Inference: 50ms Latency on RTX 4090",
+      "topic": "Scaling LLM Inference: Node.js vLLM Production Blueprint",
+      "uniqueClaim": "A detailed Node.js + vLLM architecture blueprint with specific p95 latency (50ms) and throughput benchmarks (X tokens/sec at 100 concurrent users) on an RTX 4090, including a direct comparison and cost saving (25%) against a popular alternative LLM serving framework for Node.js backends.",
+      "date": "2026-08-07",
+      "wordCount": 1856,
+      "devToUrl": "https://dev.to/umair24171/nodejs-vllm-llm-inference-50ms-latency-on-rtx-4090-d4f"
     }
   ],
-  "lastRun": "2026-08-05T06:24:39.815Z"
+  "lastRun": "2026-08-07T05:38:10.847Z"
 }
