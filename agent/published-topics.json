@@ -744,7 +744,17 @@
       "date": "2026-08-07",
       "wordCount": 1856,
       "devToUrl": "https://dev.to/umair24171/nodejs-vllm-llm-inference-50ms-latency-on-rtx-4090-d4f"
+    },
+    {
+      "slug": "ai-agent-codebase-semantic-rag-ast-for-30-fewer-hallucinations",
+      "primaryKeyword": "AI agent codebase semantic RAG",
+      "title": "AI agent codebase semantic RAG: AST for 30% Fewer Hallucinations",
+      "topic": "Building a production-ready codebase semantic RAG with AST indexing for AI coding agents",
+      "uniqueClaim": "I built a Node.js-based codebase semantic RAG agent that uses AST parsing and symbol graphs to reduce coding agent hallucinations by 30% on complex enterprise projects, benchmarked against standard vector RAG.",
+      "date": "2026-08-08",
+      "wordCount": 2194,
+      "devToUrl": "https://dev.to/umair24171/ai-agent-codebase-semantic-rag-ast-for-30-fewer-hallucinations-5481"
     }
   ],
-  "lastRun": "2026-08-07T05:38:10.847Z"
+  "lastRun": "2026-08-08T04:52:54.448Z"
 }
