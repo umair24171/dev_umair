@@ -754,7 +754,17 @@
       "date": "2026-08-08",
       "wordCount": 2194,
       "devToUrl": "https://dev.to/umair24171/ai-agent-codebase-semantic-rag-ast-for-30-fewer-hallucinations-5481"
+    },
+    {
+      "slug": "how-i-cut-ux-review-cycles-30-with-an-ai-agent-ai-agent-ux-review",
+      "primaryKeyword": "ai agent ux review flutter",
+      "title": "How I Cut UX Review Cycles 30% with an AI Agent: ai agent ux review flutter",
+      "topic": "Build an AI Agent for Flutter App UX and Product Detail Review",
+      "uniqueClaim": "My custom Flutter-focused AI agent identifies specific forgotten UX elements (e.g., missing empty states, inconsistent button labels, off-spec branding colors) by analyzing screenshots and code, outperforming initial human checks by 30%.",
+      "date": "2026-08-09",
+      "wordCount": 1922,
+      "devToUrl": "https://dev.to/umair24171/how-i-cut-ux-review-cycles-30-with-an-ai-agent-ai-agent-ux-review-flutter-14pm"
     }
   ],
-  "lastRun": "2026-08-08T04:52:54.448Z"
+  "lastRun": "2026-08-09T05:01:36.793Z"
 }
