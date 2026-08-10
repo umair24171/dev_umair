@@ -764,7 +764,17 @@
       "date": "2026-08-09",
       "wordCount": 1922,
       "devToUrl": "https://dev.to/umair24171/how-i-cut-ux-review-cycles-30-with-an-ai-agent-ai-agent-ux-review-flutter-14pm"
+    },
+    {
+      "slug": "how-i-built-an-ai-agent-business-idea-validation-reddit-cost",
+      "primaryKeyword": "AI agent business idea validation",
+      "title": "How I Built an AI agent business idea validation: Reddit Cost",
+      "topic": "Build an AI Agent for Reddit Business Idea Validation: Costs, Code, and Data Privacy",
+      "uniqueClaim": "This post will provide a specific Node.js blueprint for anti-bot bypassing when scraping Reddit for market research, detail a quantifiable heuristic for 'pain point' detection within Reddit comments using Claude, and explicitly break down the ethical and legal challenges of using public forum data for business validation in 2026, including potential Reddit API cost implications and GDPR compliance nuances.",
+      "date": "2026-08-10",
+      "wordCount": 2357,
+      "devToUrl": "https://dev.to/umair24171/how-i-built-an-ai-agent-business-idea-validation-reddit-cost-49bc"
     }
   ],
-  "lastRun": "2026-08-09T05:01:36.793Z"
+  "lastRun": "2026-08-10T05:22:58.558Z"
 }
