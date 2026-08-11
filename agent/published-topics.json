@@ -774,7 +774,17 @@
       "date": "2026-08-10",
       "wordCount": 2357,
       "devToUrl": "https://dev.to/umair24171/how-i-built-an-ai-agent-business-idea-validation-reddit-cost-49bc"
+    },
+    {
+      "slug": "how-i-built-flutter-generative-ui-real-time-nodejs-200ms",
+      "primaryKeyword": "Flutter generative UI real-time",
+      "title": "How I Built Flutter generative UI real-time: Node.js <200ms",
+      "topic": "Building Real-Time Generative AI UI with Flutter & Node.js: The Orbis-Pictus Blueprint",
+      "uniqueClaim": "This blueprint will detail a specific Flutter widget architecture for dynamically rendering AI-generated interactive content and a Node.js backend strategy for serving generative AI (e.g., image generation) with sub-200ms latency, a critical factor for real-time UI that is often overlooked in broader AI integration guides.",
+      "date": "2026-08-11",
+      "wordCount": 2178,
+      "devToUrl": "https://dev.to/umair24171/how-i-built-flutter-generative-ui-real-time-nodejs-200ms-67m"
     }
   ],
-  "lastRun": "2026-08-10T05:22:58.558Z"
+  "lastRun": "2026-08-11T05:04:38.226Z"
 }
