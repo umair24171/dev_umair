@@ -784,7 +784,17 @@
       "date": "2026-08-11",
       "wordCount": 2178,
       "devToUrl": "https://dev.to/umair24171/how-i-built-flutter-generative-ui-real-time-nodejs-200ms-67m"
+    },
+    {
+      "slug": "how-i-secure-llm-reasoning-traces-85-block-rate",
+      "primaryKeyword": "secure LLM reasoning traces",
+      "title": "How I Secure LLM Reasoning Traces: 85% Block Rate",
+      "topic": "Preventing LLM 'Brain Drain': Protecting Your AI Agent's Reasoning Traces",
+      "uniqueClaim": "I'll detail specific, Node.js-based prompt sanitization and response parsing techniques I've implemented in my production AI agents, like the gold trading system, that have demonstrably blocked over 85% of attempts to exfiltrate proprietary reasoning traces from LLM APIs.",
+      "date": "2026-08-12",
+      "wordCount": 2377,
+      "devToUrl": "https://dev.to/umair24171/how-i-secure-llm-reasoning-traces-85-block-rate-4ci9"
     }
   ],
-  "lastRun": "2026-08-11T05:04:38.226Z"
+  "lastRun": "2026-08-12T05:28:33.255Z"
 }
