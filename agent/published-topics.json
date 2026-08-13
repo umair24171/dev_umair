@@ -794,7 +794,17 @@
       "date": "2026-08-12",
       "wordCount": 2377,
       "devToUrl": "https://dev.to/umair24171/how-i-secure-llm-reasoning-traces-85-block-rate-4ci9"
+    },
+    {
+      "slug": "oss-pr-reviewer-tutorial-my-nodejs-validation-bug",
+      "primaryKeyword": "oss pr reviewer tutorial",
+      "title": "oss pr reviewer tutorial: My Node.js Validation Bug",
+      "topic": "OSS-PR-Reviewer: My Honest Dev Review on a Node.js Backend",
+      "uniqueClaim": "My real-world test on a Node.js backend PR revealed `oss-pr-reviewer` caught a critical data validation bug that my manual reviews initially missed, proving its value beyond basic linting.",
+      "date": "2026-08-13",
+      "wordCount": 1934,
+      "devToUrl": "https://dev.to/umair24171/oss-pr-reviewer-tutorial-my-nodejs-validation-bug-55ia"
     }
   ],
-  "lastRun": "2026-08-12T05:28:33.255Z"
+  "lastRun": "2026-08-13T05:37:47.233Z"
 }
