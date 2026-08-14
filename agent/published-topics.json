@@ -804,7 +804,17 @@
       "date": "2026-08-13",
       "wordCount": 1934,
       "devToUrl": "https://dev.to/umair24171/oss-pr-reviewer-tutorial-my-nodejs-validation-bug-55ia"
+    },
+    {
+      "slug": "fixing-deepseek-harness-flutter-coding-agent-my-30-better-listvie",
+      "primaryKeyword": "DeepSeek Harness Flutter coding agent",
+      "title": "Fixing DeepSeek Harness Flutter coding agent: My 30% Better ListView Prompt",
+      "topic": "DeepSeek Harness for Flutter AI Coding Agents: My Prompt Pattern to Fix Widget Hallucinations",
+      "uniqueClaim": "My custom DeepSeek Harness system prompt for Flutter `ListView.builder` improved generated widget quality by 30%, addressing a common hallucination issue and producing more idiomatic Dart code than default configurations.",
+      "date": "2026-08-14",
+      "wordCount": 2103,
+      "devToUrl": "https://dev.to/umair24171/fixing-deepseek-harness-flutter-coding-agent-my-30-better-listview-prompt-5hmh"
     }
   ],
-  "lastRun": "2026-08-13T05:37:47.233Z"
+  "lastRun": "2026-08-14T05:28:53.585Z"
 }
