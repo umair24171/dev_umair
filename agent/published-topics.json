@@ -814,7 +814,17 @@
       "date": "2026-08-14",
       "wordCount": 2103,
       "devToUrl": "https://dev.to/umair24171/fixing-deepseek-harness-flutter-coding-agent-my-30-better-listview-prompt-5hmh"
+    },
+    {
+      "slug": "ai-agent-product-testing-my-bot-found-3-critical-ux-flaws",
+      "primaryKeyword": "ai agent product testing",
+      "title": "AI Agent Product Testing: My Bot Found 3 Critical UX Flaws",
+      "topic": "AI Agent as Your Annoying Customer: Catching Flutter App Bugs Before Launch",
+      "uniqueClaim": "My custom AI agent, built with Node.js and Flutter using the Gemini-Vision API, simulated 5 types of \"annoying customer\" behaviors and proactively exposed 3 critical UX flaws in my own app that traditional QA overlooked.",
+      "date": "2026-08-15",
+      "wordCount": 2217,
+      "devToUrl": "https://dev.to/umair24171/ai-agent-product-testing-my-bot-found-3-critical-ux-flaws-33gf"
     }
   ],
-  "lastRun": "2026-08-14T05:28:53.585Z"
+  "lastRun": "2026-08-15T04:25:37.494Z"
 }
