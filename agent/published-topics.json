@@ -824,7 +824,17 @@
       "date": "2026-08-15",
       "wordCount": 2217,
       "devToUrl": "https://dev.to/umair24171/ai-agent-product-testing-my-bot-found-3-critical-ux-flaws-33gf"
+    },
+    {
+      "slug": "why-my-ai-time-is-80-orchestration-the-ai-developer-role-shift",
+      "primaryKeyword": "ai developer role shift",
+      "title": "Why My AI Time is 80% Orchestration: The ai developer role shift",
+      "topic": "Working with AI Feels More Like Leadership Than Coding: My Senior Dev Take",
+      "uniqueClaim": "I will present specific, real-world scenarios from building complex AI agents (like FarahGPT or internal tools for client projects) where 80% of my time is spent orchestrating existing LLMs, designing agent communication protocols, debugging emergent AI behavior, and ensuring system reliability—not writing application logic from scratch. This illustrates a concrete shift from traditional coding to AI \"system leadership\" that is distinct from generic future-of-work discussions.",
+      "date": "2026-08-16",
+      "wordCount": 1601,
+      "devToUrl": "https://dev.to/umair24171/why-my-ai-time-is-80-orchestration-the-ai-developer-role-shift-1pk0"
     }
   ],
-  "lastRun": "2026-08-15T04:25:37.494Z"
+  "lastRun": "2026-08-16T04:32:02.909Z"
 }
