@@ -834,7 +834,17 @@
       "date": "2026-08-16",
       "wordCount": 1601,
       "devToUrl": "https://dev.to/umair24171/why-my-ai-time-is-80-orchestration-the-ai-developer-role-shift-1pk0"
+    },
+    {
+      "slug": "building-an-ai-assistant-flutter-nodejs-ai-browser-automation",
+      "primaryKeyword": "flutter nodejs ai browser automation",
+      "title": "Building an AI Assistant: flutter nodejs ai browser automation",
+      "topic": "How I Built My Full-Stack AI Assistant: Flutter, Node.js, & Browser Automation",
+      "uniqueClaim": "A detailed blueprint showing the architecture and specific code examples for orchestrating an AI agent's decision-making (using LLMs) with complex browser automation tasks (e.g., form filling, data extraction, dynamic navigation) across Flutter and Node.js, including how to handle automation failures and dynamic web elements, and quantifying the actual time saved from personal use.",
+      "date": "2026-08-17",
+      "wordCount": 2345,
+      "devToUrl": "https://dev.to/umair24171/building-an-ai-assistant-flutter-nodejs-ai-browser-automation-533d"
     }
   ],
-  "lastRun": "2026-08-16T04:32:02.909Z"
+  "lastRun": "2026-08-17T04:37:20.636Z"
 }
