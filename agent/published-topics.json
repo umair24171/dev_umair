@@ -844,7 +844,17 @@
       "date": "2026-08-17",
       "wordCount": 2345,
       "devToUrl": "https://dev.to/umair24171/building-an-ai-assistant-flutter-nodejs-ai-browser-automation-533d"
+    },
+    {
+      "slug": "fixing-ai-code-autofix-security-flaws-my-ast-checker",
+      "primaryKeyword": "ai code autofix security flaws",
+      "title": "Fixing ai code autofix security flaws: My AST checker",
+      "topic": "AI Generated Code Security: Lessons from Snowflake's Copilot Autofix Breach",
+      "uniqueClaim": "AI autofix tools, like Copilot, often introduce subtle configuration or dependency vulnerabilities due to incomplete contextual understanding. I'll demonstrate how a seemingly innocuous `package.json` autofix suggested by an internal AI agent (similar to the Snowflake scenario) could have led to a critical privilege escalation, and detail the Node.js Abstract Syntax Tree (AST) analysis I implemented to proactively detect and block such issues.",
+      "date": "2026-08-18",
+      "wordCount": 2090,
+      "devToUrl": "https://dev.to/umair24171/fixing-ai-code-autofix-security-flaws-my-ast-checker-260l"
     }
   ],
-  "lastRun": "2026-08-17T04:37:20.636Z"
+  "lastRun": "2026-08-18T04:31:20.268Z"
 }
