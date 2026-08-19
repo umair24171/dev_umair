@@ -854,7 +854,17 @@
       "date": "2026-08-18",
       "wordCount": 2090,
       "devToUrl": "https://dev.to/umair24171/fixing-ai-code-autofix-security-flaws-my-ast-checker-260l"
+    },
+    {
+      "slug": "crucible-ai-vulnerability-audit-my-agent-saw-what-theirs-missed",
+      "primaryKeyword": "crucible AI vulnerability audit",
+      "title": "Crucible AI Vulnerability Audit: My Agent Saw What Theirs Missed",
+      "topic": "Crucible AI Vulnerability: My White-Box Audit Agent vs Their Sandbox",
+      "uniqueClaim": "This post will detail how my custom white-box LLM agent caught a critical cross-file logic flaw in a Node.js backend that Crucible's isolated sandbox auditing approach missed due to its contextual limitations, with a concrete code example.",
+      "date": "2026-08-19",
+      "wordCount": 1922,
+      "devToUrl": "https://dev.to/umair24171/crucible-ai-vulnerability-audit-my-agent-saw-what-theirs-missed-4ien"
     }
   ],
-  "lastRun": "2026-08-18T04:31:20.268Z"
+  "lastRun": "2026-08-19T04:33:02.438Z"
 }
