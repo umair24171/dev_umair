@@ -864,7 +864,17 @@
       "date": "2026-08-19",
       "wordCount": 1922,
       "devToUrl": "https://dev.to/umair24171/crucible-ai-vulnerability-audit-my-agent-saw-what-theirs-missed-4ien"
+    },
+    {
+      "slug": "how-i-wired-free-llm-access-9router-freebuff-blueprint",
+      "primaryKeyword": "free LLM access 9router",
+      "title": "How I Wired Free LLM Access: 9router & Freebuff Blueprint",
+      "topic": "How I Wired Free LLM Access with 9router & Freebuff: My Cost-Saving Blueprint for AI Agents",
+      "uniqueClaim": "This post will provide a practical, production-grade blueprint for integrating Freebuff's free-tier OpenAI-compatible LLMs using a 9router gateway with device-code OAuth, complete with Node.js code examples and a benchmark of how many calls I get before hitting rate limits.",
+      "date": "2026-08-20",
+      "wordCount": 2581,
+      "devToUrl": "https://dev.to/umair24171/how-i-wired-free-llm-access-9router-freebuff-blueprint-19e3"
     }
   ],
-  "lastRun": "2026-08-19T04:33:02.438Z"
+  "lastRun": "2026-08-20T04:33:19.522Z"
 }
