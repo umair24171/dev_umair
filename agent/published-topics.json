@@ -874,7 +874,17 @@
       "date": "2026-08-20",
       "wordCount": 2581,
       "devToUrl": "https://dev.to/umair24171/how-i-wired-free-llm-access-9router-freebuff-blueprint-19e3"
+    },
+    {
+      "slug": "how-i-clean-llm-output-with-another-llm-slash-claude-costs-20",
+      "primaryKeyword": "clean LLM output with another LLM",
+      "title": "How I clean LLM output with another LLM: Slash Claude costs 20%",
+      "topic": "Clean Up Claude 5 Output: How I Use a Secondary LLM for Consistency",
+      "uniqueClaim": "This post will detail my Node.js backend architecture for using a *smaller, local or cheaper cloud LLM* (e.g., Mistral, Llama, Qwen via Ollama) *specifically* to parse, format, and \"clean\" the raw output from Claude 5, demonstrating a concrete 20% reduction in downstream token costs and a measurable improvement in structured output reliability for agent actions.",
+      "date": "2026-08-21",
+      "wordCount": 2396,
+      "devToUrl": "https://dev.to/umair24171/how-i-clean-llm-output-with-another-llm-slash-claude-costs-20-kc7"
     }
   ],
-  "lastRun": "2026-08-20T04:33:19.522Z"
+  "lastRun": "2026-08-21T04:34:10.968Z"
 }
