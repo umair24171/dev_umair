@@ -884,7 +884,17 @@
       "date": "2026-08-21",
       "wordCount": 2396,
       "devToUrl": "https://dev.to/umair24171/how-i-clean-llm-output-with-another-llm-slash-claude-costs-20-kc7"
+    },
+    {
+      "slug": "how-i-hit-sub-50ms-ai-app-latency-flutter-nodejs",
+      "primaryKeyword": "sub 50ms AI app latency",
+      "title": "How I Hit Sub-50ms AI App Latency: Flutter + Node.js",
+      "topic": "Achieving Sub-50ms Latency for Real-Time AI Apps (Flutter + Node.js Blueprint)",
+      "uniqueClaim": "This post will provide a practical, end-to-end blueprint for achieving true sub-50ms AI app latency across Flutter (client), Node.js (backend), and efficient AI model serving, featuring concrete code patterns and architectural decisions Umair uses in his real-world AI agent deployments, beyond just LLM inference speed.",
+      "date": "2026-08-22",
+      "wordCount": 2653,
+      "devToUrl": "https://dev.to/umair24171/how-i-hit-sub-50ms-ai-app-latency-flutter-nodejs-gmm"
     }
   ],
-  "lastRun": "2026-08-21T04:34:10.968Z"
+  "lastRun": "2026-08-22T04:28:52.468Z"
 }
