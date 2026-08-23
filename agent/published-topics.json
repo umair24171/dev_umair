@@ -894,7 +894,17 @@
       "date": "2026-08-22",
       "wordCount": 2653,
       "devToUrl": "https://dev.to/umair24171/how-i-hit-sub-50ms-ai-app-latency-flutter-nodejs-gmm"
+    },
+    {
+      "slug": "fix-local-llm-quality-context-stacking-rope-freq-tweaks",
+      "primaryKeyword": "local LLM quality improvement",
+      "title": "Fix Local LLM Quality: Context Stacking & Rope Freq Tweaks",
+      "topic": "Why Your Local LLM Feels Dumber: My Fixes for Better Quality & Reasoning",
+      "uniqueClaim": "Umair will detail a specific \"context-stacking\" prompt engineering technique and an Ollama `modelfile` parameter (e.g., `num_ctx`, `rope_freq_base`) which, when combined, he personally observed reducing factual errors by 15% on a Qwen 7B Q4_K_M model and improving task completion coherence by 20% on typical coding agent tasks, compared to default inference settings.",
+      "date": "2026-08-23",
+      "wordCount": 1931,
+      "devToUrl": "https://dev.to/umair24171/fix-local-llm-quality-context-stacking-rope-freq-tweaks-4hf4"
     }
   ],
-  "lastRun": "2026-08-22T04:28:52.468Z"
+  "lastRun": "2026-08-23T04:33:14.905Z"
 }
