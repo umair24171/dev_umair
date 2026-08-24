@@ -904,7 +904,17 @@
       "date": "2026-08-23",
       "wordCount": 1931,
       "devToUrl": "https://dev.to/umair24171/fix-local-llm-quality-context-stacking-rope-freq-tweaks-4hf4"
+    },
+    {
+      "slug": "my-2x2-llm-cost-performance-strategy-for-ai-agents",
+      "primaryKeyword": "llm cost performance strategy",
+      "title": "My 2x2 llm cost performance strategy for AI Agents",
+      "topic": "Why Cheaper LLMs Are Winning: My Strategic Framework for Optimal Cost-Performance Balance in AI Agents",
+      "uniqueClaim": "Umair will introduce his proprietary \"Value-Per-Token\" metric and a practical 2x2 decision matrix for categorizing and selecting LLMs, demonstrating how a specific combination (e.g., fine-tuned Gemma 4.0 with Node.js orchestration) achieved a 30% higher \"Value-Per-Token\" for the summarization task in his Muslifie agent backend compared to a leading premium LLM.",
+      "date": "2026-08-24",
+      "wordCount": 858,
+      "devToUrl": "https://dev.to/umair24171/my-2x2-llm-cost-performance-strategy-for-ai-agents-2l2h"
     }
   ],
-  "lastRun": "2026-08-23T04:33:14.905Z"
+  "lastRun": "2026-08-24T04:40:30.993Z"
 }
