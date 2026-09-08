@@ -924,7 +924,17 @@
       "date": "2026-09-07",
       "wordCount": 2064,
       "devToUrl": "https://dev.to/umair24171/build-ai-trading-signals-agent-sub-200ms-latency-52kc"
+    },
+    {
+      "slug": "5-llm-agent-flutter-ui-generation-comparison-my-fixes",
+      "primaryKeyword": "llm agent flutter ui generation comparison",
+      "title": "5 LLM Agent Flutter UI Generation Comparison: My Fixes",
+      "topic": "Comparing LLM Agents for Flutter UI Generation: My Failure Modes and Fixes",
+      "uniqueClaim": "This post will present a head-to-head comparison of at least 5 distinct LLM agent setups (e.g., OpenAI, Claude, open-source models with varying prompt strategies) for a specific Flutter UI generation task, detailing 3-5 *concrete categories* of common code generation failures (e.g., \"missing `key` attributes in lists\", \"incorrect `BuildContext` usage for theming\") and the exact code/prompt adjustments Umair made to mitigate them, based on his experience generating 100+ Flutter UI components per agent.",
+      "date": "2026-09-08",
+      "wordCount": 2217,
+      "devToUrl": "https://dev.to/umair24171/5-llm-agent-flutter-ui-generation-comparison-my-fixes-1fh5"
     }
   ],
-  "lastRun": "2026-09-07T08:53:13.518Z"
+  "lastRun": "2026-09-08T08:33:45.230Z"
 }
