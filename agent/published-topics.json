@@ -934,7 +934,17 @@
       "date": "2026-09-08",
       "wordCount": 2217,
       "devToUrl": "https://dev.to/umair24171/5-llm-agent-flutter-ui-generation-comparison-my-fixes-1fh5"
+    },
+    {
+      "slug": "qwen-38-4-bit-benchmark-rtx-4090-1-bit-is-a-trap",
+      "primaryKeyword": "qwen 3.8 4-bit benchmark rtx 4090",
+      "title": "Qwen 3.8 4-bit Benchmark RTX 4090: 1-bit is a Trap",
+      "topic": "Qwen 3.8 27B Quantization Benchmarks on RTX 4090 for AI Agents",
+      "uniqueClaim": "Qwen3.8 27B 4-bit quantization achieved X tok/s on my RTX 4090 with Y VRAM usage, while 1-bit quant completely collapsed to Z tok/s (unusable for agent workloads), with specific comparisons including M-series Mac performance.",
+      "date": "2026-09-09",
+      "wordCount": 1654,
+      "devToUrl": "https://dev.to/umair24171/qwen-38-4-bit-benchmark-rtx-4090-1-bit-is-a-trap-15am"
     }
   ],
-  "lastRun": "2026-09-08T08:33:45.230Z"
+  "lastRun": "2026-09-09T08:35:01.949Z"
 }
