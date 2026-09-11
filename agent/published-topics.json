@@ -944,7 +944,17 @@
       "date": "2026-09-09",
       "wordCount": 1654,
       "devToUrl": "https://dev.to/umair24171/qwen-38-4-bit-benchmark-rtx-4090-1-bit-is-a-trap-15am"
+    },
+    {
+      "slug": "flutter-ai-waste-classification-app-on-device-for-bank-sampah",
+      "primaryKeyword": "Flutter AI waste classification app",
+      "title": "Flutter AI waste classification app: On-Device for bank-sampah",
+      "topic": "Dissecting bank-sampah: How to Integrate AI for Flutter Waste Classification",
+      "uniqueClaim": "This post will provide a specific, implementable architectural blueprint and code snippets for integrating an *on-device* (or heavily optimized local LLM) waste classification feature into the `bank-sampah` Flutter app, directly addressing the technical challenges of working with a real-world trending open-source Flutter project.",
+      "date": "2026-09-11",
+      "wordCount": 2202,
+      "devToUrl": "https://dev.to/umair24171/flutter-ai-waste-classification-app-on-device-for-bank-sampah-1io9"
     }
   ],
-  "lastRun": "2026-09-09T08:35:01.949Z"
+  "lastRun": "2026-09-11T08:32:01.439Z"
 }
