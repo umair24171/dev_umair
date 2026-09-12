@@ -954,7 +954,17 @@
       "date": "2026-09-11",
       "wordCount": 2202,
       "devToUrl": "https://dev.to/umair24171/flutter-ai-waste-classification-app-on-device-for-bank-sampah-1io9"
+    },
+    {
+      "slug": "fixing-ai-agent-supply-chain-attack-nodejs-blueprint",
+      "primaryKeyword": "ai agent supply chain attack",
+      "title": "Fixing AI Agent Supply Chain Attack: Node.js Blueprint",
+      "topic": "AI Agent Supply Chain Attacks: My Node.js Defense Blueprint After RubyGems",
+      "uniqueClaim": "This post will introduce a novel \"Execution Context Guardian\" Node.js middleware for AI agent actions that specifically monitors and blocks suspicious package manager interactions and API calls based on a combination of dynamic analysis and a whitelist, directly preventing RubyGems-style attacks.",
+      "date": "2026-09-12",
+      "wordCount": 2034,
+      "devToUrl": "https://dev.to/umair24171/fixing-ai-agent-supply-chain-attack-nodejs-blueprint-2plc"
     }
   ],
-  "lastRun": "2026-09-11T08:32:01.439Z"
+  "lastRun": "2026-09-12T08:20:25.842Z"
 }
