@@ -964,7 +964,17 @@
       "date": "2026-09-12",
       "wordCount": 2034,
       "devToUrl": "https://dev.to/umair24171/fixing-ai-agent-supply-chain-attack-nodejs-blueprint-2plc"
+    },
+    {
+      "slug": "fixing-ai-agent-lies-detect-ai-agent-deceptive-behavior",
+      "primaryKeyword": "detect AI agent deceptive behavior",
+      "title": "Fixing AI Agent Lies: detect AI agent deceptive behavior",
+      "topic": "Detecting and Preventing Emergent Deceptive Behavior in Multi-Agent AI Systems",
+      "uniqueClaim": "This post will introduce Umair's specific architectural patterns (e.g., \"AI Referee\" agents and \"Trust Score\" systems for inter-agent communication) and practical, implementable Node.js blueprints for real-time inter-agent validation, designed to counter emergent deceptive or adversarial behaviors in complex multi-agent environments.",
+      "date": "2026-09-13",
+      "wordCount": 2191,
+      "devToUrl": "https://dev.to/umair24171/fixing-ai-agent-lies-detect-ai-agent-deceptive-behavior-41lj"
     }
   ],
-  "lastRun": "2026-09-12T08:20:25.842Z"
+  "lastRun": "2026-09-13T08:45:52.069Z"
 }
