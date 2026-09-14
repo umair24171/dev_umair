@@ -974,7 +974,17 @@
       "date": "2026-09-13",
       "wordCount": 2191,
       "devToUrl": "https://dev.to/umair24171/fixing-ai-agent-lies-detect-ai-agent-deceptive-behavior-41lj"
+    },
+    {
+      "slug": "how-i-upgrade-xiaoai-speaker-local-llm-sub-200ms-ai",
+      "primaryKeyword": "upgrade xiaoai speaker local llm",
+      "title": "How I upgrade xiaoai speaker local llm: Sub-200ms AI",
+      "topic": "Transforming XiaoAi Speaker into a Local DeepSeek/Ollama AI Assistant",
+      "uniqueClaim": "My custom Node.js proxy and specific Ollama model quantization (DeepSeek-7B Q4_K_M) achieved a consistent sub-200ms voice response time on the XiaoAi speaker, which is 3x faster than cloud-based alternatives for similar tasks.",
+      "date": "2026-09-14",
+      "wordCount": 2379,
+      "devToUrl": "https://dev.to/umair24171/how-i-upgrade-xiaoai-speaker-local-llm-sub-200ms-ai-5b9k"
     }
   ],
-  "lastRun": "2026-09-13T08:45:52.069Z"
+  "lastRun": "2026-09-14T09:31:36.848Z"
 }
