@@ -994,7 +994,17 @@
       "date": "2026-09-15",
       "wordCount": 1775,
       "devToUrl": "https://dev.to/umair24171/autonomous-company-ai-agent-reality-the-hidden-human-loop-2p9l"
+    },
+    {
+      "slug": "ai-agent-postgres-query-optimization-my-nodejs-4b-llm-blueprint",
+      "primaryKeyword": "ai agent postgres query optimization",
+      "title": "AI Agent Postgres Query Optimization: My Node.js 4B LLM Blueprint",
+      "topic": "Building an AI Agent to Optimize Postgres Queries with Node.js and Local LLMs",
+      "uniqueClaim": "This post provides a specific Node.js blueprint for an AI agent that uses a locally-run 4B LLM to analyze Postgres `EXPLAIN` output, detailing my custom validation and parsing layer that ensures reliable, actionable optimization suggestions, along with specific code examples for data extraction and agent interaction.",
+      "date": "2026-09-17",
+      "wordCount": 2575,
+      "devToUrl": "https://dev.to/umair24171/ai-agent-postgres-query-optimization-my-nodejs-4b-llm-blueprint-565l"
     }
   ],
-  "lastRun": "2026-09-15T09:09:55.238Z"
+  "lastRun": "2026-09-17T09:09:45.672Z"
 }
