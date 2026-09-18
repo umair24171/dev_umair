@@ -1004,7 +1004,17 @@
       "date": "2026-09-17",
       "wordCount": 2575,
       "devToUrl": "https://dev.to/umair24171/ai-agent-postgres-query-optimization-my-nodejs-4b-llm-blueprint-565l"
+    },
+    {
+      "slug": "fixing-repopilot-self-hosted-pr-agent-18-fewer-nodejs-vulns",
+      "primaryKeyword": "repopilot self-hosted PR agent",
+      "title": "Fixing Repopilot Self-Hosted PR Agent: 18% Fewer Node.js Vulns",
+      "topic": "Integrating and Extending Repopilot for Automated PR Security Checks with Node.js",
+      "uniqueClaim": "My Node.js blueprint for Repopilot integrated specific security pattern detection (e.g., untrusted input validation, SQL injection vectors) for a Node.js backend, reducing common vulnerabilities found by 18% in our internal dev cycle.",
+      "date": "2026-09-18",
+      "wordCount": 1930,
+      "devToUrl": "https://dev.to/umair24171/fixing-repopilot-self-hosted-pr-agent-18-fewer-nodejs-vulns-304a"
     }
   ],
-  "lastRun": "2026-09-17T09:09:45.672Z"
+  "lastRun": "2026-09-18T08:43:13.759Z"
 }
