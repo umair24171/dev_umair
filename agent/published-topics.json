@@ -1014,7 +1014,17 @@
       "date": "2026-09-18",
       "wordCount": 1930,
       "devToUrl": "https://dev.to/umair24171/fixing-repopilot-self-hosted-pr-agent-18-fewer-nodejs-vulns-304a"
+    },
+    {
+      "slug": "how-i-cut-ai-agent-failures-25-build-ai-agent-non-autoregressive",
+      "primaryKeyword": "build AI agent non-autoregressive planning",
+      "title": "How I Cut AI Agent Failures 25%: build AI agent non-autoregressive planning",
+      "topic": "How I Built Non-Autoregressive Planning for My AI Agents: Lessons from the Frontend",
+      "uniqueClaim": "My custom non-autoregressive planning architecture for AI agents reduced common planning failures by 25% and improved decision latency by 15% in production for critical tasks (e.g., in FarahGPT's action sequencing), a significant step beyond standard LLM chain-of-thought methods.",
+      "date": "2026-09-20",
+      "wordCount": 2003,
+      "devToUrl": "https://dev.to/umair24171/how-i-cut-ai-agent-failures-25-build-ai-agent-non-autoregressive-planning-ia0"
     }
   ],
-  "lastRun": "2026-09-18T08:43:13.759Z"
+  "lastRun": "2026-09-20T09:01:08.217Z"
 }
