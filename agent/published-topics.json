@@ -1034,7 +1034,17 @@
       "date": "2026-09-21",
       "wordCount": 2051,
       "devToUrl": "https://dev.to/umair24171/fixing-jev-decision-model-ai-agent-overrides-a-flutternodejs-blueprint-oln"
+    },
+    {
+      "slug": "how-i-fix-ai-coding-ci-bottleneck-20-faster-builds",
+      "primaryKeyword": "fix AI coding CI bottleneck",
+      "title": "How I fix AI Coding CI Bottleneck: 20% Faster Builds",
+      "topic": "AI Coding's CI/CD Bottleneck: My Full-Stack Flutter & Node.js Fix",
+      "uniqueClaim": "Umair will reveal his specific GitHub Actions/GitLab CI pipeline configurations for Flutter and Node.js projects, outlining how he integrated AI agent testing, handled non-deterministic AI code in CI, and achieved a measurable 20%+ reduction in CI run times for AI-assisted builds.",
+      "date": "2026-09-22",
+      "wordCount": 1905,
+      "devToUrl": "https://dev.to/umair24171/how-i-fix-ai-coding-ci-bottleneck-20-faster-builds-38d7"
     }
   ],
-  "lastRun": "2026-09-21T09:33:32.109Z"
+  "lastRun": "2026-09-22T09:00:01.210Z"
 }
