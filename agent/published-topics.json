@@ -1044,7 +1044,17 @@
       "date": "2026-09-22",
       "wordCount": 1905,
       "devToUrl": "https://dev.to/umair24171/how-i-fix-ai-coding-ci-bottleneck-20-faster-builds-38d7"
+    },
+    {
+      "slug": "my-ai-agent-advanced-planning-blueprint-90-success-in-nodejs",
+      "primaryKeyword": "ai agent advanced planning blueprint",
+      "title": "My AI Agent Advanced Planning Blueprint: 90% Success in Node.js",
+      "topic": "Building 'Unreal' AI Agents: Beyond Basic Tool Use with Advanced Planning & World Models",
+      "uniqueClaim": "Umair will present a specific Node.js backend architecture blueprint that integrates reactive planning and explicit world models (e.g., using a graph database or custom state representation) to enable an AI agent to successfully complete a multi-turn, dynamic negotiation task with a 90% success rate and average 500ms response time per turn, a task where standard agents with only RAG and basic tool use fail over 60% of the time due to lack of persistent state reasoning.",
+      "date": "2026-09-23",
+      "wordCount": 1962,
+      "devToUrl": "https://dev.to/umair24171/my-ai-agent-advanced-planning-blueprint-90-success-in-nodejs-io"
     }
   ],
-  "lastRun": "2026-09-22T09:00:01.210Z"
+  "lastRun": "2026-09-23T09:02:43.286Z"
 }
