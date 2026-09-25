@@ -1064,7 +1064,17 @@
       "date": "2026-09-24",
       "wordCount": 1941,
       "devToUrl": "https://dev.to/umair24171/virtio-nvgpu-llm-performance-benchmark-95-bare-metal-speed-3jbo"
+    },
+    {
+      "slug": "how-i-hit-97-toks-with-qwen38-flash-next-colab-a100-benchmark",
+      "primaryKeyword": "Qwen3.8-Flash-Next Colab A100 benchmark",
+      "title": "How I Hit 97 tok/s with Qwen3.8-Flash-Next Colab A100 benchmark",
+      "topic": "Qwen3.8-Flash-Next 125B MoE on Colab A100: My 97 tok/s OpenAI-Compatible Endpoint",
+      "uniqueClaim": "I'll demonstrate and benchmark `collabosm`'s verified *90-97 t/s decode* for Qwen3.8-Flash-Next *125B MoE* on a *single Colab A100-80GB High-RAM*, detailing the exact setup for an *OpenAI-compatible endpoint* and the specific benefits of its pinned-RAM KV tier for production-ready inference, offering a specific performance and cost alternative not found in existing Qwen 3.6/3.8 benchmarks on personal RTX 4090s.",
+      "date": "2026-09-25",
+      "wordCount": 1907,
+      "devToUrl": "https://dev.to/umair24171/how-i-hit-97-toks-with-qwen38-flash-next-colab-a100-benchmark-1fml"
     }
   ],
-  "lastRun": "2026-09-24T08:58:45.233Z"
+  "lastRun": "2026-09-25T09:20:04.291Z"
 }
