@@ -1074,7 +1074,17 @@
       "date": "2026-09-25",
       "wordCount": 1907,
       "devToUrl": "https://dev.to/umair24171/how-i-hit-97-toks-with-qwen38-flash-next-colab-a100-benchmark-1fml"
+    },
+    {
+      "slug": "ai-agent-web-scraping-playwright-zero-cost-45s-blueprint",
+      "primaryKeyword": "AI agent web scraping Playwright",
+      "title": "AI Agent Web Scraping Playwright: Zero-Cost 45s Blueprint",
+      "topic": "Feeding AI Agents LLM-Ready Web Data with x-scraper-no-api & Playwright: My Zero-Cost Blueprint",
+      "uniqueClaim": "This post provides a complete Node.js/Playwright code blueprint for setting up `x-scraper-no-api` to extract 100 specific X (formerly Twitter) posts into structured JSON in under 45 seconds, demonstrating its direct integration into an OpenClaw agent *without any API key or subscription costs*, a significant departure from typical rate-limited/paid scraping solutions for AI.",
+      "date": "2026-09-26",
+      "wordCount": 2081,
+      "devToUrl": "https://dev.to/umair24171/ai-agent-web-scraping-playwright-zero-cost-45s-blueprint-2nmh"
     }
   ],
-  "lastRun": "2026-09-25T09:20:04.291Z"
+  "lastRun": "2026-09-26T09:02:44.765Z"
 }
