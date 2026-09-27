@@ -1084,7 +1084,17 @@
       "date": "2026-09-26",
       "wordCount": 2081,
       "devToUrl": "https://dev.to/umair24171/ai-agent-web-scraping-playwright-zero-cost-45s-blueprint-2nmh"
+    },
+    {
+      "slug": "fixing-claude-opus-55-video-api-drift-40-scene-consistency",
+      "primaryKeyword": "Claude Opus 5.5 video generation API",
+      "title": "Fixing Claude Opus 5.5 Video API Drift: 40% Scene Consistency",
+      "topic": "Claude Opus 5.5 Code-to-Video: My Node.js Blueprint for Consistent Generations",
+      "uniqueClaim": "A Node.js orchestration blueprint and specific prompt engineering techniques that reduce Claude Opus 5.5's video generation \"drift\" for scene transitions by 40% (measured by visual consistency metrics) and ensures object continuity across shots, outperforming vanilla API calls.",
+      "date": "2026-09-27",
+      "wordCount": 2311,
+      "devToUrl": "https://dev.to/umair24171/fixing-claude-opus-55-video-api-drift-40-scene-consistency-2cfa"
     }
   ],
-  "lastRun": "2026-09-26T09:02:44.765Z"
+  "lastRun": "2026-09-27T09:47:32.505Z"
 }
