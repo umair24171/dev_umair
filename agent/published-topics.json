@@ -1094,7 +1094,17 @@
       "date": "2026-09-27",
       "wordCount": 2311,
       "devToUrl": "https://dev.to/umair24171/fixing-claude-opus-55-video-api-drift-40-scene-consistency-2cfa"
+    },
+    {
+      "slug": "flutter-mediapipe-gesture-control-sub-100ms-latency",
+      "primaryKeyword": "Flutter MediaPipe gesture control",
+      "title": "Flutter MediaPipe Gesture Control: Sub-100ms Latency",
+      "topic": "Building Real-Time Gesture-Controlled Flutter UIs with On-Device MediaPipe AI",
+      "uniqueClaim": "Achieving sub-100ms end-to-end latency for a multi-gesture Flutter UI controlling complex 3D models, detailing the custom camera stream processing and concurrent inference pipeline required to run MediaPipe's 'Hand Landmark Full' model efficiently on both iOS and Android without cloud dependency.",
+      "date": "2026-09-28",
+      "wordCount": 2123,
+      "devToUrl": "https://dev.to/umair24171/flutter-mediapipe-gesture-control-sub-100ms-latency-5dcf"
     }
   ],
-  "lastRun": "2026-09-27T09:47:32.505Z"
+  "lastRun": "2026-09-28T10:29:16.633Z"
 }
