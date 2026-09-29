@@ -1104,7 +1104,17 @@
       "date": "2026-09-28",
       "wordCount": 2123,
       "devToUrl": "https://dev.to/umair24171/flutter-mediapipe-gesture-control-sub-100ms-latency-5dcf"
+    },
+    {
+      "slug": "how-i-cut-llm-costs-90-with-multi-llm-chatroom-cli-agents",
+      "primaryKeyword": "multi llm chatroom cli agents",
+      "title": "How I Cut LLM Costs 90% with Multi-LLM Chatroom CLI Agents",
+      "topic": "Building a Multi-LLM Chatroom with Flutter & Node.js: CLI-Powered Agents",
+      "uniqueClaim": "A Flutter + Node.js blueprint for a multi-LLM chatroom that leverages *browser automation to orchestrate interactions between multiple LLM agents via their command-line interfaces (CLIs)*, demonstrating a novel, API-key-free approach to agent communication and a potential 90% reduction in typical multi-LLM API costs compared to direct API usage.",
+      "date": "2026-09-29",
+      "wordCount": 2621,
+      "devToUrl": "https://dev.to/umair24171/how-i-cut-llm-costs-90-with-multi-llm-chatroom-cli-agents-37oj"
     }
   ],
-  "lastRun": "2026-09-28T10:29:16.633Z"
+  "lastRun": "2026-09-29T10:23:09.835Z"
 }
