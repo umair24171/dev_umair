@@ -1,4 +1,5 @@
 ---
+status: review
 title: "AI Agent Costs 2025: How to Stop Burning Cash"
 excerpt: "AI agent costs 2025: Worried about soaring AI agent costs in 2025? Here's my blueprint for founders to optimize budgets and build smarter, cost-effective AI ...'s my blueprint for founders to optimize budgets and build smarter, cost-effective AI systems."
 date: "2026-04-18"

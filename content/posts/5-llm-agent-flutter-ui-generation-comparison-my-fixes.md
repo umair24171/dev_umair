@@ -1,4 +1,5 @@
 ---
+status: review
 title: "5 LLM Agent Flutter UI Generation Comparison: My Fixes"
 excerpt: "Umair shares his llm agent flutter ui generation comparison, detailing 5 setups, common failures like RenderFlex overflows, and fixes based on 100+ generated..."
 date: "2026-09-08"

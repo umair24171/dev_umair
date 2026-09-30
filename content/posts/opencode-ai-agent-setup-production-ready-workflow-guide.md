@@ -1,4 +1,5 @@
 ---
+status: review
 title: "OpenCode AI Agent Setup: Production-Ready Workflow Guide"
 excerpt: "Master the OpenCode AI agent setup for real-world projects. Configuration, integration, and practical use cases for immediate productivity gains."
 date: "2026-03-21"

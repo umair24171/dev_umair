@@ -1,4 +1,5 @@
 ---
+status: review
 title: "Flutter AI Agents: Real APIs (No Over-Engineering)"
 excerpt: "Stop over-engineering Flutter AI agents for external APIs. Learn a direct, efficient method for Flutter AI app development that delivers real business value ..."
 date: "2026-04-10"

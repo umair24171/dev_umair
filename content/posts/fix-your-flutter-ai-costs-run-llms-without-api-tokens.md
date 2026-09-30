@@ -1,4 +1,5 @@
 ---
+status: review
 title: "Flutter AI Without API Token: Cut Costs & Run LLMs Locally"
 excerpt: "Build Flutter AI without API token dependencies — a senior dev breakdown on running LLMs on-device for lower costs, better privacy, and offline AI."
 date: "2026-04-11"

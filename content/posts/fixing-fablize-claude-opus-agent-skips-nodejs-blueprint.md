@@ -1,4 +1,5 @@
 ---
+status: review
 title: "Fixing Fablize Claude Opus Agent Skips: Node.js Blueprint"
 excerpt: "Claude Opus agents skipping steps? This Node.js blueprint shows how Fablize enforces verification, providing evidence at each stage and drastically reducing ..."
 date: "2026-06-14"

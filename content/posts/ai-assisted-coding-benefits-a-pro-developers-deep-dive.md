@@ -1,4 +1,5 @@
 ---
+status: review
 title: "AI Assisted Coding Benefits: A Pro Developer's Deep Dive"
 excerpt: "Explore the real AI assisted coding benefits for professional developers. Dive into tools, productivity gains, and strategies to maximize AI's potential."
 date: "2026-03-16"

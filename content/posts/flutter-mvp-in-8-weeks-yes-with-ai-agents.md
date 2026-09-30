@@ -1,4 +1,5 @@
 ---
+status: review
 title: "Flutter MVP in 8 Weeks? Yes, With AI Agents."
 excerpt: "Forget slow development. I launched a Rapid Flutter MVP Development with AI in just 8 weeks using AI agents. Here's the blueprint for founders to cut costs a..."
 date: "2026-03-28"

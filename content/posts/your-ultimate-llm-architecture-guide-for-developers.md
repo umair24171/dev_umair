@@ -1,4 +1,5 @@
 ---
+status: review
 title: "Your Ultimate LLM Architecture Guide for Developers"
 excerpt: "Dive into the definitive LLM architecture guide, breaking down core components and design patterns to help you choose the right model."
 date: "2026-03-16"

@@ -1,4 +1,5 @@
 ---
+status: review
 title: "Flutter Conversational AI: Go Beyond Basic Chatbots"
 excerpt: "How to build real-time Flutter conversational AI apps — streaming responses, low-latency TTS, and WebSocket architecture that actually works in production."
 date: "2026-03-28"

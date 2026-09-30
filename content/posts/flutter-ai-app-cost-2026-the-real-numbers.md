@@ -1,4 +1,5 @@
 ---
+status: review
 title: "Flutter AI App Cost 2026: The Real Numbers"
 excerpt: "Figuring out the actual Flutter AI app cost in 2026 is harder than it should be. Here’s a clear breakdown for clients, no fluff."
 date: "2026-03-29"

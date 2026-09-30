@@ -1,4 +1,5 @@
 ---
+status: review
 title: "My 2x2 llm cost performance strategy for AI Agents"
 excerpt: "Umair shares his proprietary 'Value-Per-Token' metric and 2x2 framework for an optimal llm cost performance strategy, cutting AI agent spend without sacrific..."
 date: "2026-08-24"

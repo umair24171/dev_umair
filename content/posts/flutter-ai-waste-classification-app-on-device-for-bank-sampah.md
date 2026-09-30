@@ -1,4 +1,5 @@
 ---
+status: review
 title: "Flutter AI waste classification app: On-Device for bank-sampah"
 excerpt: "Dissecting `bank-sampah` to build a Flutter AI waste classification app. I'll show you an on-device blueprint, code, and what not to do."
 date: "2026-09-11"

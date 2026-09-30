@@ -19,3 +19,15 @@ jobs:
       - run: npm run check
       - run: npm test
       - run: npm run build
+      - run: npx playwright install --with-deps chromium
+      - name: Start production preview
+        run: |
+          npm run start -- --port 3100 > /tmp/buildzn-preview.log 2>&1 &
+          for attempt in {1..30}; do
+            if curl --silent --fail http://127.0.0.1:3100/ > /dev/null; then exit 0; fi
+            sleep 1
+          done
+          cat /tmp/buildzn-preview.log
+          exit 1
+      - run: npm run test:smoke
+      - run: npm run test:browser

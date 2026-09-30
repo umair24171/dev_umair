@@ -1,4 +1,5 @@
 ---
+status: review
 title: "Fixing Repopilot Self-Hosted PR Agent: 18% Fewer Node.js Vulns"
 excerpt: "Umair shares how his custom Node.js blueprint for the repopilot self-hosted PR agent cut Node.js backend vulnerabilities by 18% pre-merge, tackling common un..."
 date: "2026-09-18"

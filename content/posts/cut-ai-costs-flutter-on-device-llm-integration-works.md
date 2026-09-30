@@ -1,4 +1,5 @@
 ---
+status: review
 title: "Cut AI Costs: Flutter On-Device LLM Integration Works"
 excerpt: "Slash AI API costs and boost data privacy in your apps. We built a Flutter on-device LLM integration with Gemma 4. Here's how."
 date: "2026-04-06"

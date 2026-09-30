@@ -1,4 +1,5 @@
 ---
+status: review
 title: "How I Secure LLM Reasoning Traces: 85% Block Rate"
 excerpt: "The HN buzz about LLM 'brain drain' is real. I'll show you Node.js techniques to secure LLM reasoning traces, blocking over 85% of exfiltration attempts in p..."
 date: "2026-08-12"

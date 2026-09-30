@@ -1,4 +1,5 @@
 ---
+status: review
 title: "Flutter vs React Native for SaaS: 2026 Stack Choice"
 excerpt: "Debating Flutter vs React Native for your SaaS startup? I've shipped 20+ apps. Here's which mobile stack makes sense for your business long-term."
 date: "2026-03-31"

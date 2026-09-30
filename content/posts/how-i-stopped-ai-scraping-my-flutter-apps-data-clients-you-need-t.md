@@ -1,4 +1,5 @@
 ---
+status: review
 title: "How I Stopped AI Scraping My Flutter App's Data (Clients: You Need This)"
 excerpt: "Worried about AI bots stealing your Flutter app's data? I've shipped 20+ apps, battling scrapers daily. Learn real, architectural strategies to protect your ..."
 date: "2026-03-30"

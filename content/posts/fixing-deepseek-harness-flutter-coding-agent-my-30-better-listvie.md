@@ -1,4 +1,5 @@
 ---
+status: review
 title: "Fixing DeepSeek Harness Flutter coding agent: My 30% Better ListView Prompt"
 excerpt: "Battling widget hallucinations with your DeepSeek Harness Flutter coding agent? My custom prompt pattern cuts `ListView.builder` errors by 30%, making your A..."
 date: "2026-08-14"

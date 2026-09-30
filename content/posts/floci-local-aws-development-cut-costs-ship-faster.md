@@ -1,4 +1,5 @@
 ---
+status: review
 title: "Floci Local AWS Development: Cut Costs, Ship Faster"
 excerpt: "Slash AWS dev costs and accelerate feedback loops. This guide shows how to set up Floci for robust local AWS development, comparing it to Localstack."
 date: "2026-03-22"

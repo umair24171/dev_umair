@@ -1,4 +1,5 @@
 ---
+status: review
 title: "How I Built an AI agent business idea validation: Reddit Cost"
 excerpt: "Built an AI agent for business idea validation from Reddit comments using Node.js and Claude. Here's the code, real costs, and data privacy pitfalls."
 date: "2026-08-10"

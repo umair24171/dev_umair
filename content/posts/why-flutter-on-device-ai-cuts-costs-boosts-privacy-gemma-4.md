@@ -1,4 +1,5 @@
 ---
+status: review
 title: "Why Flutter On-Device AI Cuts Costs & Boosts Privacy (Gemma 4)"
 excerpt: "Curious about on-device AI Flutter cost? Learn how local LLMs like Gemma 4 cut cloud bills, enhance privacy, and speed up your app by 2026."
 date: "2026-04-03"

@@ -1,4 +1,5 @@
 ---
+status: review
 title: "Cancelled Claude AI Agent: My 4 Reasons For The Switch"
 excerpt: "Facing `anthropic claude problems` with AI agents? I cancelled Claude after observing clear performance dips and higher costs. Here’s why I switched to `gpt-..."
 date: "2026-04-25"

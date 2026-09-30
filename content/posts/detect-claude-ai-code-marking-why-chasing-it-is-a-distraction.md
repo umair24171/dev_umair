@@ -1,4 +1,5 @@
 ---
+status: review
 title: "Detect Claude AI Code Marking: Why Chasing It Is a Distraction"
 excerpt: "Understand Claude AI code marking's impact on your agents. Learn why direct detection is overhyped and how to truly protect AI agent data integrity in Node.js."
 date: "2026-07-01"

@@ -1,4 +1,5 @@
 ---
+status: review
 title: "Fixing Qwen 3.6 4090 llama.cpp Bug: 18 tok/s on My RTX 4090"
 excerpt: "My RTX 4090 struggled with the qwen 3.6 4090 llama.cpp bug, causing silent output corruption. Here's how I fixed it for 18.4 tok/s."
 date: "2026-04-26"

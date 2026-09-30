@@ -1,4 +1,5 @@
 ---
+status: review
 title: "How I upgrade xiaoai speaker local llm: Sub-200ms AI"
 excerpt: "Turned my old XiaoAi into a private local LLM assistant using DeepSeek/Ollama and a Node.js proxy. Achieved sub-200ms voice response with zero hardware mods."
 date: "2026-09-14"

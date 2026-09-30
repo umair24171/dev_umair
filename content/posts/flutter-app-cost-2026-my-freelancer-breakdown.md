@@ -1,4 +1,5 @@
 ---
+status: review
 title: "Flutter App Cost 2026: My Freelancer Breakdown"
 excerpt: "Forget generic calculators. As a senior freelancer, I'm breaking down the true Flutter app cost for 2026, from MVP to complex features, including hidden costs."
 date: "2026-03-31"

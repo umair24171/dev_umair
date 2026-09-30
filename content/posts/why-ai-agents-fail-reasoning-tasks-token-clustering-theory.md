@@ -1,4 +1,5 @@
 ---
+status: review
 title: "Why AI agents fail reasoning tasks: Token Clustering Theory"
 excerpt: "AI agents fail reasoning tasks on GPT-4o & Claude Opus. My hypothesis: 'token clustering' optimization compromises complex LLM reasoning. Here's my fix."
 date: "2026-07-05"

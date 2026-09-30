@@ -1,4 +1,5 @@
 ---
+status: review
 title: "Cost-Effective Flutter AI Apps: How to Slash GPU Costs Now"
 excerpt: "Building cost-effective Flutter AI apps is tough. Stop overpaying for GPUs. This guide shows non-tech founders how to dramatically reduce AI infrastructure c..."
 date: "2026-04-05"

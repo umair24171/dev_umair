@@ -1,4 +1,5 @@
 ---
+status: review
 title: "Fix Qwen3.8-Max Flutter Performance Debug: 25% FPS Drop"
 excerpt: "Qwen3.8-Max for Flutter performance debug found a 3-level deep InheritedWidget rebuild bottleneck, dropping FPS by 25%. Here's the fix."
 date: "2026-08-03"

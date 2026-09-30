@@ -1,4 +1,5 @@
 ---
+status: review
 title: "Mastering Claude AI Godot Game Development: Your Practical Guide"
 excerpt: "Unlock rapid game creation! This practical guide explores Claude AI Godot game development, revolutionizing your workflow with intelligent assistance."
 date: "2026-03-17"

@@ -1,4 +1,5 @@
 ---
+status: review
 title: "Rilable AI App Builder Review: Why It Fails Nested Tabs"
 excerpt: "Umair, a Flutter & AI engineer, shares a no-BS rilable AI app builder review. It struggles with nested navigation, generating messy code."
 date: "2026-06-11"

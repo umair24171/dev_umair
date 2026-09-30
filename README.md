@@ -1,27 +1,41 @@
-# BuildZn
+# BuildZn — AI agents & business automation
 
-Next.js website for Umair Bilal's independent product-development practice.
+Next.js website for Umair Bilal’s independent automation studio. Services cover workflow automation, AI agents, API integrations and automation repair. Public portfolio entries are explicitly labeled BuildZn demonstrations using fictional sample data.
 
-## Local development
+## Development and validation
 
-Use Node 22 or later. Run `npm ci`, then `npm run dev` and open http://localhost:3000.
+Use Node 22. Run `npm ci`, then `npm run dev`. Before pushing: `npm run lint`, `npm run check`, `npm test`, `npm run build`. The build fetches Google Fonts and needs network access.
 
-Before pushing: `npm run lint`, `npm run check`, `npm test`, `npm run build`. The production build fetches Google Fonts and needs network access. Preview with `npm run start`.
+For browser checks install Chromium with `npx playwright install chromium`. Start the production server on port 3100 (`npm run start -- --port 3100`), then run `npm run test:smoke` and `npm run test:browser`. Set `SMOKE_URL` to validate a deployed site. Browser checks cover missing inquiry data, lead creation and approval resets; source-grounded support and handoff; invoice validation, correction and actual CSV/JSON downloads; mocked contact success/failure; responsive layout, keyboard navigation and WCAG accessibility scans.
 
-## Site content
+Contact tests intercept Formspree requests and do not send a real inquiry. Neither an accepted HTTP response nor these mocks confirm inbox delivery. A controlled real submission and inbox access are needed to verify that separately.
 
-Shared links, project scope, service descriptions and process: `lib/site.ts`. Home, About, service routes and project routes use this content. Real product assets are in `public/`; public store screenshots retain their provenance in the project records. Do not add outcome or ownership claims without evidence.
+## Content and demonstrations
 
-Contact uses the existing Formspree form. No keys are required in browser code. Verify a controlled real submission reaches the inbox before claiming delivery. Error handling keeps the entered details and offers email as an alternative. The optional budget field is for qualification, not a quote.
+`lib/site.ts` holds shared services, project scope, process and FAQ content. `lib/demos.ts` implements local parsing, conservative support matching, invoice validation and safe CSV generation. `DemoWorkbench.tsx` renders the working previews.
 
-Google Analytics loads only after opt-in. Anonymous custom events contain action/location categories, never the inquiry text or contact details. Footer/privacy preferences allow withdrawal. Configure campaign parameters for LinkedIn and compare qualified leads in your own lead records.
+- Inquiry: labeled text → requirements → local lead → editable recorded reply template → local approval.
+- Support: sample knowledge → conservative exact matching → recorded answer with source → handoff outside coverage.
+- Document: labeled text invoice → extracted fields → validation → manual review → CSV/JSON download.
 
-## Articles
+No live model, CRM, email, ticketing or accounting accounts are connected to these previews. Inputs stay in browser memory and are cleared on reload. No real data should be entered. Production connections, OCR, semantic retrieval, permissions and evaluation require separate implementation. Provider subscriptions, model calls and hosting may have separate costs.
 
-Published content is in `content/posts`. `status: draft` and `status: review` are excluded from pages, APIs and sitemap. Redirected duplicates remain recoverable but are excluded from discovery. Markdown raw HTML is escaped and links are limited to safe protocols. Unreviewed legacy articles carry an archive notice. Follow `content/EDITORIAL.md` before publishing.
+Screenshots in `public/demos/` are captured from the working preview with sample data; regenerate with `node scripts/capture-demos.mjs` against the local server. Do not add fictional clients, credentials, testimonials, savings, income or results claims.
 
-The manual GitHub workflow prepares an unpublished draft artifact. There is no scheduled autopublishing, automatic cross-posting or external notification. Moving reviewed content to the published folder is a deliberate repository change.
+## Articles and retired routes
+
+Published articles require `status: published` AND `reviewed: true`. All other legacy sources remain recoverable with `status: review`, but are absent from public pages, related posts, the API and sitemap. Retired blog URLs return 404 with noindex; there is no blanket redirect to unrelated articles. See `content/EDITORIAL.md` before publishing.
+
+Old mobile/SaaS service URLs redirect permanently to the service overview; the former AI workflow and improvement services redirect to their relevant new services. Old product case studies redirect to the explicitly labeled demonstration index, never to an invented replacement client story. `/flutter-app-cost` redirects to `/pricing`, `/labs` and `/portfolio` to `/work`, and the old static social image to `/opengraph-image`. Legacy app imagery is removed.
+
+The manual draft-preparation workflow remains manual-only. It cannot publish, cross-post or send notifications. No prospecting, outreach or recurring automation has been added.
+
+## Contact, privacy and analytics
+
+The existing Formspree ID remains configured. The form keeps entered data on errors, reports provider acceptance accurately and gives direct email/WhatsApp alternatives. Public copy discloses that inbox delivery has not been independently verified. Do not claim delivery without a controlled end-to-end check.
+
+Google Analytics loads only after opt-in. Custom events contain action/location categories, never form or demonstration text. Privacy settings allow withdrawal. Credentials never belong in source, URLs, content or analytics.
 
 ## Deployment
 
-The configured GitHub repository uses Vercel. Push the validated main branch to trigger its connected deployment, then verify the deployed commit and public routes. Do not place credentials in URLs, content, analytics or source files.
+The GitHub repository is connected to Vercel. Push validated main to trigger deployment, verify Vercel’s deployed Git commit, then run smoke and browser checks on `https://www.buildzn.com`. Preserve unrelated work and verify the remote branch has not changed before updating main.

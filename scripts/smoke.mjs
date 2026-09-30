@@ -1,20 +1,26 @@
 import assert from 'node:assert/strict';
 const base = process.env.SMOKE_URL || 'http://127.0.0.1:3100';
-const routes = ['/', '/about', '/work', '/work/muslifie', '/work/myaipal', '/work/farahgpt', '/work/voisbe', '/services/mobile-app-development', '/services/saas-product-development', '/services/ai-workflow-integration', '/services/product-improvement', '/privacy', '/labs', '/flutter-app-cost', '/blog', '/blog/firebase-performance-optimization'];
+const routes = ['/', '/about', '/work', '/work/inquiry-assistant', '/work/support-assistant', '/work/document-processing', '/services', '/services/workflow-automation', '/services/ai-agents', '/services/api-integrations', '/services/automation-repair', '/privacy', '/pricing', '/contact', '/blog', '/blog/ai-workflow-scope-human-review', '/blog/automation-operating-costs', '/blog/automation-validation-before-export'];
 for (const route of routes) {
   const r = await fetch(base + route); const html = await r.text();
-  assert.equal(r.status,200,route);
-  assert.equal((html.match(/<h1\b/g)||[]).length,1,`Single H1: ${route}`);
-  assert.ok(html.includes('id="main-content"'),route);
-  assert.ok(html.includes('rel="canonical"'),`Canonical: ${route}`);
+  assert.equal(r.status,200,route); assert.equal((html.match(/<h1\b/g)||[]).length,1,`Single H1: ${route}`);
+  assert.ok(html.includes('id="main-content"'),route); assert.ok(html.includes('rel="canonical"'),`Canonical: ${route}`);
+  assert.ok(!/Flutter|mobile app|App Store|20\+ Apps/.test(html),`Legacy positioning: ${route}`);
   assert.ok(!html.includes('https://yourwebsite.com'),route);
 }
-for (const slug of ['fixing-claude-opus-55-video-api-drift-40-scene-consistency','how-i-cut-llm-costs-90-with-multi-llm-chatroom-cli-agents']) assert.equal((await fetch(`${base}/blog/${slug}`)).status,404,slug);
-const redirect=await fetch(`${base}/blog/flutter-vs-react-native-ai-apps-my-2026-take`,{redirect:'manual'});
-assert.equal(redirect.status,308); assert.ok(redirect.headers.get('location').endsWith('/blog/flutter-vs-react-native-ai-app-2026-pick-the-right-stack'));
+for (const slug of ['mobile-mvp-scope-before-screen-count','firebase-performance-optimization','flutter-vs-react-native-ai-apps-my-2026-take','fixing-claude-opus-55-video-api-drift-40-scene-consistency']) {
+  const r=await fetch(`${base}/blog/${slug}`); assert.equal(r.status,404,slug);
+  assert.ok((await r.text()).includes('noindex'),`Retired URL not noindexed: ${slug}`);
+}
+for (const [source,destination] of [['/flutter-app-cost','/pricing'],['/work/muslifie','/work'],['/services/mobile-app-development','/services'],['/services/ai-workflow-integration','/services/ai-agents'],['/labs','/work']]) {
+  const r=await fetch(base+source,{redirect:'manual'}); assert.equal(r.status,308,source); assert.ok(r.headers.get('location').endsWith(destination),source);
+}
 const sitemap=await (await fetch(`${base}/sitemap.xml`)).text();
-assert.ok(sitemap.includes('/about')); assert.ok(sitemap.includes('/services/ai-workflow-integration')); assert.ok(!sitemap.includes('flutter-vs-react-native-ai-apps-my-2026-take')); assert.ok(!sitemap.includes('fixing-claude-opus-55-video-api-drift-40-scene-consistency'));
-const api=await (await fetch(`${base}/api/posts`)).json(); assert.equal(api.length,3);
+assert.ok(sitemap.includes('/work/document-processing')); assert.ok(sitemap.includes('/services/api-integrations')); assert.ok(!/flutter|myaipal|muslifie|firebase-performance/.test(sitemap));
+const api=await (await fetch(`${base}/api/posts`)).json(); assert.equal(api.length,3); assert.ok(!/flutter|mobile/.test(JSON.stringify(api)));
 const search=await (await fetch(`${base}/blog?q=not-an-existing-article-unique-test`)).text(); assert.ok(search.includes('No matching articles'));
-const og=await fetch(`${base}/opengraph-image`); assert.equal(og.status,200); assert.ok(og.headers.get('content-type').startsWith('image/'));
-console.log(`Passed: ${routes.length} main routes, quarantined routes, canonical redirect, sitemap, article API, empty search and social image.`);
+for (const path of ['/opengraph-image', '/blog/ai-workflow-scope-human-review/opengraph-image', ...['inquiry-assistant','support-assistant','document-processing'].map(s=>`/demos/${s}.png`)]) {
+  const r=await fetch(base+path); assert.equal(r.status,200,path); assert.ok(r.headers.get('content-type').startsWith('image/'),path);
+}
+assert.equal((await fetch(`${base}/muslifie-app.png`)).status,404);
+console.log(`Passed: ${routes.length} public routes, retired articles, permanent redirects, sitemap, article API, search, real screenshots and social images.`);

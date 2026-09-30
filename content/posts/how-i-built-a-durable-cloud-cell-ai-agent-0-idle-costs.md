@@ -1,4 +1,5 @@
 ---
+status: review
 title: "How I Built a Durable Cloud Cell AI Agent: $0 Idle Costs"
 excerpt: "Slash AI agent costs to $0 idle and guarantee persistence. Learn how a durable cloud cell AI agent architecture beats traditional setups, with Node.js."
 date: "2026-08-02"

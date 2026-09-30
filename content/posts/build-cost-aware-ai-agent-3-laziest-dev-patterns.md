@@ -1,4 +1,5 @@
 ---
+status: review
 title: "build cost aware AI agent: 3 Laziest Dev Patterns"
 excerpt: "Prevent AI agent overspending. Umair shares 'laziest senior dev' patterns like budget cap prompting and tiered actions to build cost aware AI agents. Stop ru..."
 date: "2026-06-12"

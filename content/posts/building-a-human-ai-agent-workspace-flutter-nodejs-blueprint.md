@@ -1,4 +1,5 @@
 ---
+status: review
 title: "Building a Human AI Agent Workspace: Flutter + Node.js Blueprint"
 excerpt: "Building a human ai agent workspace with Flutter and Node.js for real-time task negotiation. How to integrate WebSockets for true human-agent collaboration."
 date: "2026-06-22"

@@ -1,4 +1,5 @@
 ---
+status: review
 title: "Fixing AI Agent Supply Chain Attack: Node.js Blueprint"
 excerpt: "Learn Umair's Node.js blueprint to prevent AI agent supply chain attack vectors using an 'Execution Context Guardian' after RubyGems. Real code & fixes."
 date: "2026-09-12"

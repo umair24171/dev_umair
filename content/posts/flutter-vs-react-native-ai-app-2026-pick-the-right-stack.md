@@ -1,4 +1,5 @@
 ---
+status: review
 title: "Flutter vs React Native AI App 2026: Pick the Right Stack"
 excerpt: "Debating Flutter vs React Native for your AI app in 2026? Cuts through the noise on cost, timelines, and on-device ML performance."
 date: "2026-03-26"

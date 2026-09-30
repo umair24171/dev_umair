@@ -1,4 +1,5 @@
 ---
+status: review
 title: "How I Cut AI Agent Failures 25%: build AI agent non-autoregressive planning"
 excerpt: "Learn how to build AI agent non-autoregressive planning. Umair shares his architecture that cut failures by 25% and improved latency by 15% in production for..."
 date: "2026-09-20"

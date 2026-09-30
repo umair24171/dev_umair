@@ -1,4 +1,5 @@
 ---
+status: review
 title: "How I Hit 97 tok/s with Qwen3.8-Flash-Next Colab A100 benchmark"
 excerpt: "Got Qwen3.8-Flash-Next 125B MoE hitting 97 tok/s on a single Colab A100-80GB. Here's my full setup for an OpenAI-compatible endpoint."
 date: "2026-09-25"

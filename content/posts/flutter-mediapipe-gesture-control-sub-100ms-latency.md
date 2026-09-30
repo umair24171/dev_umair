@@ -1,4 +1,5 @@
 ---
+status: review
 title: "Flutter MediaPipe Gesture Control: Sub-100ms Latency"
 excerpt: "Achieving sub-100ms Flutter MediaPipe gesture control on-device required a custom camera pipeline and concurrent inference. Here's how we did it."
 date: "2026-09-28"

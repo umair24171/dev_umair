@@ -1,4 +1,5 @@
 ---
+status: review
 title: "AI Agent Senior Engineer: Raise Your Code's Standards"
 excerpt: "AI agent senior engineer: Tired of AI code that acts like an intern? Master AGENTS.md to transform your AI coding agent into a senior engineer. Eliminate syc..."
 date: "2026-04-19"

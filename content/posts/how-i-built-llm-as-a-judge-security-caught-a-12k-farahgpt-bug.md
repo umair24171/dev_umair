@@ -1,4 +1,5 @@
 ---
+status: review
 title: "How I Built LLM as a Judge Security: Caught a $12K FarahGPT Bug"
 excerpt: "Your AI agent is live. How do you stop it from going rogue? Here's my battle-tested LLM as a Judge security strategy with Node.js."
 date: "2026-04-22"

@@ -1,4 +1,5 @@
 ---
+status: review
 title: "My $500 Open LLM Fine Tuning Cost Beat GPT-4"
 excerpt: "My agent, powered by a $500 fine-tuned open LLM, outperformed GPT-4 for critical content review. Get the exact breakdown of open llm fine tuning cost and met..."
 date: "2026-07-28"

@@ -1,4 +1,5 @@
 ---
+status: review
 title: "virtio-nvgpu llm performance benchmark: 95% Bare-Metal Speed"
 excerpt: "We hit 95%+ bare-metal LLM speed using virtio-nvgpu on RTX 4090 for KVM guests. Get 115.2 tok/s on Llama 3 8B, slashing operational latency."
 date: "2026-09-24"

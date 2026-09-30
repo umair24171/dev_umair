@@ -1,4 +1,5 @@
 ---
+status: review
 title: "How I Built Flutter generative UI real-time: Node.js <200ms"
 excerpt: "Building Flutter generative UI real-time with sub-200ms latency demands a specific Node.js AI backend and Flutter widget architecture. Here's my blueprint."
 date: "2026-08-11"

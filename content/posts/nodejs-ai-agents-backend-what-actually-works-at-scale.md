@@ -1,4 +1,5 @@
 ---
+status: review
 title: "Node.js AI Agents Backend: What Actually Works at Scale"
 excerpt: "Building a scalable Node.js AI agents backend for Flutter apps is tough. I learned what fails at scale and how to fix it, shipping 20+ apps."
 date: "2026-04-04"

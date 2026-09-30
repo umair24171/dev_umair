@@ -1,4 +1,5 @@
 ---
+status: review
 title: "Firestore performance: measure the slow path before adding a cache"
 excerpt: "Separate cold and warm loads, inspect query scope, and define cache freshness before claiming an app performance improvement."
 date: "2026-03-01"

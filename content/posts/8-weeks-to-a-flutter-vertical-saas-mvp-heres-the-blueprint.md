@@ -1,4 +1,5 @@
 ---
+status: review
 title: "8 Weeks to a Flutter Vertical SaaS MVP? Here's the Blueprint."
 excerpt: "Just built a Flutter Vertical SaaS MVP in 8 weeks, fully functional. This is how founders can build a niche app Flutter quickly and keep costs low."
 date: "2026-03-25"

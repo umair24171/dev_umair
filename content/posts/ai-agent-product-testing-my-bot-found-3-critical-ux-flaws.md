@@ -1,4 +1,5 @@
 ---
+status: review
 title: "AI Agent Product Testing: My Bot Found 3 Critical UX Flaws"
 excerpt: "My custom AI agent, built with Node.js and Flutter using Gemini-Vision, exposed 3 critical UX flaws in my app, proving next-gen ai agent product testing is h..."
 date: "2026-08-15"

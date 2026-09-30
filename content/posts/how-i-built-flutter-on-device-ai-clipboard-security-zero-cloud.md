@@ -1,4 +1,5 @@
 ---
+status: review
 title: "How I Built Flutter On-Device AI Clipboard Security: Zero Cloud"
 excerpt: "Implement real-time flutter on-device ai clipboard security. I'll show you how to build a privacy-first solution for mobile clipboard threat detection with z..."
 date: "2026-07-27"

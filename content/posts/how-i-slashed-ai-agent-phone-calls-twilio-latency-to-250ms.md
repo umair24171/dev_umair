@@ -1,4 +1,5 @@
 ---
+status: review
 title: "How I Slashed ai agent phone calls twilio Latency to 250ms"
 excerpt: "Umair shares how to build real-time ai agent phone calls with Twilio and OpenClaw, cutting end-to-end latency to 250ms for natural conversations."
 date: "2026-07-08"

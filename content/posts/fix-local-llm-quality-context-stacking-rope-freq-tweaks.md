@@ -1,4 +1,5 @@
 ---
+status: review
 title: "Fix Local LLM Quality: Context Stacking & Rope Freq Tweaks"
 excerpt: "Your local LLMs feel dumb? I fixed local LLM quality by combining a context-stacking prompt technique with specific Ollama `modelfile` parameters. Factual er..."
 date: "2026-08-23"

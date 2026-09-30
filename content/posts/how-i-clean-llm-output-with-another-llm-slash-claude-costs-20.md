@@ -1,4 +1,5 @@
 ---
+status: review
 title: "How I clean LLM output with another LLM: Slash Claude costs 20%"
 excerpt: "Stop wrestling with inconsistent Claude outputs. I built a Node.js pipeline using a secondary LLM for clean LLM output with another LLM, cutting token costs ..."
 date: "2026-08-21"

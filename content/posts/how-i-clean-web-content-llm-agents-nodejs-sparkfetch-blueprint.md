@@ -1,4 +1,5 @@
 ---
+status: review
 title: "How I clean web content LLM agents: Node.js Sparkfetch blueprint"
 excerpt: "Struggling with LLM hallucinations from messy web data? This Node.js blueprint shows how to get clean web content for LLM agents using Sparkfetch, boosting a..."
 date: "2026-08-05"

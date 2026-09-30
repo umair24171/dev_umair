@@ -1,4 +1,5 @@
 ---
+status: review
 title: "AI Chat Data Privacy: Heppner Ruling & Your App"
 excerpt: "The US v. Heppner ruling changes AI chat data privacy. Learn practical steps to protect client data in your AI app. Umair's take."
 date: "2026-04-16"

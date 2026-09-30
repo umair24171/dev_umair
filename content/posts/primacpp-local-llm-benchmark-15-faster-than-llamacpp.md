@@ -1,4 +1,5 @@
 ---
+status: review
 title: "prima.cpp local llm benchmark: 15% Faster Than llama.cpp"
 excerpt: "See a direct prima.cpp local llm benchmark against llama.cpp on RTX 4090 and M2 Max. I found prima.cpp 15%+ faster for 70B models."
 date: "2026-06-30"

@@ -21,7 +21,7 @@ export default function Analytics() {
   useEffect(() => {
     if (consent !== 'accepted') return;
     if (pathname.startsWith('/services/')) track('service_viewed', { service: pathname.split('/').pop()! });
-    if (pathname.startsWith('/work/')) track('case_study_viewed', { project: pathname.split('/').pop()! });
+    if (pathname.startsWith('/work/')) track('demonstration_viewed', { project: pathname.split('/').pop()! });
   }, [consent, pathname]);
   function choose(value: string) {
     memoryChoice = value;

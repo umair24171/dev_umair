@@ -1,4 +1,5 @@
 ---
+status: review
 title: "Flutter Supabase Chat App in 6 Weeks: My Blueprint"
 excerpt: "Built a full Flutter Supabase chat app MVP in just 6 weeks. See the exact process, tech stack, and why speed matters for your project."
 date: "2026-03-29"

@@ -1,4 +1,5 @@
 ---
+status: review
 title: "How I Hit Sub-50ms AI App Latency: Flutter + Node.js"
 excerpt: "Achieving sub 50ms AI app latency end-to-end is tough. Here's my Flutter + Node.js blueprint for real-time AI app performance, with code and hard-won lessons."
 date: "2026-08-22"

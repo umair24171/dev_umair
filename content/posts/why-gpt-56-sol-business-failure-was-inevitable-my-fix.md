@@ -1,4 +1,5 @@
 ---
+status: review
 title: "Why GPT 5.6 Sol Business Failure Was Inevitable: My Fix"
 excerpt: "The GPT 5.6 Sol business failure likely stemmed from blind trust in single LLM outputs. Here's my battle-tested multi-agent validation layer to prevent AI ag..."
 date: "2026-07-31"

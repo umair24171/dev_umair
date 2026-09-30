@@ -1,4 +1,5 @@
 ---
+status: review
 title: "How to Hire Flutter Devs: Stop Wasting Your Budget"
 excerpt: "Don't waste money hiring the wrong Flutter developer. A senior dev shares direct advice on how to hire Flutter developer talent that actually delivers."
 date: "2026-03-26"

@@ -1,4 +1,5 @@
 ---
+status: review
 title: "How I Get GPT-5.5 Pro Code Review Free: $0 API Cost"
 excerpt: "Umair's zero API cost workflow for GPT-5.5 Pro code review free. Leverages repomix-pack, Claude Code, and ChatGPT Pro web for deep, battle-tested AI reviews."
 date: "2026-06-21"

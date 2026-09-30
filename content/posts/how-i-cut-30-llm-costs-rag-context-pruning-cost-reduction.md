@@ -1,4 +1,5 @@
 ---
+status: review
 title: "How I Cut 30% LLM Costs: RAG Context Pruning Cost Reduction"
 excerpt: "Umair shares a Node.js blueprint for RAG context pruning cost reduction, combining embeddings and keyword extraction to slash LLM API costs by 30% and boost ..."
 date: "2026-07-07"

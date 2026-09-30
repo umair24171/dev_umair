@@ -1,4 +1,5 @@
 ---
+status: review
 title: "Secure Flutter AI App Development: Stop Leaks, My Battle Plan"
 excerpt: "Master secure Flutter AI app development. My battle-tested blueprint for data privacy, IP protection, and safe API integration in Flutter."
 date: "2026-04-08"

@@ -1,4 +1,5 @@
 ---
+status: review
 title: "How I Cut AI Video Costs 80%: build Flutter AI lecture video with Ollama"
 excerpt: "Learn how to build Flutter AI lecture video creators with Ollama and FFmpeg, slashing cloud costs by tackling 3 critical sync challenges head-on."
 date: "2026-06-27"

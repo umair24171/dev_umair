@@ -1,4 +1,5 @@
 ---
+status: review
 title: "Fixing ai code autofix security flaws: My AST checker"
 excerpt: "Snowflake's Copilot breach wasn't unique. I'll show how ai code autofix security flaws in a package.json almost led to privilege escalation & my Node.js AST ..."
 date: "2026-08-18"

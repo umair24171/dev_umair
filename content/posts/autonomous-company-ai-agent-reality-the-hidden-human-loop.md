@@ -1,4 +1,5 @@
 ---
+status: review
 title: "Autonomous Company AI Agent Reality: The Hidden Human Loop"
 excerpt: "Everyone's talking autonomous company AI agents, but the reality for full-stack devs is a hidden human loop. I'll show the critical architectural bottleneck."
 date: "2026-09-15"

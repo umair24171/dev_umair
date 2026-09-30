@@ -1,4 +1,5 @@
 ---
+status: review
 title: "5 Guards to build reliable AI agents: No More Hallucinations"
 excerpt: "Stop your AI agents from going rogue. Umair shares 5 code-level guards and validation layers he uses to build reliable AI agents, preventing reward-hacking a..."
 date: "2026-06-15"

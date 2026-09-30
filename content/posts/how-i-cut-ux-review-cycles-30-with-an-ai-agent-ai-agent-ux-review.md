@@ -1,4 +1,5 @@
 ---
+status: review
 title: "How I Cut UX Review Cycles 30% with an AI Agent: ai agent ux review flutter"
 excerpt: "Cut Flutter UX review cycles by 30%. See how my custom ai agent ux review flutter identifies forgotten UI elements and product details before human review."
 date: "2026-08-09"

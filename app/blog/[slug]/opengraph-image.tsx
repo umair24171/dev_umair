@@ -1,5 +1,6 @@
 import { ImageResponse } from 'next/og';
 import { getPostBySlug } from '@/lib/posts';
+import { notFound } from 'next/navigation';
 
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
@@ -7,10 +8,11 @@ export const contentType = 'image/png';
 export default async function Image({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const post = getPostBySlug(slug);
+  if (!post) notFound();
 
   const title   = post?.title   ?? 'BuildZn Blog';
-  const excerpt = post?.excerpt ?? 'Flutter development, AI, and software engineering insights.';
-  const tags    = post?.tags    ?? ['Flutter', 'Development'];
+  const excerpt = post?.excerpt ?? 'AI agents and business automation insights.';
+  const tags    = post?.tags    ?? ['AI agents', 'Automation'];
   const date    = post?.date
     ? new Date(post.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })
     : '';
@@ -58,7 +60,7 @@ export default async function Image({ params }: { params: Promise<{ slug: string
           }}>U</div>
           <div style={{ display: 'flex', flexDirection: 'column' }}>
             <span style={{ color: 'white', fontWeight: '800', fontSize: '22px', lineHeight: '1' }}>BuildZn</span>
-            <span style={{ color: 'rgba(255,255,255,0.4)', fontSize: '14px', marginTop: '4px' }}>Flutter Developer & AI Builder</span>
+            <span style={{ color: 'rgba(255,255,255,0.4)', fontSize: '14px', marginTop: '4px' }}>AI Agents & Automation Studio</span>
           </div>
         </div>
 

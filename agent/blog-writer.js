@@ -259,14 +259,10 @@ function buildTopicPrompt(trendingItems, publishedPosts, rejectedCandidate = nul
     ? `\n━━━ PREVIOUS CANDIDATE REJECTED ━━━\nYour last pick "${rejectedCandidate.primaryKeyword}" was too similar to existing post "${rejectedCandidate.similarTo.title}" (similarity ${(rejectedCandidate.similarity * 100).toFixed(0)}%).\nPICK A DIFFERENT TOPIC, DIFFERENT KEYWORD. Do not just reword the same idea.\n`
     : '';
 
-  return `You are an SEO and content strategist for a Flutter & AI Engineer's portfolio blog (buildzn.com).
-The author is Umair — Flutter dev, Node.js backend dev, AI agent builder. Full-stack. Pakistani dev working internationally.
-
-The blog serves FOUR audiences — pick a topic that serves at least one:
-- CLIENTS: Founders/PMs researching app development costs, AI integration, timelines
-- RECRUITERS: Hiring managers looking for senior Flutter/AI/full-stack talent
-- DEVELOPERS: Devs who search for tutorials, tool comparisons, how-to guides
-- TECH AUDIENCE: Hacker News / general dev readers
+  return `You prepare unpublished drafts for BuildZn, an AI agents and business automation studio.
+The author is Umair Bilal. Do not invent personal experience, clients, credentials or outcomes.
+Write for business operations buyers evaluating workflow automation, AI agents, API integrations and automation repair.
+Do not position BuildZn around mobile development, app services or recruitment.
 
 TRENDING ITEMS (inspiration — pick one or use as a jumping-off point):
 ${itemsList}
@@ -280,32 +276,17 @@ HARD DEDUP RULES:
 - If a topic you want to cover is already on the list, pick a completely different angle, tool, or problem.
 - Novelty check: can you name ONE specific thing in this post that is NOT in any of the above posts? If no, pick something else.
 ${rejectionNote}
-TOPIC TIERS (pick from highest priority available based on trending items):
-
-TIER 1 — AI & Agents (highest traffic right now):
-- Specific tool tutorials with version numbers or error strings (e.g. "Claude 4.6 streaming bug", "Ollama + Docker connection refused")
-- Evaluation methods for cost, latency and reliability; no invented benchmark results
-- How to evaluate a specific AI workflow before committing to implementation
-- Honest takes: "[AI tool] is overrated — here's what beats it"
-
-TIER 2 — Flutter & Mobile:
-- Specific integration guides (e.g. "Flutter + Supabase realtime chat with presence")
-- Production debugging stories with actual error messages
-- Migration posts ("Moved from Firebase to Supabase — here's what broke")
-
-TIER 3 — Full-Stack & Dev Tools:
-- Architecture decisions with real numbers (RPS, p95 latency, $/month)
-- Tool comparisons where you've used both in production
-
-TIER 4 — Tech Industry (last resort):
-- Only if you have a strong, unpopular take that isn't already everywhere
+TOPIC PRIORITIES:
+- Intake routing, support retrieval and document processing with human review
+- API access, validation, duplicates, retries and failure recovery
+- Workflow scope, operating costs, evaluation and handover
 
 HARD RULES:
-- Every post MUST serve developers, founders, or tech recruiters
-- NO generic "state of X" news recaps
-- Must include real code OR real numbers OR a concrete opinion not found elsewhere
-- Target 500–2000 monthly search volume — practical, not viral
-- Prefer LONG-TAIL specific keywords over broad ones ("llm architecture" loses, "llm serving latency ollama vs vllm" wins)
+- Serve business automation buyers with concrete problems and deliverables.
+- No unsupported savings, benchmark, income, client or firsthand claims.
+- Clearly label hypothetical examples and limitations.
+- No outreach, prospecting or scheduled publishing.
+- Verify technical claims against primary documentation before publication.
 
 KEYWORD RULES:
 - Primary keyword must be 3-6 words, a phrase a dev would LITERALLY TYPE INTO GOOGLE
@@ -317,7 +298,7 @@ Output ONLY this XML, nothing else:
 <primaryKeyword>3-6 word SEO keyword (must be literal search query)</primaryKeyword>
 <secondaryKeywords>kw1, kw2, kw3, kw4</secondaryKeywords>
 <searchIntent>who is searching and why</searchIntent>
-<targetAudience>clients OR recruiters OR developers OR tech-audience</targetAudience>
+<targetAudience>business-operations buyers</targetAudience>
 <angle>specific hook that makes this worth reading today</angle>
 <uniqueClaim>A specific decision or question to investigate; no unsupported metrics or firsthand claims</uniqueClaim>
 <tags>Tag1, Tag2, Tag3, Tag4</tags>`;

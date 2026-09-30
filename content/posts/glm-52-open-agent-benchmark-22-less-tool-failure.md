@@ -1,4 +1,5 @@
 ---
+status: review
 title: "GLM-5.2 open agent benchmark: 22% Less Tool Failure"
 excerpt: "See my GLM-5.2 open agent benchmark results. It boosted multi-step tool-use reliability by 22% over Mixtral 8x7B in Node.js, slashing hallucinated API calls."
 date: "2026-06-25"

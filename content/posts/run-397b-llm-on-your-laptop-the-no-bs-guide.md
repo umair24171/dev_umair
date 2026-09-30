@@ -1,4 +1,5 @@
 ---
+status: review
 title: "Run 397B LLM on Your Laptop: The No-BS Guide"
 excerpt: "Trying to run a massive 397B LLM on your laptop? Here's how I used Flash-MoE principles and GGUF to actually make it work without an A100."
 date: "2026-03-23"

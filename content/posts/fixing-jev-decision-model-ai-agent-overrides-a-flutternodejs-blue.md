@@ -1,4 +1,5 @@
 ---
+status: review
 title: "Fixing Jev Decision Model AI Agent Overrides: A Flutter/Node.js Blueprint"
 excerpt: "Debugging KaLM-Jev decision-override conflicts in AI agents. A Flutter/Node.js blueprint for robust jev decision model ai agent integration."
 date: "2026-09-21"

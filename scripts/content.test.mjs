@@ -10,14 +10,16 @@ test('quarantined articles and redirected duplicates are not public', () => {
     assert.equal(getPostBySlug(slug), null);
     assert.ok(!slugs.includes(slug));
   }
-  assert.ok(slugs.includes('flutter-vs-react-native-ai-app-2026-pick-the-right-stack'));
+  assert.ok(!slugs.includes('flutter-vs-react-native-ai-app-2026-pick-the-right-stack'));
+  assert.ok(slugs.includes('ai-workflow-scope-human-review'));
+  assert.equal(slugs.length, 3);
 });
 test('drafts, invalid dates and traversal paths cannot be served', () => {
   const file = 'content/posts/editorial-test-fixture.md';
   try {
     fs.writeFileSync(file, '---\ntitle: Draft\ndate: "2026-10-01"\nstatus: draft\n---\nNot published');
     assert.equal(getPostBySlug('editorial-test-fixture'), null);
-    fs.writeFileSync(file, '---\ntitle: Invalid\ndate: invalid\n---\nNot published');
+    fs.writeFileSync(file, '---\ntitle: Invalid\ndate: invalid\nstatus: published\nreviewed: true\n---\nNot published');
     assert.equal(getPostBySlug('editorial-test-fixture'), null);
     assert.equal(getPostBySlug('../../README'), null);
   } finally { fs.rmSync(file, { force: true }); }

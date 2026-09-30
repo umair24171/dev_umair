@@ -1,4 +1,5 @@
 ---
+status: review
 title: "How I fix AI Coding CI Bottleneck: 20% Faster Builds"
 excerpt: "My CI pipelines were choking with AI-generated code. I found a way to fix AI coding CI bottleneck, cutting Flutter & Node.js build times by 20%."
 date: "2026-09-22"

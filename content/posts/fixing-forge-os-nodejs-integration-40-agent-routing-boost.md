@@ -1,4 +1,5 @@
 ---
+status: review
 title: "Fixing forge-os node.js integration: 40% Agent Routing Boost"
 excerpt: "Umair shares a Node.js blueprint for forge-os node.js integration, detailing skill routing for multi-agent systems and how he achieved a 40% latency reduction."
 date: "2026-07-26"

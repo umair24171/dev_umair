@@ -1,4 +1,5 @@
 ---
+status: review
 title: "How I Wired Free LLM Access: 9router & Freebuff Blueprint"
 excerpt: "Cut AI costs. I'll show you how to get free LLM access using 9router and Freebuff's OpenAI-compatible gateway with device-code OAuth. Real code, real savings."
 date: "2026-08-20"

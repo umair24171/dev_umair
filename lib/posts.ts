@@ -15,7 +15,7 @@ export function getPostBySlug(slug: string): Post | null {
   const file = ['.mdx', '.md'].map(ext => path.join(POSTS_DIR, `${slug}${ext}`)).find(p => fs.existsSync(p));
   if (!file) return null;
   const { data, content } = matter(fs.readFileSync(file, 'utf8'));
-  if (data.status === 'draft' || data.status === 'review') return null;
+  if (data.status !== 'published' || data.reviewed !== true) return null;
   const date = String(data.date || '');
   if (!date || Number.isNaN(Date.parse(date))) return null;
   const clean = content.replace(/https:\/\/(?:your-calendly-link\.com|yourwebsite\.com\/contact|example\.com\/book-umair-call)\/?/g, `${site.url}/#contact`).replace(/^# (.+)$/gm, '## $1');

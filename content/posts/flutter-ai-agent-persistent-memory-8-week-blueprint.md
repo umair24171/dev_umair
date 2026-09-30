@@ -1,4 +1,5 @@
 ---
+status: review
 title: "Flutter AI Agent Persistent Memory: 8-Week Blueprint"
 excerpt: "Built a Flutter AI agent with persistent memory in 8 weeks. Here's how to manage LLM state with Node.js, delivering complex AI features faster."
 date: "2026-03-26"

@@ -1,4 +1,5 @@
 ---
+status: review
 title: "LLM Data Leaks: secure LLM sensitive data exclusion with a Firewall"
 excerpt: "Prevent accidental sensitive data leaks to LLMs. Learn how I built an LLM input firewall in Node.js for secure LLM sensitive data exclusion, inspired by Open..."
 date: "2026-06-29"

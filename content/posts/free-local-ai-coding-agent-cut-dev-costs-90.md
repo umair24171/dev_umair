@@ -1,4 +1,5 @@
 ---
+status: review
 title: "Free Local AI Coding Agent: Cut Dev Costs 90%"
 excerpt: "Stop burning cash on coding AI subscriptions. Build a free local AI coding agent with CodePaidie and Ollama for Flutter & Node.js, achieving 18.7 tok/s."
 date: "2026-06-20"

@@ -1,4 +1,5 @@
 ---
+status: review
 title: "Cut AI Costs: Flutter Local Speech to Text for Privacy"
 excerpt: "Drastically reduce cloud API bills & boost user privacy. Learn how Flutter local speech to text gives your app a 2026 edge."
 date: "2026-04-07"

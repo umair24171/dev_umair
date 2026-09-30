@@ -1,4 +1,5 @@
 ---
+status: review
 title: "AI Agent Web Scraping Playwright: Zero-Cost 45s Blueprint"
 excerpt: "Building AI agents? Ditch expensive APIs. Here's my Node.js/Playwright blueprint for AI agent web scraping Playwright, grabbing 100 X posts in under 45s, zer..."
 date: "2026-09-26"

@@ -1,4 +1,5 @@
 ---
+status: review
 title: "AI Agent Postgres Query Optimization: My Node.js 4B LLM Blueprint"
 excerpt: "Stop guessing at slow Postgres queries. Here's my Node.js blueprint for an ai agent postgres query optimization using a local 4B LLM to parse EXPLAIN output."
 date: "2026-09-17"

@@ -1,4 +1,5 @@
 ---
+status: review
 title: "How Claude Opus Cut My LLM Costs 45%: Real AI Agent Benchmarks"
 excerpt: "Umair, a Flutter & AI Engineer, shares real 'claude opus llm cost reduction' benchmarks from production AI agents like FarahGPT. Learn how architecture chang..."
 date: "2026-04-29"

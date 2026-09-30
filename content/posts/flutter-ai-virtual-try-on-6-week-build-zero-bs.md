@@ -1,4 +1,5 @@
 ---
+status: review
 title: "Flutter AI Virtual Try-On App: 6-Week Build, Zero BS"
 excerpt: "We built a Flutter AI virtual try-on app feature in 6 weeks for an e-commerce client. Here’s the real plan, cost factors, and what actually works."
 date: "2026-04-02"

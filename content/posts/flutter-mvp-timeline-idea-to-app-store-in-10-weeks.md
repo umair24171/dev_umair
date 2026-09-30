@@ -1,4 +1,5 @@
 ---
+status: review
 title: "Flutter MVP Timeline: Idea to App Store in 10 Weeks"
 excerpt: "Planning your Flutter MVP? Get a transparent, week-by-week Flutter MVP timeline, from idea to App Store launch, with realistic expectations for founders."
 date: "2026-04-09"

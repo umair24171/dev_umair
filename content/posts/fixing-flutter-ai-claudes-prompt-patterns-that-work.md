@@ -1,4 +1,5 @@
 ---
+status: review
 title: "Flutter AI Prompt Engineering: Claude's Patterns That Work"
 excerpt: "Master Flutter AI prompt engineering with Claude's battle-tested patterns for reliable, production-grade LLM features in your app."
 date: "2026-04-01"

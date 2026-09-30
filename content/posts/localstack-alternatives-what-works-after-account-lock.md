@@ -1,4 +1,5 @@
 ---
+status: review
 title: "LocalStack Alternatives: What Works After Account Lock?"
 excerpt: "Struggling with LocalStack's new account requirement and archived repo? Discover solid LocalStack alternatives for local AWS development, free from vendor lo..."
 date: "2026-03-24"

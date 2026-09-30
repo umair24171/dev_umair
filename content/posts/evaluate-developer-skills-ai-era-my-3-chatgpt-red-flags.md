@@ -1,4 +1,5 @@
 ---
+status: review
 title: "Evaluate Developer Skills AI Era: My 3 ChatGPT Red Flags"
 excerpt: "As a senior engineer, I evaluate developer skills in the AI era. Here are 3 subtle ChatGPT red flags and a coding challenge that spots fake understanding."
 date: "2026-07-09"

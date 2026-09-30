@@ -1,4 +1,5 @@
 ---
+status: review
 title: "Build AI Trading Signals Agent: Sub-200ms Latency"
 excerpt: "Umair's blueprint to build AI trading signals agent with Node.js and Flutter, achieving sub-200ms latency. Learn to avoid common financial data pitfalls."
 date: "2026-09-07"

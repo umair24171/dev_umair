@@ -1,4 +1,5 @@
 ---
+status: review
 title: "Flutter App User Growth: From 0 to 1000 Users (My Indie Dev War Story)"
 excerpt: "Struggling with flutter app user growth? I went from zero to 1000 users for FarahGPT & Muslifie. Learn what marketing tactics worked and what bombed. Get rea..."
 date: "2026-03-01"

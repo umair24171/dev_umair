@@ -1,4 +1,5 @@
 ---
+status: review
 title: "Flutter vs Native AI Apps 2026: Pick Right, Save Millions"
 excerpt: "Flutter vs Native AI Apps 2026: The real cost, speed, and performance breakdown every founder needs before picking a mobile tech stack for their AI app."
 date: "2026-04-12"

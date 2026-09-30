@@ -1,4 +1,5 @@
 ---
+status: review
 title: "Why My AI Time is 80% Orchestration: The ai developer role shift"
 excerpt: "The ai developer role shift is real. I spend 80% of my time orchestrating AI systems like FarahGPT, not just coding app logic. Here's why."
 date: "2026-08-16"

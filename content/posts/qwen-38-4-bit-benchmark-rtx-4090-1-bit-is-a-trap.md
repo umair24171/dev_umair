@@ -1,4 +1,5 @@
 ---
+status: review
 title: "Qwen 3.8 4-bit Benchmark RTX 4090: 1-bit is a Trap"
 excerpt: "Ran Qwen 3.8 27B 4-bit quantization benchmarks on RTX 4090 and M-series Mac for local AI agents. Don't fall for 1-bit — here's why."
 date: "2026-09-09"

@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import Logo from './Logo';
 import TrackedLink from './TrackedLink';
-const links = [['Work', '/work'], ['Services', '/#services'], ['Process', '/#process'], ['About', '/about'], ['Insights', '/blog']];
+const links = [['Services', '/services'], ['Demonstrations', '/work'], ['Pricing', '/pricing'], ['About', '/about'], ['Insights', '/blog']];
 export default function SiteHeader() {
   const [open, setOpen] = useState(false);
   const trigger = useRef<HTMLButtonElement>(null);
@@ -35,12 +35,12 @@ export default function SiteHeader() {
   return <header className="site-header"><div className="shell header-inner">
     <Link href="/" aria-label="BuildZn home"><Logo width={138} height={35} /></Link>
     <nav className="desktop-nav" aria-label="Main navigation">{links.map(([name, href]) => <Link key={name} href={href} aria-current={pathname === href ? 'page' : undefined}>{name}</Link>)}</nav>
-    <TrackedLink href="/#contact" className="button button-small header-cta" location="header">Discuss your project <span aria-hidden="true">↗</span></TrackedLink>
+    <TrackedLink href="/contact" className="button button-small header-cta" location="header">Discuss your workflow <span aria-hidden="true">↗</span></TrackedLink>
     <button ref={trigger} type="button" className="menu-toggle" aria-label="Open menu" aria-expanded={open} aria-controls={open ? 'mobile-menu' : undefined} onClick={() => setOpen(true)}><span /><span /></button>
     {open && <div className="mobile-menu" id="mobile-menu" ref={panel} role="dialog" aria-modal="true" aria-label="Navigation menu">
       <div className="mobile-menu-top"><Logo width={138} height={35}/><button type="button" className="menu-close" aria-label="Close menu" onClick={() => setOpen(false)}>×</button></div>
-      <nav aria-label="Mobile navigation">{links.map(([name, href]) => <Link key={name} href={href} onClick={() => setOpen(false)}>{name}<span aria-hidden="true">↗</span></Link>)}<Link href="/#contact" className="button" onClick={() => setOpen(false)}>Discuss your project</Link></nav>
-      <p className="muted">Mobile apps. SaaS products. Useful AI.</p>
+      <nav aria-label="Mobile navigation">{links.map(([name, href]) => <Link key={name} href={href} onClick={() => setOpen(false)}>{name}<span aria-hidden="true">↗</span></Link>)}<Link href="/contact" className="button" onClick={() => setOpen(false)}>Discuss your workflow</Link></nav>
+      <p className="muted">AI agents. Business automation. Clear review points.</p>
     </div>}
   </div></header>;
 }

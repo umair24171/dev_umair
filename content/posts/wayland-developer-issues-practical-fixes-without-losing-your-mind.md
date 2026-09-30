@@ -1,4 +1,5 @@
 ---
+status: review
 title: "Wayland Black Screen, Crashes & GPU Fixes That Actually Work (2026)"
 excerpt: "Wayland breaking your Linux setup? These are the exact fixes for black screens, app crashes, XWayland issues and GPU problems — tested on real machines in 2026."
 date: "2026-03-20"

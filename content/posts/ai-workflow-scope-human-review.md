@@ -3,6 +3,7 @@ title: "Before adding an AI agent, decide what it can change"
 excerpt: "A draft reply and an issued refund have different consequences. Scope tool permissions, approval points and evaluation before automating a workflow."
 date: "2026-10-01"
 reviewed: true
+status: published
 tags: ["AI", "SaaS", "Product", "AI Agents"]
 ---
 
@@ -49,4 +50,4 @@ Decide what a useful improvement means: less repetitive work, faster handling, b
 
 A draft-and-review workflow can provide value while leaving consequential decisions with a person. Expand autonomy only when the evidence and operating process support it.
 
-BuildZn scopes [AI workflows and integrations](/services/ai-workflow-integration) around the task, evaluation and review requirements. [Share the workflow you want to improve](/#contact), including the tools involved and the actions that must remain under human control.
+BuildZn scopes [AI workflows and integrations](/services/ai-agents) around the task, evaluation and review requirements. [Share the workflow you want to improve](/contact), including the tools involved and the actions that must remain under human control.

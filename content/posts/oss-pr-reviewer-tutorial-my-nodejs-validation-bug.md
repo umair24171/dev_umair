@@ -1,4 +1,5 @@
 ---
+status: review
 title: "oss pr reviewer tutorial: My Node.js Validation Bug"
 excerpt: "Automate code review with `oss-pr-reviewer`? My `oss pr reviewer tutorial` for Node.js shows how it caught a critical bug I missed. Real talk, zero fluff."
 date: "2026-08-13"

@@ -1,4 +1,5 @@
 ---
+status: review
 title: "Local LLM Video Captioning: Private, Powerful, Open-Source"
 excerpt: "Run LLM video captioning 100% locally — no API costs, no data leaks. Complete setup guide with open-source models that match cloud quality."
 date: "2026-03-17"

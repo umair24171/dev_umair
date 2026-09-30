@@ -1,4 +1,5 @@
 ---
+status: review
 title: "Mistral Forge Tutorial: Build LLM Apps Faster"
 excerpt: "Dive into this comprehensive Mistral Forge tutorial. Learn to build LLM applications with practical steps, code examples, and expert tips."
 date: "2026-03-18"

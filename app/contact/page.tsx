@@ -1,0 +1,4 @@
+import type { Metadata } from 'next';
+import ContactForm from '../components/ContactForm';
+export const metadata: Metadata = { title: 'Discuss your automation workflow', description: 'Share a repetitive business task, your tools and review requirements with BuildZn. Start a conversation about automation, AI agents, integrations or repair.', alternates: { canonical: 'https://www.buildzn.com/contact' } };
+export default function Contact() { return <main id="main-content"><section className="shell page-hero"><p className="eyebrow">START WITH ONE TASK</p><h1>Tell us where<br/>the work gets stuck.</h1><p className="section-copy">Bring the task, the tools and a sample of what a correct result should look like. We’ll use those to discuss a practical next step.</p></section><ContactForm/></main>; }

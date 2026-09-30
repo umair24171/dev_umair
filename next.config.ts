@@ -1,5 +1,4 @@
-import type { NextConfig } from "next";
-
+import type { NextConfig } from 'next';
 const nextConfig: NextConfig = {
   async headers() {
     return [{ source: '/:path*', headers: [
@@ -10,37 +9,15 @@ const nextConfig: NextConfig = {
     ] }];
   },
   async redirects() {
-    return [
-      { source: "/blog/flutter-mvp-timeline-idea-to-app-store-in-10-weekstitle-excerptpl", destination: "/blog/flutter-mvp-timeline-idea-to-app-store-in-10-weeks", permanent: true },
-      // ─── Flutter vs React Native duplicates → canonical ───
-      // Picked flutter-vs-react-native-ai-app-2026-pick-the-right-stack as canonical
-      // (shortest URL, cleanest title once we update its frontmatter).
-      // All three dupes 301 to it. Google will consolidate ranking signals.
-      {
-        source: '/blog/flutter-vs-react-native-ai-apps-my-2026-take',
-        destination: '/blog/flutter-vs-react-native-ai-app-2026-pick-the-right-stack',
-        permanent: true,
-      },
-      {
-        source: '/blog/flutter-vs-native-ai-apps-2026-pick-right-save-millions',
-        destination: '/blog/flutter-vs-react-native-ai-app-2026-pick-the-right-stack',
-        permanent: true,
-      },
-      {
-        source: '/blog/flutter-vs-react-native-for-saas-2026-stack-choice',
-        destination: '/blog/flutter-vs-react-native-ai-app-2026-pick-the-right-stack',
-        permanent: true,
-      },
-
-      // ─── Old Flutter cost post → current one ───
-      // If you delete flutter-app-cost-2026-my-freelancer-breakdown.md, uncomment:
-      // {
-      //   source: '/blog/flutter-app-cost-2026-my-freelancer-breakdown',
-      //   destination: '/blog/flutter-ai-app-cost-2026-the-real-numbers',
-      //   permanent: true,
-      // },
+    // Retired offerings lead to the current service overview, not a fabricated replacement case study.
+    const routes: [string, string][] = [
+      ['/flutter-app-cost', '/pricing'], ['/labs', '/work'], ['/portfolio', '/work'], ['/og-image.png', '/opengraph-image'],
+      ['/services/mobile-app-development', '/services'], ['/services/saas-product-development', '/services'],
+      ['/services/ai-workflow-integration', '/services/ai-agents'], ['/services/product-improvement', '/services/automation-repair'],
+      ...['muslifie', 'myaipal', 'farahgpt', 'voisbe'].map(slug => [`/work/${slug}`, '/work'] as [string, string]),
     ];
+    // Unreviewed legacy articles return 404 and stay out of sitemap/API. No blanket unrelated blog redirects.
+    return routes.map(([source, destination]) => ({ source, destination, permanent: true }));
   },
 };
-
 export default nextConfig;

@@ -1,4 +1,5 @@
 ---
+status: review
 title: "AI coding actual productivity: My 20% slower truth"
 excerpt: "Devs feel faster with AI coding, but actual productivity often stagnates. I'll show why, drawing from building Prax-Agent, and detail how 'AI-aware testing' ..."
 date: "2026-07-02"

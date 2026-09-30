@@ -1,4 +1,5 @@
 ---
+status: review
 title: "I Cloned the Leaked Claude Code Repo — Here's What's Actually Inside"
 excerpt: "Anthropic accidentally leaked Claude Code's full source on March 31 2026. I cloned the claw-code repo and read the actual files. Here's the real tool list and architecture."
 date: "2026-04-01"

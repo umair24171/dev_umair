@@ -1,4 +1,5 @@
 ---
+status: review
 title: "Node.js vLLM LLM Inference: 50ms Latency on RTX 4090"
 excerpt: "Scale Node.js vLLM LLM inference with a simple blueprint. Achieve 50ms p95 latency on RTX 4090, cut costs 25% vs TGI. No over-engineering."
 date: "2026-08-07"

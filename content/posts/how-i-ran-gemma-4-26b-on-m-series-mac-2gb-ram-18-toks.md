@@ -1,4 +1,5 @@
 ---
+status: review
 title: "How I Ran Gemma 4 26B on M-Series Mac: 2GB RAM, 1.8 tok/s"
 excerpt: "Struggling to run Gemma 4 26B on your M-series Mac with limited RAM? Here's the exact setup and 1.8 tok/s benchmark I hit using Ollama and strict memory limits."
 date: "2026-07-30"

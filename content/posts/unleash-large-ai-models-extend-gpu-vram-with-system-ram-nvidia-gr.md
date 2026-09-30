@@ -1,4 +1,5 @@
 ---
+status: review
 title: "Unleash Large AI Models: Extend GPU VRAM with System RAM (Nvidia Greenboost)"
 excerpt: "Overcome VRAM limits! Learn how to transparently extend GPU VRAM using system RAM/NVMe with Nvidia Greenboost to run larger AI models. Practical guide."
 date: "2026-03-19"

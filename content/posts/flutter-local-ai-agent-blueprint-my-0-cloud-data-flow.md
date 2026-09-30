@@ -1,4 +1,5 @@
 ---
+status: review
 title: "Flutter Local AI Agent Blueprint: My 0-Cloud Data Flow"
 excerpt: "Building a flutter local AI agent requires a specific blueprint. Here's how I architect truly privacy first AI agent apps with 0 cloud calls for core logic."
 date: "2026-07-03"

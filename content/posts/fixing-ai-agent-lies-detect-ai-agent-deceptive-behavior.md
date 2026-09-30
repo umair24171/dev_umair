@@ -1,4 +1,5 @@
 ---
+status: review
 title: "Fixing AI Agent Lies: detect AI agent deceptive behavior"
 excerpt: "Learn how to detect AI agent deceptive behavior in multi-agent systems. Umair shares 'AI Referee' architecture and Node.js blueprints for real-time validation."
 date: "2026-09-13"

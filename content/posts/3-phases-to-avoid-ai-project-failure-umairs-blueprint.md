@@ -1,4 +1,5 @@
 ---
+status: review
 title: "3 Phases to avoid AI project failure: Umair's Blueprint"
 excerpt: "Don't be Ford. My 3-phase blueprint for human-centered AI success tracks Cognitive Load Delta to avoid AI project failure and ensure real value."
 date: "2026-06-28"

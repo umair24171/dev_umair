@@ -1,4 +1,5 @@
 ---
+status: review
 title: "AI agent codebase semantic RAG: AST for 30% Fewer Hallucinations"
 excerpt: "Stop AI coding agent hallucinations with a Node.js AI agent codebase semantic RAG that uses AST parsing and symbol graphs. I cut hallucinations by 30%."
 date: "2026-08-08"

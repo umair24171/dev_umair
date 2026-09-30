@@ -1,4 +1,5 @@
 ---
+status: review
 title: "Building an AI Assistant: flutter nodejs ai browser automation"
 excerpt: "Built a personal AI assistant with flutter nodejs ai browser automation. Here's how I orchestrated LLM decisions with Playwright to cut busywork by 60%."
 date: "2026-08-17"

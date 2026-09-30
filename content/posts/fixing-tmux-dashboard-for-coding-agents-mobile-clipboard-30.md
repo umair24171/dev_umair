@@ -1,4 +1,5 @@
 ---
+status: review
 title: "Fixing tmux dashboard for coding agents: Mobile Clipboard + 30%"
 excerpt: "Juggling CLI coding agents? My custom tmux dashboard cut context-switching 30% and fixed mobile clipboard sync with xterm.js. Get the config."
 date: "2026-07-06"

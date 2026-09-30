@@ -1,4 +1,5 @@
 ---
+status: review
 title: "Local AI Agent Browser Extension: Hermes in 120ms"
 excerpt: "Build a secure local AI agent browser extension. Feed web context to Hermes 2.5 (Q8_0) in 120ms for private, fast automation. Code included."
 date: "2026-06-24"

@@ -1,4 +1,5 @@
 ---
+status: review
 title: "Gemini-3-Flash: My ai agent benchmark terminalbench Win & 3 Fixes"
 excerpt: "Umair, buildzn.com, shares the architecture, prompt engineering, and fixes for his top-scoring ai agent benchmark terminalbench on Gemini-3-Flash. Real bugs,..."
 date: "2026-04-28"

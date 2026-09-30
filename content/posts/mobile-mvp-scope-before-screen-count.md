@@ -1,4 +1,5 @@
 ---
+status: review
 title: "Your mobile MVP scope needs a user journey, not a screen count"
 excerpt: "A booking screen can hide payments, provider permissions and cancellation rules. Define the complete first journey before estimating an app."
 date: "2026-10-01"

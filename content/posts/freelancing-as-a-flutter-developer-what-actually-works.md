@@ -1,4 +1,5 @@
 ---
+status: review
 title: "Freelancing as a Flutter developer: what actually works"
 excerpt: "Beyond the hype and grind, I share my 3+ years of hard-won lessons in Flutter freelancing. Learn what strategies truly land high-value clients, deliver impact, and build a sustainable, rewarding career."
 date: "2026-03-01"

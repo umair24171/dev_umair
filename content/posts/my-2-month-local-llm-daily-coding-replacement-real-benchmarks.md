@@ -1,4 +1,5 @@
 ---
+status: review
 title: "My 2-Month local llm daily coding replacement: Real Benchmarks"
 excerpt: "Umair shares his unfiltered experience: migrating from Claude/GPT to local LLMs for Flutter and Node.js coding, with real benchmarks and cost savings."
 date: "2026-06-16"
