@@ -42,3 +42,12 @@
 .case-code pre { margin:0; color:#ceeadb; overflow-x:auto; font-size:12px; line-height:1.8; }
 .case-code p:last-child { font-size:11px; color:var(--muted); margin:14px 0 0; }
 @media(max-width:480px) { .case-code { padding:22px; } .case-code pre { white-space:pre-wrap; overflow-wrap:anywhere; } }
+
+.about-intro { display:grid; grid-template-columns:minmax(0,1fr) 320px; align-items:center; gap:64px; }
+.founder-portrait { margin:0; border:1px solid #385749; border-radius:18px; overflow:hidden; background:#101b1d; }
+.founder-portrait img { display:block; width:100%; height:auto; aspect-ratio:1; object-fit:cover; }
+.founder-portrait figcaption { padding:20px 22px; border-top:1px solid #385749; }
+.founder-portrait strong { display:block; font-size:18px; color:var(--foreground); }
+.founder-portrait span { display:block; font-size:12px; color:var(--muted); margin-top:4px; }
+@media(max-width:900px) { .about-intro { gap:32px; grid-template-columns:minmax(0,1fr) 260px; } }
+@media(max-width:600px) { .about-intro { grid-template-columns:1fr; gap:32px; } .founder-portrait { width:min(320px,100%); } }
