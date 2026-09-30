@@ -53,9 +53,9 @@ test('invoice: validation, correction, review, export and approval invalidation'
   await expect(page.getByRole('checkbox')).not.toBeChecked();
   await expect(page.getByRole('button', { name: 'Export CSV', exact: true })).toBeDisabled();
 });
-test('contact: accepted and failed provider responses without real submission', async ({ page }) => {
+test('contact: simulated private capture success and failure without real storage writes', async ({ page }) => {
   let mode = 'error';
-  await page.route('https://formspree.io/f/**', route => route.fulfill({ status: mode === 'error' ? 500 : 200, contentType: 'application/json', body: mode === 'error' ? JSON.stringify({ errors: [{ message: 'Sample failure' }] }) : JSON.stringify({ next: "/thanks" }) }));
+  await page.route('**/api/inquiries', route => route.fulfill({ status: mode === 'error' ? 500 : 200, contentType: 'application/json', body: mode === 'error' ? JSON.stringify({ error: 'Sample failure' }) : JSON.stringify({ accepted: true }) }));
   await page.goto('/contact');
   await page.getByLabel('Name', { exact: true }).fill('BuildZn sample check');
   await page.getByLabel('Email', { exact: true }).fill('sample@example.com');

@@ -19,7 +19,7 @@ export default function Analytics() {
   const consent = useSyncExternalStore(subscribe, getConsent, () => 'server');
   const pathname = usePathname();
   useEffect(() => {
-    if (consent !== 'accepted') return;
+    if (consent !== 'accepted' || pathname.startsWith('/ops')) return;
     if (pathname.startsWith('/services/')) track('service_viewed', { service: pathname.split('/').pop()! });
     if (pathname.startsWith('/work/')) track('demonstration_viewed', { project: pathname.split('/').pop()! });
   }, [consent, pathname]);
@@ -29,6 +29,7 @@ export default function Analytics() {
     window.dispatchEvent(new Event('buildzn-consent-changed'));
     if (value === 'declined' && document.querySelector('script[src*="googletagmanager"]')) window.location.reload();
   }
+  if(pathname.startsWith('/ops')) return null;
   return <>
     {consent === 'accepted' && <GoogleAnalytics gaId="G-FB9PXBHDW9" />}
     {consent === 'pending' && <aside className="consent-banner" aria-label="Analytics preference">

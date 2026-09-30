@@ -55,3 +55,6 @@ next-env.d.ts
 /agent/private-data/
 
 /content/drafts/editorial-plan.json
+
+# Private acquisition data and account helpers
+/work/

@@ -1,0 +1,10 @@
+{
+ "enabled": false,
+ "timezone": "Asia/Karachi",
+ "jobs": [
+  {"id":"public-requests","enabled":false,"proposedSchedule":"Monday 09:00 Asia/Karachi","maximumRequests":30,"cost":"Existing GitHub API and Vercel quota; no model calls. Account overages not verified."},
+  {"id":"seo-plan","enabled":false,"proposedSchedule":"First business day monthly, after actual Search Console export","cost":"Deterministic planning; no model calls."},
+  {"id":"follow-up-review","enabled":false,"proposedSchedule":"Weekdays 10:00 Asia/Karachi","cost":"Private storage reads; prepare drafts only, never send."}
+ ],
+ "activation":"Disabled configuration only. No scheduler is installed. Review scope and account costs, approve activation, then install a read-only or draft-only scheduler with idempotent job keys. No job grants permission for external messages."
+}

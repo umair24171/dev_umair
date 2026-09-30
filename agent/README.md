@@ -66,3 +66,7 @@ References: [Gemini generateContent](https://ai.google.dev/api/generate-content)
 ## Validation record — October 1, 2026
 
 Offline regression checks cover intent updates, pending history, source restrictions, invalid metrics, missing evidence, unsafe claims, incomplete responses, unpublished output, canonical preservation and failed-run recovery. Live primary-source retrieval and first-party issue discovery were exercised. The configured provider generated a real brief and article candidate with `gemini-3.8-flash`; its final editorial-review calls returned HTTP 503 even after bounded retries and recovery. The failed packs were retained and no final model-reviewed draft was falsely marked ready. Provider availability remains an external limitation; use `resume` when it recovers. The public implementation guides were separately inspected and edited against their cited source before publication.
+
+## Operations workspace integration
+
+The authenticated `/ops` workspace reuses this planner and draft/review pipeline. Its provider path is disabled until account token rates and a daily dollar ceiling are configured. It reserves attempts in durable storage, including HTTP retries, and keeps run evidence/diagnostics encrypted. A live recovery recheck on October 1, 2026 again returned HTTP 503 during review; the retained candidate was reused, but no final accepted draft or publication resulted. The CLI remains manual and separately consumes provider quota.

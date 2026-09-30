@@ -91,3 +91,12 @@ test('resume reuses paid work, reruns review and rejects stale or arbitrary sour
  await assert.rejects(resumeDraft(path.basename(failed.runDir),{directory:dir,generator:async()=>{throw new Error('Must not call provider');}}),/older than 24 hours/);
  }finally{fs.rmSync(dir,{recursive:true,force:true});}
 });
+
+test('provider outage retries are bounded and every attempt is budgeted',async()=>{
+ let attempts=0;
+ await assert.rejects(()=>geminiJSON('review',{}, {apiKey:'sample-provider-key',model:'sample-model',fetcher:async()=>new Response('{}',{status:503}),onAttempt:async()=>{attempts++;}}),/HTTP 503/);
+ assert.equal(attempts,3);
+ let requests=0;
+ await assert.rejects(()=>geminiJSON('review',{}, {apiKey:'sample-provider-key',model:'sample-model',fetcher:async()=>{requests++;throw new Error('sample network outage');},onAttempt:async()=>{throw new Error('spending ceiling');}}),/spending ceiling/);
+ assert.equal(requests,0);
+});

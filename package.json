@@ -10,7 +10,8 @@
     "test:smoke": "node scripts/smoke.mjs",
     "lint": "eslint app lib scripts --max-warnings=0",
     "check": "tsc --noEmit && node --check agent/blog-writer.js",
-    "test": "tsc --outDir .test-build --rootDir . --resolveJsonModule true --noEmit false --module commonjs --moduleResolution node --target es2020 --esModuleInterop true --skipLibCheck true lib/posts.ts lib/site.ts lib/markdown.ts lib/demos.ts && node --test scripts/content.test.mjs scripts/demos.test.mjs && npm test --prefix agent"
+    "test": "tsc --outDir .test-build --rootDir . --resolveJsonModule true --noEmit false --module commonjs --moduleResolution node --target es2020 --esModuleInterop true --skipLibCheck true lib/posts.ts lib/site.ts lib/markdown.ts lib/demos.ts && node --test scripts/content.test.mjs scripts/demos.test.mjs && npm test --prefix agent && npm run test:ops",
+    "test:ops": "tsc --outDir .test-build --rootDir . --resolveJsonModule true --noEmit false --module commonjs --moduleResolution node --target es2020 --esModuleInterop true --skipLibCheck true lib/ops/core.ts lib/ops/store.ts lib/ops/auth.ts && node --test scripts/ops.test.mjs"
   },
   "dependencies": {
     "@formspree/react": "^3.0.0",

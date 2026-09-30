@@ -4,6 +4,7 @@ import SiteHeader from './components/SiteHeader';
 import SiteFooter from './components/SiteFooter';
 import Analytics from './components/Analytics';
 import './globals.css';
+import PublicChrome from './components/PublicChrome';
 const font = Plus_Jakarta_Sans({ subsets: ['latin'], weight: ['400', '500', '600', '700', '800'], variable: '--font-plus-jakarta', display: 'swap' });
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.buildzn.com'),
@@ -22,5 +23,5 @@ const schema = { '@context': 'https://schema.org', '@graph': [
   { '@type': 'WebSite', '@id': 'https://www.buildzn.com/#website', name: 'BuildZn', url: 'https://www.buildzn.com', publisher: { '@id': 'https://www.buildzn.com/#organization' } },
 ] };
 export default function RootLayout({ children }: Readonly<{children: React.ReactNode}>) {
-  return <html lang="en"><head><meta name="theme-color" content="#090b12"/><link rel="icon" href="/favicon.ico?v=2" sizes="any"/><link rel="icon" href="/logo-icon.svg?v=2" type="image/svg+xml"/><link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2"/><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}/></head><body className={`${font.variable} ${font.className}`}><a className="skip-link" href="#main-content">Skip to content</a><SiteHeader/>{children}<SiteFooter/><Analytics/></body></html>;
+  return <html lang="en"><head><meta name="theme-color" content="#090b12"/><link rel="icon" href="/favicon.ico?v=2" sizes="any"/><link rel="icon" href="/logo-icon.svg?v=2" type="image/svg+xml"/><link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2"/><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}/></head><body className={`${font.variable} ${font.className}`}><a className="skip-link" href="#main-content">Skip to content</a><PublicChrome header={<SiteHeader/>} footer={<SiteFooter/>} analytics={<Analytics/>}>{children}</PublicChrome></body></html>;
 }

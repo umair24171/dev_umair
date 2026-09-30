@@ -8,7 +8,7 @@ Use Node 22. Run `npm ci`, then `npm run dev`. Before pushing: `npm run lint`, `
 
 For browser checks install Chromium with `npx playwright install chromium`. Start the production server on port 3100 (`npm run start -- --port 3100`), then run `npm run test:smoke` and `npm run test:browser`. Set `SMOKE_URL` to validate a deployed site. Browser checks cover missing inquiry data, lead creation and approval resets; source-grounded support and handoff; invoice validation, correction and actual CSV/JSON downloads; mocked contact success/failure; responsive layout, keyboard navigation and WCAG accessibility scans.
 
-Contact tests intercept Formspree requests and do not send a real inquiry. Neither an accepted HTTP response nor these mocks confirm inbox delivery. A controlled real submission and inbox access are needed to verify that separately.
+Contact response tests simulate `/api/inquiries` and do not write a real inquiry. Operations browser tests create labeled fictional records in a private controlled store. Neither an accepted HTTP response nor these mocks confirm inbox delivery. A controlled real submission and inbox access are needed to verify that separately.
 
 ## Content and demonstrations
 
@@ -28,11 +28,11 @@ Published articles require `status: published` AND `reviewed: true`. All other l
 
 Old mobile/SaaS service URLs redirect permanently to the service overview; the former AI workflow and improvement services redirect to their relevant new services. Old product case studies redirect to the evidence-labeled work index, never to an invented replacement client story. `/flutter-app-cost` redirects to `/pricing`, `/labs` and `/portfolio` to `/work`, and the old static social image to `/opengraph-image`. Legacy app imagery is removed.
 
-The manual draft-preparation workflow remains manual-only. It cannot publish, cross-post or send notifications. No prospecting, outreach or recurring automation has been added.
+The manual draft-preparation workflow remains manual-only. It cannot publish, cross-post or send notifications. The private operations workspace adds bounded public-request research and human-reviewed drafts. No outreach is sent and no recurring job is activated.
 
 ## Contact, privacy and analytics
 
-The existing Formspree ID remains configured. The form keeps entered data on errors, reports provider acceptance accurately and gives direct email/WhatsApp alternatives. Public copy discloses that inbox delivery has not been independently verified. Do not claim delivery without a controlled end-to-end check.
+The form now stores inquiries in the encrypted private operations workspace. It keeps entered data on errors and provides direct email/WhatsApp alternatives. Public submission does not trigger an automatic sales reply or inbox notification. Legacy Formspree inbox delivery remains unverified; do not claim it from storage acceptance. See OPERATIONS.md for access, privacy, limits and activation.
 
 Google Analytics loads only after opt-in. Custom events contain action/location categories, never form or demonstration text. Privacy settings allow withdrawal. Credentials never belong in source, URLs, content or analytics.
 
@@ -45,3 +45,7 @@ The GitHub repository is connected to Vercel. Push validated main to trigger dep
 The portfolio now uses `content/business/projects.json` as its shared evidence register. Interactive previews are labeled sample demonstrations; public build walkthroughs link inspected source and identify unverified runtime/account boundaries. Captures of source walkthroughs are explicitly distinguished from production account screenshots.
 
 The Blog Writer has been replaced with a manual research, brief, draft and review pipeline. See [agent/README.md](agent/README.md) for the audit, configuration, demand signals, existing-intent updates, review packs and publication rules. Run `npm ci --prefix agent` before the full test suite. Provider generation requires explicit model selection and uses account quota. No new recurring jobs, prospecting or outreach are enabled.
+
+## Client acquisition and sales operations
+
+See [OPERATIONS.md](OPERATIONS.md). The private `/ops` workspace connects inquiry capture, qualification, evidence review, assessments, proposals, follow-up reminders, public-request research, the existing Blog Writer, public-evidence content drafts, and observed source reporting. External sending and publication are unavailable.
