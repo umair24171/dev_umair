@@ -6,15 +6,17 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint app lib scripts --max-warnings=0",
+    "check": "tsc --noEmit && node --check agent/blog-writer.js",
+    "test": "tsc --outDir .test-build --noEmit false --module commonjs --moduleResolution node --target es2020 --esModuleInterop true --skipLibCheck true lib/posts.ts lib/site.ts lib/markdown.ts && node --test scripts/content.test.mjs"
   },
   "dependencies": {
     "@formspree/react": "^3.0.0",
-    "@next/third-parties": "^16.1.7",
+    "@next/third-parties": "^16.3.8",
     "framer-motion": "^12.23.26",
     "gray-matter": "^4.0.3",
     "marked": "^17.0.3",
-    "next": "16.1.1",
+    "next": "^16.3.8",
     "react": "19.2.3",
     "react-dom": "19.2.3"
   },
@@ -24,9 +26,12 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
-    "eslint-config-next": "16.1.1",
+    "eslint-config-next": "^16.3.8",
     "tailwindcss": "^4",
     "tweetsodium": "^0.0.4",
     "typescript": "^5"
+  },
+  "engines": {
+    "node": "22.x"
   }
 }

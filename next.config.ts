@@ -1,8 +1,17 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  async headers() {
+    return [{ source: '/:path*', headers: [
+      { key: 'X-Content-Type-Options', value: 'nosniff' },
+      { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
+      { key: 'X-Frame-Options', value: 'DENY' },
+      { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=()' },
+    ] }];
+  },
   async redirects() {
     return [
+      { source: "/blog/flutter-mvp-timeline-idea-to-app-store-in-10-weekstitle-excerptpl", destination: "/blog/flutter-mvp-timeline-idea-to-app-store-in-10-weeks", permanent: true },
       // ─── Flutter vs React Native duplicates → canonical ───
       // Picked flutter-vs-react-native-ai-app-2026-pick-the-right-stack as canonical
       // (shortest URL, cleanest title once we update its frontmatter).

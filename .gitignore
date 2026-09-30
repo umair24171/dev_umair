@@ -42,3 +42,6 @@ agent/node_modules/
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Compiled test fixtures
+.test-build/

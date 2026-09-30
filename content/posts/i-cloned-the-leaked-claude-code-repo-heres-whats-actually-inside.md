@@ -8,7 +8,6 @@ readTime: "8 min read"
 coverGradient: "from-orange-500 to-amber-400"
 ---
 
-# I Cloned the Leaked Claude Code Repo — Here's What's Actually Inside
 
 On March 31, 2026, Anthropic accidentally shipped the full Claude Code source — 512,000 lines of TypeScript across 1,906 files — via an exposed npm source map in `@anthropic-ai/claude-code` v2.1.88. A Korean developer named Sigrid Jin rewrote the whole thing in Python overnight. The [claw-code repo](https://github.com/instructkr/claw-code) hit 80,000 GitHub stars within hours. I cloned it the same day and actually read the files. Here's what's real and what matters.
 

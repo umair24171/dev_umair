@@ -241,7 +241,7 @@ Look, building a **Flutter AI virtual try-on app** feature in 6 weeks is ambitio
 
 Ready to add this to your app, or need help figuring out your next big Flutter/AI feature? Let's chat.
 
-[Book a Free 15-Minute Discovery Call with Umair](https://your-calendly-link.com) (or whatever your CTA is)
+[Book a Free 15-Minute Discovery Call with Umair](https://www.buildzn.com/#contact) (or whatever your CTA is)
 
 ---
 

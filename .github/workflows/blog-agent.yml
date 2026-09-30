@@ -1,34 +1,31 @@
-name: Blog Writer Agent
-
+name: Prepare blog draft for review
 on:
-  schedule:
-    # Every day at 9:00 AM PKT (4:00 UTC) — searches internet for trending topics
-    - cron: '0 4 * * *'
-  workflow_dispatch: # Manual trigger from GitHub UI
-
+  workflow_dispatch:
 jobs:
-  write-blog-post:
+  prepare-draft:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: '18'
-
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: agent/package-lock.json
       - name: Install agent dependencies
-        run: |
-          cd agent
-          npm install
-
-      - name: Run blog writer
+        working-directory: agent
+        run: npm ci
+      - name: Prepare unpublished draft
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GITHUB_TOKEN: ${{ secrets.BLOG_GITHUB_TOKEN }}
           GITHUB_OWNER: ${{ secrets.REPO_OWNER }}
           GITHUB_REPO: ${{ secrets.REPO_NAME }}
-          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
-          DEV_TO_API_KEY: ${{ secrets.DEV_TO_API_KEY }}
         run: node agent/blog-writer.js
+      - name: Save draft for human review
+        uses: actions/upload-artifact@v4
+        with:
+          name: unpublished-blog-draft
+          path: content/drafts/
+          retention-days: 30

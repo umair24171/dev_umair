@@ -1,108 +1,43 @@
 ---
-title: "How I Reduced Firebase Loading Time from 5 Seconds to Under 100ms"
-excerpt: "Our app was slow. Users complained. Here's exactly how I used Cloud Functions caching to fix a real production problem in Muslifie."
+title: "Firestore performance: measure the slow path before adding a cache"
+excerpt: "Separate cold and warm loads, inspect query scope, and define cache freshness before claiming an app performance improvement."
 date: "2026-03-01"
-tags: ["Flutter", "Firebase", "Performance"]
-readTime: "6 min read"
-coverGradient: "from-blue-500 to-cyan-400"
+updated: "2026-10-01"
+reviewed: true
+tags: ["Firebase", "Mobile", "Performance"]
+readTime: "4 min read"
 ---
 
-## The Problem
+A faster response is useful only if it returns the right data. When a mobile app loads slowly, adding a cache can hide the symptom while introducing stale data or inconsistent behavior across servers.
 
-When Muslifie launched, tour listing pages were taking 2–5 seconds to load. Users on slower connections in Pakistan, Egypt, and Indonesia were bouncing before the data even appeared.
+This article replaces an earlier version whose headline and cold-load timing were not comparable. The earlier numerical claims have been removed because the public article did not supply reproducible measurement evidence. The approach below is a diagnostic guide, rather than a new benchmark or a claim about a client's results.
 
-The culprit? Every time a user opened the app, Firebase was running fresh Firestore queries — no caching, no batching, just raw reads on every open.
+## Define the measurement first
 
-At 200+ guide profiles and growing, this was getting expensive and slow.
+Specify the flow: launching the app, opening a list, or refreshing an existing screen. Record where timing starts and stops. Server response time and a screen becoming usable are different measurements.
 
-## What I Tried First (That Failed)
+Separate cold and warm conditions. Include device, network, dataset size, authentication state and cache state in the test notes. Compare the same workload before and after the change, and examine the slower requests as well as the typical request.
 
-My first instinct was client-side caching with Flutter's built-in Firestore persistence. It helped a little, but:
+## Check how much work the query asks for
 
-- First load was still slow
-- Data was stale on reinstall
-- No control over cache invalidation
+Fetch the data needed for the current screen. An unbounded list can make a small dataset appear fast during development and become expensive later. Use a defined page size and a pagination method that fits the query.
 
-Not good enough for a marketplace where guide availability changes daily.
+Review the query against the current index requirements and inspect any missing-index errors. See [Firestore query guidance](https://firebase.google.com/docs/firestore/query-data/queries) and [query cursors](https://firebase.google.com/docs/firestore/query-data/query-cursors).
 
-## The Real Fix — Cloud Functions Caching
+Avoid turning every small UI event into a fresh read of the same large collection. Decide when a subscription, a targeted refresh or a one-time fetch fits the actual experience.
 
-The solution was moving the heavy lifting to Firebase Cloud Functions with in-memory caching.
+## Treat caching as a product decision
 
-Here's the pattern:
+Define how stale the data may be. A discovery list and a payment status do not have the same freshness requirements. Decide what invalidates the cache and how that decision works across multiple server instances.
 
-```javascript
-let cachedData = null;
-let cacheTime = null;
-const CACHE_TTL = 5 * 60 * 1000; // 5 minutes
+A process-local cache is not shared by every instance. It may disappear on restart, and two instances can return different versions. Those properties need to be acceptable for the particular flow before a local cache is used.
 
-exports.getTours = functions.https.onCall(async (data, context) => {
-  const now = Date.now();
+Check Firestore's [offline persistence documentation](https://firebase.google.com/docs/firestore/manage-data/enable-offline) for the behavior of the actual client platform in use. Do not assume a server cache and a mobile SDK's local persistence solve the same problem.
 
-  // Return cache if still fresh
-  if (cachedData && (now - cacheTime) < CACHE_TTL) {
-    return cachedData;
-  }
+## Report an improvement honestly
 
-  // Fetch fresh data
-  const snapshot = await db.collection('tours')
-    .where('status', '==', 'active')
-    .limit(50)
-    .get();
+Record the baseline, change, workload, cold/warm behavior and read counts under matching conditions. Explain what did not improve and what tradeoff was accepted. Keep the evidence with the project notes before turning a result into a public case-study claim.
 
-  cachedData = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-  cacheTime = now;
+For a business owner, the useful question is whether a customer can complete the flow reliably and whether the operating cost stays understandable. A single fast request is not enough to answer it.
 
-  return cachedData;
-});
-```
-
-The key insight: Cloud Function instances stay warm between calls. So the cache lives in memory as long as the instance is alive — usually 15–30 minutes.
-
-## Results
-
-| Metric | Before | After |
-|--------|--------|-------|
-| Initial load | 2–5 seconds | Under 100ms |
-| Firestore reads/day | 40,000+ | ~800 |
-| Firebase bill | Rising fast | Flat |
-
-The first user to hit the function after a cold start waits ~400ms. Every user after that gets cached data in under 100ms.
-
-## Flutter Side — Skeleton Loaders
-
-The performance fix only works if users don't stare at a blank screen during that first cold start. I paired it with skeleton loaders in Flutter:
-
-```dart
-Widget build(BuildContext context) {
-  return FutureBuilder<List<Tour>>(
-    future: fetchTours(),
-    builder: (context, snapshot) {
-      if (!snapshot.hasData) {
-        return TourSkeletonList(); // Show skeleton while loading
-      }
-      return TourList(tours: snapshot.data!);
-    },
-  );
-}
-```
-
-Perceived performance matters as much as actual performance. Users tolerate loading if they can see *something* happening.
-
-## What I'd Do Differently
-
-If I were building Muslifie today, I'd add:
-
-1. **Redis caching** via Firebase Extensions for multi-instance cache sharing
-2. **Incremental loading** — show top 10 tours instantly, load the rest in background
-3. **Prefetch on app launch** — start fetching data the moment the app opens, before the user even navigates
-
-## Key Takeaway
-
-Don't optimize early — but do profile before you assume. Our bottleneck wasn't the Flutter widgets or network speed. It was unnecessary Firestore reads that a 20-line caching function completely solved.
-
-If your app feels slow, add logging to every data fetch and look at where time is actually being spent. The answer is usually simpler than you think.
-
----
-
-*Building a Flutter app and hitting performance walls? [Drop me a message](https://www.buildzn.com/#contact) — I've probably hit the same wall.*
+[Discuss an existing product](https://www.buildzn.com/#contact) if you need help defining the slow flow and scoping an improvement.

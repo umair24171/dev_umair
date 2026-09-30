@@ -1,36 +1,27 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# BuildZn
 
-## Getting Started
+Next.js website for Umair Bilal's independent product-development practice.
 
-First, run the development server:
+## Local development
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Use Node 22 or later. Run `npm ci`, then `npm run dev` and open http://localhost:3000.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Before pushing: `npm run lint`, `npm run check`, `npm test`, `npm run build`. The production build fetches Google Fonts and needs network access. Preview with `npm run start`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Site content
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Shared links, project scope, service descriptions and process: `lib/site.ts`. Home, About, service routes and project routes use this content. Real product assets are in `public/`; public store screenshots retain their provenance in the project records. Do not add outcome or ownership claims without evidence.
 
-## Learn More
+Contact uses the existing Formspree form. No keys are required in browser code. Verify a controlled real submission reaches the inbox before claiming delivery. Error handling keeps the entered details and offers email as an alternative. The optional budget field is for qualification, not a quote.
 
-To learn more about Next.js, take a look at the following resources:
+Google Analytics loads only after opt-in. Anonymous custom events contain action/location categories, never the inquiry text or contact details. Footer/privacy preferences allow withdrawal. Configure campaign parameters for LinkedIn and compare qualified leads in your own lead records.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Articles
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Published content is in `content/posts`. `status: draft` and `status: review` are excluded from pages, APIs and sitemap. Redirected duplicates remain recoverable but are excluded from discovery. Markdown raw HTML is escaped and links are limited to safe protocols. Unreviewed legacy articles carry an archive notice. Follow `content/EDITORIAL.md` before publishing.
 
-## Deploy on Vercel
+The manual GitHub workflow prepares an unpublished draft artifact. There is no scheduled autopublishing, automatic cross-posting or external notification. Moving reviewed content to the published folder is a deliberate repository change.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Deployment
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The configured GitHub repository uses Vercel. Push the validated main branch to trigger its connected deployment, then verify the deployed commit and public routes. Do not place credentials in URLs, content, analytics or source files.

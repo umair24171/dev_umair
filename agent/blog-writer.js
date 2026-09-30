@@ -5,12 +5,13 @@
 //  - POV/specificity requirement enforced in prompt + post-check
 //  - Keyword literalness: title must contain the exact primary keyword
 //  Run: node agent/blog-writer.js
-//  Schedule: GitHub Actions — Mon/Wed/Fri 9:00 AM PKT
+//  Manual only. Writes unpublished local drafts; never commits or cross-posts.
 // ─────────────────────────────────────────────
 
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import { Octokit } from '@octokit/rest';
 import dotenv from 'dotenv';
+import fs from 'node:fs/promises';
 dotenv.config();
 
 const gemini = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
@@ -202,17 +203,6 @@ async function loadPublishedRegistry() {
 }
 
 // ─── Save updated registry to GitHub ───
-async function saveRegistry(registry, sha) {
-  const content = Buffer.from(JSON.stringify(registry, null, 2)).toString('base64');
-  await octokit.repos.createOrUpdateFileContents({
-    owner: REPO_OWNER, repo: REPO_NAME,
-    path: REGISTRY_PATH,
-    message: 'chore: update published topics registry',
-    content,
-    branch: BRANCH,
-    ...(sha ? { sha } : {}),
-  });
-}
 
 // ─── Retry wrapper for Gemini 503 / overload errors ───
 async function callGeminiWithRetry(promptFn, {
@@ -294,8 +284,8 @@ TOPIC TIERS (pick from highest priority available based on trending items):
 
 TIER 1 — AI & Agents (highest traffic right now):
 - Specific tool tutorials with version numbers or error strings (e.g. "Claude 4.6 streaming bug", "Ollama + Docker connection refused")
-- Benchmarks with real numbers (tokens/sec, latency, cost per 1M tokens)
-- "I built [specific AI system] in [X] days — [one concrete thing that broke]"
+- Evaluation methods for cost, latency and reliability; no invented benchmark results
+- How to evaluate a specific AI workflow before committing to implementation
 - Honest takes: "[AI tool] is overrated — here's what beats it"
 
 TIER 2 — Flutter & Mobile:
@@ -329,7 +319,7 @@ Output ONLY this XML, nothing else:
 <searchIntent>who is searching and why</searchIntent>
 <targetAudience>clients OR recruiters OR developers OR tech-audience</targetAudience>
 <angle>specific hook that makes this worth reading today</angle>
-<uniqueClaim>ONE specific claim, number, version, or error this post will make that is NOT in the SERP top 10</uniqueClaim>
+<uniqueClaim>A specific decision or question to investigate; no unsupported metrics or firsthand claims</uniqueClaim>
 <tags>Tag1, Tag2, Tag3, Tag4</tags>`;
 }
 
@@ -516,97 +506,26 @@ function runSeoChecks(post, topicData) {
 // ─── Generate the full blog post with Gemini ───
 async function generatePost(topicData) {
 
-  const prompt = `You are Umair — Flutter & AI Engineer from Pakistan. buildzn.com.
-4+ years experience. 20+ production apps shipped to App Store and Google Play.
-Built FarahGPT (5,100+ users), an AI gold trading system with multi-agent architecture, NexusOS (AI agent governance SaaS), and a 9-agent YouTube automation pipeline.
-Full-stack: Flutter, Node.js, Next.js, Claude API, OpenAI, Firebase, MongoDB, Supabase, Vercel, Stripe, RevenueCat.
-You write like a dev venting/helping on Slack. Direct, opinionated, zero fluff.
+  const prompt = `Prepare an UNPUBLISHED research draft for BuildZn, an independent product-development practice.
+Topic: ${topicData.topic}
+Audience: ${topicData.targetAudience}
+Primary keyword: ${topicData.primaryKeyword}
+Angle: ${topicData.angle}
 
-AUDIENCE AWARENESS: This post targets "${topicData.targetAudience}".
-- If "clients": plain English, explain jargon, focus on cost/timeline/quality. CTA to book a call at the end.
-- If "recruiters": demonstrate senior thinking, architecture decisions, real production experience. Mention specific apps and numbers.
-- If "developers": dive into technical detail with working code. No hand-holding.
-- If "tech-audience": Hacker News tone. Strong opinion, real numbers, no fluff.
-
-TOPIC: ${topicData.topic}
-ANGLE: ${topicData.angle}
-PRIMARY KEYWORD: "${topicData.primaryKeyword}"
-SECONDARY KEYWORDS: ${topicData.secondaryKeywords.join(', ')}
-SEARCH INTENT: ${topicData.searchIntent}
-UNIQUE CLAIM (this is what differentiates this post — build the whole post around delivering on this): ${topicData.uniqueClaim || 'Pick one specific, concrete claim not findable in SERP top 10. Put it in the post explicitly.'}
-
-━━━ THE ONE HARD RULE (NON-NEGOTIABLE) ━━━
-This post must contain at least ONE of the following that is NOT in the top 10 Google results for the primary keyword:
-- A specific version number and a bug/behavior tied to it
-- An actual error string a dev copy-pasted from their console
-- A real benchmark number with methodology (e.g. "12.4 tok/s on RTX 4090, measured over 100 runs")
-- A direct, unpopular opinion with reasoning
-- A config value / flag / line of code that isn't in the official docs
-If you cannot include one, ABANDON the post — do not write generic coverage.
-
-━━━ TITLE (CRITICAL) ━━━
-- MUST contain the exact phrase: "${topicData.primaryKeyword}"
-- Under 65 characters
-- Must contain EITHER: a number, OR a colon, OR start with "How I", "How We", "Why", "Fix", "Fixing", OR be "X vs Y: [verdict]"
-- FORBIDDEN WORDS IN TITLE: ultimate, mastering, unleash, deep dive, practical guide, comprehensive, complete guide, zero bs, revolutionize, game-changer
-- GOOD examples:
-  • "Fix Flutter AI Streaming: 3 Gotchas in Claude 4.6"
-  • "How I Cut LLM Latency 40% with Ollama Batching"
-  • "Flutter vs SwiftUI for On-Device LLMs: Real Numbers"
-- BAD examples (do NOT imitate):
-  • "The Ultimate Guide to Flutter AI"
-  • "Mastering Claude for Developers"
-  • "Unleash the Power of On-Device LLMs"
-
-━━━ OPENING (most important) ━━━
-DO NOT start with a heading. Start with 2-3 sentences like:
-"Spent 2 hours on this last week. Docs were useless, StackOverflow had 3 conflicting answers. Here's what actually worked."
-OR: "Everyone talks about X but nobody explains Y. Figured it out the hard way."
-Hook must match the EXACT problem the reader Googled. Primary keyword in first 80 words.
-
-━━━ SEARCH INTENT ENFORCEMENT ━━━
-- "fix/error" → solution first, minimal theory
-- "how-to" → step-by-step, copy-paste ready code
-- "comparison" → pick a winner in the first 200 words, reasoning after
-- "opinion/trend" → strong take first, evidence after
-
-━━━ STRUCTURE ━━━
-1. No intro heading — just the hook paragraph
-2. ## [H2 with primary keyword naturally in it] — background / why this matters
-3. ## [H2] — the actual how-to or core concept
-4. ## [H2] — step-by-step or implementation (2+ real code blocks if technical, OR real benchmark numbers if not)
-5. ## What I Got Wrong First — real errors, wrong assumptions, real fixes
-6. ## [Optional H2] — optimization or gotchas
-7. ## FAQs — 3 questions a dev would ACTUALLY type into Google. Short, direct answers, 2-4 sentences each.
-8. One closing paragraph. No heading. Strong opinion + key takeaway.
-
-━━━ VOICE RULES ━━━
-- Short paragraphs. 2-3 sentences max.
-- At least 2 casual transitions: "Anyway,", "Here's the thing —", "Turns out", "So what I did was"
-- At least 1 genuine opinion: "honestly X is overengineered", "I don't get why this isn't the default"
-- Reference something SPECIFIC: a version number, an actual error string, a config value, a real number
-- Secondary keywords woven in 2x each, naturally
-- Bold key insights
-
-━━━ BANNED PHRASES (anywhere in post) ━━━
-"in today's world", "rapidly evolving", "deep dive", "let's explore", "revolutionize",
-"game-changer", "production-ready", "best practices", "leverage", "utilize",
-"in conclusion", "comprehensive guide", "it's worth noting", "seamlessly",
-"robust solution", "delve into", "cutting-edge", "it goes without saying"
-
-━━━ SEO REQUIREMENTS ━━━
-- Primary keyword: title + first 80 words + 2+ H2s
-- Length: 1400–1800 words
-- Code blocks: copy-paste ready, real syntax (if technical)
-- FAQ: 3 Google "People Also Ask" style questions, 2-4 sentence answers
-- One bulleted or numbered list early (featured snippet bait)
-- Excerpt: 140–155 chars, includes primary keyword, reads like a human wrote it
-
+Write clear practical prose about the product problem, constraints, decision, tradeoffs and useful next step.
+Do not impersonate Umair or claim firsthand experience, client work, screenshots, production results, benchmarks or bills that were not supplied as evidence.
+Do not invent usage numbers, timelines, percentages, quotations, model versions or sources.
+Label hypothetical examples explicitly. List technical facts that require primary-source verification in a Sources to verify section.
+Use code only where it serves the explanation. Label untested code as illustrative; never promise it is copy-paste ready.
+Use this exact commercial CTA destination if needed: https://www.buildzn.com/#contact . Never create placeholder domains.
+Do not force a word count, repeated keywords, FAQ or an artificial contrarian hook.
+Do not begin with an H1: the publishing template supplies the title.
+Finish with a Reviewer checklist covering source verification, code validation, metric evidence, client permissions and CTA verification.
 Output ONLY this XML:
-<title>title here</title>
-<excerpt>meta description</excerpt>
-<readTime>X min read</readTime>
-<content>full markdown post</content>`;
+<title>clear specific title</title>
+<excerpt>accurate short description</excerpt>
+<readTime>estimated reading time</readTime>
+<content>markdown draft</content>`;
 
   const rawText = await callGeminiWithRetry(
     (model) => model.generateContent({
@@ -669,226 +588,33 @@ function slugify(title) {
     .replace(/-$/, '');
 }
 
-// ─── Commit blog post to GitHub ───
-async function commitPost(slug, fileContent) {
-  const filePath = `content/posts/${slug}.md`;
-  let sha;
-
-  try {
-    const { data } = await octokit.repos.getContent({
-      owner: REPO_OWNER, repo: REPO_NAME, path: filePath, ref: BRANCH,
-    });
-    sha = data.sha;
-  } catch { /* new file */ }
-
-  const encoded = Buffer.from(fileContent).toString('base64');
-  await octokit.repos.createOrUpdateFileContents({
-    owner: REPO_OWNER, repo: REPO_NAME,
-    path: filePath,
-    message: `blog: "${slug}"`,
-    content: encoded,
-    branch: BRANCH,
-    ...(sha ? { sha } : {}),
-  });
-
-  console.log(`✅ Committed: ${filePath}`);
-}
-
-// ─── Cross-post to Dev.to for backlinks ───
-async function crossPostToDevTo(post, topicData, slug) {
-  if (!process.env.DEV_TO_API_KEY) {
-    console.log('ℹ️  DEV_TO_API_KEY not set — skipping Dev.to cross-post');
-    return null;
-  }
-
-  try {
-    console.log('📤 Cross-posting to Dev.to...');
-
-    const canonicalUrl = `https://www.buildzn.com/blog/${slug}`;
-    const devToBody = `> *This article was originally published on [BuildZn](${canonicalUrl}).*\n\n${post.content}`;
-
-    const payload = {
-      article: {
-        title:          post.title,
-        body_markdown:  devToBody,
-        published:      true,
-        canonical_url:  canonicalUrl,
-        description:    post.excerpt,
-        tags:           topicData.tags.slice(0, 4).map(t => t.toLowerCase().replace(/[^a-z0-9]/g, '')),
-      },
-    };
-
-    const res = await fetch('https://dev.to/api/articles', {
-      method:  'POST',
-      headers: {
-        'Content-Type':  'application/json',
-        'api-key':       process.env.DEV_TO_API_KEY,
-      },
-      body: JSON.stringify(payload),
-    });
-
-    if (!res.ok) {
-      const errText = await res.text();
-      console.warn(`⚠️  Dev.to cross-post failed (${res.status}): ${errText}`);
-      return null;
-    }
-
-    const data = await res.json();
-    console.log(`✅ Dev.to post live: ${data.url}`);
-    return data.url;
-  } catch (err) {
-    console.warn('⚠️  Dev.to cross-post error:', err.message);
-    return null;
-  }
-}
-
-// ─── Discord notification ───
-async function notifyDiscord(title, slug, wordCount, seoIssues, topicData) {
-  if (!process.env.DISCORD_WEBHOOK_URL) return;
-
-  const statusEmoji = seoIssues.length === 0 ? '✅' : '⚠️';
-  const issueText   = seoIssues.length === 0
-    ? 'All SEO checks passed!'
-    : `${seoIssues.length} issues: ${seoIssues.join(' | ')}`;
-
-  await fetch(process.env.DISCORD_WEBHOOK_URL, {
-    method:  'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      embeds: [{
-        title:       '📝 New Trending Blog Post Published!',
-        description: `**${title}**`,
-        color:       seoIssues.length === 0 ? 0x22C55E : 0xF59E0B,
-        fields: [
-          { name: '🔥 Trending Topic', value: topicData.topic,         inline: false },
-          { name: '🔗 URL',            value: `https://www.buildzn.com/blog/${slug}`, inline: false },
-          { name: '📊 Word Count',     value: `${wordCount} words`,    inline: true },
-          { name: '🎯 Keyword',        value: topicData.primaryKeyword, inline: true },
-          { name: `${statusEmoji} SEO`, value: issueText,              inline: false },
-          { name: '⚡ Status',         value: 'Deploying via Vercel (~2 min)', inline: true },
-        ],
-        footer:    { text: 'BuildZn Blog Agent — v3 Quality Gate' },
-        timestamp: new Date().toISOString(),
-      }]
-    }),
-  });
-}
-
-// ─── Main pipeline ───
 async function run() {
   try {
-    console.log('🚀 Blog Writer Agent v3 (Quality Gate) starting...\n');
-
-    // 1. Gather trending topics
     const trendingItems = await gatherTrendingTopics();
-    if (trendingItems.length === 0) {
-      throw new Error('No trending topics found. Check network connectivity.');
-    }
-
-    // 2. Load full published registry (not just slugs — we need titles + keywords for dedup)
-    const { registry, sha: registrySha } = await loadPublishedRegistry();
-    const publishedPosts = registry.published || [];
-    console.log(`📚 ${publishedPosts.length} posts in registry`);
-
-    // 3. Pick topic (with dedup retry)
-    console.log('\n🧠 Asking Gemini to pick a fresh topic...');
-    const topicData = await pickTrendingTopicWithGemini(trendingItems, publishedPosts);
-    console.log(`\n📌 Selected: ${topicData.topic}`);
-    console.log(`🎯 Keyword: "${topicData.primaryKeyword}"`);
-    console.log(`🔍 Intent: ${topicData.searchIntent}`);
-    console.log(`👥 Audience: ${topicData.targetAudience}`);
-    console.log(`💡 Unique claim: ${topicData.uniqueClaim || '(none specified)'}\n`);
-
-    // 4. Generate post
-    console.log('✍️  Generating post...');
-    let post = await generatePost(topicData);
-    console.log(`✅ Generated: "${post.title}"`);
-
-    // 5. Title quality gate — regenerate once if it sucks
-    const initialTitleScore = scoreTitle(post.title, topicData.primaryKeyword);
-    if (initialTitleScore.score < 3) {
-      console.warn(`⚠️  Title scored ${initialTitleScore.score}/5. Problems:`);
-      initialTitleScore.problems.forEach(p => console.warn(`   - ${p}`));
-      console.log('🔄 Regenerating title only...');
-      const newTitle = await regenerateTitle(post.title, initialTitleScore.problems, topicData, post.content);
-      const newScore = scoreTitle(newTitle, topicData.primaryKeyword);
-      if (newScore.score > initialTitleScore.score) {
-        console.log(`✅ Better title: "${newTitle}" (score ${newScore.score}/5)`);
-        post.title = newTitle;
-      } else {
-        console.warn(`⚠️  Regen didn't improve. Keeping original.`);
-      }
-    }
-
-    // 6. Full SEO checks
-    console.log('\n🔍 Running SEO checks...');
-    const { issues, wordCount, titleScore } = runSeoChecks(post, topicData);
-    console.log(`   Title score: ${titleScore}/5`);
-    if (issues.length === 0) {
-      console.log(`✅ All SEO checks passed! (${wordCount} words)`);
-    } else {
-      console.log(`⚠️  ${issues.length} SEO issue(s):`);
-      issues.forEach(i => console.log(`   • ${i}`));
-    }
-
-    if (wordCount < 800) {
-      throw new Error(`Post too short (${wordCount} words). Not publishing.`);
-    }
-
-    // Hard fail if POV/specificity check failed
-    if (issues.some(i => i.includes('no POV'))) {
-      throw new Error('Post has no specific numbers/versions/errors — would be indistinguishable from AI spam. Not publishing.');
-    }
-
-    // 7. Build final markdown
-    const slug  = slugify(post.title);
-    const today = new Date().toISOString().split('T')[0];
-
-    const fileContent = `---
-title: "${post.title.replace(/"/g, "'")}"
-excerpt: "${post.excerpt.replace(/"/g, "'")}"
-date: "${today}"
-tags: [${topicData.tags.map(t => `"${t}"`).join(', ')}]
-keywords: ["${topicData.primaryKeyword}", ${topicData.secondaryKeywords.map(k => `"${k}"`).join(', ')}]
-readTime: "${post.readTime}"
-coverGradient: "${topicData.gradient}"
+    if (!trendingItems.length) throw new Error('No research topics available.');
+    const { registry } = await loadPublishedRegistry();
+    const topicData = await pickTrendingTopicWithGemini(trendingItems, registry.published || []);
+    const post = await generatePost(topicData);
+    if (/https?:\/\/(?:example\.com|yourwebsite\.com|your-calendly-link\.com)/i.test(post.content)) throw new Error('Draft contains a placeholder destination.');
+    const slug = slugify(post.title);
+    const today = new Date().toISOString().slice(0, 10);
+    const content = `---
+status: draft
+reviewed: false
+title: ${JSON.stringify(post.title)}
+excerpt: ${JSON.stringify(post.excerpt)}
+date: ${JSON.stringify(today)}
+tags: ${JSON.stringify(topicData.tags)}
 ---
 
-${post.content}`;
-
-    // 8. Commit
-    console.log('\n📦 Committing to GitHub...');
-    await commitPost(slug, fileContent);
-
-    // 9. Cross-post to Dev.to
-    const devToUrl = await crossPostToDevTo(post, topicData, slug);
-
-    // 10. Update registry (include uniqueClaim for future dedup context)
-    registry.published.push({
-      slug,
-      primaryKeyword: topicData.primaryKeyword,
-      title:          post.title,
-      topic:          topicData.topic,
-      uniqueClaim:    topicData.uniqueClaim || null,
-      date:           today,
-      wordCount,
-      devToUrl:       devToUrl || null,
-    });
-    registry.lastRun = new Date().toISOString();
-    await saveRegistry(registry, registrySha);
-    console.log('📋 Registry updated');
-
-    // 11. Notify Discord
-    await notifyDiscord(post.title, slug, wordCount, issues, topicData);
-
-    console.log(`\n🎉 Done! Live in ~2 min: https://www.buildzn.com/blog/${slug}`);
-    if (devToUrl) console.log(`🔗 Dev.to mirror: ${devToUrl}`);
-    console.log(`📊 Stats: ${wordCount} words | Title: ${titleScore}/5 | Tags: ${topicData.tags.join(', ')}`);
-
+${post.content}
+`;
+    await fs.mkdir('content/drafts', { recursive: true });
+    await fs.writeFile(`content/drafts/${slug}.md`, content, 'utf8');
+    console.log(`Unpublished draft saved to content/drafts/${slug}.md. Human review is required before moving it to content/posts.`);
   } catch (err) {
-    console.error('\n❌ Agent error:', err.message);
-    process.exit(1);
+    console.error('Draft preparation failed:', err.message);
+    process.exitCode = 1;
   }
 }
-
 run();

@@ -1,4 +1,5 @@
 ---
+status: review
 title: "Fixing Claude Opus 5.5 Video API Drift: 40% Scene Consistency"
 excerpt: "Built a Node.js blueprint for Claude Opus 5.5 video generation API that slashes scene drift by 40% and ensures object continuity. Here's how."
 date: "2026-09-27"
