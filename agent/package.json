@@ -1,14 +1,10 @@
 {
-  "name": "blog-writer-agent",
-  "version": "1.0.0",
+  "name": "buildzn-editorial-agent",
+  "version": "2.0.0",
+  "private": true,
   "type": "module",
-  "description": "Gemini-powered blog writer that commits posts to GitHub, triggering Vercel auto-deploy",
-  "scripts": {
-    "start": "node blog-writer.js"
-  },
-  "dependencies": {
-    "@google/generative-ai": "^0.21.0",
-    "@octokit/rest": "^21.0.0",
-    "dotenv": "^16.0.0"
-  }
+  "description": "Evidence-led business content planning, drafting and review. No publishing or outreach.",
+  "engines": { "node": ">=22" },
+  "scripts": { "start": "node blog-writer.js plan", "plan": "node blog-writer.js plan", "draft": "node blog-writer.js draft", "test": "node --test tests/*.test.js" },
+  "dependencies": { "ajv": "^8.17.1", "dotenv": "^16.6.1", "gray-matter": "^4.0.3" }
 }

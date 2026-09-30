@@ -1,0 +1,44 @@
+{
+  "name": "BuildZn",
+  "positioning": "BuildZn builds AI agents and automations that handle repetitive business work.",
+  "buyers": [
+    "Operations owners in service businesses",
+    "Support teams managing approved knowledge",
+    "Teams connecting business systems",
+    "Owners of unreliable existing automations"
+  ],
+  "services": [
+    "workflow-automation",
+    "ai-agents",
+    "api-integrations",
+    "automation-repair"
+  ],
+  "voice": "Direct, specific, practical. Explain what to check, why it fails, what to change and how to verify it. No invented first-person experience, clients, credentials, savings, rankings or outcomes.",
+  "excluded": [
+    "Mobile or Flutter services",
+    "Generic developer news",
+    "Prospecting or outreach agents",
+    "Financial advice and trading signals",
+    "Unverified client case studies"
+  ],
+  "publication": "Every model output is an unpublished draft. Human review of claims, examples and sources is required.",
+  "existingIntents": {
+    "workflow-human-approval": "/blog/ai-workflow-scope-human-review",
+    "automation-operating-costs": "/blog/automation-operating-costs",
+    "invoice-validation": "/blog/automation-validation-before-export"
+  },
+  "allowedSourceHosts": [
+    "docs.n8n.io",
+    "github.com",
+    "raw.githubusercontent.com",
+    "api.github.com",
+    "ai.google.dev",
+    "developers.google.com",
+    "ffmpeg.org",
+    "help.formspree.io",
+    "docs.stripe.com",
+    "nodejs.org",
+    "developer.mozilla.org"
+  ],
+  "metricsPolicy": "Observed questions do not establish search volume. Search Console impressions are site-specific, not market-wide volume. No ranking or lead predictions."
+}

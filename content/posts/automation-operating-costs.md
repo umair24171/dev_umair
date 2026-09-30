@@ -2,6 +2,8 @@
 title: "What belongs in an automation operating-cost estimate"
 excerpt: "Implementation is only one part of a workflow budget. Identify provider accounts, usage, review effort and ongoing ownership before starting a build."
 date: "2026-10-01"
+intentKey: "automation-operating-costs"
+keywords: ["automation operating costs", "AI workflow running costs"]
 status: published
 reviewed: true
 tags: ["Automation", "Workflow", "AI"]

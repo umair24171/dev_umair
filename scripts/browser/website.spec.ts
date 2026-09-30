@@ -71,7 +71,7 @@ test('contact: accepted and failed provider responses without real submission', 
 test('desktop and mobile: accessible routes, no overflow, keyboard menu', async ({ page }) => {
   for (const width of [1440, 390, 320]) {
     await page.setViewportSize({ width, height: 900 });
-    for (const route of ['/', '/services', '/services/ai-agents', '/work', '/work/inquiry-assistant', '/work/support-assistant', '/work/document-processing', '/pricing', '/about', '/contact', '/blog', '/privacy']) {
+    for (const route of ['/', '/services', '/services/ai-agents', '/work', '/work/inquiry-assistant', '/work/support-assistant', '/work/document-processing', '/pricing', '/about', '/contact', '/blog', '/blog/n8n-webhook-not-working', '/work/nexusos-agent-operations', '/work/seo-content-agent', '/work/video-production-pipeline', '/privacy']) {
       await page.goto(route); await page.locator('h1').waitFor();
       expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBeTruthy();
       const scan = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa']).analyze();
@@ -82,4 +82,15 @@ test('desktop and mobile: accessible routes, no overflow, keyboard menu', async 
   await expect(page.getByRole('dialog')).toBeVisible(); await expect(page.getByRole('button', { name: 'Close menu', exact: true })).toBeFocused();
   await page.keyboard.press('Shift+Tab'); await expect(page.getByRole('dialog').getByRole('link', { name: 'Discuss your workflow', exact: true })).toBeFocused();
   await page.keyboard.press('Escape'); await expect(page.getByRole('dialog')).toHaveCount(0); await expect(page.getByRole('button', { name: 'Open menu', exact: true })).toBeFocused();
+});
+
+test('portfolio distinguishes source studies from working demos and provides valid captures',async({page})=>{
+ await page.goto('/work?type=build');await expect(page.locator('.project-card')).toHaveCount(5);
+ await page.getByRole('link',{name:'Interactive demos',exact:true}).click();await expect(page.locator('.project-card')).toHaveCount(3);
+ for(const slug of ['nexusos-agent-operations','content-production-pipeline','video-production-pipeline','seo-content-agent','buildzn-web-platform']) {
+  await page.goto('/work/'+slug);await expect(page.locator('.case-workbench')).toBeVisible();await expect(page.locator('.demo-workbench')).toHaveCount(0);
+  await expect(page.getByRole('heading',{name:'Inspect the evidence'})).toBeVisible();
+  await page.locator('.demo-capture img').scrollIntoViewIfNeeded();
+  await expect.poll(()=>page.locator('.demo-capture img').evaluate((img:HTMLImageElement)=>img.complete && img.naturalWidth>0)).toBeTruthy();
+ }
 });

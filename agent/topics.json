@@ -1,0 +1,468 @@
+[
+  {
+    "id": "n8n-webhook-not-working",
+    "intentKey": "n8n-webhook-not-working",
+    "title": "n8n webhook not working: check URL, method and activation",
+    "keyword": "n8n webhook not working",
+    "secondaryKeywords": [],
+    "cluster": "webhook-repair",
+    "service": "automation-repair",
+    "project": "nexusos-agent-operations",
+    "problem": "A request reaches the wrong endpoint or an inactive workflow.",
+    "buyer": "An operations owner or implementer responsible for the workflow",
+    "format": "troubleshooting",
+    "signal": {
+      "type": "observed-question",
+      "url": "https://github.com/n8n-io/n8n/issues/23908",
+      "explanation": "Observed first-party issue report; not measured search volume."
+    },
+    "sources": [
+      {
+        "id": "webhook-docs",
+        "url": "https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.webhook/",
+        "purpose": "primary-documentation"
+      },
+      {
+        "id": "webhook-issues",
+        "url": "https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.webhook/common-issues/",
+        "purpose": "primary-documentation"
+      },
+      {
+        "id": "observed-issue",
+        "url": "https://api.github.com/repos/n8n-io/n8n/issues/23908",
+        "purpose": "observed-question"
+      }
+    ],
+    "metaDescription": "Diagnose an n8n webhook that is not firing: check the test or production URL, HTTP method, workflow state and endpoint conflicts before changing code."
+  },
+  {
+    "id": "n8n-duplicate-webhook",
+    "intentKey": "n8n-duplicate-webhook",
+    "title": "Duplicate n8n webhooks: distinguish URL conflicts from retries",
+    "keyword": "n8n duplicate webhook",
+    "secondaryKeywords": [],
+    "cluster": "webhook-repair",
+    "service": "automation-repair",
+    "project": "nexusos-agent-operations",
+    "problem": "Repeated or conflicting calls must be diagnosed before adding unsafe deduplication.",
+    "buyer": "An operations owner or implementer responsible for the workflow",
+    "format": "troubleshooting",
+    "signal": {
+      "type": "observed-question",
+      "url": "https://github.com/n8n-io/n8n/issues/31837",
+      "explanation": "Observed first-party issue report; not measured search volume."
+    },
+    "sources": [
+      {
+        "id": "webhook-docs",
+        "url": "https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.webhook/common-issues/",
+        "purpose": "primary-documentation"
+      },
+      {
+        "id": "observed-issue",
+        "url": "https://api.github.com/repos/n8n-io/n8n/issues/31837",
+        "purpose": "observed-question"
+      }
+    ],
+    "metaDescription": "Separate conflicting n8n webhook endpoints from repeated deliveries. Inspect the request evidence before choosing duplicate protection or a repair."
+  },
+  {
+    "id": "gemini-json-validation",
+    "intentKey": "gemini-json-validation",
+    "title": "Gemini structured output: validate business rules after JSON parsing",
+    "keyword": "Gemini structured output validation",
+    "secondaryKeywords": [],
+    "cluster": "structured-output",
+    "service": "ai-agents",
+    "project": "document-processing",
+    "problem": "Valid JSON can still contain missing fields or an incorrect invoice total.",
+    "buyer": "An operations owner or implementer responsible for the workflow",
+    "format": "implementation-guide",
+    "signal": {
+      "type": "editorial-hypothesis",
+      "url": null,
+      "explanation": "Evidence-backed editorial hypothesis; validate demand using actual search data."
+    },
+    "sources": [
+      {
+        "id": "gemini-docs",
+        "url": "https://ai.google.dev/gemini-api/docs/structured-output",
+        "purpose": "primary-documentation"
+      },
+      {
+        "id": "demo-code",
+        "url": "https://github.com/umair24171/dev_umair/blob/main/lib/demos.ts",
+        "purpose": "implementation"
+      }
+    ],
+    "metaDescription": "Valid Gemini JSON can still fail business rules. Check required fields, types and invoice totals, then keep uncertain results in a review queue."
+  },
+  {
+    "id": "invoice-validation",
+    "intentKey": "invoice-validation",
+    "title": "Invoice extraction: block export when totals do not match",
+    "keyword": "invoice extraction validation",
+    "secondaryKeywords": [],
+    "cluster": "document-workflows",
+    "service": "workflow-automation",
+    "project": "document-processing",
+    "problem": "An extracted invoice should not reach accounting before required fields and totals pass validation.",
+    "buyer": "An operations owner or implementer responsible for the workflow",
+    "format": "implementation-guide",
+    "signal": {
+      "type": "editorial-hypothesis",
+      "url": null,
+      "explanation": "Evidence-backed editorial hypothesis; validate demand using actual search data."
+    },
+    "sources": [
+      {
+        "id": "demo-code",
+        "url": "https://github.com/umair24171/dev_umair/blob/main/lib/demos.ts",
+        "purpose": "implementation"
+      }
+    ],
+    "metaDescription": "Check extracted invoice fields and totals before export. Follow the sample validation rules and review gate without silently correcting source data."
+  },
+  {
+    "id": "support-answer-handoff",
+    "intentKey": "support-answer-handoff",
+    "title": "Build a support assistant that hands off unsupported questions",
+    "keyword": "AI support assistant human handoff",
+    "secondaryKeywords": [],
+    "cluster": "grounded-support",
+    "service": "ai-agents",
+    "project": "support-assistant",
+    "problem": "A plausible answer outside the approved knowledge base can invent a policy.",
+    "buyer": "An operations owner or implementer responsible for the workflow",
+    "format": "implementation-guide",
+    "signal": {
+      "type": "editorial-hypothesis",
+      "url": null,
+      "explanation": "Evidence-backed editorial hypothesis; validate demand using actual search data."
+    },
+    "sources": [
+      {
+        "id": "demo-code",
+        "url": "https://github.com/umair24171/dev_umair/blob/main/lib/demos.ts",
+        "purpose": "implementation"
+      },
+      {
+        "id": "workbench",
+        "url": "https://github.com/umair24171/dev_umair/blob/main/app/components/DemoWorkbench.tsx",
+        "purpose": "implementation"
+      }
+    ],
+    "metaDescription": "Define a support assistant\u2019s source coverage, cite approved answers and hand unsupported questions to a person instead of inventing a policy."
+  },
+  {
+    "id": "inquiry-approval-reset",
+    "intentKey": "inquiry-approval-reset",
+    "title": "How to invalidate approval when an inquiry draft changes",
+    "keyword": "AI inquiry assistant approval workflow",
+    "secondaryKeywords": [],
+    "cluster": "intake-review",
+    "service": "workflow-automation",
+    "project": "inquiry-assistant",
+    "problem": "Approval must not remain attached to an edited response or changed inquiry.",
+    "buyer": "An operations owner or implementer responsible for the workflow",
+    "format": "implementation-guide",
+    "signal": {
+      "type": "editorial-hypothesis",
+      "url": null,
+      "explanation": "Evidence-backed editorial hypothesis; validate demand using actual search data."
+    },
+    "sources": [
+      {
+        "id": "workbench",
+        "url": "https://github.com/umair24171/dev_umair/blob/main/app/components/DemoWorkbench.tsx",
+        "purpose": "implementation"
+      },
+      {
+        "id": "browser-checks",
+        "url": "https://github.com/umair24171/dev_umair/blob/main/scripts/browser/website.spec.ts",
+        "purpose": "implementation"
+      }
+    ],
+    "metaDescription": "Tie inquiry approval to the current draft. Check missing information, reset approval after edits and verify that the preview cannot send a response."
+  },
+  {
+    "id": "agent-kill-boundary",
+    "intentKey": "agent-kill-boundary",
+    "title": "What an agent kill switch actually stops: an ingestion example",
+    "keyword": "AI agent kill switch",
+    "secondaryKeywords": [],
+    "cluster": "agent-operations",
+    "service": "ai-agents",
+    "project": "nexusos-agent-operations",
+    "problem": "Blocking a telemetry endpoint does not stop an external process from executing tools.",
+    "buyer": "An operations owner or implementer responsible for the workflow",
+    "format": "implementation-guide",
+    "signal": {
+      "type": "editorial-hypothesis",
+      "url": null,
+      "explanation": "Evidence-backed editorial hypothesis; validate demand using actual search data."
+    },
+    "sources": [
+      {
+        "id": "auth-code",
+        "url": "https://github.com/umair24171/nexusos-backend/blob/e305ff01921c9ef21602391f7ce30eaa5594e91f/src/middleware/apiKeyAuth.js",
+        "purpose": "implementation"
+      }
+    ],
+    "metaDescription": "See what an AI agent kill switch blocks in an ingestion API, why external actions can continue, and how to verify the control boundary."
+  },
+  {
+    "id": "audit-log-concurrency",
+    "intentKey": "audit-log-concurrency",
+    "title": "Agent audit logs: why hash chains need a concurrency design",
+    "keyword": "agent audit log concurrency",
+    "secondaryKeywords": [],
+    "cluster": "agent-operations",
+    "service": "api-integrations",
+    "project": "nexusos-agent-operations",
+    "problem": "In-memory sequence counters can break assumptions across concurrent workers.",
+    "buyer": "An operations owner or implementer responsible for the workflow",
+    "format": "implementation-guide",
+    "signal": {
+      "type": "editorial-hypothesis",
+      "url": null,
+      "explanation": "Evidence-backed editorial hypothesis; validate demand using actual search data."
+    },
+    "sources": [
+      {
+        "id": "logs-code",
+        "url": "https://github.com/umair24171/nexusos-backend/blob/e305ff01921c9ef21602391f7ce30eaa5594e91f/src/routes/logs.js",
+        "purpose": "implementation"
+      }
+    ],
+    "metaDescription": "Inspect an agent audit-log implementation and its sequence allocation. Identify the concurrency questions to resolve before relying on hash-chain integrity."
+  },
+  {
+    "id": "ffmpeg-drawtext-missing",
+    "intentKey": "ffmpeg-drawtext-missing",
+    "title": "FFmpeg drawtext missing: verify the installed filter before rendering",
+    "keyword": "FFmpeg drawtext missing",
+    "secondaryKeywords": [],
+    "cluster": "media-workflows",
+    "service": "automation-repair",
+    "project": "video-production-pipeline",
+    "problem": "A media pipeline can fail because the deployed binary lacks a required filter.",
+    "buyer": "An operations owner or implementer responsible for the workflow",
+    "format": "troubleshooting",
+    "signal": {
+      "type": "editorial-hypothesis",
+      "url": null,
+      "explanation": "Evidence-backed editorial hypothesis; validate demand using actual search data."
+    },
+    "sources": [
+      {
+        "id": "ffmpeg-docs",
+        "url": "https://ffmpeg.org/ffmpeg-filters.html#drawtext",
+        "purpose": "primary-documentation"
+      },
+      {
+        "id": "video-code",
+        "url": "https://github.com/umair24171/youtube-agent/blob/df337c651c88f43608e1b5c2dca8e0e1a135d238/src/VideoAgent.js",
+        "purpose": "implementation"
+      }
+    ],
+    "metaDescription": "Diagnose a missing FFmpeg drawtext filter before rendering. Inspect the deployed binary and distinguish build capabilities from media-pipeline errors."
+  },
+  {
+    "id": "video-dry-run-costs",
+    "intentKey": "video-dry-run-costs",
+    "title": "Video automation dry runs: which stages still call paid services?",
+    "keyword": "video automation dry run",
+    "secondaryKeywords": [],
+    "cluster": "media-workflows",
+    "service": "workflow-automation",
+    "project": "video-production-pipeline",
+    "problem": "Skipping upload can still incur generation costs and external notifications.",
+    "buyer": "An operations owner or implementer responsible for the workflow",
+    "format": "implementation-guide",
+    "signal": {
+      "type": "editorial-hypothesis",
+      "url": null,
+      "explanation": "Evidence-backed editorial hypothesis; validate demand using actual search data."
+    },
+    "sources": [
+      {
+        "id": "coordinator-code",
+        "url": "https://github.com/umair24171/youtube-agent/blob/df337c651c88f43608e1b5c2dca8e0e1a135d238/src/youtube_index.js",
+        "purpose": "implementation"
+      }
+    ],
+    "metaDescription": "Trace a video pipeline\u2019s dry-run boundary. Identify generation calls, notifications and provider costs that remain when uploading is skipped."
+  },
+  {
+    "id": "youtube-upload-auth",
+    "intentKey": "youtube-upload-auth",
+    "title": "YouTube upload not working: distinguish OAuth access from channel limits",
+    "keyword": "YouTube API upload not working",
+    "secondaryKeywords": [],
+    "cluster": "media-workflows",
+    "service": "api-integrations",
+    "project": "video-production-pipeline",
+    "problem": "Authorization and upload restrictions can fail independently.",
+    "buyer": "An operations owner or implementer responsible for the workflow",
+    "format": "troubleshooting",
+    "signal": {
+      "type": "editorial-hypothesis",
+      "url": null,
+      "explanation": "Evidence-backed editorial hypothesis; validate demand using actual search data."
+    },
+    "sources": [
+      {
+        "id": "youtube-docs",
+        "url": "https://developers.google.com/youtube/v3/guides/uploading_a_video",
+        "purpose": "primary-documentation"
+      },
+      {
+        "id": "upload-code",
+        "url": "https://github.com/umair24171/youtube-agent/blob/df337c651c88f43608e1b5c2dca8e0e1a135d238/src/UploadAgent.js",
+        "purpose": "implementation"
+      }
+    ],
+    "metaDescription": "Diagnose a YouTube API upload failure by separating OAuth permissions, token access and channel restrictions using the official upload guidance."
+  },
+  {
+    "id": "content-performance-evidence",
+    "intentKey": "content-performance-evidence",
+    "title": "Content automation analytics: separate generated advice from measured performance",
+    "keyword": "content automation analytics",
+    "secondaryKeywords": [],
+    "cluster": "editorial-workflows",
+    "service": "workflow-automation",
+    "project": "content-production-pipeline",
+    "problem": "A model cannot infer clicks or leads from a list of topics and hooks.",
+    "buyer": "An operations owner or implementer responsible for the workflow",
+    "format": "implementation-guide",
+    "signal": {
+      "type": "editorial-hypothesis",
+      "url": null,
+      "explanation": "Evidence-backed editorial hypothesis; validate demand using actual search data."
+    },
+    "sources": [
+      {
+        "id": "analyst-code",
+        "url": "https://github.com/umair24171/Content-Agent/blob/96af7c0f0113361486fdef1c0ed089adaeed94ed/agents/analyst.js",
+        "purpose": "implementation"
+      },
+      {
+        "id": "search-console-docs",
+        "url": "https://developers.google.com/search/docs/monitor-debug/search-console-start",
+        "purpose": "primary-documentation"
+      }
+    ],
+    "metaDescription": "Separate generated content advice from measured performance. Inspect the source data an analyst reads before treating its recommendations as evidence."
+  },
+  {
+    "id": "seo-topic-cannibalization",
+    "intentKey": "seo-topic-cannibalization",
+    "title": "Stop an AI blog writer from drafting the same search intent twice",
+    "keyword": "AI blog writer duplicate topics",
+    "secondaryKeywords": [],
+    "cluster": "editorial-workflows",
+    "service": "ai-agents",
+    "project": "seo-content-agent",
+    "problem": "Similar keywords require an intent decision, not a ban on an entire topic cluster.",
+    "buyer": "An operations owner or implementer responsible for the workflow",
+    "format": "implementation-guide",
+    "signal": {
+      "type": "editorial-hypothesis",
+      "url": null,
+      "explanation": "Evidence-backed editorial hypothesis; validate demand using actual search data."
+    },
+    "sources": [
+      {
+        "id": "editorial-code",
+        "url": "https://github.com/umair24171/dev_umair/blob/main/agent/lib/pipeline.js",
+        "purpose": "implementation"
+      }
+    ],
+    "metaDescription": "Keep an AI blog writer from creating competing articles for one search intent. Compare published pages and pending drafts before preparing new content."
+  },
+  {
+    "id": "workflow-human-approval",
+    "intentKey": "workflow-human-approval",
+    "title": "Where to put human approval in a business automation workflow",
+    "keyword": "human approval automation workflow",
+    "secondaryKeywords": [],
+    "cluster": "workflow-scope",
+    "service": "workflow-automation",
+    "project": "inquiry-assistant",
+    "problem": "Irreversible actions need explicit review boundaries.",
+    "buyer": "An operations owner or implementer responsible for the workflow",
+    "format": "implementation-guide",
+    "signal": {
+      "type": "editorial-hypothesis",
+      "url": null,
+      "explanation": "Evidence-backed editorial hypothesis; validate demand using actual search data."
+    },
+    "sources": [
+      {
+        "id": "workbench",
+        "url": "https://github.com/umair24171/dev_umair/blob/main/app/components/DemoWorkbench.tsx",
+        "purpose": "implementation"
+      }
+    ],
+    "metaDescription": "Define what an AI workflow may change, which actions need approval and what happens when information is missing before connecting business tools."
+  },
+  {
+    "id": "automation-operating-costs",
+    "intentKey": "automation-operating-costs",
+    "title": "How to estimate automation operating costs without fake savings",
+    "keyword": "automation operating costs",
+    "secondaryKeywords": [],
+    "cluster": "workflow-scope",
+    "service": "workflow-automation",
+    "project": "seo-content-agent",
+    "problem": "Provider subscriptions and per-run usage should be separated from implementation pricing.",
+    "buyer": "An operations owner or implementer responsible for the workflow",
+    "format": "implementation-guide",
+    "signal": {
+      "type": "editorial-hypothesis",
+      "url": null,
+      "explanation": "Evidence-backed editorial hypothesis; validate demand using actual search data."
+    },
+    "sources": [
+      {
+        "id": "gemini-pricing",
+        "url": "https://ai.google.dev/gemini-api/docs/pricing",
+        "purpose": "primary-documentation"
+      }
+    ],
+    "metaDescription": "Estimate automation running costs from subscriptions, model usage, hosting and support, separately from the implementation price and unverified savings."
+  },
+  {
+    "id": "reviewed-content-sitemap",
+    "intentKey": "reviewed-content-sitemap",
+    "title": "Keep AI drafts out of a Next.js sitemap and article API",
+    "keyword": "Next.js draft posts sitemap",
+    "secondaryKeywords": [],
+    "cluster": "editorial-workflows",
+    "service": "api-integrations",
+    "project": "buildzn-web-platform",
+    "problem": "A draft can leak through alternate routes even if the blog index hides it.",
+    "buyer": "An operations owner or implementer responsible for the workflow",
+    "format": "implementation-guide",
+    "signal": {
+      "type": "editorial-hypothesis",
+      "url": null,
+      "explanation": "Evidence-backed editorial hypothesis; validate demand using actual search data."
+    },
+    "sources": [
+      {
+        "id": "posts-code",
+        "url": "https://github.com/umair24171/dev_umair/blob/main/lib/posts.ts",
+        "purpose": "implementation"
+      },
+      {
+        "id": "sitemap-code",
+        "url": "https://github.com/umair24171/dev_umair/blob/main/app/sitemap.ts",
+        "purpose": "implementation"
+      }
+    ],
+    "metaDescription": "Keep unpublished AI drafts out of Next.js article pages, APIs and sitemaps. Follow the reviewed-content gate and verify every public entry point."
+  }
+]

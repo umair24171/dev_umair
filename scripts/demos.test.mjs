@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { answerSupport, extractInvoice, inquirySamples, invoiceCsv, invoiceSamples, parseInquiry, validateInvoice } from '../.test-build/demos.js';
+import { answerSupport, extractInvoice, inquirySamples, invoiceCsv, invoiceSamples, parseInquiry, validateInvoice } from '../.test-build/lib/demos.js';
 test('inquiry blocks missing or invalid contact and workflow information', () => {
   assert.deepEqual(parseInquiry(inquirySamples.complete).missing, []);
   assert.deepEqual(parseInquiry(inquirySamples.incomplete).missing, ['Valid email', 'Tools involved']);

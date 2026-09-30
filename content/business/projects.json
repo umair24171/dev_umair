@@ -1,0 +1,315 @@
+[
+  {
+    "slug": "inquiry-assistant",
+    "name": "Inquiry assistant",
+    "category": "Intake → review",
+    "image": "/demos/inquiry-assistant.png",
+    "imageWidth": 1120,
+    "imageHeight": 739,
+    "imageAlt": "BuildZn inquiry demonstration with sample requirements, a lead record and a response awaiting human approval",
+    "summary": "Turn a sample inquiry into structured requirements, a local lead record and a response draft for approval.",
+    "scope": "Browser-based intake parsing, required-field checks, lead record creation and draft approval. Records stay in memory; nothing is sent to a CRM or inbox.",
+    "features": [
+      "Choose or edit a fictional inquiry",
+      "Extract contact, tools, request and missing information",
+      "Create a sample lead and review the response",
+      "Approve locally; reset without sending anything"
+    ],
+    "decision": "An inquiry is not authorization to promise a price or start work. Missing information is flagged and the response remains a draft until reviewed.",
+    "stack": [
+      "Structured intake",
+      "Validation",
+      "Human approval"
+    ],
+    "limitations": "The public preview uses simple local parsing and a recorded response template, not a live language model. It cannot reliably interpret arbitrary prose. Production work would require model evaluation, authenticated CRM access, duplicate handling and consent rules.",
+    "kind": "demo",
+    "label": "Interactive demonstration · Sample data",
+    "sources": [],
+    "problem": "Turn a sample inquiry into structured requirements, a local lead record and a response draft for approval.",
+    "capture": "Actual screenshot of the working preview using fictional sample data.",
+    "proof": "Working browser preview, exercised by automated interaction tests.",
+    "sourceFile": "",
+    "sourceExcerpt": ""
+  },
+  {
+    "slug": "support-assistant",
+    "name": "Support assistant",
+    "category": "Knowledge → answer",
+    "image": "/demos/support-assistant.png",
+    "imageWidth": 1120,
+    "imageHeight": 551,
+    "imageAlt": "BuildZn support demonstration showing an answer grounded in a sample knowledge base with source references",
+    "summary": "Find an answer in a sample knowledge base, show its sources and hand off questions outside the available coverage.",
+    "scope": "A small fictional knowledge base, conservative local matching, recorded grounded answers and a visible human handoff.",
+    "features": [
+      "Read the sample knowledge base",
+      "Ask a covered question and inspect its sources",
+      "Try an unsupported or conflicting question",
+      "See a handoff summary when no safe answer is available"
+    ],
+    "decision": "A helpful-sounding answer without support is not enough. Questions outside the source coverage produce a handoff rather than an invented policy.",
+    "stack": [
+      "Knowledge retrieval",
+      "Source references",
+      "Human handoff"
+    ],
+    "limitations": "This preview selects recorded answers using conservative phrase matching; it is not live semantic retrieval or an LLM. Handoffs are local previews and do not open tickets. Production needs approved sources, retrieval evaluation, ticket permissions and monitored escalation.",
+    "kind": "demo",
+    "label": "Interactive demonstration · Sample data",
+    "sources": [],
+    "problem": "Find an answer in a sample knowledge base, show its sources and hand off questions outside the available coverage.",
+    "capture": "Actual screenshot of the working preview using fictional sample data.",
+    "proof": "Working browser preview, exercised by automated interaction tests.",
+    "sourceFile": "",
+    "sourceExcerpt": ""
+  },
+  {
+    "slug": "document-processing",
+    "name": "Document processing",
+    "category": "Document → export",
+    "image": "/demos/document-processing.png",
+    "imageWidth": 1120,
+    "imageHeight": 641,
+    "imageAlt": "BuildZn invoice demonstration showing extracted sample fields, validation checks and a review step before export",
+    "summary": "Extract fields from a sample text invoice, catch validation errors and export only after review.",
+    "scope": "Text invoice parsing, required-field and arithmetic checks, editable extracted fields, explicit review and CSV/JSON export.",
+    "features": [
+      "Load or edit a fictional invoice",
+      "Extract supplier, invoice number, date and amounts",
+      "Try a mismatched total and correct the fields",
+      "Review the result and download CSV or JSON"
+    ],
+    "decision": "Extraction is only the first step. Missing values and mismatched totals must block export until corrected and reviewed.",
+    "stack": [
+      "Field extraction",
+      "Validation",
+      "CSV / JSON"
+    ],
+    "limitations": "The public preview parses the shown text format locally. It does not perform OCR, verify a supplier, detect invoice fraud or post to accounting software. Production would require secure storage, OCR or model access, document evaluation and accounting approval controls.",
+    "kind": "demo",
+    "label": "Interactive demonstration · Sample data",
+    "sources": [],
+    "problem": "Extract fields from a sample text invoice, catch validation errors and export only after review.",
+    "capture": "Actual screenshot of the working preview using fictional sample data.",
+    "proof": "Working browser preview, exercised by automated interaction tests.",
+    "sourceFile": "",
+    "sourceExcerpt": ""
+  },
+  {
+    "slug": "nexusos-agent-operations",
+    "name": "NexusOS agent operations",
+    "category": "Agents → visibility",
+    "summary": "A public backend and dashboard build for registering agents, inspecting activity and handling operational alerts.",
+    "problem": "An agent can run successfully while its owner has little visibility into what it did, which tool it used or why it stopped.",
+    "scope": "Source review covers Node.js / Express log ingestion, API-key authentication, MongoDB models, anomaly rules and the separate Next.js dashboard repository.",
+    "features": [
+      "Register an agent and issue a scoped ingestion key",
+      "Receive activity records through an authenticated API",
+      "Inspect tool, domain, token and rate-rule alerts",
+      "Review logs and export records for investigation"
+    ],
+    "decision": "The kill control blocks this backend’s ingestion. It does not prove that an independently running agent has stopped taking external actions.",
+    "stack": [
+      "Node.js / Express",
+      "MongoDB",
+      "Next.js / Socket.IO"
+    ],
+    "limitations": "Public source evidence, not a production security audit or a client result. Runtime account flows and database deployment were not exercised for this case study. In-memory sequence allocation needs a concurrency review before claims about durable audit integrity.",
+    "sources": [
+      {
+        "title": "Log ingestion implementation",
+        "url": "https://github.com/umair24171/nexusos-backend/blob/e305ff01921c9ef21602391f7ce30eaa5594e91f/src/routes/logs.js"
+      },
+      {
+        "title": "API-key and agent-state checks",
+        "url": "https://github.com/umair24171/nexusos-backend/blob/e305ff01921c9ef21602391f7ce30eaa5594e91f/src/middleware/apiKeyAuth.js"
+      },
+      {
+        "title": "Dashboard source",
+        "url": "https://github.com/umair24171/nexusos-dashboard"
+      }
+    ],
+    "proof": "Reviewed public implementation: authenticated ingestion, activity records and alert-rule evaluation.",
+    "kind": "build",
+    "label": "Public build · Technical case study",
+    "image": "/demos/nexusos-agent-operations.png",
+    "imageWidth": 1120,
+    "imageHeight": 739,
+    "imageAlt": "NexusOS agent operations technical walkthrough with evidence and implementation boundaries",
+    "capture": "Actual screenshot of this technical walkthrough. This explains reviewed source; it is not a screenshot of a connected production account.",
+    "sourceFile": "src/middleware/apiKeyAuth.js",
+    "sourceExcerpt": "if (agent.status === 'killed') {\n  return sendError(res, 'Agent is killed and cannot perform actions', 403, 'AGENT_KILLED');\n}\n\n// … later in the same middleware\nnext();"
+  },
+  {
+    "slug": "content-production-pipeline",
+    "name": "Content production pipeline",
+    "category": "Research → channel drafts",
+    "summary": "A public multi-stage content system with research, ideation, channel-specific writing and Google Sheets records.",
+    "problem": "Content preparation involves gathering material, choosing an angle, adapting the format and keeping a record of what was produced.",
+    "scope": "Source review covers the separate researcher, ideator, scripter and analyst modules, channel adapters and Sheets-backed run records.",
+    "features": [
+      "Collect source material through API and feed adapters",
+      "Pass topic context into a separate ideation step",
+      "Prepare channel-specific text through writing modules",
+      "Record content and run information in Google Sheets"
+    ],
+    "decision": "A trend is not proof of customer demand. The existing analyst reasons from stored topics and hooks; it should not be presented as measured conversion or engagement analysis.",
+    "stack": [
+      "Node.js",
+      "Gemini adapters",
+      "Google Sheets"
+    ],
+    "limitations": "This is documentation of an existing public build, not a newly enabled posting service. No social accounts, Sheets credentials or publishing paths were run. Provider pricing, quotas and approval rules need verification before operation. No traffic or lead results are claimed.",
+    "sources": [
+      {
+        "title": "Research stage",
+        "url": "https://github.com/umair24171/Content-Agent/blob/96af7c0f0113361486fdef1c0ed089adaeed94ed/agents/researcher.js"
+      },
+      {
+        "title": "Analyst implementation and its limits",
+        "url": "https://github.com/umair24171/Content-Agent/blob/96af7c0f0113361486fdef1c0ed089adaeed94ed/agents/analyst.js"
+      }
+    ],
+    "proof": "Reviewed public source: separated research and analysis modules, integration adapters and a pipeline entry point.",
+    "kind": "build",
+    "label": "Public build · Technical case study",
+    "image": "/demos/content-production-pipeline.png",
+    "imageWidth": 1120,
+    "imageHeight": 858,
+    "imageAlt": "Content production pipeline technical walkthrough with evidence and implementation boundaries",
+    "capture": "Actual screenshot of this technical walkthrough. This explains reviewed source; it is not a screenshot of a connected production account.",
+    "sourceFile": "agents/researcher.js",
+    "sourceExcerpt": "async function runResearcher(runLabel = 'morning') {\n  // … source collection and topic selection\n}\n\n// Separate analysis stage: agents/analyst.js\nasync function runAnalyst() {\n  // … inspect stored topic and hook records\n}"
+  },
+  {
+    "slug": "video-production-pipeline",
+    "name": "Video production pipeline",
+    "category": "Script → media artifact",
+    "summary": "A public pipeline that connects script generation, voice synthesis, video assembly, thumbnails and an upload adapter.",
+    "problem": "Preparing a video crosses several tools and intermediate files. A single failed stage can leave unclear output and partial work.",
+    "scope": "Source review covers the stage coordinator, FFmpeg assembly and the YouTube upload adapter. The coordinator passes voice timing and visual cues into video assembly.",
+    "features": [
+      "Prepare a topic and script through distinct stages",
+      "Generate audio with timing and visual-cue metadata",
+      "Assemble footage, text and audio using FFmpeg",
+      "Prepare a thumbnail and pass completed artifacts to an upload adapter"
+    ],
+    "decision": "Dry run skips publishing, but generation still calls external services and sends a startup notification. It must not be described as an offline or zero-cost test.",
+    "stack": [
+      "Node.js",
+      "FFmpeg",
+      "Media / OAuth APIs"
+    ],
+    "limitations": "No provider accounts were connected or media published for this walkthrough. Rights to source media, voice-provider costs, quotas, OAuth access and channel approval need review. Existing scheduling is documented only; this engagement did not activate it.",
+    "sources": [
+      {
+        "title": "Stage coordinator and dry-run boundaries",
+        "url": "https://github.com/umair24171/youtube-agent/blob/df337c651c88f43608e1b5c2dca8e0e1a135d238/src/youtube_index.js"
+      },
+      {
+        "title": "Video assembly implementation",
+        "url": "https://github.com/umair24171/youtube-agent/blob/df337c651c88f43608e1b5c2dca8e0e1a135d238/src/VideoAgent.js"
+      },
+      {
+        "title": "Upload adapter",
+        "url": "https://github.com/umair24171/youtube-agent/blob/df337c651c88f43608e1b5c2dca8e0e1a135d238/src/UploadAgent.js"
+      }
+    ],
+    "proof": "Reviewed public source: the real coordinator, media assembly implementation and upload adapter.",
+    "kind": "build",
+    "label": "Public build · Technical case study",
+    "image": "/demos/video-production-pipeline.png",
+    "imageWidth": 1120,
+    "imageHeight": 834,
+    "imageAlt": "Video production pipeline technical walkthrough with evidence and implementation boundaries",
+    "capture": "Actual screenshot of this technical walkthrough. This explains reviewed source; it is not a screenshot of a connected production account.",
+    "sourceFile": "src/youtube_index.js",
+    "sourceExcerpt": "const DRY_RUN = process.env.DRY_RUN === 'true';\n\n// … generation and media assembly run before this check\nif (!DRY_RUN) {\n  videoUrl = await uploadAgent.upload({\n    // … completed video and metadata\n  });\n}"
+  },
+  {
+    "slug": "seo-content-agent",
+    "name": "BuildZn SEO content agent",
+    "category": "Evidence → reviewed draft",
+    "summary": "A business-aware editorial system that ranks problem topics, gathers primary sources and prepares drafts with a review report.",
+    "problem": "A headline generator cannot know which problems fit a business, what evidence supports the answer or whether another article already covers the intent.",
+    "scope": "Manual Node.js workflow with a business profile, project evidence, a topic backlog, optional Search Console signals, fresh source retrieval, structured generation and deterministic quality gates.",
+    "features": [
+      "Rank a bounded backlog by business fit, evidence and observed demand",
+      "Check published articles and draft history for overlapping intent",
+      "Build a source pack, content brief and outline",
+      "Prepare an unpublished draft with claim, link and editorial checks"
+    ],
+    "decision": "Observed issues are evidence of a problem, not keyword search volume. Generated work stays unpublished until a person checks facts, examples and usefulness.",
+    "stack": [
+      "Node.js",
+      "Gemini REST",
+      "Editorial checks"
+    ],
+    "limitations": "Provider generation needs an API key and an explicitly selected compatible model; usage can cost money. Automated review cannot certify factual accuracy or predict rankings. Search Console performance is available only when actual data is supplied.",
+    "sources": [
+      {
+        "title": "Editorial pipeline source",
+        "url": "https://github.com/umair24171/dev_umair/tree/main/agent"
+      },
+      {
+        "title": "Publication rules",
+        "url": "https://github.com/umair24171/dev_umair/blob/main/content/EDITORIAL.md"
+      }
+    ],
+    "proof": "Repository implementation and offline regression checks. See the operating guide in the linked source for provider setup and review requirements.",
+    "kind": "build",
+    "label": "Public build · Technical case study",
+    "image": "/demos/seo-content-agent.png",
+    "imageWidth": 1120,
+    "imageHeight": 815,
+    "imageAlt": "BuildZn SEO content agent technical walkthrough with evidence and implementation boundaries",
+    "capture": "Actual screenshot of this technical walkthrough. This explains reviewed source; it is not a screenshot of a connected production account.",
+    "sourceFile": "agent/lib/pipeline.js",
+    "sourceExcerpt": "const sources = [];\nfor (const source of topic.sources) sources.push(await researcher(source));\n\n// … brief, generation, checks and independent review\nreport.status = 'ready-for-human-review';\n// draft.md stays unpublished; no publish operation exists."
+  },
+  {
+    "slug": "buildzn-web-platform",
+    "name": "BuildZn web platform",
+    "category": "Content → accessible website",
+    "summary": "The working studio site: structured service pages, reviewed content, interactive previews and a tested deployment workflow.",
+    "problem": "A service website needs to explain scope, show credible evidence and keep drafts or outdated claims out of public search results.",
+    "scope": "Next.js App Router site with shared service and project data, reviewed-only article loading, canonical metadata, sitemap generation, redirects and browser-tested sample workflows.",
+    "features": [
+      "Define service and portfolio content in shared records",
+      "Keep draft and quarantined articles out of public pages and the sitemap",
+      "Exercise review gates, downloads and contact-response states in browser tests",
+      "Run accessibility and mobile-layout checks before deployment"
+    ],
+    "decision": "An accepted form response proves provider acceptance, not inbox delivery. Public copy and tests keep that distinction visible.",
+    "stack": [
+      "Next.js / React",
+      "Playwright / axe",
+      "Vercel"
+    ],
+    "limitations": "This is BuildZn’s own website, not a client engagement. The contact tests simulate provider responses; end-to-end inbox delivery is not verified. There are no claimed conversion or search-ranking results.",
+    "sources": [
+      {
+        "title": "Public website source",
+        "url": "https://github.com/umair24171/dev_umair"
+      },
+      {
+        "title": "Browser interaction and accessibility checks",
+        "url": "https://github.com/umair24171/dev_umair/blob/main/scripts/browser/website.spec.ts"
+      },
+      {
+        "title": "Reviewed-only article loader",
+        "url": "https://github.com/umair24171/dev_umair/blob/main/lib/posts.ts"
+      }
+    ],
+    "proof": "Live website, working previews and automated browser checks for core flows, mobile layout and accessibility.",
+    "kind": "build",
+    "label": "Public build · Technical case study",
+    "image": "/demos/buildzn-web-platform.png",
+    "imageWidth": 1120,
+    "imageHeight": 749,
+    "imageAlt": "BuildZn web platform technical walkthrough with evidence and implementation boundaries",
+    "capture": "Actual screenshot of this technical walkthrough. This explains reviewed source; it is not a screenshot of a connected production account.",
+    "sourceFile": "lib/posts.ts",
+    "sourceExcerpt": "if (data.status !== 'published' || data.reviewed !== true) return null;\n\nconst date = String(data.date || '');\nif (!date || Number.isNaN(Date.parse(date))) return null;"
+  }
+]

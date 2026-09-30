@@ -14,7 +14,7 @@ jobs:
         with:
           node-version: '22'
           cache: npm
-      - run: npm ci
+      - run: npm ci && npm ci --prefix agent
       - run: npm run lint
       - run: npm run check
       - run: npm test

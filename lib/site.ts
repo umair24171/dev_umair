@@ -1,3 +1,4 @@
+import projectRecords from '../content/business/projects.json';
 export const site = {
   url: 'https://www.buildzn.com', email: 'buildznofficial@gmail.com',
   linkedin: 'https://www.linkedin.com/in/umair-bilal-/', github: 'https://github.com/umair24171',
@@ -35,30 +36,11 @@ export const services = [
     boundaries: 'Source or workflow access and failure examples are needed. Discovery may reveal vendor limits or a larger rebuild; further work is quoted explicitly rather than assumed.',
     questions: ['What stopped working?', 'When did it last succeed?', 'Are logs and workflow access available?', 'What is the consequence of a missed or duplicate run?'] },
 ];
-export const projects = [
-  { slug: 'inquiry-assistant', name: 'Inquiry assistant', category: 'Intake → review', image: '/demos/inquiry-assistant.png', imageWidth: 1120, imageHeight: 739, imageAlt: 'BuildZn inquiry demonstration with sample requirements, a lead record and a response awaiting human approval',
-    summary: 'Turn a sample inquiry into structured requirements, a local lead record and a response draft for approval.',
-    scope: 'Browser-based intake parsing, required-field checks, lead record creation and draft approval. Records stay in memory; nothing is sent to a CRM or inbox.',
-    features: ['Choose or edit a fictional inquiry', 'Extract contact, tools, request and missing information', 'Create a sample lead and review the response', 'Approve locally; reset without sending anything'],
-    decision: 'An inquiry is not authorization to promise a price or start work. Missing information is flagged and the response remains a draft until reviewed.',
-    stack: ['Structured intake', 'Validation', 'Human approval'], limitations: 'The public preview uses simple local parsing and a recorded response template, not a live language model. It cannot reliably interpret arbitrary prose. Production work would require model evaluation, authenticated CRM access, duplicate handling and consent rules.' },
-  { slug: 'support-assistant', name: 'Support assistant', category: 'Knowledge → answer', image: '/demos/support-assistant.png', imageWidth: 1120, imageHeight: 551, imageAlt: 'BuildZn support demonstration showing an answer grounded in a sample knowledge base with source references',
-    summary: 'Find an answer in a sample knowledge base, show its sources and hand off questions outside the available coverage.',
-    scope: 'A small fictional knowledge base, conservative local matching, recorded grounded answers and a visible human handoff.',
-    features: ['Read the sample knowledge base', 'Ask a covered question and inspect its sources', 'Try an unsupported or conflicting question', 'See a handoff summary when no safe answer is available'],
-    decision: 'A helpful-sounding answer without support is not enough. Questions outside the source coverage produce a handoff rather than an invented policy.',
-    stack: ['Knowledge retrieval', 'Source references', 'Human handoff'], limitations: 'This preview selects recorded answers using conservative phrase matching; it is not live semantic retrieval or an LLM. Handoffs are local previews and do not open tickets. Production needs approved sources, retrieval evaluation, ticket permissions and monitored escalation.' },
-  { slug: 'document-processing', name: 'Document processing', category: 'Document → export', image: '/demos/document-processing.png', imageWidth: 1120, imageHeight: 641, imageAlt: 'BuildZn invoice demonstration showing extracted sample fields, validation checks and a review step before export',
-    summary: 'Extract fields from a sample text invoice, catch validation errors and export only after review.',
-    scope: 'Text invoice parsing, required-field and arithmetic checks, editable extracted fields, explicit review and CSV/JSON export.',
-    features: ['Load or edit a fictional invoice', 'Extract supplier, invoice number, date and amounts', 'Try a mismatched total and correct the fields', 'Review the result and download CSV or JSON'],
-    decision: 'Extraction is only the first step. Missing values and mismatched totals must block export until corrected and reviewed.',
-    stack: ['Field extraction', 'Validation', 'CSV / JSON'], limitations: 'The public preview parses the shown text format locally. It does not perform OCR, verify a supplier, detect invoice fraud or post to accounting software. Production would require secure storage, OCR or model access, document evaluation and accounting approval controls.' },
-];
+export const projects = projectRecords;
 export const faqs = [
   { question: 'Where should we start?', answer: 'Pick one repetitive task with a clear owner and outcome. Share a sample input, the tools involved and what a correct result looks like. Discovery checks feasibility before a wider build.' },
   { question: 'Will an agent act without approval?', answer: 'Only within explicitly agreed boundaries. Sending replies, changing records and financial actions need permissions and review rules. The demonstrations do not execute external actions.' },
   { question: 'How do pricing and ongoing costs work?', answer: 'A proposal attaches a price to deliverables, dependencies and acceptance tests. Model usage, tool subscriptions, hosting and maintenance are identified separately. There are no guaranteed income or savings claims.' },
   { question: 'Can you repair our existing automation?', answer: 'Yes. Start with workflow access, logs and a reproducible failure. The review determines whether a focused repair or a larger change is appropriate.' },
-  { question: 'Are these client case studies?', answer: 'No. They are BuildZn demonstrations using fictional sample data. Screenshots are captured from the working previews. Recorded response templates avoid paid model or connected-account requirements on the public site.' },
+  { question: 'What does the portfolio prove?', answer: 'It includes working sample-data demonstrations, BuildZn’s own web and editorial systems, and technical case studies linked to public source. Each page identifies its evidence and limits. Public builds are not presented as client results, security certifications or proof of business outcomes.' },
 ];

@@ -1,6 +1,6 @@
 # BuildZn — AI agents & business automation
 
-Next.js website for Umair Bilal’s independent automation studio. Services cover workflow automation, AI agents, API integrations and automation repair. Public portfolio entries are explicitly labeled BuildZn demonstrations using fictional sample data.
+Next.js website for Umair Bilal’s independent automation studio. Services cover workflow automation, AI agents, API integrations and automation repair. The portfolio distinguishes working sample demonstrations from public build walkthroughs, with traceable implementation evidence and boundaries.
 
 ## Development and validation
 
@@ -12,7 +12,7 @@ Contact tests intercept Formspree requests and do not send a real inquiry. Neith
 
 ## Content and demonstrations
 
-`lib/site.ts` holds shared services, project scope, process and FAQ content. `lib/demos.ts` implements local parsing, conservative support matching, invoice validation and safe CSV generation. `DemoWorkbench.tsx` renders the working previews.
+`lib/site.ts` holds shared services, process and FAQ content; `content/business/projects.json` holds the shared project evidence. `lib/demos.ts` implements local parsing, conservative support matching, invoice validation and safe CSV generation. `DemoWorkbench.tsx` renders the working previews.
 
 - Inquiry: labeled text → requirements → local lead → editable recorded reply template → local approval.
 - Support: sample knowledge → conservative exact matching → recorded answer with source → handoff outside coverage.
@@ -20,13 +20,13 @@ Contact tests intercept Formspree requests and do not send a real inquiry. Neith
 
 No live model, CRM, email, ticketing or accounting accounts are connected to these previews. Inputs stay in browser memory and are cleared on reload. No real data should be entered. Production connections, OCR, semantic retrieval, permissions and evaluation require separate implementation. Provider subscriptions, model calls and hosting may have separate costs.
 
-Screenshots in `public/demos/` are captured from the working preview with sample data; regenerate with `node scripts/capture-demos.mjs` against the local server. Do not add fictional clients, credentials, testimonials, savings, income or results claims.
+Screenshots in `public/demos/` are real captures of the sample previews and source walkthroughs. Regenerate the previews with `node scripts/capture-demos.mjs`, and walkthroughs with `node scripts/capture-case-studies.mjs` against the local server. Do not add fictional clients, credentials, testimonials, savings, income or results claims.
 
 ## Articles and retired routes
 
 Published articles require `status: published` AND `reviewed: true`. All other legacy sources remain recoverable with `status: review`, but are absent from public pages, related posts, the API and sitemap. Retired blog URLs return 404 with noindex; there is no blanket redirect to unrelated articles. See `content/EDITORIAL.md` before publishing.
 
-Old mobile/SaaS service URLs redirect permanently to the service overview; the former AI workflow and improvement services redirect to their relevant new services. Old product case studies redirect to the explicitly labeled demonstration index, never to an invented replacement client story. `/flutter-app-cost` redirects to `/pricing`, `/labs` and `/portfolio` to `/work`, and the old static social image to `/opengraph-image`. Legacy app imagery is removed.
+Old mobile/SaaS service URLs redirect permanently to the service overview; the former AI workflow and improvement services redirect to their relevant new services. Old product case studies redirect to the evidence-labeled work index, never to an invented replacement client story. `/flutter-app-cost` redirects to `/pricing`, `/labs` and `/portfolio` to `/work`, and the old static social image to `/opengraph-image`. Legacy app imagery is removed.
 
 The manual draft-preparation workflow remains manual-only. It cannot publish, cross-post or send notifications. No prospecting, outreach or recurring automation has been added.
 
@@ -39,3 +39,9 @@ Google Analytics loads only after opt-in. Custom events contain action/location 
 ## Deployment
 
 The GitHub repository is connected to Vercel. Push validated main to trigger deployment, verify Vercel’s deployed Git commit, then run smoke and browser checks on `https://www.buildzn.com`. Preserve unrelated work and verify the remote branch has not changed before updating main.
+
+## Evidence-backed work and editorial pipeline
+
+The portfolio now uses `content/business/projects.json` as its shared evidence register. Interactive previews are labeled sample demonstrations; public build walkthroughs link inspected source and identify unverified runtime/account boundaries. Captures of source walkthroughs are explicitly distinguished from production account screenshots.
+
+The Blog Writer has been replaced with a manual research, brief, draft and review pipeline. See [agent/README.md](agent/README.md) for the audit, configuration, demand signals, existing-intent updates, review packs and publication rules. Run `npm ci --prefix agent` before the full test suite. Provider generation requires explicit model selection and uses account quota. No new recurring jobs, prospecting or outreach are enabled.

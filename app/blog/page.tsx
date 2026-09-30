@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { getAllPosts } from '@/lib/posts';
 import type { Metadata } from 'next';
-export const metadata: Metadata = { title: 'Insights — Business automation', description: 'Notes on business workflows, AI agents, review points and operating costs. Practical scope guidance from BuildZn.', alternates: { canonical: 'https://www.buildzn.com/blog' } };
+export const metadata: Metadata = { title: 'Insights — Business automation', description: 'Practical fixes and implementation notes for webhooks, AI agents, document workflows and content systems. Sources, verification steps and clear boundaries.', alternates: { canonical: 'https://www.buildzn.com/blog' } };
 const categories = ['All topics', 'AI', 'Automation'];
 export default async function Blog({ searchParams }: { searchParams: Promise<{ q?: string; topic?: string; page?: string }> }) {
   const params = await searchParams;

@@ -2,6 +2,8 @@
 title: "Why extracted document fields need a review step"
 excerpt: "A plausible invoice total can still be wrong. Check required fields and arithmetic, then compare the output with its source before exporting."
 date: "2026-10-01"
+intentKey: "invoice-validation"
+keywords: ["invoice extraction validation", "document review before export"]
 status: published
 reviewed: true
 tags: ["Automation", "Workflow", "Documents"]

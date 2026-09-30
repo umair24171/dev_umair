@@ -1,8 +1,24 @@
-name: Prepare blog draft for review
+name: Plan or prepare evidence-led content
 on:
   workflow_dispatch:
+    inputs:
+      mode:
+        description: Planning is free of model calls; drafting uses your provider quota.
+        type: choice
+        options: [plan, draft]
+        default: plan
+      topic:
+        description: Approved topic ID from agent/topics.json (blank selects the highest-ranked new intent).
+        type: string
+      update:
+        description: Prepare an unpublished revision when this intent is already published.
+        type: boolean
+        default: false
+      model:
+        description: Gemini model ID available to your account (required for draft mode).
+        type: string
 jobs:
-  prepare-draft:
+  editorial:
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -13,19 +29,35 @@ jobs:
           node-version: '22'
           cache: npm
           cache-dependency-path: agent/package-lock.json
-      - name: Install agent dependencies
-        working-directory: agent
-        run: npm ci
-      - name: Prepare unpublished draft
+      - name: Install editorial dependencies
+        run: npm ci --prefix agent
+      - name: Validate agent behavior
+        run: npm test --prefix agent
+      - name: Prepare plan or unpublished draft
         env:
+          EDITORIAL_MODE: ${{ inputs.mode }}
+          EDITORIAL_TOPIC: ${{ inputs.topic }}
+          EDITORIAL_UPDATE: ${{ inputs.update }}
+          GEMINI_MODEL: ${{ inputs.model || vars.BLOG_GEMINI_MODEL }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          GITHUB_TOKEN: ${{ secrets.BLOG_GITHUB_TOKEN }}
-          GITHUB_OWNER: ${{ secrets.REPO_OWNER }}
-          GITHUB_REPO: ${{ secrets.REPO_NAME }}
-        run: node agent/blog-writer.js
-      - name: Save draft for human review
+        run: |
+          mkdir -p content/drafts
+          node agent/blog-writer.js plan --out content/drafts/editorial-plan.json
+          if [ "$EDITORIAL_MODE" = "draft" ]; then
+            if [ -n "$EDITORIAL_TOPIC" ]; then
+              if [ "$EDITORIAL_UPDATE" = "true" ]; then
+                node agent/blog-writer.js draft --topic "$EDITORIAL_TOPIC" --update
+              else
+                node agent/blog-writer.js draft --topic "$EDITORIAL_TOPIC"
+              fi
+            else
+              node agent/blog-writer.js draft
+            fi
+          fi
+      - name: Preserve plan, evidence and review reports even on failure
+        if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: unpublished-blog-draft
+          name: buildzn-editorial-review-pack
           path: content/drafts/
           retention-days: 30

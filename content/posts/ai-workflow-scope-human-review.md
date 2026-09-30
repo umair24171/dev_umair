@@ -3,6 +3,8 @@ title: "Before adding an AI agent, decide what it can change"
 excerpt: "A draft reply and an issued refund have different consequences. Scope tool permissions, approval points and evaluation before automating a workflow."
 date: "2026-10-01"
 reviewed: true
+intentKey: "workflow-human-approval"
+keywords: ["human approval automation workflow", "AI agent permissions"]
 status: published
 tags: ["AI", "SaaS", "Product", "AI Agents"]
 ---

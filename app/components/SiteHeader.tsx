@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import Logo from './Logo';
 import TrackedLink from './TrackedLink';
-const links = [['Services', '/services'], ['Demonstrations', '/work'], ['Pricing', '/pricing'], ['About', '/about'], ['Insights', '/blog']];
+const links = [['Services', '/services'], ['Work', '/work'], ['Pricing', '/pricing'], ['About', '/about'], ['Insights', '/blog']];
 export default function SiteHeader() {
   const [open, setOpen] = useState(false);
   const trigger = useRef<HTMLButtonElement>(null);
