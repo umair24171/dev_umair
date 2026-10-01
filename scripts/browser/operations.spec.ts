@@ -8,7 +8,7 @@ test('private workspace: complete inquiry, proposal, opt-out and review reset', 
     const name = unique();
     await page.getByRole('button', { name: 'Add inquiry', exact: true }).click();
     await page.getByLabel('Contact name', { exact: true }).fill(name);
-    await page.getByLabel('Contact email', { exact: true }).fill('sample@example.com');
+    await page.getByLabel('Contact email', { exact: true }).fill(`sample-${Date.now()}@example.com`);
     await page.getByLabel('Company', { exact: true }).fill('Sample studio');
     await page.getByLabel('Tools', { exact: true }).fill('Form and CRM');
     await page.getByLabel('Frequency / volume', { exact: true }).first().fill('20/week');
@@ -52,7 +52,7 @@ test('private evidence -> assessment -> outreach and approved public case study'
     await login(page);
     await page.getByRole('button', { name: 'Add inquiry', exact: true }).click();
     await page.getByLabel('Contact name', { exact: true }).fill(unique());
-    await page.getByLabel('Contact email', { exact: true }).fill('evidence-sample@example.com');
+    await page.getByLabel('Contact email', { exact: true }).fill(`evidence-sample-${Date.now()}@example.com`);
     await page.getByLabel('Inquiry brief', { exact: true }).fill('Public sample request for workflow webhook help; no real prospect.');
     await page.getByRole('button', { name: 'Save inquiry', exact: true }).click();
     await page.getByRole('button', { name: 'evidence', exact: true }).click();
