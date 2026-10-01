@@ -3,6 +3,7 @@ import os from 'node:os';
 import path from 'node:path';
 import { audit, capture, hash, OpsError, text, type Draft, type Job } from './core';
 import { transaction, readState } from './store';
+import {freshSnapshot} from './schedules';
 import { buildPlan, history, parseSearchConsoleCSV, prepareDraft, resumeDraft, geminiJSON } from '../../agent/lib/pipeline.js';
 async function editorialRecords() { const s = await readState(); return [...history(), ...s.jobs.filter(j => j.kind === 'blog-writer-draft' && j.status === 'review').flatMap(j => { const report = (j.result as {
         report?: {
@@ -66,11 +67,18 @@ export async function researchJob(key: string) {
 }
 export async function editorialPlan(data: Record<string, unknown>, key: string) { const job = await start('seo-plan', key); if (job.status !== 'running')
     return job; try {
-    const csv = text(data.csv, 'Search Console CSV', 40000);
-    const range = text(data.range, 'reporting date range and filters', 300);
+    const saved = data.useSavedSearchConsole ? (await readState()).searchConsole : undefined;
+    if (data.useSavedSearchConsole && !freshSnapshot(saved)) {
+        const result = {status:'skipped',reason:'Import a real Search Console Queries export from the last seven days before scheduled SEO planning. No fresh data was inferred.'};
+        await finish(job,result);
+        return result;
+    }
+    const csv = text(saved?.csv || data.csv, 'Search Console CSV', 40000);
+    const range = text(saved?.range || data.range, 'reporting date range and filters', 300);
     if (csv && !range)
         throw new OpsError('Supply the Search Console reporting date range and filters.');
     const signals = csv ? parseSearchConsoleCSV(csv) : [];
+    if (csv && !data.useSavedSearchConsole) await transaction(s=>{s.searchConsole={csv,range,importedAt:new Date().toISOString()};});
     const plan = buildPlan({ records: await editorialRecords(), signals });
     const result = { ...plan, searchConsoleContext: range || 'No Search Console export supplied. Demand remains explicitly unmeasured.' };
     await finish(job, result);

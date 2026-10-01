@@ -1,0 +1,41 @@
+name: Approved draft-only operations
+on:
+  schedule:
+    - cron: '0 4 * * 1'
+    - cron: '0 5 * * 1-5'
+    - cron: '15 4 1-3 * *'
+  workflow_dispatch:
+    inputs:
+      job:
+        description: Controlled manual check of an approved draft-only job
+        required: true
+        type: choice
+        options: [public-requests, follow-up-review, seo-plan]
+permissions:
+  contents: read
+concurrency:
+  group: buildzn-draft-only-schedules
+  cancel-in-progress: false
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Run restricted preparation
+        env:
+          OPS_JOBS_ENABLED: 'true'
+          OPS_RUNNER_ORIGIN: https://www.buildzn.com
+          OPS_RUNNER_SECRET: ${{ secrets.OPS_RUNNER_SECRET }}
+          OPS_EVENT_SCHEDULE: ${{ github.event.schedule }}
+          OPS_MANUAL_JOB: ${{ inputs.job }}
+          OPS_EVENT_NAME: ${{ github.event_name }}
+        run: |
+          if [ "$OPS_EVENT_NAME" = "workflow_dispatch" ]; then
+            node scripts/ops-runner.mjs "$OPS_MANUAL_JOB"
+          else
+            node scripts/ops-runner.mjs --scheduled
+          fi

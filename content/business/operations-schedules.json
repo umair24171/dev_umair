@@ -1,10 +1,27 @@
 {
- "enabled": false,
- "timezone": "Asia/Karachi",
- "jobs": [
-  {"id":"public-requests","enabled":false,"proposedSchedule":"Monday 09:00 Asia/Karachi","maximumRequests":30,"cost":"Existing GitHub API and Vercel quota; no model calls. Account overages not verified."},
-  {"id":"seo-plan","enabled":false,"proposedSchedule":"First business day monthly, after actual Search Console export","cost":"Deterministic planning; no model calls."},
-  {"id":"follow-up-review","enabled":false,"proposedSchedule":"Weekdays 10:00 Asia/Karachi","cost":"Private storage reads; prepare drafts only, never send."}
- ],
- "activation":"Disabled configuration only. No scheduler is installed. Review scope and account costs, approve activation, then install a read-only or draft-only scheduler with idempotent job keys. No job grants permission for external messages."
+  "enabled": true,
+  "timezone": "Asia/Karachi",
+  "jobs": [
+    {
+      "id": "public-requests",
+      "enabled": true,
+      "proposedSchedule": "Monday 09:00 Asia/Karachi",
+      "maximumRequests": 30,
+      "cost": "Existing GitHub API and Vercel quota; no model calls. Account overages not verified."
+    },
+    {
+      "id": "seo-plan",
+      "enabled": true,
+      "proposedSchedule": "First business day monthly 09:15 Asia/Karachi, after actual Search Console export",
+      "cost": "Deterministic planning; no model calls.",
+      "freshness": "Skip unless an authenticated real Search Console import is at most seven days old."
+    },
+    {
+      "id": "follow-up-review",
+      "enabled": true,
+      "proposedSchedule": "Weekdays 10:00 Asia/Karachi",
+      "cost": "Private storage reads; prepare drafts only, never send."
+    }
+  ],
+  "activation": "Owner approved all three draft-only schedules on 2026-10-01 within existing account allowances. GitHub Actions standard Linux runner; no model calls, messages, publication or paid upgrades. Monday-Friday calendar excludes weekends, not public holidays. GitHub schedule times may be delayed."
 }

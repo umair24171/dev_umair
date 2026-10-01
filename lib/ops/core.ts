@@ -96,8 +96,9 @@ export type State = {
         until: number;
     }>;
     dailyCalls: Record<string, number>;
+    searchConsole?: {csv:string;range:string;importedAt:string};
     config: {
-        jobsEnabled: false;
+        jobsEnabled: boolean;
         providerDailyLimit: number;
         offer: string;
         offerAssumption: string;
@@ -169,7 +170,7 @@ export function mutate(s: State, action: string, data: Record<string, unknown>, 
         return { jobId: j.id };
     }
     if (action === 'prepare-due-follow-ups') {
-        const due = s.leads.filter(l => l.dueAt && Date.parse(l.dueAt) <= Date.now() && !l.optedOut && !l.declined && l.stage !== 'lost');
+        const due = s.leads.filter(l => l.dueAt && Date.parse(l.dueAt) <= Date.now() && !l.optedOut && !l.declined && l.stage !== 'lost' && (!data.excludeSamples || (!l.sample && l.stage !== 'won' && l.stage !== 'handoff')));
         for (const lead of due) mutate(s, 'follow-up', {leadId: lead.id}, actor);
         audit(s, actor, 'follow-up.batch-prepared', 'pipeline', `${due.length} drafts; nothing sent`);
         return {drafts: due.length};

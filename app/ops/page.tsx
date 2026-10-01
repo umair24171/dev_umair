@@ -7,6 +7,7 @@ export const metadata: Metadata = { title: 'Operations', robots: { index: false,
 export default async function Operations() { const signedIn = await authenticated(); let state = null, error = ''; if (signedIn) {
     try {
         state = await readState();
+        state.config.jobsEnabled = process.env.OPS_JOBS_ENABLED === 'true';
     }
     catch {
         error = 'Private storage is unavailable. No records have been discarded. Retry after checking account access.';

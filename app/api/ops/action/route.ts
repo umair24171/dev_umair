@@ -6,7 +6,9 @@ export const runtime = 'nodejs';
 export const maxDuration = 300;
 export async function GET() { try {
     await requireAuth();
-    return Response.json(await readState(), { headers: { 'Cache-Control': 'no-store' } });
+    const state = await readState();
+    state.config.jobsEnabled = process.env.OPS_JOBS_ENABLED === 'true';
+    return Response.json(state, { headers: { 'Cache-Control': 'no-store' } });
 }
 catch (e) {
     return failure(e);

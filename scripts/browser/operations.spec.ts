@@ -125,3 +125,18 @@ test('desktop and mobile accessibility, keyboard use and no internal analytics',
     await page.keyboard.press('Tab');
     await expect(page.locator(':focus')).toBeVisible();
 });
+
+test('simulated stale SEO run preserves the last valid plan without crashing', async ({page}) => {
+    await login(page);
+    await page.route('**/api/ops/action',async route=>{
+        if(route.request().method()!=='GET')return route.continue();
+        const response=await route.fetch(),state=await response.json();
+        await route.fulfill({response,json:{...state,jobs:[...state.jobs,
+            {id:'simulated-valid-plan',kind:'seo-plan',status:'review',startedAt:new Date().toISOString(),attempts:0,reservedCalls:0,result:{topics:[],metricsDisclosure:'Simulated frontend test only',searchConsoleContext:'Simulated last valid plan retained'}},
+            {id:'simulated-stale-skip',kind:'seo-plan',status:'review',startedAt:new Date().toISOString(),attempts:0,reservedCalls:0,result:{status:'skipped',reason:'Fresh actual Search Console export required'}}]}});
+    });
+    await page.getByRole('button',{name:'Refresh records',exact:true}).click();
+    await page.getByRole('button',{name:'Research & SEO',exact:true}).click();
+    await expect(page.getByText('Simulated last valid plan retained')).toBeVisible();
+    await expect(page.getByRole('heading',{name:'Prioritize useful content.'})).toBeVisible();
+});
