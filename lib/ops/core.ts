@@ -112,7 +112,7 @@ export const hash = (value: unknown) => crypto.createHash('sha256').update(JSON.
 export function text(value: unknown, name: string, max = 5000, required = false): string { if (value === undefined && !required)
     return ''; if (typeof value !== 'string' || value.length > max || (required && !value.trim()))
     throw new OpsError(`Invalid ${name}.`); checkSecrets(value); return value.trim(); }
-function checkSecrets(value: string) { if (/\b(?:AIza[\w-]{25,}|gh[pousr]_[\w]{20,}|sk-[\w-]{20,})|-----BEGIN .*PRIVATE KEY-----/.test(value))
+function checkSecrets(value: string) { if (/\b(?:AIza[\w-]{25,}|gh[pousr]_[\w]{20,}|github_pat_[\w]{20,}|sk-[\w-]{20,})|-----BEGIN .*PRIVATE KEY-----/.test(value))
     throw new OpsError('Remove credentials before saving.'); }
 export function audit(s: State, actor: string, action: string, target: string, detail = '') { s.audit.push({ id: id(), at: new Date().toISOString(), actor, action, target, detail }); }
 function event(lead: Lead, type: string, detail: string) { const at = new Date().toISOString(); lead.events.push({ type, at, detail }); lead.updatedAt = at; }

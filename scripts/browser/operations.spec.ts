@@ -61,10 +61,12 @@ test('private workspace: complete inquiry, proposal, opt-out and review reset', 
 test('private evidence -> assessment -> outreach and approved public case study', async ({ page }) => {
     await login(page);
     await page.getByRole('button', { name: 'Add inquiry', exact: true }).click();
-    await page.getByLabel('Contact name', { exact: true }).fill(unique());
+    const name = unique();
+    await page.getByLabel('Contact name', { exact: true }).fill(name);
     await page.getByLabel('Contact email', { exact: true }).fill(`evidence-sample-${Date.now()}@example.com`);
     await page.getByLabel('Inquiry brief', { exact: true }).fill('Public sample request for workflow webhook help; no real prospect.');
     await page.getByRole('button', { name: 'Save inquiry', exact: true }).click();
+    await expect(page.locator('.ops-detail h2')).toHaveText(name);
     await page.getByRole('button', { name: 'evidence', exact: true }).click();
     await page.getByLabel('Evidence URL').fill('https://github.com/n8n-io/n8n/issues/123');
     await page.getByLabel('Source date').fill('2026-09-01');
