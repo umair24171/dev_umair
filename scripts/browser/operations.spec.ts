@@ -2,7 +2,17 @@ import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 const password = process.env.OPS_TEST_PASSWORD || 'controlled-ops-test-password';
 const unique = () => `Sample Operations ${Date.now()}`;
-async function login(page: import('@playwright/test').Page) { await page.goto('/ops'); await page.getByLabel('Operations password').fill(password); await page.getByRole('button', { name: 'Sign in securely' }).click(); await expect(page.getByRole('heading', { name: 'Your next conversation.' })).toBeVisible(); }
+async function login(page: import('@playwright/test').Page) {
+    if (process.env.OPS_TEST_SESSION) {
+        await page.context().addCookies([{name:'buildzn-ops',value:process.env.OPS_TEST_SESSION,url:process.env.SMOKE_URL!,httpOnly:true,secure:true,sameSite:'Strict'}]);
+        await page.goto('/ops');
+    } else {
+        await page.goto('/ops');
+        await page.getByLabel('Operations password').fill(password);
+        await page.getByRole('button', { name: 'Sign in securely' }).click();
+    }
+    await expect(page.getByRole('heading', { name: 'Your next conversation.' })).toBeVisible();
+}
 test('private workspace: complete inquiry, proposal, opt-out and review reset', async ({ page }) => {
     await login(page);
     const name = unique();
