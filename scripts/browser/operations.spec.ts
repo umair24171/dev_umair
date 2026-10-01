@@ -85,6 +85,14 @@ test('access controls, prevention of sending and provider cost gate', async ({ r
     const command = async (action: string) => request.post('/api/ops/action', { headers: { Origin: base, Cookie: cookie }, data: { action, key: crypto.randomUUID(), data: { topic: 'inquiry-approval-reset' } } });
     expect((await command('send')).status()).toBe(403);
     expect((await command('publish')).status()).toBe(403);
+    const inquiry = {name:'Controlled public capture',email:`controlled-${Date.now()}@example.com`,message:'Controlled sample inquiry for private capture and duplicate verification.',source:'referral',sample:true};
+    const submit=()=>request.post('/api/inquiries',{headers:{Origin:base},data:inquiry});
+    const first=await submit();expect(first.status()).toBe(200);expect(await first.json()).toEqual({accepted:true});expect((await submit()).status()).toBe(200);
+    const records=await (await request.get('/api/ops/action',{headers:{Cookie:cookie}})).json();
+    const matching=records.leads.filter((lead:{email:string})=>lead.email===inquiry.email);expect(matching).toHaveLength(1);expect(matching[0].sample).toBe(false);expect(matching[0].source).toBe('referral');
+    expect((await request.post('/api/ops/action',{headers:{Origin:base,Cookie:cookie},data:{action:'mark-sample',key:crypto.randomUUID(),data:{leadId:matching[0].id,sample:true}}})).status()).toBe(200);
+    expect((await request.post('/api/inquiries',{headers:{Origin:base},data:{...inquiry,email:'invalid'}})).status()).toBe(400);
+
     const ai = await command('article');
     expect(ai.status()).toBe(503);
     expect((await ai.json()).error).toContain('spending is disabled');
