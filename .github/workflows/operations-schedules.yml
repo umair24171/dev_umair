@@ -14,7 +14,7 @@ on:
 permissions:
   contents: read
 concurrency:
-  group: buildzn-draft-only-schedules
+  group: buildzn-draft-only-${{ github.event.schedule || inputs.job }}
   cancel-in-progress: false
 jobs:
   prepare:
