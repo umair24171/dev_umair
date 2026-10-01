@@ -114,3 +114,12 @@ test('source code without execution evidence gets a truthful disclosure',()=>{
  assert.deepEqual(qualityGate(result.draft,context).errors,[]);
  assert.ok(result.warnings.some(w=>w.includes('no test execution')));
 });
+
+
+test('citations accept the actual retrieved URL but reject unresearched files',()=>{
+ const resolvedURL='https://raw.githubusercontent.com/umair24171/dev_umair/main/app/components/DemoWorkbench.tsx';
+ const retrieved=context.sources.map((s,i)=>i===0?{...s,resolvedURL}:s);
+ const candidate={...draft,markdown:draft.markdown.replace(sources[0].url,resolvedURL)};
+ assert.deepEqual(qualityGate(candidate,{...context,sources:retrieved}).errors,[]);
+ assert.ok(qualityGate({...candidate,markdown:candidate.markdown.replace(resolvedURL,resolvedURL+'-not-retrieved')},{...context,sources:retrieved}).errors.some(e=>e.includes('not researched')));
+});

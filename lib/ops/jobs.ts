@@ -13,6 +13,7 @@ async function editorialRecords() { const s = await readState(); return [...hist
 function operationKey(key: string) { if (!/^[\w-]{8,100}$/.test(key))
     throw new OpsError('Invalid operation ID.'); }
 async function start(kind: string, key: string, reservedCalls = 0, costPerAttempt = 0, usdCap = 0): Promise<Job> { operationKey(key); return transaction(s => { const existing = s.jobs.find(j => j.key === key); if (existing) {
+    if (existing.kind !== kind) throw new OpsError('Operation ID belongs to a different job.', 409);
     if (existing.status === 'running')
         throw new OpsError('This job is already running. Refresh its status; do not start duplicate provider work.', 409);
     return existing;
@@ -86,11 +87,21 @@ export async function editorialJob(data: Record<string, unknown>, key: string) {
     if (!process.env.OPS_AI_ENABLED || process.env.OPS_AI_ENABLED !== 'true' || !Number.isFinite(inputRate) || inputRate <= 0 || !Number.isFinite(outputRate) || outputRate <= 0 || !Number.isFinite(cap) || cap <= 0)
         throw new OpsError('AI spending is disabled. Configure current account token rates, a daily dollar ceiling and OPS_AI_ENABLED after review. Evidence planning and deterministic drafts remain available.', 503);
     const worstPerAttempt = (100000 * inputRate + 12000 * outputRate) / 1000000;
+    // Resume reuses the brief and candidate; reserve eight attempts and stop before exceeding them.
+    const reservedCalls = data.resumeJobId ? 8 : 15;
     const state = await readState();
+    operationKey(key);
+    const previousOperation = state.jobs.find(j => j.key === key);
+    if (previousOperation) {
+        if (previousOperation.kind !== 'blog-writer-draft') throw new OpsError('Operation ID belongs to a different job.', 409);
+        if (previousOperation.status === 'running') throw new OpsError('This job is already running. Refresh its status; do not start duplicate provider work.', 409);
+        const savedReport = (previousOperation.result as { report?: { status?: string } } | undefined)?.report;
+        return { jobId: previousOperation.id, status: savedReport?.status || previousOperation.status };
+    }
     const day = new Date().toISOString().slice(0, 10);
-    if (((state.dailyCalls[day] || 0) + 15) * worstPerAttempt > cap)
+    if (((state.dailyCalls[day] || 0) + reservedCalls) * worstPerAttempt > cap)
         throw new OpsError('Conservative model cost reservation exceeds the daily spending ceiling.', 429);
-    const job = await start('blog-writer-draft', key, 15, worstPerAttempt, cap);
+    const job = await start('blog-writer-draft', key, reservedCalls, worstPerAttempt, cap);
     if (job.status !== 'running' || job.attempts)
         return job;
     const temporary = fs.mkdtempSync(path.join(os.tmpdir(), 'buildzn-editorial-'));

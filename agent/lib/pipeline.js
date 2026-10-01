@@ -151,7 +151,7 @@ export function qualityGate(draft,{topic,sources,records=[],routes=[]}) {
   const ids=new Set(sources.map(s=>s.id));
   for(const claim of draft.claims) if(claim.sourceIds.some(id=>!ids.has(id))) errors.push('A claim cites a source that was not retrieved.');
   const destinations=[...body.matchAll(/\[[^\]]+\]\(([^\s)]+)(?:\s+"[^"]*")?\)/g)].map(match=>match[1]);
-  const allowedSources=new Set(sources.map(s=>s.url));
+  const allowedSources=new Set(sources.flatMap(s=>[s.url,s.resolvedURL].filter(Boolean)));
   for(const link of destinations) {
     if(link.startsWith('/')) {if(!routes.includes(link.split('#')[0])) errors.push(`Internal link has no approved route: ${link}`);}
     else if(!allowedSources.has(link) && !link.startsWith('#')) errors.push(`External citation was not researched: ${link}`);
