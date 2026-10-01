@@ -135,7 +135,7 @@ export function qualityGate(draft,{topic,sources,records=[],routes=[]}) {
   try {validateShape('draft',draft);} catch {return {errors:['Draft does not match the required schema.'],warnings};}
   if(draft.intentKey!==topic.intentKey || draft.slug!==(topic.editorialSlug || topic.id) || normalize(draft.keyword)!==normalize(topic.keyword)) errors.push('Topic, keyword or stable slug drifted from the approved brief.');
   if(draft.title.length<25 || draft.title.length>85) warnings.push('Review title length; aim for a clear search-result label, not a fixed character target.');
-  const keyTokens=[...tokens(topic.keyword)];if(keyTokens.filter(t=>tokens(draft.title).has(t)).length/Math.max(1,keyTokens.length)<0.7) errors.push('Title does not clearly match the target problem.');
+  const keyTokens=[...tokens(topic.keyword)];if(normalize(draft.title)!==normalize(topic.title) && keyTokens.filter(t=>tokens(draft.title).has(t)).length/Math.max(1,keyTokens.length)<0.7) errors.push('Title does not clearly match the target problem.');
   if(draft.excerpt.length<90 || draft.excerpt.length>170) errors.push('Meta description must be a specific 90–170 character summary.');
   const body=draft.markdown;
   if(/\[\^\w+\]/.test(body)) errors.push('Footnotes are unsupported; use inline primary-source links.');
@@ -191,6 +191,10 @@ export function normalizeDraft(draft,topic) {
   const first=markdown.match(/^# ([^\n]+)\n+/);
   if(first && normalize(first[1])===normalize(draft.title)) {markdown=markdown.slice(first[0].length);warnings.push('Removed a duplicate article-title H1; the page template renders it.');}
   if((excerpt.length<90 || excerpt.length>170) && topic.metaDescription) {excerpt=topic.metaDescription;warnings.push('Used the approved topic-specific meta description after the model exceeded the metadata bounds.');}
+  if(markdown.includes('```') && !/illustrative|tested in|verified by|not executed/i.test(markdown)) {
+    markdown=markdown.replace('```','Code excerpts below are illustrative and were not executed as part of preparing this draft. Verify them in your own environment.\n\n```');
+    warnings.push('Added an explicit unexecuted-code disclosure; no test execution was inferred.');
+  }
   return {draft:{...draft,markdown,excerpt},warnings};
 }
 

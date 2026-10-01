@@ -106,8 +106,8 @@ test('access controls, prevention of sending and provider cost gate', async ({ r
     expect((await request.post('/api/inquiries',{headers:{Origin:base},data:{...inquiry,email:'invalid'}})).status()).toBe(400);
 
     const ai = await command('article');
-    expect(ai.status()).toBe(503);
-    expect((await ai.json()).error).toContain('spending is disabled');
+    expect(ai.status()).toBe(process.env.OPS_TEST_AI_RESERVATION_EXHAUSTED ? 429 : 503);
+    expect((await ai.json()).error).toContain(process.env.OPS_TEST_AI_RESERVATION_EXHAUSTED ? 'daily spending ceiling' : 'spending is disabled');
     expect((await request.post('/api/ops/action', { headers: { Origin: 'https://evil.example', Cookie: cookie }, data: { action: 'capture', key: crypto.randomUUID(), data: {} } })).status()).toBe(403);
 });
 test('desktop and mobile accessibility, keyboard use and no internal analytics', async ({ page }) => {

@@ -100,3 +100,17 @@ test('provider outage retries are bounded and every attempt is budgeted',async()
  await assert.rejects(()=>geminiJSON('review',{}, {apiKey:'sample-provider-key',model:'sample-model',fetcher:async()=>{requests++;throw new Error('sample network outage');},onAttempt:async()=>{throw new Error('spending ceiling');}}),/spending ceiling/);
  assert.equal(requests,0);
 });
+
+test('approved topic wording does not require keyword stuffing; unrelated titles still fail',()=>{
+ const approved={...topic,title:'How to invalidate approval when an inquiry draft changes',keyword:'AI inquiry assistant approval workflow'};
+ const candidate={...draft,title:approved.title,keyword:approved.keyword};
+ assert.ok(!qualityGate(candidate,{...context,topic:approved}).errors.includes('Title does not clearly match the target problem.'));
+ assert.ok(qualityGate({...candidate,title:'A beginner guide to garden planting'},{...context,topic:approved}).errors.includes('Title does not clearly match the target problem.'));
+});
+test('source code without execution evidence gets a truthful disclosure',()=>{
+ const candidate={...draft,markdown:draft.markdown+'\n\n```js\nconsole.log(1);\n```'};
+ const result=normalizeDraft(candidate,topic);
+ assert.match(result.draft.markdown,/illustrative and were not executed/);
+ assert.deepEqual(qualityGate(result.draft,context).errors,[]);
+ assert.ok(result.warnings.some(w=>w.includes('no test execution')));
+});
