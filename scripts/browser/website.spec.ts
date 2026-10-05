@@ -18,7 +18,7 @@ test('inquiry: missing-data gate, local lead and approval reset', async ({ page 
   await page.getByLabel('Recorded draft · editable').fill('A revised sample draft');
   await expect(page.getByRole('button', { name: 'Approve draft locally', exact: true })).toBeEnabled();
   await page.getByLabel('Inquiry text', { exact: true }).fill('Name: Sample');
-  await expect(page.getByText('Lead DEMO-001', { exact: false })).toHaveCount(0);
+  await expect(page.locator('.demo-workbench').getByText('Lead DEMO-001', { exact: false })).toHaveCount(0);
 });
 test('support: source citation and uncertainty handoff', async ({ page }) => {
   await page.goto('/work/support-assistant');

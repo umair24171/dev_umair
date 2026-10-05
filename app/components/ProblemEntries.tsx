@@ -1,0 +1,5 @@
+import Link from 'next/link';
+import { businessProblems, services } from '@/lib/site';
+export default function ProblemEntries() {
+  return <section className="section shell problem-section" aria-labelledby="problem-heading"><div className="section-heading"><div><p className="eyebrow">RECOGNIZE THE TASK?</p><h2 id="problem-heading">Where does your team<br/>repeat the work?</h2></div><p className="section-copy">For service businesses and small operations teams handling inquiries, support, documents and updates across several tools.</p></div><div className="problem-grid">{businessProblems.map((problem, index) => <article className="problem-entry" key={problem.title}><span className="process-number">0{index + 1}</span><h3>{problem.title}</h3><p>{problem.text}</p><Link className="text-link" href={`/services/${problem.service}`}>{services.find(s => s.slug === problem.service)?.name} ↗</Link>{problem.demo && <Link className="problem-demo-link" href={`/work/${problem.demo}`}>See the {problem.demoName?.toLowerCase()} sample →</Link>}</article>)}</div></section>;
+}

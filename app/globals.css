@@ -51,3 +51,23 @@
 .founder-portrait span { display:block; font-size:12px; color:var(--muted); margin-top:4px; }
 @media(max-width:900px) { .about-intro { gap:32px; grid-template-columns:minmax(0,1fr) 260px; } }
 @media(max-width:600px) { .about-intro { grid-template-columns:1fr; gap:32px; } .founder-portrait { width:min(320px,100%); } }
+
+/* Buyer entry points use the studio's existing mint and dark palette. */
+.problem-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:20px; }
+.problem-entry { border-top:1px solid #3b574d; padding:24px 0 12px; min-width:0; }
+.problem-entry h3 { font-size:21px; margin:18px 0 14px; }
+.problem-entry p { color:var(--muted); font-size:14px; }
+.problem-demo-link { display:block; color:#c1d6cb; font-size:13px; text-decoration:underline; text-underline-offset:4px; margin-top:16px; }
+.first-engagement { display:grid; grid-template-columns:1fr 1.1fr; gap:56px; margin:36px 0 80px; padding:40px; background:#11221c; border:1px solid #3b574d; border-radius:18px; }
+.first-engagement h2 { font-size:34px; }
+.first-engagement p,.first-engagement li { color:#bdcec5; font-size:14px; }
+.pilot-scope h3 { font-size:19px; }
+.pilot-scope ul { padding-left:20px; margin:0 0 26px; }
+.pilot-scope li { margin-bottom:10px; }
+.demo-context { display:grid; grid-template-columns:1fr 1fr; gap:40px; margin-bottom:36px; }
+.demo-context h2 { font-size:24px; margin:24px 0 16px; }
+.demo-context p { color:#bdcec5; font-size:14px; }
+.demo-context .sample-record { line-height:1.85; }
+.demo-service-links { display:flex; flex-wrap:wrap; gap:14px 22px; }
+@media(max-width:800px) { .problem-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } .first-engagement { gap:30px; padding:28px; } }
+@media(max-width:600px) { .problem-grid,.first-engagement,.demo-context { grid-template-columns:1fr; } .first-engagement { padding:24px; gap:28px; margin-bottom:50px; } .first-engagement h2 { font-size:29px; } .demo-context { gap:16px; } }

@@ -44,3 +44,16 @@ export const faqs = [
   { question: 'Can you repair our existing automation?', answer: 'Yes. Start with workflow access, logs and a reproducible failure. The review determines whether a focused repair or a larger change is appropriate.' },
   { question: 'What does the portfolio prove?', answer: 'It includes working sample-data demonstrations, BuildZn’s own web and editorial systems, and technical case studies linked to public source. Each page identifies its evidence and limits. Public builds are not presented as client results, security certifications or proof of business outcomes.' },
 ];
+
+export const businessProblems = [
+  { title: 'Inquiries need too much manual sorting', text: 'Capture the request once, collect missing requirements and prepare a reply for review.', service: 'workflow-automation', demo: 'inquiry-assistant', demoName: 'Inquiry assistant' },
+  { title: 'Support keeps answering the same questions', text: 'Prepare answers from approved policies, show the source and hand uncertain cases to a person.', service: 'ai-agents', demo: 'support-assistant', demoName: 'Support assistant' },
+  { title: 'Invoice details are copied by hand', text: 'Extract agreed fields, check missing values and totals, then review before export.', service: 'workflow-automation', demo: 'document-processing', demoName: 'Document processing' },
+  { title: 'Records do not match between tools', text: 'Define which system owns each field and connect updates with validation and duplicate protection.', service: 'api-integrations' },
+  { title: 'An existing automation has stopped working', text: 'Reproduce the failure, inspect logs and scope a repair with recovery instructions.', service: 'automation-repair' },
+];
+export const demoServices: Record<string, string[]> = {
+  'inquiry-assistant': ['workflow-automation', 'ai-agents', 'api-integrations'],
+  'support-assistant': ['ai-agents', 'api-integrations'],
+  'document-processing': ['workflow-automation', 'api-integrations'],
+};
