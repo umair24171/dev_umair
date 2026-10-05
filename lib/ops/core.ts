@@ -96,6 +96,7 @@ export type State = {
         until: number;
     }>;
     dailyCalls: Record<string, number>;
+    inquiryNotifications?: Record<string, import('./inquiry-mail').InquiryNotification>;
     searchConsole?: {csv:string;range:string;importedAt:string};
     config: {
         jobsEnabled: boolean;

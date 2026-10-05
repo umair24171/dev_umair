@@ -32,7 +32,7 @@ The manual draft-preparation workflow remains manual-only. It cannot publish, cr
 
 ## Contact, privacy and analytics
 
-The form now stores inquiries in the encrypted private operations workspace. It keeps entered data on errors and provides direct email/WhatsApp alternatives. Public submission does not trigger an automatic sales reply or inbox notification. Legacy Formspree inbox delivery remains unverified; do not claim it from storage acceptance. See OPERATIONS.md for access, privacy, limits and activation.
+The form now stores inquiries in the encrypted private operations workspace. It keeps entered data on errors and provides direct email/WhatsApp alternatives. After durable storage, public submission attempts a fixed owner notification through the existing Formspree endpoint. Notification acceptance is tracked separately; failed/uncertain mail never reverses storage acceptance. No automatic sales reply or visitor email receipt is sent. An actual owner inbox notification was verified on October 5, 2026. See OPERATIONS.md for access, privacy, limits and activation.
 
 Google Analytics loads only after opt-in. Custom events contain action/location categories, never form or demonstration text. Privacy settings allow withdrawal. Credentials never belong in source, URLs, content or analytics.
 

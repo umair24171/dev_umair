@@ -88,6 +88,7 @@ test('private evidence -> assessment -> outreach and approved public case study'
 });
 test('access controls, prevention of sending and provider cost gate', async ({ request }) => {
     expect((await request.get('/api/ops/action')).status()).toBe(401);
+    expect((await request.post('/api/ops/inquiry-notifications',{data:{leadId:crypto.randomUUID()}})).status()).toBe(401);
     expect((await request.get('/api/ops/export?draft=missing')).status()).toBe(401);
     const base = process.env.SMOKE_URL || 'http://127.0.0.1:3100';
     expect((await request.post('/api/ops/action', { headers: { Origin: 'https://evil.example' }, data: { action: 'send', key: crypto.randomUUID() } })).status()).toBe(401);
@@ -99,7 +100,7 @@ test('access controls, prevention of sending and provider cost gate', async ({ r
     expect((await command('publish')).status()).toBe(403);
     const inquiry = {name:'Controlled public capture',email:`controlled-${Date.now()}@example.com`,message:'Controlled sample inquiry for private capture and duplicate verification.',source:'referral',sample:true};
     const submit=()=>request.post('/api/inquiries',{headers:{Origin:base},data:inquiry});
-    const first=await submit();expect(first.status()).toBe(200);expect(await first.json()).toEqual({accepted:true});expect((await submit()).status()).toBe(200);
+    const first=await submit();expect(first.status()).toBe(200);expect(await first.json()).toEqual({accepted:true,ownerNotification:'disabled',receipt:'on-screen'});expect((await submit()).status()).toBe(200);
     const records=await (await request.get('/api/ops/action',{headers:{Cookie:cookie}})).json();
     const matching=records.leads.filter((lead:{email:string})=>lead.email===inquiry.email);expect(matching).toHaveLength(1);expect(matching[0].sample).toBe(false);expect(matching[0].source).toBe('referral');
     expect((await request.post('/api/ops/action',{headers:{Origin:base,Cookie:cookie},data:{action:'mark-sample',key:crypto.randomUUID(),data:{leadId:matching[0].id,sample:true}}})).status()).toBe(200);

@@ -55,7 +55,7 @@ test('invoice: validation, correction, review, export and approval invalidation'
 });
 test('contact: simulated private capture success and failure without real storage writes', async ({ page }) => {
   let mode = 'error';
-  await page.route('**/api/inquiries', route => route.fulfill({ status: mode === 'error' ? 500 : 200, contentType: 'application/json', body: mode === 'error' ? JSON.stringify({ error: 'Sample failure' }) : JSON.stringify({ accepted: true }) }));
+  await page.route('**/api/inquiries', route => route.fulfill({ status: mode === 'error' ? 500 : 200, contentType: 'application/json', body: mode === 'error' ? JSON.stringify({ error: 'Sample failure' }) : JSON.stringify({ accepted: true, ownerNotification: 'accepted', receipt: 'on-screen' }) }));
   await page.goto('/contact');
   await page.getByLabel('Name', { exact: true }).fill('BuildZn sample check');
   await page.getByLabel('Email', { exact: true }).fill('sample@example.com');
@@ -67,6 +67,7 @@ test('contact: simulated private capture success and failure without real storag
   mode = 'success';
   await page.getByRole('button', { name: 'Send workflow brief' }).click();
   await expect(page.getByRole('status')).toContainText('Your brief was accepted.');
+  await expect(page.getByRole('status')).toContainText('email service accepted an owner notification');
 });
 test('desktop and mobile: accessible routes, no overflow, keyboard menu', async ({ page }) => {
   for (const width of [1440, 390, 320]) {
@@ -93,4 +94,17 @@ test('portfolio distinguishes source studies from working demos and provides val
   await page.locator('.demo-capture img').scrollIntoViewIfNeeded();
   await expect.poll(()=>page.locator('.demo-capture img').evaluate((img:HTMLImageElement)=>img.complete && img.naturalWidth>0)).toBeTruthy();
  }
+});
+
+test('saved inquiry with uncertain mail shows an honest receipt instead of a submission failure', async ({page}) => {
+  await page.route('**/api/inquiries', route => route.fulfill({status:200,contentType:'application/json',body:JSON.stringify({accepted:true,ownerNotification:'uncertain',receipt:'on-screen'})}));
+  await page.goto('/contact');
+  await page.getByLabel('Name',{exact:true}).fill('Controlled mail failure');
+  await page.getByLabel('Email',{exact:true}).fill('sample@example.com');
+  await page.getByLabel('What kind of work do you need?').selectOption('Workflow automation');
+  await page.getByLabel('Workflow brief').fill('Controlled saved inquiry with uncertain notification.');
+  await page.getByRole('button',{name:'Send workflow brief'}).click();
+  await expect(page.getByRole('status')).toContainText('Your brief was accepted.');
+  await expect(page.getByRole('status')).toContainText('Owner email notification could not be confirmed');
+  await expect(page.locator('form [role=alert]')).toHaveCount(0);
 });
