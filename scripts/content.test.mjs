@@ -45,6 +45,7 @@ test('portfolio evidence separates interactive sample flows from documented buil
  assert.equal(projects.filter(p=>p.kind==='demo').length,3);assert.equal(projects.filter(p=>p.kind==='build').length,5);
  for(const project of projects) {
   assert.ok(project.limitations && project.scope && project.proof,project.slug);assert.ok(fs.existsSync('public'+project.image),project.slug);
+  if(project.kind==='demo') { assert.ok(project.sources.some(s=>s.url.endsWith('/lib/demos.ts')),project.slug);assert.ok(project.sources.some(s=>s.url.endsWith('/app/components/DemoWorkbench.tsx')),project.slug);assert.equal(project.capturedAt,'October 6, 2026'); }
   if(project.kind==='build') {assert.ok(project.sources.length>0,project.slug);assert.ok(project.capture.includes('not a screenshot of a connected production account'),project.slug);for(const source of project.sources) assert.match(source.url,/^https:\/\/github.com\/umair24171\//);}
  }
 });

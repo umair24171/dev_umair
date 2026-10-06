@@ -24,3 +24,9 @@ for (const path of ['/opengraph-image', '/blog/ai-workflow-scope-human-review/op
 }
 assert.equal((await fetch(`${base}/muslifie-app.png`)).status,404);
 console.log(`Passed: ${routes.length} public routes, retired articles, permanent redirects, sitemap, article API, search, real screenshots and social images.`);
+
+const sampleExportResponse = await fetch(base + '/demos/document-processing-output.json');
+assert.equal(sampleExportResponse.status,200,'Recorded reviewed invoice output available');
+const sampleExport = await sampleExportResponse.json();
+assert.equal(sampleExport.reviewed,true); assert.equal(sampleExport.demonstration,true);
+assert.equal(sampleExport.invoice,'DEMO-1042'); assert.equal(sampleExport.total,'264.00');

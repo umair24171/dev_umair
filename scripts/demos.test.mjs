@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { answerSupport, extractInvoice, inquirySamples, invoiceCsv, invoiceSamples, parseInquiry, validateInvoice } from '../.test-build/lib/demos.js';
+import { answerSupport, createInquiryLead, extractInvoice, inquirySamples, invoiceCsv, invoiceSamples, parseInquiry, validateInvoice } from '../.test-build/lib/demos.js';
 test('inquiry blocks missing or invalid contact and workflow information', () => {
   assert.deepEqual(parseInquiry(inquirySamples.complete).missing, []);
   assert.deepEqual(parseInquiry(inquirySamples.incomplete).missing, ['Valid email', 'Tools involved']);
@@ -24,4 +24,14 @@ test('CSV export escapes quotes and neutralizes spreadsheet formula prefixes', (
   const valid = extractInvoice(invoiceSamples.valid);
   for (const supplier of ['=1+1', '+cmd', '@SUM(A1)', '-1', '\t=1+1', '  =1+1']) assert.ok(invoiceCsv({ ...valid, supplier }).includes(`"'${supplier}"`));
   assert.ok(invoiceCsv({ ...valid, supplier: 'Sample "Paper" Co' }).includes('"Sample ""Paper"" Co"'));
+});
+
+test('intake creates a structured record and review draft only with required information', () => {
+  assert.equal(createInquiryLead(parseInquiry(inquirySamples.incomplete)), null);
+  const lead = createInquiryLead(parseInquiry(inquirySamples.complete));
+  assert.equal(lead.contact.email, 'alex@example.com');
+  assert.equal(lead.requirements.tools, 'Website form, spreadsheet, CRM');
+  assert.equal(lead.status, 'needs-human-review');
+  assert.match(lead.draft, /Hi Alex Morgan/);
+  assert.match(lead.draft, /pending human review/);
 });

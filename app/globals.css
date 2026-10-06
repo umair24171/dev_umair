@@ -71,3 +71,7 @@
 .demo-service-links { display:flex; flex-wrap:wrap; gap:14px 22px; }
 @media(max-width:800px) { .problem-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } .first-engagement { gap:30px; padding:28px; } }
 @media(max-width:600px) { .problem-grid,.first-engagement,.demo-context { grid-template-columns:1fr; } .first-engagement { padding:24px; gap:28px; margin-bottom:50px; } .first-engagement h2 { font-size:29px; } .demo-context { gap:16px; } }
+
+.implementation-proof{display:flex;align-items:center;justify-content:space-between;gap:24px;border:1px solid var(--line);border-left:3px solid var(--accent);padding:26px 30px;margin-bottom:24px;background:var(--panel)}
+.implementation-proof h2{font-size:clamp(1.4rem,3vw,2rem);margin:8px 0 12px}.implementation-proof p{max-width:680px}.implementation-proof a{flex-shrink:0}
+@media(max-width:700px){.implementation-proof{align-items:flex-start;flex-direction:column;padding:22px}.implementation-proof a{flex-shrink:1}}

@@ -42,7 +42,7 @@ export const faqs = [
   { question: 'Will an agent act without approval?', answer: 'Only within explicitly agreed boundaries. Sending replies, changing records and financial actions need permissions and review rules. The demonstrations do not execute external actions.' },
   { question: 'How do pricing and ongoing costs work?', answer: 'A proposal attaches a price to deliverables, dependencies and acceptance tests. Model usage, tool subscriptions, hosting and maintenance are identified separately. There are no guaranteed income or savings claims.' },
   { question: 'Can you repair our existing automation?', answer: 'Yes. Start with workflow access, logs and a reproducible failure. The review determines whether a focused repair or a larger change is appropriate.' },
-  { question: 'What does the portfolio prove?', answer: 'It includes working sample-data demonstrations, BuildZn’s own web and editorial systems, and technical case studies linked to public source. Each page identifies its evidence and limits. Public builds are not presented as client results, security certifications or proof of business outcomes.' },
+  { question: 'What does the portfolio prove?', answer: 'It includes three browser workflows built by BuildZn using sample data, BuildZn’s own web and editorial systems, and technical case studies linked to public source. Each page identifies its evidence and limits. Public builds are not presented as client results, security certifications or proof of business outcomes.' },
 ];
 
 export const businessProblems = [

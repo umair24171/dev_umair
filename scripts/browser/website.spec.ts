@@ -13,9 +13,12 @@ test('inquiry: missing-data gate, local lead and approval reset', async ({ page 
   await page.getByRole('button', { name: 'Complete inquiry', exact: true }).click();
   await page.getByRole('button', { name: 'Structure requirements' }).click();
   await page.getByRole('button', { name: 'Create sample lead', exact: true }).click();
+  await expect(page.locator('.demo-workbench pre')).toContainText('needs-human-review');
+  await expect(page.locator('.demo-workbench pre')).toContainText('alex@example.com');
   await page.getByRole('button', { name: 'Approve draft locally', exact: true }).click();
+  await expect(page.locator('.demo-workbench pre')).toContainText('approved-locally');
   await expect(page.getByText('Approved in this preview. Nothing has been sent.')).toBeVisible();
-  await page.getByLabel('Recorded draft · editable').fill('A revised sample draft');
+  await page.getByLabel('Template draft · editable').fill('A revised sample draft');
   await expect(page.getByRole('button', { name: 'Approve draft locally', exact: true })).toBeEnabled();
   await page.getByLabel('Inquiry text', { exact: true }).fill('Name: Sample');
   await expect(page.locator('.demo-workbench').getByText('Lead DEMO-001', { exact: false })).toHaveCount(0);
@@ -87,7 +90,7 @@ test('desktop and mobile: accessible routes, no overflow, keyboard menu', async 
 
 test('portfolio distinguishes source studies from working demos and provides valid captures',async({page})=>{
  await page.goto('/work?type=build');await expect(page.locator('.project-card')).toHaveCount(5);
- await page.getByRole('link',{name:'Interactive demos',exact:true}).click();await expect(page.locator('.project-card')).toHaveCount(3);
+ await page.getByRole('link',{name:'BuildZn-built workflows',exact:true}).click();await expect(page.locator('.project-card')).toHaveCount(3);
  for(const slug of ['nexusos-agent-operations','content-production-pipeline','video-production-pipeline','seo-content-agent','buildzn-web-platform']) {
   await page.goto('/work/'+slug);await expect(page.locator('.case-workbench')).toBeVisible();await expect(page.locator('.demo-workbench')).toHaveCount(0);
   await expect(page.getByRole('heading',{name:'Inspect the evidence'})).toBeVisible();
@@ -107,4 +110,15 @@ test('saved inquiry with uncertain mail shows an honest receipt instead of a sub
   await expect(page.getByRole('status')).toContainText('Your brief was accepted.');
   await expect(page.getByRole('status')).toContainText('Owner email notification could not be confirmed');
   await expect(page.locator('form [role=alert]')).toHaveCount(0);
+});
+
+test('BuildZn workflow pages connect authorship, running code and public implementation evidence', async ({page}) => {
+ for(const slug of ['inquiry-assistant','support-assistant','document-processing']) {
+  await page.goto('/work/'+slug);
+  await expect(page.getByRole('heading',{name:'Designed and built by BuildZn.'})).toBeVisible();
+  await expect(page.getByRole('region',{name:'BuildZn-built interactive workflow'})).toBeVisible();
+  await expect(page.getByRole('link',{name:'Workflow logic built by BuildZn'})).toHaveAttribute('href','https://github.com/umair24171/dev_umair/blob/main/lib/demos.ts');
+  await expect(page.getByRole('link',{name:'Interactive interface and review gates'})).toHaveAttribute('href','https://github.com/umair24171/dev_umair/blob/main/app/components/DemoWorkbench.tsx');
+  await expect(page.getByRole('heading',{name:'What BuildZn can implement'})).toHaveCount(0);
+ }
 });

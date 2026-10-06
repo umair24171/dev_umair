@@ -5,9 +5,9 @@
     "category": "Intake → review",
     "image": "/demos/inquiry-assistant.png",
     "imageWidth": 1120,
-    "imageHeight": 739,
-    "imageAlt": "BuildZn inquiry demonstration with sample requirements, a lead record and a response awaiting human approval",
-    "summary": "Turn a sample inquiry into structured requirements, a local lead record and a response draft for approval.",
+    "imageHeight": 1054,
+    "imageAlt": "BuildZn inquiry implementation with sample requirements, a lead record and a response awaiting human approval",
+    "summary": "We built an intake workflow that structures requirements, creates a lead record and prepares an editable response for human approval. Run it with sample data.",
     "scope": "Browser-based intake parsing, required-field checks, lead record creation and draft approval. Records stay in memory; nothing is sent to a CRM or inbox.",
     "features": [
       "Choose or edit a fictional inquiry",
@@ -23,13 +23,27 @@
     ],
     "limitations": "The public preview uses simple local parsing and a recorded response template, not a live language model. It cannot reliably interpret arbitrary prose. Production work would require model evaluation, authenticated CRM access, duplicate handling and consent rules.",
     "kind": "demo",
-    "label": "Interactive demonstration · Sample data",
-    "sources": [],
-    "problem": "Turn a sample inquiry into structured requirements, a local lead record and a response draft for approval.",
-    "capture": "Actual screenshot of the working preview using fictional sample data.",
-    "proof": "Working browser preview, exercised by automated interaction tests.",
-    "sourceFile": "",
-    "sourceExcerpt": ""
+    "label": "Built by BuildZn · Sample data",
+    "sources": [
+      {
+        "title": "Workflow logic built by BuildZn",
+        "url": "https://github.com/umair24171/dev_umair/blob/main/lib/demos.ts"
+      },
+      {
+        "title": "Interactive interface and review gates",
+        "url": "https://github.com/umair24171/dev_umair/blob/main/app/components/DemoWorkbench.tsx"
+      },
+      {
+        "title": "Executable workflow and export checks",
+        "url": "https://github.com/umair24171/dev_umair/blob/main/scripts/browser/website.spec.ts"
+      }
+    ],
+    "problem": "Service inquiries arrive with inconsistent details. Re-entering contacts and requirements makes it easy to miss the information needed before replying.",
+    "capture": "Actual screenshot of BuildZn’s running implementation, using fictional data.",
+    "proof": "BuildZn-designed and implemented browser workflow. Run the code here, inspect the implementation and compare the actual outputs. Automated tests exercise successful inputs, review gates and failure cases.",
+    "sourceFile": "lib/demos.ts + app/components/DemoWorkbench.tsx",
+    "sourceExcerpt": "",
+    "capturedAt": "October 6, 2026"
   },
   {
     "slug": "support-assistant",
@@ -37,9 +51,9 @@
     "category": "Knowledge → answer",
     "image": "/demos/support-assistant.png",
     "imageWidth": 1120,
-    "imageHeight": 551,
-    "imageAlt": "BuildZn support demonstration showing an answer grounded in a sample knowledge base with source references",
-    "summary": "Find an answer in a sample knowledge base, show its sources and hand off questions outside the available coverage.",
+    "imageHeight": 550,
+    "imageAlt": "BuildZn support implementation showing an answer grounded in a sample knowledge base with source references",
+    "summary": "We built a source-linked support workflow that answers covered policy questions and prepares a human handoff for unsupported requests. Run it with sample data.",
     "scope": "A small fictional knowledge base, conservative local matching, recorded grounded answers and a visible human handoff.",
     "features": [
       "Read the sample knowledge base",
@@ -55,13 +69,27 @@
     ],
     "limitations": "This preview selects recorded answers using conservative phrase matching; it is not live semantic retrieval or an LLM. Handoffs are local previews and do not open tickets. Production needs approved sources, retrieval evaluation, ticket permissions and monitored escalation.",
     "kind": "demo",
-    "label": "Interactive demonstration · Sample data",
-    "sources": [],
-    "problem": "Find an answer in a sample knowledge base, show its sources and hand off questions outside the available coverage.",
-    "capture": "Actual screenshot of the working preview using fictional sample data.",
-    "proof": "Working browser preview, exercised by automated interaction tests.",
-    "sourceFile": "",
-    "sourceExcerpt": ""
+    "label": "Built by BuildZn · Sample data",
+    "sources": [
+      {
+        "title": "Workflow logic built by BuildZn",
+        "url": "https://github.com/umair24171/dev_umair/blob/main/lib/demos.ts"
+      },
+      {
+        "title": "Interactive interface and review gates",
+        "url": "https://github.com/umair24171/dev_umair/blob/main/app/components/DemoWorkbench.tsx"
+      },
+      {
+        "title": "Executable workflow and export checks",
+        "url": "https://github.com/umair24171/dev_umair/blob/main/scripts/browser/website.spec.ts"
+      }
+    ],
+    "problem": "Repeated support questions require checking the correct policy. Requests outside those policies need escalation rather than a confident unsupported reply.",
+    "capture": "Actual screenshot of BuildZn’s running implementation, using fictional data.",
+    "proof": "BuildZn-designed and implemented browser workflow. Run the code here, inspect the implementation and compare the actual outputs. Automated tests exercise successful inputs, review gates and failure cases.",
+    "sourceFile": "lib/demos.ts + app/components/DemoWorkbench.tsx",
+    "sourceExcerpt": "",
+    "capturedAt": "October 6, 2026"
   },
   {
     "slug": "document-processing",
@@ -70,8 +98,8 @@
     "image": "/demos/document-processing.png",
     "imageWidth": 1120,
     "imageHeight": 641,
-    "imageAlt": "BuildZn invoice demonstration showing extracted sample fields, validation checks and a review step before export",
-    "summary": "Extract fields from a sample text invoice, catch validation errors and export only after review.",
+    "imageAlt": "BuildZn invoice implementation showing extracted sample fields, validation checks and a review step before export",
+    "summary": "We built a text-invoice processor with field extraction, validation, corrections, human review and working CSV/JSON downloads. Run it with sample data.",
     "scope": "Text invoice parsing, required-field and arithmetic checks, editable extracted fields, explicit review and CSV/JSON export.",
     "features": [
       "Load or edit a fictional invoice",
@@ -87,13 +115,27 @@
     ],
     "limitations": "The public preview parses the shown text format locally. It does not perform OCR, verify a supplier, detect invoice fraud or post to accounting software. Production would require secure storage, OCR or model access, document evaluation and accounting approval controls.",
     "kind": "demo",
-    "label": "Interactive demonstration · Sample data",
-    "sources": [],
-    "problem": "Extract fields from a sample text invoice, catch validation errors and export only after review.",
-    "capture": "Actual screenshot of the working preview using fictional sample data.",
-    "proof": "Working browser preview, exercised by automated interaction tests.",
-    "sourceFile": "",
-    "sourceExcerpt": ""
+    "label": "Built by BuildZn · Sample data",
+    "sources": [
+      {
+        "title": "Workflow logic built by BuildZn",
+        "url": "https://github.com/umair24171/dev_umair/blob/main/lib/demos.ts"
+      },
+      {
+        "title": "Interactive interface and review gates",
+        "url": "https://github.com/umair24171/dev_umair/blob/main/app/components/DemoWorkbench.tsx"
+      },
+      {
+        "title": "Executable workflow and export checks",
+        "url": "https://github.com/umair24171/dev_umair/blob/main/scripts/browser/website.spec.ts"
+      }
+    ],
+    "problem": "Copying invoice fields into a spreadsheet can hide missing data or incorrect totals. Extraction needs validation and review before export.",
+    "capture": "Actual screenshot of BuildZn’s running implementation, using fictional data.",
+    "proof": "BuildZn-designed and implemented browser workflow. Run the code here, inspect the implementation and compare the actual outputs. Automated tests exercise successful inputs, review gates and failure cases.",
+    "sourceFile": "lib/demos.ts + app/components/DemoWorkbench.tsx",
+    "sourceExcerpt": "",
+    "capturedAt": "October 6, 2026"
   },
   {
     "slug": "nexusos-agent-operations",
@@ -138,7 +180,8 @@
     "imageAlt": "NexusOS agent operations technical walkthrough with evidence and implementation boundaries",
     "capture": "Actual screenshot of this technical walkthrough. This explains reviewed source; it is not a screenshot of a connected production account.",
     "sourceFile": "src/middleware/apiKeyAuth.js",
-    "sourceExcerpt": "if (agent.status === 'killed') {\n  return sendError(res, 'Agent is killed and cannot perform actions', 403, 'AGENT_KILLED');\n}\n\n// … later in the same middleware\nnext();"
+    "sourceExcerpt": "if (agent.status === 'killed') {\n  return sendError(res, 'Agent is killed and cannot perform actions', 403, 'AGENT_KILLED');\n}\n\n// … later in the same middleware\nnext();",
+    "capturedAt": "October 1, 2026"
   },
   {
     "slug": "content-production-pipeline",
@@ -179,7 +222,8 @@
     "imageAlt": "Content production pipeline technical walkthrough with evidence and implementation boundaries",
     "capture": "Actual screenshot of this technical walkthrough. This explains reviewed source; it is not a screenshot of a connected production account.",
     "sourceFile": "agents/researcher.js",
-    "sourceExcerpt": "async function runResearcher(runLabel = 'morning') {\n  // … source collection and topic selection\n}\n\n// Separate analysis stage: agents/analyst.js\nasync function runAnalyst() {\n  // … inspect stored topic and hook records\n}"
+    "sourceExcerpt": "async function runResearcher(runLabel = 'morning') {\n  // … source collection and topic selection\n}\n\n// Separate analysis stage: agents/analyst.js\nasync function runAnalyst() {\n  // … inspect stored topic and hook records\n}",
+    "capturedAt": "October 1, 2026"
   },
   {
     "slug": "video-production-pipeline",
@@ -224,7 +268,8 @@
     "imageAlt": "Video production pipeline technical walkthrough with evidence and implementation boundaries",
     "capture": "Actual screenshot of this technical walkthrough. This explains reviewed source; it is not a screenshot of a connected production account.",
     "sourceFile": "src/youtube_index.js",
-    "sourceExcerpt": "const DRY_RUN = process.env.DRY_RUN === 'true';\n\n// … generation and media assembly run before this check\nif (!DRY_RUN) {\n  videoUrl = await uploadAgent.upload({\n    // … completed video and metadata\n  });\n}"
+    "sourceExcerpt": "const DRY_RUN = process.env.DRY_RUN === 'true';\n\n// … generation and media assembly run before this check\nif (!DRY_RUN) {\n  videoUrl = await uploadAgent.upload({\n    // … completed video and metadata\n  });\n}",
+    "capturedAt": "October 1, 2026"
   },
   {
     "slug": "seo-content-agent",
@@ -258,14 +303,15 @@
     ],
     "proof": "Repository implementation and offline regression checks. See the operating guide in the linked source for provider setup and review requirements.",
     "kind": "build",
-    "label": "Public build · Technical case study",
+    "label": "BuildZn system · Technical case study",
     "image": "/demos/seo-content-agent.png",
     "imageWidth": 1120,
     "imageHeight": 815,
     "imageAlt": "BuildZn SEO content agent technical walkthrough with evidence and implementation boundaries",
     "capture": "Actual screenshot of this technical walkthrough. This explains reviewed source; it is not a screenshot of a connected production account.",
     "sourceFile": "agent/lib/pipeline.js",
-    "sourceExcerpt": "const sources = [];\nfor (const source of topic.sources) sources.push(await researcher(source));\n\n// … brief, generation, checks and independent review\nreport.status = 'ready-for-human-review';\n// draft.md stays unpublished; no publish operation exists."
+    "sourceExcerpt": "const sources = [];\nfor (const source of topic.sources) sources.push(await researcher(source));\n\n// … brief, generation, checks and independent review\nreport.status = 'ready-for-human-review';\n// draft.md stays unpublished; no publish operation exists.",
+    "capturedAt": "October 1, 2026"
   },
   {
     "slug": "buildzn-web-platform",
@@ -286,7 +332,7 @@
       "Playwright / axe",
       "Vercel"
     ],
-    "limitations": "This is BuildZn’s own website, not a client engagement. The contact tests simulate provider responses; end-to-end inbox delivery is not verified. There are no claimed conversion or search-ranking results.",
+    "limitations": "This is BuildZn’s own website, not a client engagement. Automated contact tests simulate responses; a separate controlled deployed inquiry and matching owner inbox receipt were verified on October 5, 2026 after correcting a Formspree spam false positive. That test does not guarantee future delivery. Visitor email receipts remain unconfigured. No conversion or search-ranking results are claimed.",
     "sources": [
       {
         "title": "Public website source",
@@ -303,13 +349,14 @@
     ],
     "proof": "Live website, working previews and automated browser checks for core flows, mobile layout and accessibility.",
     "kind": "build",
-    "label": "Public build · Technical case study",
+    "label": "BuildZn system · Technical case study",
     "image": "/demos/buildzn-web-platform.png",
     "imageWidth": 1120,
     "imageHeight": 749,
     "imageAlt": "BuildZn web platform technical walkthrough with evidence and implementation boundaries",
     "capture": "Actual screenshot of this technical walkthrough. This explains reviewed source; it is not a screenshot of a connected production account.",
     "sourceFile": "lib/posts.ts",
-    "sourceExcerpt": "if (data.status !== 'published' || data.reviewed !== true) return null;\n\nconst date = String(data.date || '');\nif (!date || Number.isNaN(Date.parse(date))) return null;"
+    "sourceExcerpt": "if (data.status !== 'published' || data.reviewed !== true) return null;\n\nconst date = String(data.date || '');\nif (!date || Number.isNaN(Date.parse(date))) return null;",
+    "capturedAt": "October 1, 2026"
   }
 ]

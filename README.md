@@ -49,3 +49,9 @@ The Blog Writer has been replaced with a manual research, brief, draft and revie
 ## Client acquisition and sales operations
 
 See [OPERATIONS.md](OPERATIONS.md). The private `/ops` workspace connects inquiry capture, qualification, evidence review, assessments, proposals, follow-up reminders, public-request research, the existing Blog Writer, public-evidence content drafts, and observed source reporting. External sending and publication are unavailable.
+
+## Portfolio authorship and reproducible evidence
+
+The inquiry assistant, support assistant and document processor are BuildZn-owned browser implementations in `lib/demos.ts` and `app/components/DemoWorkbench.tsx`, not borrowed concepts or paid-client case studies. Their public pages link these files and the executable browser checks. Inquiry parsing now produces a concrete structured lead object shared by the preview and interactive UI; a valid record prepares an editable template draft and changes require fresh review. Support uses bounded phrase matching with source references and handoff. Invoice extraction validates fields, requires review and downloads actual CSV/JSON artifacts. No live model, CRM, ticketing, OCR or accounting integration is claimed.
+
+Run `node scripts/capture-demos.mjs` against a production preview to regenerate screenshots from the real workflows. The script also saves the reviewed invoice JSON download to `public/demos/document-processing-output.json`. Captures use sample data and hide the sticky navigation only during the screenshot so it cannot obscure the workflow. Screenshot dimensions and dates are recorded in the shared project registry. Other public repository walkthroughs remain explicitly separate from these running implementations.

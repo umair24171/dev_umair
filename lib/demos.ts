@@ -9,6 +9,11 @@ export function parseInquiry(input: string) {
   const missing = [!contact.name && 'Contact name', !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contact.email) && 'Valid email', !requirements.request && 'Business task', !requirements.tools && 'Tools involved'].filter(Boolean) as string[];
   return { contact, requirements, missing };
 }
+export function createInquiryLead(result: ReturnType<typeof parseInquiry>) {
+  if (result.missing.length) return null;
+  return { id: 'DEMO-001', contact: result.contact, requirements: result.requirements, status: 'needs-human-review' as const,
+    draft: `Hi ${result.contact.name},\n\nThanks for sharing your request${result.contact.company ? ` from ${result.contact.company}` : ''}. We can review the workflow and tools before proposing a scope. Please share a sample input, the desired outcome and which actions need approval.\n\nThis template-based sample draft is pending human review. No price or delivery commitment has been made.\n\nUmair / BuildZn` };
+}
 export const knowledge = [
   { id: 'KB-01', title: 'Sample delivery policy', text: 'Standard delivery takes 3–5 business days after dispatch. Tracking is emailed when the order ships.' },
   { id: 'KB-02', title: 'Sample returns policy', text: 'Unused items may be returned within 14 days of delivery. Contact support with the order number before returning an item.' },
