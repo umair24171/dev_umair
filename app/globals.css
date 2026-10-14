@@ -75,3 +75,9 @@
 .implementation-proof{display:flex;align-items:center;justify-content:space-between;gap:24px;border:1px solid var(--line);border-left:3px solid var(--accent);padding:26px 30px;margin-bottom:24px;background:var(--panel)}
 .implementation-proof h2{font-size:clamp(1.4rem,3vw,2rem);margin:8px 0 12px}.implementation-proof p{max-width:680px}.implementation-proof a{flex-shrink:0}
 @media(max-width:700px){.implementation-proof{align-items:flex-start;flex-direction:column;padding:22px}.implementation-proof a{flex-shrink:1}}
+
+/* Keep optional inquiry details available without crowding the first step. */
+.contact-extras { border-block:1px solid var(--line); margin:8px 0 24px; padding:16px 0; }
+.contact-extras summary { color:var(--foreground); font-size:13px; min-height:28px; }
+.contact-extras > div { padding-top:20px; }
+.contact-extras select:last-child { margin-bottom:0; }
