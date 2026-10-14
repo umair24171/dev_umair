@@ -75,7 +75,7 @@ test('contact: simulated private capture success and failure without real storag
 test('desktop and mobile: accessible routes, no overflow, keyboard menu', async ({ page }) => {
   for (const width of [1440, 390, 320]) {
     await page.setViewportSize({ width, height: 900 });
-    for (const route of ['/', '/services', '/services/ai-agents', '/work', '/work/inquiry-assistant', '/work/support-assistant', '/work/document-processing', '/pricing', '/about', '/contact', '/blog', '/blog/n8n-webhook-not-working', '/work/nexusos-agent-operations', '/work/seo-content-agent', '/work/video-production-pipeline', '/privacy']) {
+    for (const route of ['/', '/services', '/services/ai-agents', '/services/workflow-automation', '/services/api-integrations', '/services/automation-repair', '/work', '/work/inquiry-assistant', '/work/support-assistant', '/work/document-processing', '/pricing', '/about', '/contact', '/blog', '/blog/n8n-webhook-not-working', '/work/nexusos-agent-operations', '/work/seo-content-agent', '/work/video-production-pipeline', '/work/content-production-pipeline', '/work/buildzn-web-platform', '/blog/ai-workflow-scope-human-review', '/blog/automation-operating-costs', '/blog/automation-validation-before-export', '/blog/ai-blog-writer-duplicate-topics', '/blog/agent-kill-boundary', '/privacy']) {
       await page.goto(route); await page.locator('h1').waitFor();
       expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBeTruthy();
       const scan = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa']).analyze();
@@ -121,4 +121,34 @@ test('BuildZn workflow pages connect authorship, running code and public impleme
   await expect(page.getByRole('link',{name:'Interactive interface and review gates'})).toHaveAttribute('href','https://github.com/umair24171/dev_umair/blob/main/app/components/DemoWorkbench.tsx');
   await expect(page.getByRole('heading',{name:'What BuildZn can implement'})).toHaveCount(0);
  }
+});
+
+test('service interest carries into an editable inquiry and optional fields stay optional', async ({ page }) => {
+  let submitted: Record<string, string> | undefined;
+  await page.route('**/api/inquiries', async route => {
+    submitted = route.request().postDataJSON();
+    await route.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify({ accepted: true, ownerNotification: 'accepted' }) });
+  });
+  await page.goto('/services/ai-agents');
+  await expect(page.getByRole('link', { name: 'Support assistant' })).toHaveAttribute('href', '/work/support-assistant');
+  await page.getByRole('link', { name: 'Discuss your workflow' }).last().click();
+  await expect(page.getByLabel('What kind of work do you need?')).toHaveValue('AI agents');
+  await expect(page.getByLabel('Budget range')).not.toBeVisible();
+  await page.getByLabel('Name', { exact: true }).fill('Sample inquiry');
+  await page.getByLabel('Email', { exact: true }).fill('sample@example.com');
+  await page.getByLabel('What kind of work do you need?').selectOption('Something else');
+  await page.getByLabel('Workflow brief').fill('Please help me choose a starting point for repetitive admin.');
+  await page.getByRole('button', { name: 'Send workflow brief' }).click();
+  await expect(page.getByRole('status')).toContainText('Your brief was accepted.');
+  expect(submitted).toMatchObject({ projectType: 'Something else', budget: '', source: 'direct' });
+});
+test('unknown or repeated service parameters leave the inquiry choice empty', async ({ page }) => {
+  for (const query of ['service=unknown', 'service=ai-agents&service=automation-repair']) {
+    await page.goto('/contact?' + query);
+    await expect(page.getByLabel('What kind of work do you need?')).toHaveValue('');
+  }
+  await page.goto('/contact?service=automation-repair');
+  await page.getByText('Budget and referral details', { exact: false }).click();
+  await page.getByLabel('Budget range').selectOption('Under $1,000');
+  await expect(page.getByLabel('Budget range')).toHaveValue('Under $1,000');
 });
