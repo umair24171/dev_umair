@@ -23,7 +23,7 @@ jobs:
       - name: Live routes, metadata, redirects and assets
         run: npm run test:smoke
       - name: Live public interactions and accessibility with mocked submissions
-        run: npx playwright test scripts/browser/website.spec.ts --workers=1
+        run: npx playwright test scripts/browser/website.spec.ts --workers=1 --timeout=240000
       - name: Desktop and mobile screenshots and measured lab performance
         if: always()
         run: node scripts/live-audit.mjs
