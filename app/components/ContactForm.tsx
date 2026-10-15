@@ -2,7 +2,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { site } from '@/lib/site';
 import { track } from './Analytics';
-export default function ContactForm({ initialProjectType = '' }: { initialProjectType?: string }) {
+export default function ContactForm({ initialProjectType = '', standalone = false }: { initialProjectType?: string; standalone?: boolean }) {
   const [state,setState]=useState({succeeded:false,submitting:false,errors:'',ownerNotification:''});
   async function submit(event:React.FormEvent<HTMLFormElement>){event.preventDefault();const form=event.currentTarget;setState({succeeded:false,submitting:true,errors:'',ownerNotification:''});try{const data=Object.fromEntries(new FormData(form));const response=await fetch('/api/inquiries',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});const result=await response.json();if(!response.ok)throw new Error(result.error||'Please try again.');setState({succeeded:true,submitting:false,errors:'',ownerNotification:result.ownerNotification||'uncertain'});}catch(error){setState({succeeded:false,submitting:false,errors:error instanceof Error?error.message:'Please try again.',ownerNotification:''});}}
   const started = useRef(false);
@@ -10,8 +10,8 @@ export default function ContactForm({ initialProjectType = '' }: { initialProjec
   function start() { if (!started.current) { track('form_started', { location: 'contact' }); started.current = true; } }
   useEffect(() => { if (state.succeeded && !sent.current) { sent.current = true; track('form_submitted', { location: 'contact' }); } }, [state.succeeded]);
   return <section id="contact" className="section contact-section"><div className="shell contact-grid"><div>
-    <p className="eyebrow">LET’S TALK</p><h2>What needs<br/>to work better?</h2>
-    <p className="section-copy">An inquiry to route, a support question to answer, a document to process or an integration to repair. Share the task, your tools and where human review is needed.</p>
+    <p className="eyebrow">{standalone ? 'START WITH ONE TASK' : 'LET’S TALK'}</p>{standalone ? <h1 className="contact-page-title">Tell us where<br/>the work gets stuck.</h1> : <h2>What needs<br/>to work better?</h2>}
+    <p className="section-copy">{standalone ? 'Tell Umair what you want to make easier and which tools you use. A few sentences are enough to start.' : 'An inquiry to route, a support question to answer, a document to process or an integration to repair. Share the task, your tools and where human review is needed.'}</p>
     <p className="contact-next"><strong>What happens next</strong><br/>Umair reviews your brief personally and replies to the email you provide. Together, we clarify the scope and decide the next step. If a call would help, we can arrange one.</p>
     <a className="text-link" href={site.whatsapp} target="_blank" rel="noopener noreferrer" onClick={() => track('contact_alternative_clicked', { channel: 'whatsapp' })}>Prefer WhatsApp? Start a conversation ↗</a>
     <a className="contact-email" href={`mailto:${site.email}`}>{site.email}</a>
