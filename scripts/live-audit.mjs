@@ -33,13 +33,23 @@ try {
     if (response?.status() !== 200 || data.overflow || data.brokenImages.length) throw new Error(JSON.stringify({route,width,status:response?.status(),...data}));
     samples.push(data);
    }
+   // Load offscreen lazy images only after collecting the unscrolled timing samples.
+   for (let y = 0; y < await page.evaluate(() => document.documentElement.scrollHeight); y += 700) {
+    await page.evaluate(y => window.scrollTo(0, y), y);
+    await page.waitForTimeout(100);
+   }
+   await page.locator('img').evaluateAll(images => Promise.all(images.map(image => image.decode().catch(() => {}))));
+   const broken = await page.locator('img').evaluateAll(images => images.filter(image => !image.complete || !image.naturalWidth).map(image => image.src));
+   if (broken.length) throw new Error('Broken images after scrolling: '+JSON.stringify({route,width,broken}));
+   await page.evaluate(() => window.scrollTo(0, 0));
+   await page.waitForTimeout(100);
    await page.screenshot({path:'live-audit/'+(route === '/' ? 'home' : route.slice(1).replaceAll('/','-'))+'-'+width+'.png',fullPage:true});
    results.push({route,width,samples});
   }
   if(errors.length) throw new Error('Application errors: '+JSON.stringify(errors));
   await context.close();
  }
-} finally { await browser.close(); await writeFile('live-audit/measurements.json',JSON.stringify({base,at:new Date().toISOString(),conditions:'Unthrottled headless Chromium on GitHub hosted Linux; three navigations per route and viewport with browser cache retained. Lab observations, not field Core Web Vitals or Lighthouse scores.',results},null,2)); }
+} finally { await browser.close(); await writeFile('live-audit/measurements.json',JSON.stringify({base,at:new Date().toISOString(),conditions:'Unthrottled headless Chromium on GitHub hosted Linux; three navigations per route and viewport with browser cache retained. LCP/CLS/FCP are bounded snapshots 1.5 seconds after load, before scrolling, not finalized session metrics. resourceEncodedBytes counts compressed resource bodies observed then, including prefetches, not network transfer bytes. Screenshots load lazy images by scrolling after timing collection. Lab observations, not field Core Web Vitals or Lighthouse scores.',results},null,2)); }
 for (const r of results) {
  const median = key => r.samples.map(s=>s[key]).sort((a,b)=>a-b)[1];
  console.log(JSON.stringify({route:r.route,width:r.width,medianTtfbMs:median('ttfbMs'),medianFcpMs:median('fcpMs'),medianLcpMs:median('lcpMs'),maxCls:Math.max(...r.samples.map(s=>s.cls))}));
