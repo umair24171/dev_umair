@@ -46,6 +46,8 @@
 .about-intro { display:grid; grid-template-columns:minmax(0,1fr) 320px; align-items:center; gap:64px; }
 .founder-portrait { margin:0; border:1px solid #385749; border-radius:18px; overflow:hidden; background:#101b1d; }
 .founder-portrait img { display:block; width:100%; height:auto; aspect-ratio:1; object-fit:cover; }
+.contact-page .contact-section { padding-top:64px; border-top:0; }
+.contact-page-title { font-size:clamp(34px,4vw,48px); font-weight:600; margin-bottom:22px; }
 .founder-portrait figcaption { padding:20px 22px; border-top:1px solid #385749; }
 .founder-portrait strong { display:block; font-size:18px; color:var(--foreground); }
 .founder-portrait span { display:block; font-size:12px; color:var(--muted); margin-top:4px; }
