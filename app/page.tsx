@@ -17,9 +17,9 @@ export const metadata: Metadata = {
 };
 export default function Home() {
   return <main id="main-content">
-    <section className="hero shell"><div className="hero-copy">
+    <section className="hero hero-redesign shell"><div className="hero-copy">
       <p className="eyebrow"><span className="status-dot"/> AI AGENTS & AUTOMATION STUDIO</p>
-      <h1>Automate the busywork<br/><span>behind your<br/>service business.</span></h1>
+      <h1>Automate the<br/>busywork behind<br/><span>your service<br/>business.</span></h1>
       <p className="hero-description">Spend less of your day sorting inquiries, repeating support answers and copying data between tools. BuildZn builds focused workflows for service businesses, with you in control of the decisions.</p>
       <div className="hero-actions"><TrackedLink href="/contact" className="button" location="hero">Discuss your workflow <span aria-hidden="true">↗</span></TrackedLink><Link href="/work" className="button button-secondary">Explore the work <span aria-hidden="true">↓</span></Link></div>
       <div className="hero-note"><span className="founder-mark" aria-hidden="true">UB</span><p>Work directly with Umair Bilal.<br/><span>Clear scope. Human review. Documented handover.</span></p></div>
