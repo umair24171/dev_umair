@@ -83,16 +83,3 @@
 .contact-extras summary { color:var(--foreground); font-size:13px; min-height:28px; }
 .contact-extras > div { padding-top:20px; }
 .contact-extras select:last-child { margin-bottom:0; }
-
-/* Homepage hero: a clear promise alongside a connected sample workflow. */
-.hero.hero-redesign { grid-template-columns:1.02fr 1fr; gap:64px; padding-block:68px 76px; position:relative; }
-.hero-redesign::before { content:''; position:absolute; z-index:-1; width:65%; height:100%; right:0; top:0; background:radial-gradient(ellipse,#244b3325,transparent 70%); pointer-events:none; }
-.hero-redesign h1 { font-size:clamp(44px,4.35vw,61px); line-height:1.08; letter-spacing:-2.9px; margin-bottom:26px; }
-.hero-redesign .hero-description { font-size:14px; line-height:1.9; max-width:465px; margin-bottom:28px; }
-.hero-redesign .eyebrow { font-size:9px; letter-spacing:1.7px; margin-bottom:24px; }
-.hero-redesign .hero-actions { gap:12px; }
-.hero-redesign .hero-actions .button { min-height:50px; font-size:12px; padding-inline:18px; }
-.hero-redesign .hero-note { margin-top:28px; padding-top:22px; border-top:1px solid #293638; max-width:400px; }
-@media(max-width:1050px) { .hero.hero-redesign { gap:32px; }.hero-redesign h1 { font-size:48px; letter-spacing:-2.4px; }.hero-redesign .hero-actions .button { padding-inline:13px; font-size:11px; } }
-@media(max-width:800px) { .hero.hero-redesign { grid-template-columns:1fr; gap:42px; padding-block:48px; }.hero-redesign .hero-copy { max-width:540px; justify-self:center; width:100%; }.hero-redesign h1 { font-size:clamp(34px,7.6vw,54px); }.hero-redesign .hero-description { max-width:510px; font-size:15px; }.hero-redesign .hero-note { max-width:none; }.hero-redesign .hero-actions .button { font-size:12px; padding-inline:18px; } }
-@media(max-width:400px) { .hero-redesign h1 { font-size:clamp(34px,10vw,40px); letter-spacing:-1.8px; }.hero-redesign .eyebrow { font-size:8px; letter-spacing:1.3px; }.hero-redesign .hero-actions { gap:8px; }.hero-redesign .hero-actions .button { font-size:10px; padding-inline:12px; }.hero-redesign .hero-description { font-size:14px; }.hero-redesign .hero-note p { font-size:10px; } }
