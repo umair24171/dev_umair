@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import TrackedLink from './TrackedLink';
-import reviewScene from '@/public/hero/inquiry-review-1536.webp';
 import styles from './HomeHero.module.css';
 
 export default function HomeHero() {
@@ -22,7 +21,7 @@ export default function HomeHero() {
       </div>
     </div>
     <figure className={styles.scene}>
-      <Image className={styles.image} src={reviewScene} alt="Illustrative scene of a sample inquiry organized into a lead and a draft reply awaiting human review." fill sizes="100vw" loading="eager" fetchPriority="high"/>
+      <Image className={styles.image} src="/hero/inquiry-review-1536.webp" alt="Illustrative scene of a sample inquiry organized into a lead and a draft reply awaiting human review." fill sizes="100vw" loading="eager" fetchPriority="high"/>
       <figcaption className={styles.caption}>
         <p>A lead and a reply. The decision stays yours.</p>
         <span>Illustrative scene · Based on the inquiry demo · Sample data</span>
