@@ -1,13 +1,12 @@
 import ProblemEntries from './components/ProblemEntries';
 import FirstEngagement from './components/FirstEngagement';
-import WorkflowPreview from './components/WorkflowPreview';
+import HomeHero from './components/HomeHero';
 import Link from 'next/link';
 import Image from 'next/image';
 import type { Metadata } from 'next';
 import { faqs, processSteps, projects, services } from '@/lib/site';
 import ContactForm from './components/ContactForm';
 import ProjectCard from './components/ProjectCard';
-import TrackedLink from './components/TrackedLink';
 
 export const metadata: Metadata = {
   title: 'BuildZn — AI Agents & Business Automation',
@@ -17,13 +16,7 @@ export const metadata: Metadata = {
 };
 export default function Home() {
   return <main id="main-content">
-    <section className="hero shell"><div className="hero-copy">
-      <p className="eyebrow"><span className="status-dot"/> AI AGENTS & AUTOMATION STUDIO</p>
-      <h1>Automate the busywork<br/><span>behind your<br/>service business.</span></h1>
-      <p className="hero-description">Spend less of your day sorting inquiries, repeating support answers and copying data between tools. BuildZn builds focused workflows for service businesses, with you in control of the decisions.</p>
-      <div className="hero-actions"><TrackedLink href="/contact" className="button" location="hero">Discuss your workflow <span aria-hidden="true">↗</span></TrackedLink><Link href="/work" className="button button-secondary">Explore the work <span aria-hidden="true">↓</span></Link></div>
-      <div className="hero-note"><span className="founder-mark" aria-hidden="true">UB</span><p>Work directly with Umair Bilal.<br/><span>Clear scope. Human review. Documented handover.</span></p></div>
-    </div><WorkflowPreview/></section>
+    <HomeHero/>
     <div className="capability-strip"><div className="shell"><span>Practical systems for everyday operations.</span><div><span>Intake</span><span>Support</span><span>Documents</span><span>Connected tools</span></div></div></div>
     <ProblemEntries/>
     <section id="portfolio" className="section shell"><div className="section-heading"><div><p className="eyebrow">BUILT BY BUILDZN / PUBLIC TECHNICAL WORK</p><h2>Business tasks.<br/>Visible next steps.</h2></div><div><p className="section-copy">Run three workflows we built for intake, support and invoice review. Inspect actual sample outputs and source, alongside clearly labeled public technical case studies.</p><Link href="/work" className="text-link">View all 8 projects ↗</Link></div></div><div className="project-grid">{projects.filter(p => ['inquiry-assistant', 'support-assistant', 'document-processing', 'nexusos-agent-operations'].includes(p.slug)).map(project => <ProjectCard key={project.slug} project={project}/>)}</div></section>

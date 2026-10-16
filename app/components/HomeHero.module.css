@@ -1,0 +1,113 @@
+.hero {
+  position: relative;
+  isolation: isolate;
+  background: #0b100f;
+}
+.content {
+  width: min(1240px, calc(100% - 80px));
+  margin-inline: auto;
+  min-height: 710px;
+  display: flex;
+  align-items: center;
+  padding-block: 76px 70px;
+  position: relative;
+  z-index: 1;
+  pointer-events: none;
+}
+.copy { max-width: 600px; pointer-events: auto; }
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 26px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #b7d8c8;
+}
+.eyebrow > span { width: 5px; height: 5px; background: #a4edcc; border-radius: 50%; flex-shrink: 0; }
+.copy h1 {
+  font-size: clamp(46px, 4.3vw, 62px);
+  line-height: 1.11;
+  letter-spacing: -.047em;
+  font-weight: 600;
+  margin: 0 0 27px;
+}
+.copy h1 > span { color: #a4edcc; }
+.description { color: #d0d7ce; font-size: 14px; line-height: 1.95; max-width: 490px; margin: 0 0 28px; }
+.actions { display: flex; align-items: center; gap: 26px; flex-wrap: wrap; }
+.primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 14px 20px;
+  min-height: 50px;
+  background: #b1edcd;
+  color: #102c22;
+  border-radius: 3px;
+  font-size: 12px;
+  font-weight: 700;
+  transition: background .18s;
+}
+.primary:hover { background: #cbf7df; }
+.secondary { display: inline-flex; align-items: center; gap: 12px; min-height: 48px; color: #f0f4ef; font-size: 12px; font-weight: 600; }
+.secondary:hover { text-decoration: underline; text-underline-offset: 5px; }
+.founder { display: flex; align-items: center; gap: 12px; margin-top: 35px; }
+.founder img { border-radius: 50%; object-fit: cover; flex-shrink: 0; }
+.founder p { margin: 0; color: #dde5df; font-size: 11px; line-height: 1.8; }
+.founder p > span { color: #b5c6ba; font-size: 10px; }
+.scene { position: absolute; inset: 0; margin: 0; z-index: 0; }
+.image { object-fit: cover; object-position: center; }
+.scene::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, #09110ff5 0%, #09110fd9 29%, #09110f50 60%, #09110f08 100%);
+  pointer-events: none;
+}
+.caption { position: absolute; bottom: 28px; right: max(40px, calc((100vw - 1304px) / 2)); text-align: right; max-width: 540px; z-index: 1; }
+.caption p { font: italic 17px/1.4 Georgia, 'Times New Roman', serif; color: #f0f3e9; margin: 0 0 7px; text-shadow: 0 1px 6px #000; }
+.caption > span { display: block; font-size: 7px; letter-spacing: 1px; color: #e2e9de; text-transform: uppercase; }
+.caption a { display: inline-flex; gap: 9px; align-items: center; font-size: 10px; color: #d4f5e3; min-height: 36px; text-decoration: underline; text-underline-offset: 4px; margin-top: 2px; }
+.caption a:hover { color: #fff; }
+@media (min-width: 1800px) {
+  .image { object-position: center 47%; }
+  .scene::after { background: linear-gradient(90deg, #09110f 0%, #09110fe8 25%, #09110f35 57%, #09110f08 100%); }
+}
+@media (max-width: 1100px) and (min-width: 801px) {
+  .content { width: calc(100% - 64px); min-height: 660px; padding-block: 60px 100px; }
+  .copy { max-width: 480px; }
+  .copy h1 { font-size: 49px; }
+  .description { max-width: 420px; font-size: 13px; }
+  .image { object-position: 54% center; }
+  .scene::after { background: linear-gradient(90deg, #09110ffa 0%, #09110ff0 30%, #09110f75 60%, #09110f15 100%); }
+  .caption { right: 32px; bottom: 24px; }
+}
+@media (max-width: 800px) {
+  .content { width: min(540px, calc(100% - 40px)); min-height: auto; padding-block: 45px 30px; display: block; }
+  .copy { max-width: none; }
+  .copy h1 { font-size: clamp(35px, 7.6vw, 54px); }
+  .description { max-width: none; font-size: 14px; }
+  .eyebrow { font-size: 9px; letter-spacing: 1.5px; margin-bottom: 24px; }
+  .founder { margin-top: 28px; }
+  .scene { position: relative; height: clamp(370px, 78vw, 510px); }
+  .image { object-position: right center; }
+  .scene::after { background: linear-gradient(180deg, #0b100f 0%, #0b100f00 18%, #0b100f00 66%, #0b100ff5 100%); }
+  .caption { inset: auto 20px 12px; text-align: left; max-width: 540px; margin-inline: auto; }
+  .caption p { font-size: 16px; }
+  .caption > span { font-size: 7px; letter-spacing: .7px; }
+  .caption a { min-height: 44px; font-size: 11px; }
+}
+@media (max-width: 400px) {
+  .copy h1 { font-size: clamp(33px, 9.7vw, 38px); letter-spacing: -.04em; }
+  .lineBreak { display: none; }
+  .eyebrow { font-size: 8px; letter-spacing: 1.1px; }
+  .actions { gap: 18px; }
+  .primary { font-size: 11px; padding-inline: 15px; gap: 18px; }
+  .secondary { font-size: 11px; gap: 8px; }
+  .founder p { font-size: 10px; }
+  .founder p > span { font-size: 9px; }
+  .caption p { font-size: 15px; }
+}
+@media (prefers-reduced-motion: reduce) { .primary { transition: none; } }
