@@ -1,0 +1,437 @@
+/* Homepage-only presentation. The route marker prevents these styles from affecting other pages during client navigation. */
+/* Isolated visual proposal. These selectors never style the approved portfolio. */
+body:has(main[data-home-studio]) .site-header {
+  height: 94px;
+  position: relative;
+  top: auto;
+  background: #0d1513;
+  border-bottom: 1px solid #33413a;
+  box-shadow: none;
+}
+body:has(main[data-home-studio]) .site-header .header-inner {
+  width: min(1280px, calc(100% - 96px));
+  gap: 32px;
+}
+body:has(main[data-home-studio]) .site-header .desktop-nav { gap: 28px; }
+body:has(main[data-home-studio]) .site-header .desktop-nav a { color: #ced6cf; font-size: 13px; }
+body:has(main[data-home-studio]) .site-header .header-cta {
+  min-height: 43px;
+  padding: 12px 18px;
+  border: 1px solid #52675c;
+  border-radius: 0;
+  background: transparent;
+  color: #daf0e1;
+  font-size: 12px;
+  box-shadow: none;
+}
+body:has(main[data-home-studio]) .site-header .header-cta:hover { background: #24392f; }
+body:has(main[data-home-studio]) .site-header .menu-toggle { border-color: #50675a; border-radius: 0; }
+body:has(main[data-home-studio]) .site-header .menu-toggle span { background: #d8e9de; }
+
+body:has(main[data-home-studio]) .founder-section {
+  padding: 124px 0;
+  background: #0c1311;
+  border-block: 1px solid #2a3b32;
+  color: #e7ebe3;
+}
+body:has(main[data-home-studio]) .founder-section .founder-grid {
+  width: min(1280px, calc(100% - 96px));
+  grid-template-columns: minmax(0, .94fr) minmax(0, 1.06fr);
+  gap: clamp(50px, 7vw, 112px);
+  align-items: center;
+}
+body:has(main[data-home-studio]) .founder-section .founder-portrait {
+  width: 100%;
+  max-width: 500px;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  overflow: visible;
+  background: transparent;
+}
+body:has(main[data-home-studio]) .founder-section .founder-portrait img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1.12;
+  object-fit: cover;
+  object-position: 50% 38%;
+  border-radius: 0;
+  display: block;
+}
+body:has(main[data-home-studio]) .founder-section .founder-portrait figcaption {
+  margin: 0;
+  padding: 20px 0 0;
+  border-top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+}
+body:has(main[data-home-studio]) .founder-section .founder-portrait strong {
+  color: #dce6dc;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.5;
+  flex-shrink: 0;
+}
+body:has(main[data-home-studio]) .founder-section .founder-portrait span {
+  color: #9fb1a5;
+  margin-top: 0;
+  font-size: 11px;
+  line-height: 1.7;
+  max-width: 170px;
+  text-align: right;
+}
+body:has(main[data-home-studio]) .founder-section .eyebrow,
+body:has(main[data-home-studio]) .faq-section .eyebrow,
+body:has(main[data-home-studio]) .contact-section .eyebrow {
+  color: #9dd9b6;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .16em;
+  margin: 0 0 30px;
+  line-height: 1.5;
+}
+body:has(main[data-home-studio]) .founder-section h2 {
+  font-size: clamp(38px, 3.9vw, 58px);
+  font-weight: 450;
+  letter-spacing: -.055em;
+  line-height: 1.12;
+  margin: 0 0 34px;
+  color: #edf0e7;
+}
+body:has(main[data-home-studio]) .founder-section .section-copy {
+  color: #b4c1b7;
+  max-width: 470px;
+  font-size: 15px;
+  line-height: 1.9;
+  margin: 0 0 20px;
+}
+body:has(main[data-home-studio]) .founder-section .section-copy + .section-copy {
+  color: #d1dccf;
+  margin-top: 24px;
+}
+body:has(main[data-home-studio]) .founder-section .text-link {
+  color: #abe5c4;
+  display: inline-block;
+  border-bottom: 1px solid #6a8b74;
+  padding-bottom: 8px;
+  margin-top: 17px;
+  font-size: 13px;
+  text-decoration: none;
+}
+
+body:has(main[data-home-studio]) .faq-section {
+  width: min(1280px, calc(100% - 96px));
+  padding: 112px 0 120px;
+  display: grid;
+  grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr);
+  gap: 100px;
+  color: #e9eee4;
+}
+body:has(main[data-home-studio]) .faq-section h2 {
+  margin: 0;
+  font-size: clamp(36px, 3.6vw, 52px);
+  font-weight: 450;
+  letter-spacing: -.05em;
+  line-height: 1.14;
+  color: #e9eee4;
+}
+body:has(main[data-home-studio]) .faq-section .faq-list { min-width: 0; }
+body:has(main[data-home-studio]) .faq-section .faq-list details {
+  padding: 25px 0;
+  border-top: 1px solid #3a4a40;
+}
+body:has(main[data-home-studio]) .faq-section .faq-list details:last-child { border-bottom: 1px solid #3a4a40; }
+body:has(main[data-home-studio]) .faq-section .faq-list summary {
+  color: #e0e8db;
+  font-size: 16px;
+  font-weight: 450;
+  line-height: 1.55;
+  gap: 22px;
+  cursor: pointer;
+  align-items: center;
+}
+body:has(main[data-home-studio]) .faq-section .faq-list summary span {
+  width: 26px;
+  height: 26px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  font-size: 23px;
+  font-weight: 300;
+  color: #b1d6bb;
+}
+body:has(main[data-home-studio]) .faq-section .faq-list p {
+  margin: 19px 44px 0 0;
+  color: #aebeb0;
+  font-size: 14px;
+  line-height: 1.9;
+}
+body:has(main[data-home-studio]) .faq-section .faq-list details[open] { padding-bottom: 28px; }
+
+body:has(main[data-home-studio]) .contact-section {
+  padding: 118px 0 108px;
+  background: #172b22;
+  border-top: 1px solid #47604d;
+  color: #e7eee0;
+}
+body:has(main[data-home-studio]) .contact-section .contact-grid {
+  width: min(1280px, calc(100% - 96px));
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  gap: clamp(55px, 8vw, 126px);
+  align-items: start;
+}
+body:has(main[data-home-studio]) .contact-section h2 {
+  margin: 0 0 31px;
+  font-size: clamp(48px, 5.2vw, 76px);
+  font-weight: 450;
+  line-height: 1.08;
+  letter-spacing: -.055em;
+  color: #eef1e5;
+}
+body:has(main[data-home-studio]) .contact-section .section-copy {
+  color: #c3d0bf;
+  font-size: 15px;
+  line-height: 1.9;
+  max-width: 435px;
+  margin: 0;
+}
+body:has(main[data-home-studio]) .contact-section .contact-next {
+  margin: 45px 0 25px;
+  padding-top: 24px;
+  border-top: 1px solid #4c6151;
+  max-width: 430px;
+  color: #b9c9b8;
+  font-size: 13px;
+  line-height: 1.9;
+}
+body:has(main[data-home-studio]) .contact-section .contact-next strong {
+  color: #e1ead9;
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+body:has(main[data-home-studio]) .contact-section .text-link {
+  color: #b4e7c5;
+  font-size: 12px;
+  line-height: 1.8;
+  text-underline-offset: 5px;
+}
+body:has(main[data-home-studio]) .contact-section .contact-email {
+  margin-top: 18px;
+  color: #d6e4cf;
+  font-size: 13px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+body:has(main[data-home-studio]) .contact-section .form-panel {
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  background: transparent;
+  box-shadow: none;
+  min-width: 0;
+}
+body:has(main[data-home-studio]) .contact-section form { margin: 0; }
+body:has(main[data-home-studio]) .contact-section .form-row { grid-template-columns: 1fr 1fr; gap: 22px; }
+body:has(main[data-home-studio]) .contact-section label {
+  color: #e0ebd8;
+  display: block;
+  margin: 0 0 10px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.6;
+}
+body:has(main[data-home-studio]) .contact-section input,
+body:has(main[data-home-studio]) .contact-section select,
+body:has(main[data-home-studio]) .contact-section textarea {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  margin: 0 0 25px;
+  padding: 15px 17px;
+  min-height: 54px;
+  border: 1px solid #5c7260;
+  border-radius: 0;
+  color: #e7eee0;
+  background: #12231b;
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 1.6;
+  box-shadow: none;
+  color-scheme: dark;
+}
+body:has(main[data-home-studio]) .contact-section input::placeholder,
+body:has(main[data-home-studio]) .contact-section textarea::placeholder { color: #a2b29f; opacity: 1; }
+body:has(main[data-home-studio]) .contact-section textarea { resize: vertical; min-height: 155px; margin-bottom: 20px; }
+body:has(main[data-home-studio]) .contact-section input:focus,
+body:has(main[data-home-studio]) .contact-section select:focus,
+body:has(main[data-home-studio]) .contact-section textarea:focus { outline: 2px solid #c0e8c8; outline-offset: 2px; }
+body:has(main[data-home-studio]) .contact-section .field-help {
+  color: #b3c5ae;
+  margin: -2px 0 13px;
+  font-size: 11px;
+  line-height: 1.85;
+}
+body:has(main[data-home-studio]) .contact-section .contact-extras {
+  border-color: #536b56;
+  padding: 16px 0;
+  margin: 0 0 23px;
+}
+body:has(main[data-home-studio]) .contact-section .contact-extras summary {
+  color: #d1dfc9;
+  font-size: 12px;
+  line-height: 1.7;
+  cursor: pointer;
+}
+body:has(main[data-home-studio]) .contact-section .optional { color: #9eaf99; font-size: 11px; }
+body:has(main[data-home-studio]) .contact-section .form-submit {
+  min-height: 56px;
+  padding: 16px 22px;
+  border-radius: 0;
+  border: 1px solid #bbe8c8;
+  background: #bbe8c8;
+  color: #163624;
+  font-size: 13px;
+  font-weight: 600;
+  box-shadow: none;
+  margin-bottom: 19px;
+}
+body:has(main[data-home-studio]) .contact-section .form-submit span { font-size: 20px; }
+body:has(main[data-home-studio]) .contact-section .privacy-note {
+  margin: 10px 0 0;
+  color: #a6b99f;
+  font-size: 10px;
+  line-height: 1.8;
+}
+body:has(main[data-home-studio]) .contact-section .privacy-note a { color: #c2d8b9; }
+
+body:has(main[data-home-studio]) .site-footer {
+  padding: 75px 0 28px;
+  background: #0b1510;
+  border-top: 1px solid #3b5241;
+}
+body:has(main[data-home-studio]) .site-footer > .shell { width: min(1280px, calc(100% - 96px)); }
+body:has(main[data-home-studio]) .site-footer .footer-main {
+  grid-template-columns: 2fr 1fr .8fr;
+  gap: 64px;
+  padding-bottom: 64px;
+}
+body:has(main[data-home-studio]) .site-footer .footer-main img {
+  width: 280px !important;
+  height: auto !important;
+  min-width: 0 !important;
+  max-width: 100%;
+}
+body:has(main[data-home-studio]) .site-footer .footer-main p {
+  color: #a9baa6;
+  font-size: 13px;
+  line-height: 1.85;
+  margin: 24px 0 0;
+}
+body:has(main[data-home-studio]) .site-footer .footer-links {
+  display: flex;
+  gap: 13px;
+  padding-top: 5px;
+  color: #c5d2bf;
+  font-size: 13px;
+  line-height: 1.6;
+}
+body:has(main[data-home-studio]) .site-footer .footer-links a:hover { color: #c5f3d2; }
+body:has(main[data-home-studio]) .site-footer .footer-bottom {
+  border-top: 1px solid #3a4b3c;
+  color: #a2b39c;
+  padding-top: 24px;
+  font-size: 10px;
+  line-height: 1.7;
+  gap: 20px;
+}
+body:has(main[data-home-studio]) .site-footer .footer-bottom .text-link { color: #a2b39c; font-size: 10px; }
+body:has(main[data-home-studio]) .site-footer .footer-bottom > div { gap: 24px; }
+
+@media (max-width: 1000px) {
+  body:has(main[data-home-studio]) .site-header .header-inner,
+  body:has(main[data-home-studio]) .founder-section .founder-grid,
+  body:has(main[data-home-studio]) .contact-section .contact-grid,
+  body:has(main[data-home-studio]) .site-footer > .shell,
+  body:has(main[data-home-studio]) .faq-section { width: calc(100% - 64px); }
+  body:has(main[data-home-studio]) .site-header .desktop-nav { gap: 18px; }
+  body:has(main[data-home-studio]) .site-header .header-cta { font-size: 11px; padding-inline: 13px; }
+  body:has(main[data-home-studio]) .founder-section .founder-grid { gap: 48px; }
+  body:has(main[data-home-studio]) .founder-section h2 br { display: none; }
+  body:has(main[data-home-studio]) .faq-section { gap: 55px; }
+  body:has(main[data-home-studio]) .contact-section .contact-grid { gap: 55px; }
+  body:has(main[data-home-studio]) .site-footer .footer-main { gap: 38px; }
+}
+
+@media (max-width: 760px) {
+  body:has(main[data-home-studio]) .site-header { height: 80px; }
+  body:has(main[data-home-studio]) .site-header .header-inner,
+  body:has(main[data-home-studio]) .founder-section .founder-grid,
+  body:has(main[data-home-studio]) .contact-section .contact-grid,
+  body:has(main[data-home-studio]) .site-footer > .shell,
+  body:has(main[data-home-studio]) .faq-section { width: calc(100% - 40px); }
+  body:has(main[data-home-studio]) .site-header .desktop-nav,
+  body:has(main[data-home-studio]) .site-header .header-cta { display: none; }
+  body:has(main[data-home-studio]) .site-header .menu-toggle { display: flex; }
+  body:has(main[data-home-studio]) .founder-section { padding: 72px 0 78px; }
+  body:has(main[data-home-studio]) .founder-section .founder-grid { grid-template-columns: 1fr; gap: 44px; }
+  body:has(main[data-home-studio]) .founder-section .founder-portrait { width: 100%; max-width: none; }
+  body:has(main[data-home-studio]) .founder-section .founder-portrait img { aspect-ratio: 1 / 1.02; }
+  body:has(main[data-home-studio]) .founder-section .founder-portrait figcaption { gap: 18px; padding-top: 17px; }
+  body:has(main[data-home-studio]) .founder-section .founder-portrait strong { font-size: 14px; }
+  body:has(main[data-home-studio]) .founder-section .founder-portrait span { max-width: 165px; font-size: 10px; }
+  body:has(main[data-home-studio]) .founder-section h2 { font-size: clamp(35px, 9.4vw, 55px); margin-bottom: 25px; }
+  body:has(main[data-home-studio]) .founder-section .eyebrow,
+  body:has(main[data-home-studio]) .faq-section .eyebrow,
+  body:has(main[data-home-studio]) .contact-section .eyebrow { font-size: 9px; margin-bottom: 24px; }
+  body:has(main[data-home-studio]) .founder-section .section-copy { font-size: 14px; line-height: 1.9; }
+  body:has(main[data-home-studio]) .founder-section .text-link { font-size: 12px; }
+  body:has(main[data-home-studio]) .faq-section { grid-template-columns: 1fr; gap: 37px; padding: 74px 0 80px; }
+  body:has(main[data-home-studio]) .faq-section h2 { font-size: 39px; }
+  body:has(main[data-home-studio]) .faq-section .faq-list details { padding: 22px 0; }
+  body:has(main[data-home-studio]) .faq-section .faq-list summary { font-size: 14px; line-height: 1.65; gap: 16px; }
+  body:has(main[data-home-studio]) .faq-section .faq-list p { font-size: 13px; margin-right: 14px; }
+  body:has(main[data-home-studio]) .contact-section { padding: 76px 0; }
+  body:has(main[data-home-studio]) .contact-section .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+  body:has(main[data-home-studio]) .contact-section h2 { font-size: clamp(45px, 12vw, 66px); margin-bottom: 26px; }
+  body:has(main[data-home-studio]) .contact-section .section-copy { font-size: 14px; }
+  body:has(main[data-home-studio]) .contact-section .contact-next { margin-top: 30px; font-size: 12px; }
+  body:has(main[data-home-studio]) .contact-section .form-row { grid-template-columns: 1fr; gap: 0; }
+  body:has(main[data-home-studio]) .contact-section input,
+  body:has(main[data-home-studio]) .contact-section select,
+  body:has(main[data-home-studio]) .contact-section textarea { font-size: 16px; min-height: 54px; padding: 14px; }
+  body:has(main[data-home-studio]) .contact-section .form-submit { min-height: 58px; }
+  body:has(main[data-home-studio]) .site-footer { padding-top: 55px; }
+  body:has(main[data-home-studio]) .site-footer .footer-main { grid-template-columns: 1fr 1fr; gap: 38px 24px; padding-bottom: 43px; }
+  body:has(main[data-home-studio]) .site-footer .footer-main > div:first-child { grid-column: 1 / -1; }
+  body:has(main[data-home-studio]) .site-footer .footer-main img { width: 238px !important; }
+  body:has(main[data-home-studio]) .site-footer .footer-main p { font-size: 12px; margin-top: 19px; }
+  body:has(main[data-home-studio]) .site-footer .footer-links { font-size: 12px; gap: 11px; }
+  body:has(main[data-home-studio]) .site-footer .footer-bottom { justify-content: flex-start; gap: 15px 28px; font-size: 9px; }
+  body:has(main[data-home-studio]) .site-footer .footer-bottom > span { flex-basis: 100%; }
+  body:has(main[data-home-studio]) .site-footer .footer-bottom .text-link { font-size: 9px; }
+}
+
+@media (max-width: 350px) {
+  body:has(main[data-home-studio]) .site-header .header-inner,
+  body:has(main[data-home-studio]) .founder-section .founder-grid,
+  body:has(main[data-home-studio]) .contact-section .contact-grid,
+  body:has(main[data-home-studio]) .site-footer > .shell,
+  body:has(main[data-home-studio]) .faq-section { width: calc(100% - 32px); }
+  body:has(main[data-home-studio]) .founder-section .founder-portrait figcaption { gap: 12px; }
+  body:has(main[data-home-studio]) .founder-section .founder-portrait span { max-width: 140px; }
+  body:has(main[data-home-studio]) .founder-section h2 { font-size: 34px; }
+  body:has(main[data-home-studio]) .faq-section h2 { font-size: 35px; }
+  body:has(main[data-home-studio]) .contact-section h2 { font-size: 42px; }
+  body:has(main[data-home-studio]) .contact-section .contact-email { font-size: 12px; }
+}
+
+main[data-home-studio] .home-capability { background:#0b1512; padding:24px 0 28px; }
+main[data-home-studio] .home-capability .shell { width:min(1280px,calc(100% - 96px)); display:flex; justify-content:space-between; color:#819c8f; font-size:12px; }
+main[data-home-studio] .home-capability .shell>div { display:flex; gap:24px; color:#b9cdc1; letter-spacing:1.4px; font-size:10px; text-transform:uppercase; }
+@media(max-width:1050px) { main[data-home-studio] .home-capability .shell {width:calc(100% - 64px);}main[data-home-studio] .home-capability .shell>div {gap:16px;} }
+@media(max-width:700px) {main[data-home-studio] .home-capability {padding:20px 0 27px;}main[data-home-studio] .home-capability .shell {width:calc(100% - 40px);flex-direction:column;gap:14px;font-size:11px;}main[data-home-studio] .home-capability .shell>div {font-size:8px;letter-spacing:.8px;gap:16px;}}
+@media(max-width:359px) {main[data-home-studio] .home-capability .shell>div {font-size:7px;gap:12px;}}
