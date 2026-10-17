@@ -83,8 +83,7 @@ body:has(main[data-home-studio]) .founder-section .founder-portrait span {
   text-align: right;
 }
 body:has(main[data-home-studio]) .founder-section .eyebrow,
-body:has(main[data-home-studio]) .faq-section .eyebrow,
-body:has(main[data-home-studio]) .contact-section .eyebrow {
+body:has(main[data-home-studio]) .faq-section .eyebrow {
   color: #9dd9b6;
   font-size: 10px;
   font-weight: 600;
@@ -170,144 +169,6 @@ body:has(main[data-home-studio]) .faq-section .faq-list p {
 }
 body:has(main[data-home-studio]) .faq-section .faq-list details[open] { padding-bottom: 28px; }
 
-body:has(main[data-home-studio]) .contact-section {
-  padding: 118px 0 108px;
-  background: #172b22;
-  border-top: 1px solid #47604d;
-  color: #e7eee0;
-}
-body:has(main[data-home-studio]) .contact-section .contact-grid {
-  width: min(1280px, calc(100% - 96px));
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
-  gap: clamp(55px, 8vw, 126px);
-  align-items: start;
-}
-body:has(main[data-home-studio]) .contact-section h2 {
-  margin: 0 0 31px;
-  font-size: clamp(48px, 5.2vw, 76px);
-  font-weight: 450;
-  line-height: 1.08;
-  letter-spacing: -.055em;
-  color: #eef1e5;
-}
-body:has(main[data-home-studio]) .contact-section .section-copy {
-  color: #c3d0bf;
-  font-size: 15px;
-  line-height: 1.9;
-  max-width: 435px;
-  margin: 0;
-}
-body:has(main[data-home-studio]) .contact-section .contact-next {
-  margin: 45px 0 25px;
-  padding-top: 24px;
-  border-top: 1px solid #4c6151;
-  max-width: 430px;
-  color: #b9c9b8;
-  font-size: 13px;
-  line-height: 1.9;
-}
-body:has(main[data-home-studio]) .contact-section .contact-next strong {
-  color: #e1ead9;
-  display: inline-block;
-  font-size: 13px;
-  font-weight: 600;
-  margin-bottom: 8px;
-}
-body:has(main[data-home-studio]) .contact-section .text-link {
-  color: #b4e7c5;
-  font-size: 12px;
-  line-height: 1.8;
-  text-underline-offset: 5px;
-}
-body:has(main[data-home-studio]) .contact-section .contact-email {
-  margin-top: 18px;
-  color: #d6e4cf;
-  font-size: 13px;
-  line-height: 1.6;
-  overflow-wrap: anywhere;
-}
-body:has(main[data-home-studio]) .contact-section .form-panel {
-  border: 0;
-  border-radius: 0;
-  padding: 0;
-  background: transparent;
-  box-shadow: none;
-  min-width: 0;
-}
-body:has(main[data-home-studio]) .contact-section form { margin: 0; }
-body:has(main[data-home-studio]) .contact-section .form-row { grid-template-columns: 1fr 1fr; gap: 22px; }
-body:has(main[data-home-studio]) .contact-section label {
-  color: #e0ebd8;
-  display: block;
-  margin: 0 0 10px;
-  font-size: 12px;
-  font-weight: 500;
-  line-height: 1.6;
-}
-body:has(main[data-home-studio]) .contact-section input,
-body:has(main[data-home-studio]) .contact-section select,
-body:has(main[data-home-studio]) .contact-section textarea {
-  display: block;
-  width: 100%;
-  min-width: 0;
-  margin: 0 0 25px;
-  padding: 15px 17px;
-  min-height: 54px;
-  border: 1px solid #5c7260;
-  border-radius: 0;
-  color: #e7eee0;
-  background: #12231b;
-  font-family: inherit;
-  font-size: 14px;
-  line-height: 1.6;
-  box-shadow: none;
-  color-scheme: dark;
-}
-body:has(main[data-home-studio]) .contact-section input::placeholder,
-body:has(main[data-home-studio]) .contact-section textarea::placeholder { color: #a2b29f; opacity: 1; }
-body:has(main[data-home-studio]) .contact-section textarea { resize: vertical; min-height: 155px; margin-bottom: 20px; }
-body:has(main[data-home-studio]) .contact-section input:focus,
-body:has(main[data-home-studio]) .contact-section select:focus,
-body:has(main[data-home-studio]) .contact-section textarea:focus { outline: 2px solid #c0e8c8; outline-offset: 2px; }
-body:has(main[data-home-studio]) .contact-section .field-help {
-  color: #b3c5ae;
-  margin: -2px 0 13px;
-  font-size: 11px;
-  line-height: 1.85;
-}
-body:has(main[data-home-studio]) .contact-section .contact-extras {
-  border-color: #536b56;
-  padding: 16px 0;
-  margin: 0 0 23px;
-}
-body:has(main[data-home-studio]) .contact-section .contact-extras summary {
-  color: #d1dfc9;
-  font-size: 12px;
-  line-height: 1.7;
-  cursor: pointer;
-}
-body:has(main[data-home-studio]) .contact-section .optional { color: #9eaf99; font-size: 11px; }
-body:has(main[data-home-studio]) .contact-section .form-submit {
-  min-height: 56px;
-  padding: 16px 22px;
-  border-radius: 0;
-  border: 1px solid #bbe8c8;
-  background: #bbe8c8;
-  color: #163624;
-  font-size: 13px;
-  font-weight: 600;
-  box-shadow: none;
-  margin-bottom: 19px;
-}
-body:has(main[data-home-studio]) .contact-section .form-submit span { font-size: 20px; }
-body:has(main[data-home-studio]) .contact-section .privacy-note {
-  margin: 10px 0 0;
-  color: #a6b99f;
-  font-size: 10px;
-  line-height: 1.8;
-}
-body:has(main[data-home-studio]) .contact-section .privacy-note a { color: #c2d8b9; }
-
 body:has(main[data-home-studio]) .site-footer {
   padding: 75px 0 28px;
   background: #0b1510;
@@ -354,7 +215,6 @@ body:has(main[data-home-studio]) .site-footer .footer-bottom > div { gap: 24px; 
 @media (max-width: 1000px) {
   body:has(main[data-home-studio]) .site-header .header-inner,
   body:has(main[data-home-studio]) .founder-section .founder-grid,
-  body:has(main[data-home-studio]) .contact-section .contact-grid,
   body:has(main[data-home-studio]) .site-footer > .shell,
   body:has(main[data-home-studio]) .faq-section { width: calc(100% - 64px); }
   body:has(main[data-home-studio]) .site-header .desktop-nav { gap: 18px; }
@@ -362,7 +222,6 @@ body:has(main[data-home-studio]) .site-footer .footer-bottom > div { gap: 24px; 
   body:has(main[data-home-studio]) .founder-section .founder-grid { gap: 48px; }
   body:has(main[data-home-studio]) .founder-section h2 br { display: none; }
   body:has(main[data-home-studio]) .faq-section { gap: 55px; }
-  body:has(main[data-home-studio]) .contact-section .contact-grid { gap: 55px; }
   body:has(main[data-home-studio]) .site-footer .footer-main { gap: 38px; }
 }
 
@@ -370,7 +229,6 @@ body:has(main[data-home-studio]) .site-footer .footer-bottom > div { gap: 24px; 
   body:has(main[data-home-studio]) .site-header { height: 80px; }
   body:has(main[data-home-studio]) .site-header .header-inner,
   body:has(main[data-home-studio]) .founder-section .founder-grid,
-  body:has(main[data-home-studio]) .contact-section .contact-grid,
   body:has(main[data-home-studio]) .site-footer > .shell,
   body:has(main[data-home-studio]) .faq-section { width: calc(100% - 40px); }
   body:has(main[data-home-studio]) .site-header .desktop-nav,
@@ -385,8 +243,7 @@ body:has(main[data-home-studio]) .site-footer .footer-bottom > div { gap: 24px; 
   body:has(main[data-home-studio]) .founder-section .founder-portrait span { max-width: 165px; font-size: 10px; }
   body:has(main[data-home-studio]) .founder-section h2 { font-size: clamp(35px, 9.4vw, 55px); margin-bottom: 25px; }
   body:has(main[data-home-studio]) .founder-section .eyebrow,
-  body:has(main[data-home-studio]) .faq-section .eyebrow,
-  body:has(main[data-home-studio]) .contact-section .eyebrow { font-size: 9px; margin-bottom: 24px; }
+  body:has(main[data-home-studio]) .faq-section .eyebrow { font-size: 9px; margin-bottom: 24px; }
   body:has(main[data-home-studio]) .founder-section .section-copy { font-size: 14px; line-height: 1.9; }
   body:has(main[data-home-studio]) .founder-section .text-link { font-size: 12px; }
   body:has(main[data-home-studio]) .faq-section { grid-template-columns: 1fr; gap: 37px; padding: 74px 0 80px; }
@@ -394,16 +251,6 @@ body:has(main[data-home-studio]) .site-footer .footer-bottom > div { gap: 24px; 
   body:has(main[data-home-studio]) .faq-section .faq-list details { padding: 22px 0; }
   body:has(main[data-home-studio]) .faq-section .faq-list summary { font-size: 14px; line-height: 1.65; gap: 16px; }
   body:has(main[data-home-studio]) .faq-section .faq-list p { font-size: 13px; margin-right: 14px; }
-  body:has(main[data-home-studio]) .contact-section { padding: 76px 0; }
-  body:has(main[data-home-studio]) .contact-section .contact-grid { grid-template-columns: 1fr; gap: 48px; }
-  body:has(main[data-home-studio]) .contact-section h2 { font-size: clamp(45px, 12vw, 66px); margin-bottom: 26px; }
-  body:has(main[data-home-studio]) .contact-section .section-copy { font-size: 14px; }
-  body:has(main[data-home-studio]) .contact-section .contact-next { margin-top: 30px; font-size: 12px; }
-  body:has(main[data-home-studio]) .contact-section .form-row { grid-template-columns: 1fr; gap: 0; }
-  body:has(main[data-home-studio]) .contact-section input,
-  body:has(main[data-home-studio]) .contact-section select,
-  body:has(main[data-home-studio]) .contact-section textarea { font-size: 16px; min-height: 54px; padding: 14px; }
-  body:has(main[data-home-studio]) .contact-section .form-submit { min-height: 58px; }
   body:has(main[data-home-studio]) .site-footer { padding-top: 55px; }
   body:has(main[data-home-studio]) .site-footer .footer-main { grid-template-columns: 1fr 1fr; gap: 38px 24px; padding-bottom: 43px; }
   body:has(main[data-home-studio]) .site-footer .footer-main > div:first-child { grid-column: 1 / -1; }
@@ -418,15 +265,12 @@ body:has(main[data-home-studio]) .site-footer .footer-bottom > div { gap: 24px; 
 @media (max-width: 350px) {
   body:has(main[data-home-studio]) .site-header .header-inner,
   body:has(main[data-home-studio]) .founder-section .founder-grid,
-  body:has(main[data-home-studio]) .contact-section .contact-grid,
   body:has(main[data-home-studio]) .site-footer > .shell,
   body:has(main[data-home-studio]) .faq-section { width: calc(100% - 32px); }
   body:has(main[data-home-studio]) .founder-section .founder-portrait figcaption { gap: 12px; }
   body:has(main[data-home-studio]) .founder-section .founder-portrait span { max-width: 140px; }
   body:has(main[data-home-studio]) .founder-section h2 { font-size: 34px; }
   body:has(main[data-home-studio]) .faq-section h2 { font-size: 35px; }
-  body:has(main[data-home-studio]) .contact-section h2 { font-size: 42px; }
-  body:has(main[data-home-studio]) .contact-section .contact-email { font-size: 12px; }
 }
 
 main[data-home-studio] .home-capability { background:#0b1512; padding:24px 0 28px; }
