@@ -32,7 +32,7 @@ A minimal vercel.json disables Git-triggered deployment only for portfolio/agent
 
 ## Website validation
 
-Local lint, type checks, 48 unit tests and the production build passed. Next generated all four new portfolio pages. Local browser execution was blocked by this authoring host's network/process and Chromium-download limitations; its assertions were not changed to hide that. The existing GitHub website-checks workflow will run the complete browser and accessibility suite, including the seven new tests, on a hosted runner. Its result is pending at this checkpoint and will be recorded before handoff.
+Local lint, type checks, 48 unit tests and the production build passed. The full [hosted website CI passed](https://github.com/umair24171/dev_umair/actions/runs/40032813329/attempts/2): lint, types, 48 unit tests (10 content/demo, 15 agent and 23 operations cases), production build, smoke checks covering 26 public routes plus redirects/sitemap/API/search/images, and all 22 browser tests. The seven new portfolio tests passed, including all four pages at 1440, 390 and 320 pixels with WCAG scans, evidence/source links, original filters, 404 and sitemap checks. Selected actual timestamped output is saved in docs/agent-portfolio-ci-output.txt. All tests used synthetic data. Local browser execution was unavailable on the authoring host; the complete browser suite ran on GitHub instead.
 
 The React review checklist was applied: server components, static module data, no client hooks or request state, stable keys, semantic sections/tables/links, keyboard-scrollable output, scoped responsive styles, no new dependencies and no network data fetching.
 
@@ -44,4 +44,8 @@ The first invoice native run exposed a Node IPC harness bug: the message event i
 
 All data is synthetic, operator identities are trusted local context, external tools are mocked, source is MIT licensed, and production model/connector/transport/authentication guarantees are outside scope. These limits are stated on each portfolio page and in each repo. No real customer actions, emails, CRM writes, paid API calls or hosting were performed. Credential-pattern scans and fixture review are bounded checks, not a guarantee that every possible secret pattern is detectable.
 
-Remaining work at this checkpoint: observe the website PR's full CI result, fix any failures without weakening tests, attach the final report links and leave the PR unmerged for approval.
+The first website attempt failed in an unchanged operations test: replacing a random authentication-tag prefix with a fixed `a` occasionally changes no bytes. The unchanged suite passed on rerun. This pre-existing flaky test remains disclosed and outside this portfolio-only change; no test was weakened or removed.
+
+Final project documentation commits also passed their complete native/embedded/scan/Docker workflows: [invoice](https://github.com/umair24171/invoice-to-cash-agent/actions/runs/40033958271), [support](https://github.com/umair24171/support-resolution-agent/actions/runs/40034000594), [search](https://github.com/umair24171/permission-aware-knowledge-search/actions/runs/40034055390) and [CRM](https://github.com/umair24171/sales-call-to-crm-sync/actions/runs/40034112125).
+
+[BuildZn PR #24](https://github.com/umair24171/dev_umair/pull/24) is open and unmerged. All requested implementation and demo work is complete. No project blockers remain. Production integration and live Claude quality remain documented limits; the existing site test flake remains a known issue. No deployment was created and main remains unchanged. Review and explicit user approval are required before a future merge.

@@ -1,0 +1,49 @@
+BuildZn portfolio CI evidence, synthetic tests only.
+Source: https://github.com/umair24171/dev_umair/actions/runs/40032813329/attempts/2
+Job: 120685749686
+Code: b4ac333101c4d7bba1537e95c2ce5a61ced4f4ef
+Selected unmodified timestamped output lines from the successful job (package-install noise omitted).
+
+2026-10-23T22:21:48.0490711Z # tests 10
+2026-10-23T22:21:48.0491193Z # pass 10
+2026-10-23T22:21:48.0491423Z # fail 0
+2026-10-23T22:21:48.0491903Z # skipped 0
+2026-10-23T22:21:51.3194717Z # tests 15
+2026-10-23T22:21:51.3195190Z # pass 15
+2026-10-23T22:21:51.3195508Z # fail 0
+2026-10-23T22:21:51.3196455Z # skipped 0
+2026-10-23T22:21:53.1502387Z # tests 23
+2026-10-23T22:21:53.1502795Z # pass 23
+2026-10-23T22:21:53.1503015Z # fail 0
+2026-10-23T22:21:53.1503467Z # skipped 0
+2026-10-23T22:22:01.9145470Z ✓ Compiled successfully in 6.5s
+2026-10-23T22:22:13.9945599Z └   /work/agents/[slug]
+2026-10-23T22:22:13.9946004Z   ├ ● /work/agents/invoice-to-cash-agent
+2026-10-23T22:22:13.9946866Z   ├ ● /work/agents/support-resolution-agent
+2026-10-23T22:22:13.9947443Z   ├ ● /work/agents/permission-aware-knowledge-search
+2026-10-23T22:22:13.9948165Z   └ ● /work/agents/sales-call-to-crm-sync
+2026-10-23T22:31:35.0240472Z Passed: 26 public routes, retired articles, permanent redirects, sitemap, article API, search, real screenshots and social images.
+2026-10-23T22:31:37.1977357Z   ✓   1 scripts/browser/agent-portfolio.spec.ts:9:5 › agent portfolio section links all four source-backed projects without changing existing filters (432ms)
+2026-10-23T22:31:38.8903042Z   ✓   2 scripts/browser/agent-portfolio.spec.ts:23:7 › invoice-to-cash-agent: recorded evidence, source links, mobile layout and accessibility (1.7s)
+2026-10-23T22:31:40.5139029Z   ✓   3 scripts/browser/agent-portfolio.spec.ts:23:7 › support-resolution-agent: recorded evidence, source links, mobile layout and accessibility (1.6s)
+2026-10-23T22:31:42.1987279Z   ✓   4 scripts/browser/agent-portfolio.spec.ts:23:7 › permission-aware-knowledge-search: recorded evidence, source links, mobile layout and accessibility (1.7s)
+2026-10-23T22:31:43.8423590Z   ✓   5 scripts/browser/agent-portfolio.spec.ts:23:7 › sales-call-to-crm-sync: recorded evidence, source links, mobile layout and accessibility (1.6s)
+2026-10-23T22:31:43.9778434Z   ✓   6 scripts/browser/agent-portfolio.spec.ts:47:5 › unknown agent project returns 404 rather than fabricated evidence (127ms)
+2026-10-23T22:31:44.0362235Z   ✓   7 scripts/browser/agent-portfolio.spec.ts:52:5 › sitemap lists each agent portfolio page (49ms)
+2026-10-23T22:31:49.3042789Z   ✓   8 scripts/browser/operations.spec.ts:16:5 › private workspace: complete inquiry, proposal, opt-out and review reset (5.3s)
+2026-10-23T22:31:54.1221596Z   ✓   9 scripts/browser/operations.spec.ts:61:5 › private evidence -> assessment -> outreach and approved public case study (4.8s)
+2026-10-23T22:31:54.6029397Z   ✓  10 scripts/browser/operations.spec.ts:89:5 › access controls, prevention of sending and provider cost gate (472ms)
+2026-10-23T22:32:00.9242031Z   ✓  11 scripts/browser/operations.spec.ts:114:5 › desktop and mobile accessibility, keyboard use and no internal analytics (6.3s)
+2026-10-23T22:32:01.2895844Z   ✓  12 scripts/browser/operations.spec.ts:130:5 › simulated stale SEO run preserves the last valid plan without crashing (357ms)
+2026-10-23T22:32:01.7453043Z   ✓  13 scripts/browser/website.spec.ts:7:5 › inquiry: missing-data gate, local lead and approval reset (442ms)
+2026-10-23T22:32:02.1741290Z   ✓  14 scripts/browser/website.spec.ts:26:5 › support: source citation and uncertainty handoff (418ms)
+2026-10-23T22:32:02.6429681Z   ✓  15 scripts/browser/website.spec.ts:35:5 › invoice: validation, correction, review, export and approval invalidation (458ms)
+2026-10-23T22:32:03.0351981Z   ✓  16 scripts/browser/website.spec.ts:59:5 › contact: simulated private capture success and failure without real storage writes (385ms)
+2026-10-23T22:32:37.3486893Z   ✓  17 scripts/browser/website.spec.ts:75:5 › desktop and mobile: accessible routes, no overflow, keyboard menu (34.3s)
+2026-10-23T22:32:38.3506563Z   ✓  18 scripts/browser/website.spec.ts:91:5 › portfolio distinguishes source studies from working demos and provides valid captures (994ms)
+2026-10-23T22:32:38.6809847Z   ✓  19 scripts/browser/website.spec.ts:102:5 › saved inquiry with uncertain mail shows an honest receipt instead of a submission failure (321ms)
+2026-10-23T22:32:39.0756568Z   ✓  20 scripts/browser/website.spec.ts:115:5 › BuildZn workflow pages connect authorship, running code and public implementation evidence (386ms)
+2026-10-23T22:32:39.4359924Z   ✓  21 scripts/browser/website.spec.ts:126:5 › service interest carries into an editable inquiry and optional fields stay optional (351ms)
+2026-10-23T22:32:39.8108166Z   ✓  22 scripts/browser/website.spec.ts:145:5 › unknown or repeated service parameters leave the inquiry choice empty (364ms)
+2026-10-23T22:32:39.8651387Z   22 passed (1.1m)
+
