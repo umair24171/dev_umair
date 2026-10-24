@@ -1,7 +1,8 @@
 ---
-title: "n8n webhook not working: check URL, method and workflow state"
+title: "n8n webhook fixes: URL, method and workflow state"
 excerpt: "Diagnose an n8n webhook that is not firing: check the test or production URL, HTTP method, workflow state and endpoint conflicts before changing code."
 date: "2026-10-01"
+updated: "2026-10-24"
 status: published
 reviewed: true
 intentKey: "n8n-webhook-not-working"
@@ -36,6 +37,28 @@ Resolve an endpoint conflict by assigning a distinct endpoint or retiring the co
 When an execution exists, inspect where it stopped and how the webhook response is configured. A connection problem and a downstream validation failure should not share one vague “not working” diagnosis.
 
 For a long-running task, document what the caller considers a successful acknowledgement and how it will obtain the final outcome. Avoid repeatedly sending a real transaction just because a response was delayed. Give each sample delivery an identifier and inspect what already happened before repeating it.
+
+## A safe request and observation worksheet
+
+Use a disposable workflow with no business-system writes. Copy its test URL from the node and start the test listener. The command below is illustrative and was not executed against a live n8n instance for this article; it does not claim a particular n8n version or response body. Replace the reserved `.invalid` hostname only with your own disposable test endpoint.
+
+```sh
+curl --max-time 15 --include --request POST \
+  --header 'Content-Type: application/json' \
+  --data '{"requestId":"sample-webhook-001","message":"diagnostic sample"}' \
+  'https://your-disposable-host.invalid/webhook-test/your-test-path'
+```
+
+| Observation to record | What to compare next |
+| --- | --- |
+| No connection or timeout | Host, network, proxy and caller timeout; check for an execution before retrying |
+| HTTP response but no intended execution | Exact method and URL, current listener/publication state and endpoint owner |
+| Execution exists but fails | Failing node, redacted input and execution error |
+| Caller reports failure after execution starts | Response mode and timing; inspect completed work before another delivery |
+
+Capture the actual status line and a redacted response body beside the execution identifier. Leave them blank until observed; no universal “success response” is invented here. For the same sample ID, record the expected target record and the actual outcome separately. Changing `POST` to `GET` is a different request, not a test of the same configured trigger.
+
+The [Webhook node documentation](https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.webhook/) was checked again on October 24, 2026 for the test/production URL distinction. The worksheet does not replace a reproduction on your installed version.
 
 ## Verify the repair
 

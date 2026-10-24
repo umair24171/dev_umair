@@ -1,7 +1,8 @@
 ---
-title: "AI blog writer repeating topics? Compare search intent before drafting"
+title: "AI blog writer duplicate topics: compare intent"
 excerpt: "Keep an AI blog writer from creating competing articles for one search intent. Compare published pages and pending drafts before preparing new content."
 date: "2026-10-01"
+updated: "2026-10-24"
 status: published
 reviewed: true
 intentKey: "seo-topic-cannibalization"
@@ -13,11 +14,13 @@ When a blog writer keeps producing the same article with a new title, compare th
 
 BuildZn’s [editorial agent](/work/seo-content-agent) now makes that decision before model generation. Its offline regression checks exercise the intent decision and pending-draft history. This explains the implemented workflow, not a claim about achieved rankings, traffic or leads.
 
+Source review: the implementation and tests below are pinned to revision `4d9887564b5abfb04a4a57bf9448c33a528822b4`, inspected on October 24, 2026. This records the reviewed snapshot, not the original article’s review revision.
+
 ## Identify what the history actually contains
 
 An agent can read a remote topic registry that has stopped being updated. That makes a prompt such as “avoid recent topics” ineffective even when the model follows it. Inspect the registry’s source, update path and failure behavior before changing the writing prompt.
 
-The BuildZn pipeline reads local reviewed public articles and accepted draft manifests. Quarantined legacy posts do not establish current expertise or public coverage. A corrupt draft manifest stops planning; the pipeline does not silently replace it with an empty history. These behaviors are visible in the [pipeline implementation](https://github.com/umair24171/dev_umair/blob/main/agent/lib/pipeline.js).
+The BuildZn pipeline reads local reviewed public articles and accepted draft manifests. Quarantined legacy posts do not establish current expertise or public coverage. A corrupt draft manifest stops planning; the pipeline does not silently replace it with an empty history. These behaviors are visible in the [pipeline implementation](https://github.com/umair24171/dev_umair/blob/4d9887564b5abfb04a4a57bf9448c33a528822b4/agent/lib/pipeline.js).
 
 ## Store an intent key alongside the title
 
@@ -31,7 +34,7 @@ BuildZn uses explicit intent keys, keyword normalization and title similarity as
 
 A draft can be generated several times before any version reaches the public blog. Published-only history misses that duplication.
 
-The plan marks an existing public intent as an update. An accepted unpublished draft is marked for review rather than generating another version automatically. Failed candidates remain available for diagnosis but do not claim the intent as completed work. The [regression tests](https://github.com/umair24171/dev_umair/blob/main/agent/tests/pipeline.test.js) cover that difference.
+The plan marks an existing public intent as an update. An accepted unpublished draft is marked for review rather than generating another version automatically. Failed candidates remain available for diagnosis but do not claim the intent as completed work. The [regression tests](https://github.com/umair24171/dev_umair/blob/4d9887564b5abfb04a4a57bf9448c33a528822b4/agent/tests/pipeline.test.js) cover that difference.
 
 ## Verify the behavior with a small history
 

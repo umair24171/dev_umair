@@ -5,6 +5,12 @@ function safeUrl(href: string) {
 }
 export function renderMarkdown(content: string) {
   const renderer = new Renderer();
+  renderer.code = function(token) {
+    return Renderer.prototype.code.call(this, token).replace('<pre>', '<pre tabindex="0" role="region" aria-label="Code example">');
+  };
+  renderer.table = function(token) {
+    return '<div class="table-scroll" tabindex="0" role="region" aria-label="Data table">' + Renderer.prototype.table.call(this, token) + '</div>';
+  };
   renderer.html = ({ text }) => escape(text);
   renderer.link = function({ href, title, tokens }) {
     const label = this.parser.parseInline(tokens); const url = safeUrl(href);

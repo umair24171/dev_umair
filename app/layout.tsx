@@ -18,8 +18,8 @@ export const metadata: Metadata = {
   verification: { google: 'DxcZGz0CMVtxATKxT5aQgk2uyzSkSqBXDcKhbV7lu6U' },
 };
 const schema = { '@context': 'https://schema.org', '@graph': [
-  { '@type': 'Organization', '@id': 'https://www.buildzn.com/#organization', name: 'BuildZn', url: 'https://www.buildzn.com', logo: 'https://www.buildzn.com/logo.svg', founder: { '@id': 'https://www.buildzn.com/#person' }, sameAs: ['https://www.linkedin.com/in/umair-bilal-/', 'https://github.com/umair24171'] },
-  { '@type': 'Person', '@id': 'https://www.buildzn.com/#person', name: 'Umair Bilal', jobTitle: 'AI agents and automation developer', url: 'https://www.buildzn.com/about', worksFor: { '@id': 'https://www.buildzn.com/#organization' }, knowsAbout: ['AI agents', 'Business automation', 'API integrations', 'Workflow evaluation'] },
+  { '@type': 'Organization', '@id': 'https://www.buildzn.com/#organization', name: 'BuildZn', url: 'https://www.buildzn.com', logo: 'https://www.buildzn.com/logo.svg', founder: { '@id': 'https://www.buildzn.com/#person' } },
+  { '@type': 'Person', '@id': 'https://www.buildzn.com/#person', name: 'Umair Bilal', jobTitle: 'AI agents and automation developer', sameAs: ['https://www.linkedin.com/in/umair-bilal-/', 'https://github.com/umair24171'], url: 'https://www.buildzn.com/about', worksFor: { '@id': 'https://www.buildzn.com/#organization' }, knowsAbout: ['AI agents', 'Business automation', 'API integrations', 'Workflow evaluation'] },
   { '@type': 'WebSite', '@id': 'https://www.buildzn.com/#website', name: 'BuildZn', url: 'https://www.buildzn.com', publisher: { '@id': 'https://www.buildzn.com/#organization' } },
 ] };
 export default function RootLayout({ children }: Readonly<{children: React.ReactNode}>) {

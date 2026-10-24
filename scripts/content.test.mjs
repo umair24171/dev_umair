@@ -49,3 +49,10 @@ test('portfolio evidence separates interactive sample flows from documented buil
   if(project.kind==='build') {assert.ok(project.sources.length>0,project.slug);assert.ok(project.capture.includes('not a screenshot of a connected production account'),project.slug);for(const source of project.sources) assert.match(source.url,/^https:\/\/github.com\/umair24171\//);}
  }
 });
+
+test('wide article examples remain keyboard scrollable without losing table semantics', () => {
+  const html = renderMarkdown('```sh\ncurl --request POST https://example.invalid/sample\n```\n\n| Cost | Amount |\n| --- | --- |\n| Example | $2 |');
+  assert.match(html, /<pre tabindex="0" role="region" aria-label="Code example">/);
+  assert.match(html, /<div class="table-scroll" tabindex="0" role="region" aria-label="Data table"><table>/);
+  assert.match(html, /<th>Cost<\/th>/);
+});

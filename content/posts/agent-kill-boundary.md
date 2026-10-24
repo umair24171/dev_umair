@@ -1,7 +1,8 @@
 ---
-title: "AI agent kill switch: verify what the control actually stops"
+title: "AI agent kill switch: verify the ingestion boundary"
 excerpt: "See what an AI agent kill switch blocks in an ingestion API, why external actions can continue, and how to verify the control boundary."
 date: "2026-10-01"
+updated: "2026-10-24"
 status: published
 reviewed: true
 intentKey: "agent-kill-boundary"

@@ -83,3 +83,17 @@
 .contact-extras summary { color:var(--foreground); font-size:13px; min-height:28px; }
 .contact-extras > div { padding-top:20px; }
 .contact-extras select:last-child { margin-bottom:0; }
+
+/* Visible navigation corresponding to the page-level breadcrumb graph. */
+.page-context { padding-top: 24px; }
+.page-context ol { display: flex; flex-wrap: wrap; gap: 6px 12px; list-style: none; padding: 0; margin: 0; font-size: 14px; }
+.page-context li { min-width: 0; overflow-wrap: anywhere; }
+.page-context li + li::before { content: "/"; margin-right: 12px; opacity: .5; }
+.page-context a { display: inline-block; padding: 6px 0; text-decoration: underline; text-underline-offset: 3px; }
+.page-context span { display: inline-block; padding: 6px 0; }
+.prose-custom .table-scroll { max-width: 100%; overflow-x: auto; margin: 24px 0; }
+.prose-custom table { display: table; overflow: visible; max-width: none; border-collapse: collapse; width: 100%; margin: 0; }
+.prose-custom th, .prose-custom td { padding: 12px; border: 1px solid #454b5b; text-align: left; min-width: 140px; }
+.case-sources h2 { margin: 32px 0 16px; }
+.case-sources h3 { margin: 24px 0 8px; }
+.case-sources p { margin-bottom: 16px; }
