@@ -2,7 +2,7 @@ BuildZn portfolio CI evidence, synthetic tests only.
 Source: https://github.com/umair24171/dev_umair/actions/runs/40032813329/attempts/2
 Job: 120685749686
 Code: b4ac333101c4d7bba1537e95c2ce5a61ced4f4ef
-Selected unmodified timestamped output lines from the successful job (package-install noise omitted).
+Selected unmodified timestamped output lines from the successful job (package-install noise omitted). Image revision evidence follows below.
 
 2026-10-23T22:21:48.0490711Z # tests 10
 2026-10-23T22:21:48.0491193Z # pass 10
@@ -47,3 +47,29 @@ Selected unmodified timestamped output lines from the successful job (package-in
 2026-10-23T22:32:39.8108166Z   ✓  22 scripts/browser/website.spec.ts:145:5 › unknown or repeated service parameters leave the inquiry choice empty (364ms)
 2026-10-23T22:32:39.8651387Z   22 passed (1.1m)
 
+Image revision verification
+Source: https://github.com/umair24171/dev_umair/actions/runs/40080222356
+Code: 4c3f8639902b8f0640d53c60900b131c2c493d22
+Nine actual browser captures were produced in the agent-portfolio-visuals Actions artifact (7-day retention).
+
+2026-10-24T09:00:43.1965964Z # tests 10
+2026-10-24T09:00:43.1966490Z # pass 10
+2026-10-24T09:00:43.1966815Z # fail 0
+2026-10-24T09:00:43.1967458Z # skipped 0
+2026-10-24T09:00:46.4673834Z # tests 15
+2026-10-24T09:00:46.4674323Z # pass 15
+2026-10-24T09:00:46.4674553Z # fail 0
+2026-10-24T09:00:46.4675042Z # skipped 0
+2026-10-24T09:00:48.2867284Z # tests 23
+2026-10-24T09:00:48.2867807Z # pass 23
+2026-10-24T09:00:48.2868053Z # fail 0
+2026-10-24T09:00:48.2868733Z # skipped 0
+2026-10-24T09:01:26.9327586Z Passed: 26 public routes, retired articles, permanent redirects, sitemap, article API, search, real screenshots and social images.
+2026-10-24T09:01:29.5262637Z   ✓   1 scripts/browser/agent-portfolio.spec.ts:10:5 › agent portfolio section links all four source-backed projects without changing existing filters (1.1s)
+2026-10-24T09:01:31.6328751Z   ✓   2 scripts/browser/agent-portfolio.spec.ts:32:7 › invoice-to-cash-agent: recorded evidence, source links, mobile layout and accessibility (2.1s)
+2026-10-24T09:01:33.7048390Z   ✓   3 scripts/browser/agent-portfolio.spec.ts:32:7 › support-resolution-agent: recorded evidence, source links, mobile layout and accessibility (2.1s)
+2026-10-24T09:01:35.8450172Z   ✓   4 scripts/browser/agent-portfolio.spec.ts:32:7 › permission-aware-knowledge-search: recorded evidence, source links, mobile layout and accessibility (2.1s)
+2026-10-24T09:01:37.9235443Z   ✓   5 scripts/browser/agent-portfolio.spec.ts:32:7 › sales-call-to-crm-sync: recorded evidence, source links, mobile layout and accessibility (2.1s)
+2026-10-24T09:01:38.0691358Z   ✓   6 scripts/browser/agent-portfolio.spec.ts:64:5 › unknown agent project returns 404 rather than fabricated evidence (137ms)
+2026-10-24T09:01:38.1271043Z   ✓   7 scripts/browser/agent-portfolio.spec.ts:69:5 › sitemap lists each agent portfolio page (49ms)
+2026-10-24T09:02:35.2084313Z   22 passed (1.1m)
