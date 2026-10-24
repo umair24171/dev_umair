@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
+import { mkdir } from 'node:fs/promises';
 import projects from '../../content/business/agent-projects.json';
 
 test.beforeEach(async ({ page }) => {
@@ -12,11 +13,19 @@ test('agent portfolio section links all four source-backed projects without chan
   await expect(section.locator('.agent-portfolio-card')).toHaveCount(4);
   await expect(section).toContainText('synthetic data');
   for (const project of projects) {
+    const cover = section.getByRole('img', { name: project.image.alt, exact: true });
+    await cover.scrollIntoViewIfNeeded();
+    await expect(cover).toBeVisible();
+    await expect.poll(() => cover.evaluate(img => (img as HTMLImageElement).naturalWidth)).toBeGreaterThan(0);
+  }
+  for (const project of projects) {
     await expect(section.getByRole('link', { name: project.name, exact: true })).toHaveAttribute('href', `/work/agents/${project.slug}`);
   }
   await page.getByRole('link', { name: 'BuildZn-built workflows', exact: true }).click();
   await expect(page.locator('.project-card')).toHaveCount(3);
   await expect(page.locator('.agent-portfolio-card')).toHaveCount(4);
+  await mkdir('test-results/agent-portfolio-visuals', { recursive: true });
+  await section.screenshot({ path: 'test-results/agent-portfolio-visuals/project-cards.png', animations: 'disabled' });
 });
 
 for (const project of projects) {
@@ -25,6 +34,10 @@ for (const project of projects) {
       await page.setViewportSize({ width, height: 900 });
       const response = await page.goto(`/work/agents/${project.slug}`);
       expect(response?.status()).toBe(200);
+      const cover = page.getByRole('img', { name: project.image.alt, exact: true });
+      await expect(cover).toBeVisible();
+      await expect.poll(() => cover.evaluate(img => (img as HTMLImageElement).naturalWidth)).toBeGreaterThan(0);
+      await expect(page.getByText('Project illustration. All project data is synthetic.', { exact: true })).toBeVisible();
       await expect(page.getByRole('heading', { level: 1, name: project.name, exact: true })).toBeVisible();
       for (const heading of ['Problem', 'Architecture', 'Tradeoffs', 'Test results', 'Recorded demo output', 'Known limits']) {
         await expect(page.getByRole('heading', { name: heading, exact: true })).toBeVisible();
@@ -40,6 +53,10 @@ for (const project of projects) {
       expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBeTruthy();
       const scan = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa']).analyze();
       expect(scan.violations, `${width}px ${project.slug}: ${JSON.stringify(scan.violations.map(v => v.id))}`).toEqual([]);
+      if (width === 1440 || width === 390) {
+        await mkdir('test-results/agent-portfolio-visuals', { recursive: true });
+        await page.screenshot({ path: `test-results/agent-portfolio-visuals/${project.slug}-${width}.png`, fullPage: true, animations: 'disabled' });
+      }
     }
   });
 }

@@ -4,8 +4,10 @@ Done: all four public synthetic projects, native PostgreSQL/pgvector checks, emb
 
 Website verification: hosted run 40032813329 attempt 2 passed lint, types, 48 unit tests, production build, smoke checks covering 26 public routes and 22 browser tests. The new pages passed 1440/390/320px and WCAG checks. Actual evidence is in docs/agent-portfolio-ci-output.txt. The first attempt hit an unchanged pre-existing authentication-tag test flake, disclosed in REPORT.md and assumptions.
 
-Running: no application or deployment. Final documentation is committed with the measured evidence; its automatically triggered CI can be inspected on PR #24.
+Approval and imagery: the user approved PR #24 on 24 October 2026 and requested generated project images. Four original covers are included on the cards, detail pages and social previews, with alternative text, dimensions and explicit illustration captions. Browser checks verify successful image decoding. Prompts and provenance: docs/PORTFOLIO-IMAGERY.md.
 
-Next: user review of https://github.com/umair24171/dev_umair/pull/24. Do not merge or deploy without explicit approval. Main remains unchanged; the branch-only deployment guard was present before the first push.
+Deployment: vercel.json blocks automatic deployment for the portfolio branch and main. Merge is authorized; hosting publication remains prohibited. GitHub PR metadata and checks are the authoritative current merge/validation status: https://github.com/umair24171/dev_umair/pull/24.
 
-Assumptions: docs/PORTFOLIO-ASSUMPTIONS.md. Complete results, source links, resolved blockers and known limits: REPORT.md.
+Next: finish the imagery revision checks and merge the approved PR. No additional application implementation is pending. Any future hosting deployment requires separate authorization.
+
+Assumptions: docs/PORTFOLIO-ASSUMPTIONS.md. Full results and source links: REPORT.md.

@@ -1,6 +1,6 @@
 # REPORT.md: BuildZn agent portfolio
 
-All four synthetic CLI projects are built, public and verified in GitHub Actions. No hosting deployment or production merge was performed.
+All four synthetic CLI projects are built, public and verified in GitHub Actions. No hosting deployment was performed.
 
 ## Projects and measured results
 
@@ -22,13 +22,13 @@ Each native run also passed dependency installation, formatting, TypeScript, the
 - Permission aware search: mock Drive/Slack/Notion ACL connectors, live group/link revocation, recursive folder inheritance, stale-content exclusion and access filtering inside SQL before pgvector ranking. Native and embedded leak suites each checked 1,728 synthetic user/query pairs with zero unauthorized chunks. A five-query lexical quality eval measured recall@3=1.0 and MRR=1.0.
 - Sales call to CRM: evidence/quote validation, speaker/contact preservation, conflict merging across long transcripts, documented timezone interpretation, call deduplication, follow-up drafts, exact before/after diffs, approval hashes, version checks and atomic idempotent mock writes/audit. A 4,000-line synthetic transcript was included in tests.
 
-Every repo contains a plan with written edge cases, assumptions, README architecture/tradeoffs/limits, PROGRESS.md, REPORT.md, synthetic fixtures, tests, mock/Claude provider interfaces, Docker Compose and CI. There is no project UI, so no fabricated UI screenshots or live demo links were added.
+Every repo contains a plan with written edge cases, assumptions, README architecture/tradeoffs/limits, PROGRESS.md, REPORT.md, synthetic fixtures, tests, mock/Claude provider interfaces, Docker Compose and CI. There is no project UI, so no fabricated UI screenshots or live demo links were added. At the user's request, four original generated conceptual illustrations now appear on the portfolio cards, detail pages and social previews. These are explicitly labelled project illustrations and are separate from the real test evidence. Prompts and asset provenance are in docs/PORTFOLIO-IMAGERY.md.
 
 ## Portfolio changes in this PR
 
 Added a separate section to /work and four generated pages under /work/agents/. Each page shows the problem, architecture, tradeoffs, native/embedded test results, known limits, actual Docker stdout and links to public source and its verified CI run. Added sitemap entries and seven browser checks for source/evidence links, original filter behavior, 1440/390/320px layout, WCAG checks, unknown-route 404 and sitemap coverage. Existing portfolio records, browser demos, homepage, services and contact flow were preserved.
 
-A minimal vercel.json disables Git-triggered deployment only for portfolio/agent-showcases. This is necessary to honor the no-deployment instruction while opening a PR on an existing Vercel-linked repo. The first remote branch commit already includes the guard. It leaves main deployment behavior unchanged. The branch must not be merged without user approval.
+The first remote branch commit disabled Git-triggered deployment for portfolio/agent-showcases. After user approval on 24 October 2026, the same guard was extended to main so the authorized merge does not publish the site. Automatic deployment from main remains disabled until separately authorized. Other branches retain their existing behavior.
 
 ## Website validation
 
@@ -48,4 +48,8 @@ The first website attempt failed in an unchanged operations test: replacing a ra
 
 Final project documentation commits also passed their complete native/embedded/scan/Docker workflows: [invoice](https://github.com/umair24171/invoice-to-cash-agent/actions/runs/40033958271), [support](https://github.com/umair24171/support-resolution-agent/actions/runs/40034000594), [search](https://github.com/umair24171/permission-aware-knowledge-search/actions/runs/40034055390) and [CRM](https://github.com/umair24171/sales-call-to-crm-sync/actions/runs/40034112125).
 
-[BuildZn PR #24](https://github.com/umair24171/dev_umair/pull/24) is open and unmerged. All requested implementation and demo work is complete. No project blockers remain. Production integration and live Claude quality remain documented limits; the existing site test flake remains a known issue. No deployment was created and main remains unchanged. Review and explicit user approval are required before a future merge.
+The user approved [BuildZn PR #24](https://github.com/umair24171/dev_umair/pull/24) on 24 October 2026 and requested generated portfolio imagery. Merge is authorized after the image changes pass checks; publication remains prohibited. GitHub PR metadata records the current merge status. No project blockers remain. Production integration and live Claude quality remain documented limits; the existing site test flake remains a known issue. No hosting deployment was created.
+
+## Approved imagery revision
+
+Four original 1672 × 941 illustrations use a consistent charcoal, mint, ivory and brass visual style. WebP delivery assets total 353,936 bytes. Card images load lazily; detail covers are prioritized with explicit dimensions, descriptive alternative text and responsive sizing. Social metadata uses each project's own image. The browser suite now verifies that all four card images and each detail cover actually decode, and continues checking 1440/390/320px layouts and accessibility. Latest revision results are available in the PR checks; earlier recorded counts above remain tied to their actual successful runs.

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { agentProjects, agentProjectPath } from '@/lib/agent-portfolio';
 import { site } from '@/lib/site';
@@ -8,7 +9,7 @@ import styles from '@/app/components/AgentPortfolio.module.css';
 export function generateStaticParams() { return agentProjects.map(({slug}) => ({slug})); }
 export async function generateMetadata({params}:{params:Promise<{slug:string}>}):Promise<Metadata> {
   const {slug}=await params;const project=agentProjects.find(p=>p.slug===slug);
-  return project?{title:project.name,description:project.summary,alternates:{canonical:site.url+agentProjectPath(slug)}}:{};
+  return project?{title:project.name,description:project.summary,openGraph:{images:[{url:project.image.src,width:project.image.width,height:project.image.height,alt:project.image.alt}]},twitter:{card:'summary_large_image',images:[project.image.src]},alternates:{canonical:site.url+agentProjectPath(slug)}}:{};
 }
 export default async function AgentProjectPage({params}:{params:Promise<{slug:string}>}) {
   const {slug}=await params;const project=agentProjects.find(p=>p.slug===slug);if(!project)notFound();
@@ -21,6 +22,7 @@ export default async function AgentProjectPage({params}:{params:Promise<{slug:st
       <div className={styles.evidence}><a className="button button-small" href={project.repoUrl} target="_blank" rel="noopener noreferrer">View GitHub source ↗</a><a className="button button-small button-secondary" href={project.ciUrl} target="_blank" rel="noopener noreferrer">Inspect passing CI ↗</a></div>
     </section>
     <div className={`shell ${styles.content}`}>
+      <figure className={styles.heroFigure}><Image className={styles.coverImage} src={project.image.src} alt={project.image.alt} width={project.image.width} height={project.image.height} sizes="(max-width: 800px) 100vw, 1200px" priority /><figcaption>Project illustration. All project data is synthetic.</figcaption></figure>
       <div className={styles.proof}><p><strong>Synthetic data.</strong> This is a portfolio implementation with recorded command line runs. No customer data, paid model calls or hosting deployment were used.</p><p>Tests and demos use a deterministic mock provider. A Claude adapter sits behind the same interface; its live quality remains unmeasured.</p></div>
       <section aria-labelledby="agent-problem"><h2 id="agent-problem">Problem</h2><p>{project.problem}</p></section>
       <section aria-labelledby="agent-architecture"><h2 id="agent-architecture">Architecture</h2><ol className={styles.architecture}>{project.architecture.map(([title,detail],index)=><li key={title}><h3>{index+1}. {title}</h3><p>{detail}</p></li>)}</ol></section>

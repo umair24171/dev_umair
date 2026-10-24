@@ -48,7 +48,13 @@
       "PostgreSQL",
       "Docker Compose",
       "GitHub Actions"
-    ]
+    ],
+    "image": {
+      "src": "/images/agent-portfolio/invoice-to-cash-agent.webp",
+      "alt": "Conceptual illustration of invoices matched with payment tokens and a reminder hourglass",
+      "width": 1672,
+      "height": 941
+    }
   },
   {
     "slug": "support-resolution-agent",
@@ -99,7 +105,13 @@
       "PostgreSQL",
       "Docker Compose",
       "GitHub Actions"
-    ]
+    ],
+    "image": {
+      "src": "/images/agent-portfolio/support-resolution-agent.webp",
+      "alt": "Conceptual illustration of guarded support tools, a parcel and conversation bubbles",
+      "width": 1672,
+      "height": 941
+    }
   },
   {
     "slug": "permission-aware-knowledge-search",
@@ -151,7 +163,13 @@
       "pgvector",
       "Docker Compose",
       "GitHub Actions"
-    ]
+    ],
+    "image": {
+      "src": "/images/agent-portfolio/permission-aware-knowledge-search.webp",
+      "alt": "Conceptual illustration of searchable documents separated by a permission lock",
+      "width": 1672,
+      "height": 941
+    }
   },
   {
     "slug": "sales-call-to-crm-sync",
@@ -202,6 +220,12 @@
       "PostgreSQL",
       "Docker Compose",
       "GitHub Actions"
-    ]
+    ],
+    "image": {
+      "src": "/images/agent-portfolio/sales-call-to-crm-sync.webp",
+      "alt": "Conceptual illustration of a call transcript becoming reviewed CRM records",
+      "width": 1672,
+      "height": 941
+    }
   }
 ]
