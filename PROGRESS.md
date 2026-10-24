@@ -6,10 +6,10 @@ Website verification: hosted run 40032813329 attempt 2 passed lint, types, 48 un
 
 Approval and imagery: the user approved PR #24 on 24 October 2026 and requested generated project images. Four original covers are included on the cards, detail pages and social previews, with alternative text, dimensions and explicit illustration captions. Browser checks verify successful image decoding. Prompts and provenance: docs/PORTFOLIO-IMAGERY.md.
 
-Deployment: vercel.json blocks automatic deployment for the portfolio branch and main. The user-approved image revision passed run 40080222356, and PR #24 was merged as 4bb18b31914540d22604391dda2bee78e5754ce0. Hosting publication remains prohibited. GitHub PR metadata and checks: https://github.com/umair24171/dev_umair/pull/24.
+Deployment: after approving PR #24, the user explicitly requested production deployment and approved Vercel team access on 24 October 2026. BuildZn is live at https://www.buildzn.com/work. Vercel deployment dpl_GqBWfAKvic9JH5VmsYRDU4S5cMKh is READY and serves tested commit 231a0f16dcde3e32a48985b216fe61eaec62fa54. All four project pages and generated image assets were verified publicly. See docs/DEPLOYMENT.md.
 
-Running: no application or hosting deployment. Final report commits have automatically triggered CI; their results are visible on GitHub.
+Running: the BuildZn production website on Vercel. No agent worker or project demo service was deployed. Automatic Git deployments remain disabled; this was an explicitly authorized manual production release.
 
-Next: no implementation work pending. Any future hosting deployment requires separate authorization.
+Next: no implementation work pending. Future code releases remain manual unless automatic deployment is separately enabled. The four CLI projects retain their documented synthetic-data and production limits.
 
 Assumptions: docs/PORTFOLIO-ASSUMPTIONS.md. Full results and source links: REPORT.md.

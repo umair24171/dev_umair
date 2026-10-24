@@ -1,5 +1,7 @@
 # REPORT.md: BuildZn agent portfolio
 
+Production release update, 24 October 2026: the user subsequently instructed “Deploy it” and approved Vercel team access. The BuildZn website is now live at https://www.buildzn.com/work with all four generated-image portfolio pages. Deployment dpl_GqBWfAKvic9JH5VmsYRDU4S5cMKh serves verified commit 231a0f16dcde3e32a48985b216fe61eaec62fa54. Ten anonymous public GET checks passed, including all four pages, all four exact image assets, the portfolio index and sitemap. Browser verification also confirmed all four optimized card images decode. See docs/DEPLOYMENT.md. Earlier no-hosting statements below describe the initial handoff before this explicit publication authorization. The four CLI projects themselves remain unhosted.
+
 All four synthetic CLI projects are built, public and verified in GitHub Actions. No hosting deployment was performed.
 
 ## Projects and measured results
