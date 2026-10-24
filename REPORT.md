@@ -55,3 +55,7 @@ The user approved [BuildZn PR #24](https://github.com/umair24171/dev_umair/pull/
 ## Approved imagery revision
 
 Four original 1672 × 941 illustrations use a consistent charcoal, mint, ivory and brass visual style. WebP delivery assets total 353,936 bytes. Card images load lazily; detail covers are prioritized with explicit dimensions, descriptive alternative text and responsive sizing. Social metadata uses each project's own image. The browser suite now verifies that all four card images and each detail cover actually decode, and continues checking 1440/390/320px layouts and accessibility. The [image revision CI passed](https://github.com/umair24171/dev_umair/actions/runs/40080222356): lint, types, 48 unit tests, build, smoke checks and all 22 browser tests, including actual image decoding and 1440/390/320px accessibility/layout checks. Nine actual browser screenshots were inspected from its temporary Actions artifact. Selected actual output is appended to docs/agent-portfolio-ci-output.txt. Earlier measurements above remain tied to their recorded successful runs.
+
+## Portfolio label revision
+
+At the user's request, the repeated “Synthetic data · CLI project” badge was removed from all four cards and the equivalent shared page eyebrow was replaced with “BUILDZN / WORK”. The unused badge style was removed. This changes portfolio presentation; test results and recorded output remain as measured.

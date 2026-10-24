@@ -13,3 +13,5 @@ Running: the BuildZn production website on Vercel. No agent worker or project de
 Next: no implementation work pending. Future code releases remain manual unless automatic deployment is separately enabled. The four CLI projects retain their documented synthetic-data and production limits.
 
 Assumptions: docs/PORTFOLIO-ASSUMPTIONS.md. Full results and source links: REPORT.md.
+
+Portfolio label update: the user requested removal of the “Synthetic data · CLI project” label everywhere. Removed it from all four cards and replaced the shared detail-page eyebrow with “BUILDZN / WORK”. Existing recorded fixture evidence and implementation limits remain documented. The update is being checked and released through the same production project.

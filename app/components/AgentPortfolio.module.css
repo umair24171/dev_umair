@@ -3,7 +3,6 @@
 .card { min-width:0; border:1px solid var(--line); border-radius:14px; padding:0; overflow:hidden; background:var(--panel); }
 .card h3 { margin-bottom:16px; }
 .card p { color:var(--muted); }
-.card .label { color:var(--accent); font-size:12px; margin-bottom:18px; }
 .card .result { color:var(--foreground); font-size:13px; margin-block:24px; }
 .content { min-width:0; padding-bottom:80px; }
 .content section { margin-bottom:52px; }

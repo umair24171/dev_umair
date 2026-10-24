@@ -16,7 +16,7 @@ export default async function AgentProjectPage({params}:{params:Promise<{slug:st
   return <main id="main-content">
     <section className="shell page-hero">
       <Link href="/work#agent-projects-title" className="breadcrumb">← All work</Link>
-      <p className="eyebrow">BUILDZN / SYNTHETIC DATA / CLI PROJECT</p>
+      <p className="eyebrow">BUILDZN / WORK</p>
       <h1>{project.name}</h1><p className={styles.intro}>{project.summary}</p>
       <div className="tags">{project.stack.map(tag=><span key={tag}>{tag}</span>)}</div>
       <div className={styles.evidence}><a className="button button-small" href={project.repoUrl} target="_blank" rel="noopener noreferrer">View GitHub source ↗</a><a className="button button-small button-secondary" href={project.ciUrl} target="_blank" rel="noopener noreferrer">Inspect passing CI ↗</a></div>

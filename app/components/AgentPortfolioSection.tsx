@@ -11,7 +11,7 @@ export default function AgentPortfolioSection() {
     <div className={styles.grid}>
       {agentProjects.map(project => <article key={project.slug} className={`${styles.card} agent-portfolio-card`}>
         <Link href={agentProjectPath(project.slug)} className={styles.cardImageLink} aria-label={`View ${project.name}`}><Image className={styles.coverImage} src={project.image.src} alt={project.image.alt} width={project.image.width} height={project.image.height} sizes="(max-width: 600px) 100vw, 50vw" /></Link>
-        <div className={styles.cardBody}><p className={styles.label}>Synthetic data · CLI project</p>
+        <div className={styles.cardBody}>
         <h3><Link href={agentProjectPath(project.slug)}>{project.name}</Link></h3>
         <p>{project.summary}</p>
         <p className={styles.result}>{project.distinct} distinct test cases covered across native and embedded runs</p>
