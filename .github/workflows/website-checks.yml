@@ -31,3 +31,10 @@ jobs:
           exit 1
       - run: npm run test:smoke
       - run: npm run test:browser
+      - name: Save portfolio visual checks
+        uses: actions/upload-artifact@v4
+        with:
+          name: agent-portfolio-visuals
+          path: test-results/agent-portfolio-visuals/
+          if-no-files-found: error
+          retention-days: 7

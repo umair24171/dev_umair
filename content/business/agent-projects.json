@@ -1,0 +1,231 @@
+[
+  {
+    "slug": "invoice-to-cash-agent",
+    "name": "Invoice to cash agent",
+    "summary": "Match synthetic invoices and bank lines, retain exceptions, and prepare reminders that require approval.",
+    "problem": "Partial payments, duplicate bank lines and missing references make an invoice balance hard to trust. A reminder also needs to survive worker restarts without being delivered twice.",
+    "architecture": [
+      [
+        "Import and reconcile",
+        "PostgreSQL stores invoices, bank lines and allocations. Integer minor units preserve balances; ambiguous references go to review."
+      ],
+      [
+        "Persist the workflow",
+        "Day-14 reminder jobs and completed steps remain in the database. A polling worker resumes pending work after restart."
+      ],
+      [
+        "Prepare and review",
+        "A mock or Claude provider drafts text. Customer history adds an escalation record. A trusted operator approves the current balance and draft."
+      ],
+      [
+        "Dispatch atomically",
+        "A transactional demonstration mailbox shares its commit with the delivery checkpoint. Retries cannot create another mailbox entry."
+      ]
+    ],
+    "tradeoffs": [
+      "Reconciliation locks all invoices in a stable order. This is easy to inspect and test, but limits throughput.",
+      "The transactional mailbox proves local delivery idempotency. A real email transport would need its own durable idempotency contract."
+    ],
+    "limits": [
+      "No bank integration, currency conversion, public authentication or real email delivery.",
+      "The Claude adapter is implemented but live model quality was not measured.",
+      "Approval uses a trusted local operator identity. This is a CLI showcase."
+    ],
+    "evaluation": "Both native process-kill tests passed: reconciliation and reminder delivery rolled back and resumed without duplicate delivery.",
+    "distinct": 39,
+    "nativePassed": 38,
+    "nativeSkipped": 1,
+    "embeddedPassed": 37,
+    "embeddedSkipped": 2,
+    "runId": 40029159866,
+    "codeCommit": "d3e973044a42f6f374a0f7a7882b49a0b5b1f09b",
+    "demoOutput": "All data synthetic. Transport: transactional demo mailbox.\nInvoice 10000 USD minor units. Partial payment 4000. Remaining: 6000\nDry run: dry-run\nApproved delivery: delivered\nRetry: delivered\nMailbox records: 1\nPersisted steps: [\n  { job: 'reminder:demo-invoice', name: 'delivered' },\n  { job: 'reminder:demo-invoice', name: 'drafted' },\n  { job: 'reminder:demo-invoice', name: 'escalated' }\n]",
+    "repoUrl": "https://github.com/umair24171/invoice-to-cash-agent",
+    "ciUrl": "https://github.com/umair24171/invoice-to-cash-agent/actions/runs/40029159866",
+    "stack": [
+      "TypeScript",
+      "Node.js",
+      "PostgreSQL",
+      "Docker Compose",
+      "GitHub Actions"
+    ],
+    "image": {
+      "src": "/images/agent-portfolio/invoice-to-cash-agent.webp",
+      "alt": "Conceptual illustration of invoices matched with payment tokens and a reminder hourglass",
+      "width": 1672,
+      "height": 941
+    }
+  },
+  {
+    "slug": "support-resolution-agent",
+    "name": "Support resolution agent",
+    "summary": "Resolve synthetic store tickets with guarded refund, address-change and reschedule tools.",
+    "problem": "A helpful reply does not resolve a ticket when the store record still needs an action. Tool execution must check ownership, policy and limits, and recover safely when a response is lost.",
+    "architecture": [
+      [
+        "Propose an intent",
+        "A mock or Claude provider proposes a typed action from untrusted ticket text. It cannot choose the authenticated principal or grant permission."
+      ],
+      [
+        "Enforce store guards",
+        "The PostgreSQL-backed mock store checks the ticket owner, order state, return window, refund cap and exact action shape."
+      ],
+      [
+        "Commit once",
+        "The store mutation, idempotency ledger and success audit share one transaction. A lost response can be retried without repeating the action."
+      ],
+      [
+        "Escalate and replay",
+        "Ambiguity and denied or failed actions are audited and escalated. A replay harness compares ticket outcomes and store state with independent fixture labels."
+      ]
+    ],
+    "tradeoffs": [
+      "Only one automatic refund is allowed per order. A follow-up partial refund goes to a person.",
+      "The store API is an in-process boundary with persistent idempotency, rather than a real retailer integration."
+    ],
+    "limits": [
+      "The replay contains 16 policy templates with 10 synthetic identities each. It is a regression fixture set.",
+      "Replay results use the deterministic mock provider, not Claude. They do not establish production resolution rates.",
+      "Caller identity is trusted local context; no public identity server is included."
+    ],
+    "evaluation": "Synthetic replay: 160 tickets, 50 resolved (31.25%), 110 escalated (68.75%), and zero wrong-action, state or label mismatches.",
+    "distinct": 35,
+    "nativePassed": 35,
+    "nativeSkipped": 0,
+    "embeddedPassed": 35,
+    "embeddedSkipped": 0,
+    "runId": 40030071043,
+    "codeCommit": "2abd2161c5795c56bc7717fe126fa65054c8b47b",
+    "demoOutput": "All data synthetic. No real store or money.\nGuarded tool result: {\n  status: 'resolved',\n  action: { orderId: 'synthetic-demo-order', kind: 'refund', amount: 1000 }\n}\nIdempotent replay: {\n  action: { kind: 'refund', amount: 1000, orderId: 'synthetic-demo-order' },\n  status: 'resolved'\n}\nOrder state: [ { id: 'synthetic-demo-order', refunded: 1000 } ]\nAudit: [\n  {\n    ticket: 'synthetic-demo-ticket',\n    event: 'action',\n    detail: '{\"orderId\":\"synthetic-demo-order\",\"kind\":\"refund\",\"amount\":1000}'\n  }\n]",
+    "repoUrl": "https://github.com/umair24171/support-resolution-agent",
+    "ciUrl": "https://github.com/umair24171/support-resolution-agent/actions/runs/40030071043",
+    "stack": [
+      "TypeScript",
+      "Node.js",
+      "PostgreSQL",
+      "Docker Compose",
+      "GitHub Actions"
+    ],
+    "image": {
+      "src": "/images/agent-portfolio/support-resolution-agent.webp",
+      "alt": "Conceptual illustration of guarded support tools, a parcel and conversation bubbles",
+      "width": 1672,
+      "height": 941
+    }
+  },
+  {
+    "slug": "permission-aware-knowledge-search",
+    "name": "Permission aware knowledge search",
+    "summary": "Apply current source permissions inside the pgvector query before returning document chunks.",
+    "problem": "A search result can disclose restricted content even if its source link is hidden later. Retrieval needs to enforce source access before ranking and before a model receives context.",
+    "architecture": [
+      [
+        "Normalize mock sources",
+        "Drive, Slack and Notion-style connectors store source nodes, folder relationships, user/group grants and revocable link capabilities."
+      ],
+      [
+        "Separate content and access",
+        "Versioned content chunks have local hash embeddings. Source ACLs and group membership remain live metadata, separate from the index."
+      ],
+      [
+        "Filter inside SQL",
+        "A recursive ancestry and ACL predicate runs inside PostgreSQL before pgvector ranking and LIMIT. Revoked, deleted and stale content is excluded."
+      ],
+      [
+        "Answer from permitted chunks",
+        "Only retrieved chunks reach the answer provider. A user with no accessible evidence gets an empty result without a model invocation."
+      ]
+    ],
+    "tradeoffs": [
+      "The query predicate is the authorization boundary. This is not RLS protection against callers with direct database credentials.",
+      "64-dimensional hash vectors are a small lexical baseline with collisions, not production semantic embeddings."
+    ],
+    "limits": [
+      "Mock source-access changes are synchronous. Real connector event delays and permission semantics are outside this implementation.",
+      "Revocation cannot retract context already sent to a model.",
+      "The quality evaluation has five synthetic topical queries. Live Claude answer quality remains unmeasured."
+    ],
+    "evaluation": "Leak suite: 1,728 synthetic user/query pairs across access changes, zero unauthorized chunks. Five-query retrieval evaluation: recall@3 1.0 and MRR 1.0.",
+    "distinct": 24,
+    "nativePassed": 24,
+    "nativeSkipped": 0,
+    "embeddedPassed": 24,
+    "embeddedSkipped": 0,
+    "runId": 40030755414,
+    "codeCommit": "88b632a9606d4042c304839780e8179cc747d726",
+    "demoOutput": "All documents, users and ACLs are synthetic.\nBob before revoke: [ 'deploy', 'leave-policy' ]\nBob after revoke: [ 'leave-policy' ]\nOutsider restricted prompt: { text: 'No accessible evidence.', chunks: [] }\nCarol refund evidence: {\n  text: '[refund-policy] Refund policy: delivered orders can receive refunds within thirty days, maximum fifty dollars.',\n  chunks: [\n    {\n      id: 'refund-policy:0',\n      node: 'refund-policy',\n      body: 'Refund policy: delivered orders can receive refunds within thirty days, maximum fifty dollars.',\n      distance: 0.6077677297236319\n    }\n  ]\n}",
+    "repoUrl": "https://github.com/umair24171/permission-aware-knowledge-search",
+    "ciUrl": "https://github.com/umair24171/permission-aware-knowledge-search/actions/runs/40030755414",
+    "stack": [
+      "TypeScript",
+      "Node.js",
+      "PostgreSQL",
+      "pgvector",
+      "Docker Compose",
+      "GitHub Actions"
+    ],
+    "image": {
+      "src": "/images/agent-portfolio/permission-aware-knowledge-search.webp",
+      "alt": "Conceptual illustration of searchable documents separated by a permission lock",
+      "width": 1672,
+      "height": 941
+    }
+  },
+  {
+    "slug": "sales-call-to-crm-sync",
+    "name": "Sales call to CRM sync",
+    "summary": "Turn synthetic transcripts into grounded CRM diffs and follow-up drafts, with approval required for every write.",
+    "problem": "Calls contain multiple speakers, missing facts and contradictory budgets or dates. A CRM update needs traceable evidence and review of the exact change to an existing record.",
+    "architecture": [
+      [
+        "Extract with provenance",
+        "A mock or Claude provider proposes supported fields with verbatim quotes and speaker labels. Field-specific checks reject unsupported evidence."
+      ],
+      [
+        "Merge all chunks",
+        "Long transcripts are processed in chunks. Overlap is merged by source statement, while separate conflicting statements remain flagged."
+      ],
+      [
+        "Show the exact diff",
+        "PostgreSQL stores the before/after proposal, evidence, ambiguity flags and base CRM version. Missing fields preserve existing values."
+      ],
+      [
+        "Approve and apply",
+        "The trusted operator approves a canonical diff hash. An optimistic version check, CRM write and audit commit atomically; repeated calls or applies reuse checkpoints."
+      ]
+    ],
+    "tradeoffs": [
+      "Grounding deliberately uses a limited English/Urdu phrase set. Unsupported language or values require review.",
+      "Next week means the next Monday in the call timezone and is flagged as an interpretation."
+    ],
+    "limits": [
+      "The CRM is a PostgreSQL-backed mock, with no real CRM writes or follow-up messages.",
+      "Speaker labels must already be present; there is no audio transcription or diarization.",
+      "Transcripts are limited to one million UTF-16 code units. Live Claude quality is unmeasured."
+    ],
+    "evaluation": "Tests cover separate speakers, shared-company contacts, distant conflicts in a 4,000-line transcript, stale approvals, lost work and repeated applies.",
+    "distinct": 30,
+    "nativePassed": 30,
+    "nativeSkipped": 0,
+    "embeddedPassed": 30,
+    "embeddedSkipped": 0,
+    "runId": 40031451224,
+    "codeCommit": "cc1bc499c73958e810218b9baee00d2c6fd3f8e0",
+    "demoOutput": "All data synthetic. No external CRM writes or messages.\nReview diff: {\n  \"contacts\": {\n    \"after\": [\n      \"Amina\",\n      \"Bilal\"\n    ],\n    \"before\": []\n  },\n  \"nextStep\": {\n    \"after\": \"send proposal next week\",\n    \"before\": null\n  },\n  \"budgetMinor\": {\n    \"after\": 1000000,\n    \"before\": 500000\n  },\n  \"nextStepDate\": {\n    \"after\": \"2026-01-26\",\n    \"before\": null\n  }\n}\nFlags: [ 'crm-contradiction:budgetMinor', 'vague-next-week:2026-01-26' ]\nFollow-up draft: Synthetic follow-up draft. Proposed next step: send proposal next week. Review flags: crm-contradiction:budgetMinor, vague-next-week:2026-01-26.\nBefore approval CRM version: 1\nDry run: dry-run\nExplicitly approved apply: applied\nRetry: already-applied\nAudit records: 1",
+    "repoUrl": "https://github.com/umair24171/sales-call-to-crm-sync",
+    "ciUrl": "https://github.com/umair24171/sales-call-to-crm-sync/actions/runs/40031451224",
+    "stack": [
+      "TypeScript",
+      "Node.js",
+      "PostgreSQL",
+      "Docker Compose",
+      "GitHub Actions"
+    ],
+    "image": {
+      "src": "/images/agent-portfolio/sales-call-to-crm-sync.webp",
+      "alt": "Conceptual illustration of a call transcript becoming reviewed CRM records",
+      "width": 1672,
+      "height": 941
+    }
+  }
+]
