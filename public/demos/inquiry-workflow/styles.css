@@ -6,3 +6,31 @@
 
 html.interactive #screen{width:100%;height:auto;overflow:visible}html.interactive .film-heading,html.interactive .film-footer,html.interactive #cursor,html.interactive #click-ring{display:none!important}html.interactive .app{position:relative;inset:auto;width:100%;border:0;border-radius:0}html.interactive .workspace{height:calc(100vh - 270px);min-height:430px}html.interactive .view{width:100%}html.interactive #camera{padding-bottom:30px}
 @media(max-width:600px){html.interactive .app-heading{height:88px;padding:16px 20px}html.interactive .app-heading h2{font-size:24px}html.interactive .app-heading p{font-size:17px}html.interactive .tabs{padding:0 8px}html.interactive .tabs button{height:50px;font-size:16px}html.interactive .workspace{padding:20px 18px;height:calc(100vh - 208px);min-height:380px}html.interactive .section-label{font-size:15px;letter-spacing:1px;margin-bottom:22px}html.interactive label{font-size:17px}html.interactive input,html.interactive select,html.interactive textarea{font-size:18px;min-height:48px;padding:10px 12px}html.interactive input,html.interactive select{height:50px;margin-bottom:17px}html.interactive textarea{height:100px}html.interactive .primary{font-size:19px;min-height:51px;padding:14px}html.interactive .field-context{font-size:15px;margin-bottom:18px}html.interactive .app-footer{padding:18px}html.interactive .app-footer p{font-size:15px}html.interactive .view h3{font-size:25px}html.interactive .subline,html.interactive .checks p{font-size:20px}html.interactive .checks span{font-size:16px}html.interactive .reply-copy,html.interactive .draft-card>p.reply-copy{font-size:19px}html.interactive .draft-card{padding:18px}html.interactive .draft-heading h4{font-size:22px}html.interactive .draft-state,html.interactive .status-badge{font-size:16px}html.interactive .approval-note{font-size:17px!important}html.interactive th{font-size:15px}html.interactive td,html.interactive .table-status{font-size:16px}html.interactive .timestamp time{font-size:17px}html.interactive .notification-card{padding:17px}html.interactive .notification-card h3{font-size:25px!important}html.interactive .notification-card p,html.interactive .notification-card time{font-size:17px}html.interactive .enquiry-card h4{font-size:18px}html.interactive .enquiry-card p{font-size:19px}html.interactive .draft-card textarea{font-size:18px;height:220px;min-height:220px}html.interactive .draft-card>p.timestamp-line{font-size:16px}html.interactive .error{font-size:17px}}
+
+/* Compact review cards keep the customer name and full reply in one held view. */
+#owner-reply-card{padding:20px 22px;margin-top:20px}
+#owner-reply-card #owner-reply-customer{font-size:32px!important;margin:0 0 8px!important;line-height:1.2!important}
+#owner-reply-card .timestamp-line{font-size:25px;line-height:1.3;margin:0 0 14px}
+#owner-reply-card .draft-heading{margin-bottom:14px;gap:10px}
+#owner-reply-card .draft-heading h4{font-size:30px}
+#owner-reply-card .draft-state{font-size:24px;padding:6px 9px}
+#owner-reply-card textarea{height:300px;min-height:300px;font-size:30px;line-height:1.4;padding:12px;margin-bottom:16px}
+#owner-reply-card .primary{min-height:70px;font-size:31px;padding:16px}
+#owner-reply-card .approval-note{font-size:25px!important;margin-top:15px!important}
+#view-tracker .draft-card{padding:20px;margin-top:20px}
+#view-tracker .draft-heading{margin-bottom:14px}
+#view-tracker .reply-copy{font-size:30px;line-height:1.4}
+.end-card #end-from{font-size:38px;margin:44px 0 22px}
+.end-card #end-invitation{font-size:38px;line-height:1.4;margin:0 0 24px}
+.end-card #end-contact{font-size:38px;margin:0}
+@media(max-width:600px){html.interactive #owner-reply-card #owner-reply-customer{font-size:23px!important}html.interactive #owner-reply-card .timestamp-line{font-size:16px}html.interactive #owner-reply-card .draft-heading h4{font-size:21px}html.interactive #owner-reply-card .draft-state{font-size:15px}html.interactive #owner-reply-card textarea{font-size:18px;height:230px;min-height:230px}html.interactive #owner-reply-card .primary{font-size:19px}html.interactive #owner-reply-card .approval-note{font-size:16px!important}html.interactive #view-tracker .reply-copy{font-size:19px}}
+
+#prepared-card{padding:20px 22px}#prepared-card h3{font-size:32px!important;margin-bottom:16px}#prepared-card .draft-heading{margin-bottom:16px}#prepared-card .reply-copy{font-size:30px;line-height:1.4}#prepared-card .approval-note{font-size:25px!important;margin-top:18px!important}#tracker-content .timestamp{padding:16px 8px}#view-tracker td{padding:16px 8px;font-size:28px}#view-tracker th{padding:12px 8px;font-size:25px}
+
+/* Leave a clear scroll gap around held cards in the portrait recording. */
+html:not(.interactive) #prepared-card{margin-top:240px}
+html:not(.interactive) #owner-enquiry-card{margin-top:240px;margin-bottom:240px}
+html:not(.interactive) #owner-reply-card{margin-top:0}
+#owner-enquiry-customer{font-size:32px!important;margin:0 0 18px!important;line-height:1.25!important}
+html:not(.interactive) #camera{padding-bottom:440px}
+@media(max-width:600px){html.interactive #prepared-card h3,html.interactive #owner-enquiry-customer{font-size:23px!important}html.interactive #prepared-card .reply-copy{font-size:19px}html.interactive #prepared-card .approval-note{font-size:17px!important}}

@@ -1,38 +1,155 @@
 {
- "fictional": true,
- "companyName": "SparkleClean Ltd.", "headerSubtitle": "Fictional cleaning company",
- "contactRole": "Practice manager", "contactOrganisation": "Example Dental Practice", "city": "Manchester",
- "contactEmail": "buildznofficial@gmail.com", "locale": "en-GB", "timeZone": "Europe/London",
- "formHeading": "Office cleaning enquiry",
- "fieldLabels": {"name":"Name","service":"Service","date":"Start date","message":"Message"},
- "placeholders": {"name":"Your name","service":"Choose a service","date":"dd/mm/yyyy","message":"Tell us what you need"},
- "buttons": {"submit":"Request a quote","validate":"Check details","draft":"Prepare reply draft","log":"Log the enquiry","approve":"Approve reply"},
- "services": [
-  {"id":"weekly-evening","name":"Weekly evening office cleaning","followUpQuestion":"What is the total floor area in square metres?"},
-  {"id":"office-deep-clean","name":"Office deep cleaning","followUpQuestion":"What is the total floor area in square metres?"}
- ],
- "sampleName":"Alex Taylor", "sampleService":"weekly-evening", "sampleDate":"02/11/2026",
- "sampleMessage":"Weekly evening office cleaning across 3 floors.",
- "acknowledgementTemplate":"Thanks, {firstName}. We’ve received your enquiry about {service}. A person will review the details.",
- "replyTemplate":"Thanks, {firstName}. You requested: {message}\nStart date: {date}.\n\n{followUpQuestion}",
- "captions": {
-  "main": [
-   {"start":0,"end":4,"text":"A quote request arrives while you're on site."},
-   {"start":4,"end":8,"text":"The customer sends the form."},
-   {"start":8,"end":12,"text":"Details are checked."},
-   {"start":12,"end":16,"text":"A reply is drafted with your usual question."},
-   {"start":16,"end":20,"text":"The lead is logged."},
-   {"start":20,"end":24,"text":"You see the enquiry and the reply."},
-   {"start":24,"end":28,"text":"Nothing sends until you approve."},
-   {"start":28,"end":32,"text":"Approved by you."},
-   {"start":32,"end":35,"text":"Every enquiry logged. Every reply approved by you."}
+  "fictional": true,
+  "companyName": "SparkleClean Ltd.",
+  "headerSubtitle": "Fictional cleaning company",
+  "contactRole": "Practice manager",
+  "contactOrganisation": "Example Dental Practice",
+  "city": "Manchester",
+  "contactEmail": "buildznofficial@gmail.com",
+  "locale": "en-GB",
+  "timeZone": "Europe/London",
+  "formHeading": "Office cleaning enquiry",
+  "fieldLabels": {
+    "name": "Name",
+    "service": "Service",
+    "date": "Start date",
+    "message": "Message"
+  },
+  "placeholders": {
+    "name": "Your name",
+    "service": "Choose a service",
+    "date": "dd/mm/yyyy",
+    "message": "Tell us what you need"
+  },
+  "buttons": {
+    "submit": "Request a quote",
+    "validate": "Check details",
+    "draft": "Prepare reply draft",
+    "log": "Log the enquiry",
+    "approve": "Approve reply"
+  },
+  "services": [
+    {
+      "id": "weekly-evening",
+      "name": "Weekly evening office cleaning",
+      "followUpQuestion": "To prepare your quote, could you tell us the total floor area in square metres?",
+      "replyName": "weekly evening office cleaning"
+    },
+    {
+      "id": "office-deep-clean",
+      "name": "Office deep cleaning",
+      "followUpQuestion": "To prepare your quote, could you tell us the total floor area in square metres?",
+      "replyName": "office deep cleaning"
+    }
   ],
-  "short": [
-   {"start":0,"end":4,"text":"A quote request arrives while you're on site."},
-   {"start":4,"end":8,"text":"Details checked. Lead logged."},
-   {"start":8,"end":12,"text":"Reply drafted. You approve."},
-   {"start":12,"end":15,"text":"Every enquiry logged. Every reply approved by you."}
-  ]
- },
- "ui": {"nav":["Website","Agent","Tracker","Owner"],"draft":"Draft, not sent","approvalRequired":"Human approval required","approved":"Approved, not sent","waiting":"Awaiting review","logged":"Logged","nameProvided":"Name provided","serviceSelected":"Service selected","dateValid":"Date valid","messageProvided":"Message provided","replyHeading":"Reply draft","ownerHeading":"Enquiry for review","trackerHeading":"Lead tracker","incomingHeading":"Incoming enquiry","enquiryLabel":"Enquiry","approvedStatus":"Approved","footer":"Every customer reply needs your approval"}
+  "sampleName": "Alex Taylor",
+  "sampleService": "weekly-evening",
+  "sampleDate": "02/11/2026",
+  "sampleMessage": "Three floors, mostly open plan. We would need someone from 6pm, Monday to Friday. Please send a quote.",
+  "acknowledgementTemplate": "Thanks, {firstName}. We’ve received your enquiry about {service}. A person will review the details.",
+  "replyTemplate": "Thanks, {firstName}. We have your request for {serviceReplyName} starting {dateLong}. {followUpQuestion}",
+  "captions": {
+    "main": [
+      {
+        "start": 0,
+        "end": 4,
+        "text": "A quote request arrives while you're on site."
+      },
+      {
+        "start": 4,
+        "end": 8,
+        "text": "The customer sends the form."
+      },
+      {
+        "start": 8,
+        "end": 11.5,
+        "text": "Details are checked."
+      },
+      {
+        "start": 11.5,
+        "end": 15,
+        "text": "A reply is drafted with your usual question."
+      },
+      {
+        "start": 15,
+        "end": 18.5,
+        "text": "The lead is logged."
+      },
+      {
+        "start": 18.5,
+        "end": 22.5,
+        "text": "You see the enquiry and the reply."
+      },
+      {
+        "start": 22.5,
+        "end": 26.5,
+        "text": "Nothing sends until you approve."
+      },
+      {
+        "start": 26.5,
+        "end": 31,
+        "text": "Approved by you."
+      },
+      {
+        "start": 31,
+        "end": 35,
+        "text": "Every enquiry logged. Every reply approved by you."
+      }
+    ],
+    "short": [
+      {
+        "start": 0,
+        "end": 4,
+        "text": "A quote request arrives while you're on site."
+      },
+      {
+        "start": 4,
+        "end": 6,
+        "text": "Details checked."
+      },
+      {
+        "start": 6,
+        "end": 8,
+        "text": "Lead logged."
+      },
+      {
+        "start": 8,
+        "end": 11.5,
+        "text": "Reply drafted. You approve."
+      },
+      {
+        "start": 11.5,
+        "end": 15,
+        "text": "Every enquiry logged. Every reply approved by you."
+      }
+    ]
+  },
+  "ui": {
+    "nav": [
+      "Website",
+      "Agent",
+      "Tracker",
+      "Owner"
+    ],
+    "draft": "Draft, not sent",
+    "approvalRequired": "Human approval required",
+    "approved": "Approved, not sent",
+    "waiting": "Awaiting review",
+    "logged": "Logged",
+    "nameProvided": "Name provided",
+    "serviceSelected": "Service selected",
+    "dateValid": "Date valid",
+    "messageProvided": "Message provided",
+    "replyHeading": "Reply draft",
+    "ownerHeading": "Enquiry for review",
+    "trackerHeading": "Lead tracker",
+    "incomingHeading": "Incoming enquiry",
+    "enquiryLabel": "Enquiry",
+    "approvedStatus": "Approved",
+    "footer": "Every customer reply needs your approval"
+  },
+  "endCard": {
+    "fromLine": "From Umair at BuildZn",
+    "invitation": "Want a version for your business? Reply with the word yes."
+  }
 }
