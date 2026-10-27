@@ -7,13 +7,13 @@
     "imageWidth": 1120,
     "imageHeight": 1054,
     "imageAlt": "BuildZn inquiry implementation with sample requirements, a lead record and a response awaiting human approval",
-    "summary": "We built an intake workflow that structures requirements, creates a lead record and prepares an editable response for human approval. Run it with sample data.",
-    "scope": "Browser-based intake parsing, required-field checks, lead record creation and draft approval. Records stay in memory; nothing is sent to a CRM or inbox.",
+    "summary": "We built a configurable enquiry form with required-field checks, a service-specific reply template, a timestamped local lead tracker and Owner approval.",
+    "scope": "Browser form validation, configured acknowledgement and reply templates, in-memory lead creation, Europe/London timestamps and Owner review. No CRM, email or external notification connection.",
     "features": [
-      "Choose or edit a fictional inquiry",
-      "Extract contact, tools, request and missing information",
-      "Create a sample lead and review the response",
-      "Approve locally; reset without sending anything"
+      "Enter a fictional commercial enquiry using the configured services",
+      "Check required fields and prepare the configured reply draft",
+      "Log the lead and open Owner review before approval",
+      "Approve the reply, or edit it to clear approval"
     ],
     "decision": "An inquiry is not authorization to promise a price or start work. Missing information is flagged and the response remains a draft until reviewed.",
     "stack": [
@@ -21,27 +21,27 @@
       "Validation",
       "Human approval"
     ],
-    "limitations": "The public preview uses simple local parsing and a recorded response template, not a live language model. It cannot reliably interpret arbitrary prose. Production work would require model evaluation, authenticated CRM access, duplicate handling and consent rules.",
+    "limitations": "This fictional sample browser workflow uses configured templates and standard service questions. It does not detect missing floor area or call an AI model. Records are cleared on reload. No customer message or external notification is sent.",
     "kind": "demo",
     "label": "Built by BuildZn · Sample data",
     "sources": [
       {
         "title": "Workflow logic built by BuildZn",
-        "url": "https://github.com/umair24171/dev_umair/blob/main/lib/demos.ts"
+        "url": "https://github.com/umair24171/dev_umair/blob/preview/sparkleclean-commercial-20261027/public/demos/inquiry-workflow/app.js"
       },
       {
         "title": "Interactive interface and review gates",
-        "url": "https://github.com/umair24171/dev_umair/blob/main/app/components/DemoWorkbench.tsx"
+        "url": "https://github.com/umair24171/dev_umair/blob/preview/sparkleclean-commercial-20261027/app/components/CommercialInquiryDemo.tsx"
       },
       {
         "title": "Executable workflow and export checks",
-        "url": "https://github.com/umair24171/dev_umair/blob/main/scripts/browser/website.spec.ts"
+        "url": "https://github.com/umair24171/dev_umair/blob/preview/sparkleclean-commercial-20261027/scripts/browser/website.spec.ts"
       }
     ],
     "problem": "Service inquiries arrive with inconsistent details. Re-entering contacts and requirements makes it easy to miss the information needed before replying.",
-    "capture": "Actual screenshot of BuildZn’s running implementation, using fictional data.",
+    "capture": "Earlier capture of the original browser workflow. The separate preview branch contains the updated form and Owner review implementation.",
     "proof": "BuildZn-designed and implemented browser workflow. Run the code here, inspect the implementation and compare the actual outputs. Automated tests exercise successful inputs, review gates and failure cases.",
-    "sourceFile": "lib/demos.ts + app/components/DemoWorkbench.tsx",
+    "sourceFile": "public/demos/inquiry-workflow/app.js + config.json",
     "sourceExcerpt": "",
     "capturedAt": "October 6, 2026"
   },

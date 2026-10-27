@@ -1,0 +1,35 @@
+<!doctype html><html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Enquiry workflow preview</title><link rel="stylesheet" href="styles.css"></head><body>
+<main id="screen">
+ <header class="film-heading"><p class="eyebrow">BUILDZN</p><h1 id="beat-title"></h1></header>
+ <section class="app" id="app" aria-label="Fictional enquiry workflow">
+  <header class="app-heading"><div><h2 id="company-name"></h2><p id="header-subtitle"></p></div></header>
+  <nav class="tabs" aria-label="Workflow views"><button id="tab-form" data-view="form" class="active"></button><button id="tab-process" data-view="process"></button><button id="tab-tracker" data-view="tracker"></button><button id="tab-owner" data-view="owner"></button></nav>
+  <div class="workspace" id="workspace"><div id="camera">
+   <section id="view-form" class="view"><div id="form-heading" class="section-label"></div><form id="enquiry-form" novalidate autocomplete="off">
+    <label id="name-label" for="name"></label><input id="name" name="name" maxlength="80"><p id="contact-context" class="field-context"></p>
+    <label id="service-label" for="service"></label><select id="service" name="service"></select>
+    <label id="date-label" for="date"></label><input id="date" name="date" type="text" inputmode="numeric" maxlength="10" autocomplete="off">
+    <label id="message-label" for="message"></label><textarea id="message" name="message" rows="2" maxlength="1000"></textarea>
+    <p id="form-error" class="error" role="alert"></p><button class="primary full" type="submit" id="submit-enquiry"></button>
+   </form></section>
+   <section id="view-process" class="view" hidden><div id="incoming-heading" class="section-label"></div><h3 id="incoming-name"></h3><p id="incoming-service" class="subline"></p>
+    <div id="validation-block"><div class="checks" id="checks"></div><button id="validate" class="primary full"></button><button id="draft-ack" class="primary full" hidden></button></div>
+    <div id="draft-block" hidden><article class="draft-card"><div class="draft-heading"><h4 id="process-reply-heading"></h4><span class="draft-state draft-chip"></span></div><p id="prepared-reply" class="reply-copy"></p><p class="approval-note approval-chip"></p></article><button id="log-lead" class="primary full"></button></div>
+    <p id="process-error" class="error" role="alert"></p>
+   </section>
+   <section id="view-tracker" class="view" hidden><div id="tracker-heading" class="section-label"></div><div id="tracker-empty" class="empty">No enquiry logged yet.</div><div id="tracker-content" hidden>
+    <table><thead><tr><th data-field="name"></th><th data-field="service"></th><th>Status</th></tr></thead><tbody><tr><td id="lead-name"></td><td id="lead-service"></td><td><span id="lead-status" class="table-status"></span></td></tr></tbody></table>
+    <div class="timestamp"><time id="lead-time"></time></div><article class="draft-card"><div class="draft-heading"><h4>Reply for review</h4><span class="draft-state" id="tracker-reply-state"></span></div><p id="tracker-reply" class="reply-copy"></p></article>
+   </div></section>
+   <section id="view-owner" class="view" hidden><div id="owner-heading" class="section-label"></div><div id="owner-empty" class="empty">No enquiry logged yet.</div><div id="owner-content" hidden>
+    <article class="notification-card"><div><h3 id="owner-name"></h3><p id="owner-contact"></p><span id="owner-lead-status" class="status-badge"></span><time id="owner-time"></time></div></article>
+    <article id="owner-enquiry-card" class="enquiry-card"><h4 id="owner-enquiry-label"></h4><p id="owner-service"></p><p id="owner-message"></p><p id="owner-date"></p></article>
+    <article id="owner-reply-card" class="draft-card"><p id="owner-log-summary" class="timestamp-line"></p><div class="draft-heading"><h4 id="owner-reply-heading"></h4><span class="draft-state" id="owner-reply-state"></span></div><label class="sr-only" for="reply-text">Reply draft</label><textarea id="reply-text" rows="6"></textarea><button class="primary full" id="approve"></button><p class="approval-note" id="reply-note"></p></article>
+   </div></section>
+  </div></div>
+  <footer class="app-footer"><span class="blue-dot"></span><p id="approval-footer"></p></footer>
+ </section>
+ <section class="end-card" id="end-card" hidden><h2>Every enquiry logged.<br>Every reply approved<br>by you.</h2><p id="end-contact"></p></section>
+ <footer class="film-footer"><img src="assets/buildzn.svg" alt="BuildZn"></footer>
+ <div id="cursor" aria-hidden="true"><svg width="36" height="44" viewBox="0 0 36 44"><path d="M3 2L31 26L18 27L12 40L3 2Z" fill="#f3f7ff" stroke="#15223c" stroke-width="2.5"/></svg></div><div id="click-ring" aria-hidden="true"></div>
+</main><script src="app.js"></script></body></html>

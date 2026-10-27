@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 60" fill="none" role="img" aria-labelledby="title">
+  <title id="title">BuildZn</title>
+  <rect x="2" y="4" width="52" height="52" rx="14" fill="#a4edcc"/>
+  <g stroke="#102820" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M14 17V43H21C30 43 30 30 21 30H14M14 17H21C29 17 29 30 21 30"/>
+    <path d="M33 17H44L33 43H44"/>
+  </g>
+  <g stroke="#f4f3f8" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M75 15V45H86C100 45 100 30 86 30H75M75 15H85C98 15 98 30 85 30"/>
+    <path d="M106 24V36C106 48 123 48 123 36V24M123 36V45"/>
+    <path d="M134 25V45M145 15V45"/>
+    <path d="M174 15V45M174 35C174 21 154 21 154 35C154 49 174 49 174 35"/>
+  </g>
+  <circle cx="134" cy="16.5" r="2.5" fill="#f4f3f8"/>
+  <g stroke="#a4edcc" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M187 15H207L187 45H207"/>
+    <path d="M219 45V25M219 33C219 21 236 21 236 33V45"/>
+  </g>
+</svg>

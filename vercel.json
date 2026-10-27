@@ -3,7 +3,8 @@
   "git": {
     "deploymentEnabled": {
       "portfolio/agent-showcases": false,
-      "main": false
+      "main": false,
+      "preview/sparkleclean-commercial-20261027": false
     }
   }
 }

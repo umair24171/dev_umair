@@ -4,24 +4,33 @@ import AxeBuilder from '@axe-core/playwright';
 test.beforeEach(async ({ page }) => {
   await page.addInitScript(() => localStorage.setItem('buildzn-analytics-consent', 'declined'));
 });
-test('inquiry: missing-data gate, local lead and approval reset', async ({ page }) => {
+test('inquiry: configurable service template, pending Owner review and approval reset', async ({ page }) => {
   await page.goto('/work/inquiry-assistant');
-  await page.getByRole('button', { name: 'Missing information', exact: true }).click();
-  await page.getByRole('button', { name: 'Structure requirements' }).click();
-  await expect(page.getByText('Needs clarification:', { exact: false })).toBeVisible();
-  await expect(page.getByRole('button', { name: 'Create sample lead', exact: true })).toHaveCount(0);
-  await page.getByRole('button', { name: 'Complete inquiry', exact: true }).click();
-  await page.getByRole('button', { name: 'Structure requirements' }).click();
-  await page.getByRole('button', { name: 'Create sample lead', exact: true }).click();
-  await expect(page.locator('.demo-workbench pre')).toContainText('needs-human-review');
-  await expect(page.locator('.demo-workbench pre')).toContainText('alex@example.com');
-  await page.getByRole('button', { name: 'Approve draft locally', exact: true }).click();
-  await expect(page.locator('.demo-workbench pre')).toContainText('approved-locally');
-  await expect(page.getByText('Approved in this preview. Nothing has been sent.')).toBeVisible();
-  await page.getByLabel('Template draft · editable').fill('A revised sample draft');
-  await expect(page.getByRole('button', { name: 'Approve draft locally', exact: true })).toBeEnabled();
-  await page.getByLabel('Inquiry text', { exact: true }).fill('Name: Sample');
-  await expect(page.locator('.demo-workbench').getByText('Lead DEMO-001', { exact: false })).toHaveCount(0);
+  const demo = page.frameLocator('iframe[title="SparkleClean fictional enquiry and Owner approval demo"]');
+  await demo.getByRole('button', { name: 'Request a quote', exact: true }).click();
+  await expect(demo.locator('#form-error')).toContainText('Name is required.');
+  await demo.getByLabel('Name', { exact: true }).fill('Alex Taylor');
+  await demo.getByLabel('Service', { exact: true }).selectOption('weekly-evening');
+  await demo.getByLabel('Start date', { exact: true }).fill('30/02/2026');
+  await demo.getByLabel('Message', { exact: true }).fill('Weekly evening office cleaning across 3 floors.');
+  await demo.getByRole('button', { name: 'Request a quote', exact: true }).click();
+  await expect(demo.locator('#form-error')).toContainText('dd/mm/yyyy');
+  await demo.getByLabel('Start date', { exact: true }).fill('02/11/2026');
+  await demo.getByRole('button', { name: 'Request a quote', exact: true }).click();
+  await demo.getByRole('button', { name: 'Check details', exact: true }).click();
+  await demo.getByRole('button', { name: 'Prepare reply draft', exact: true }).click();
+  await expect(demo.locator('#prepared-reply')).toContainText('What is the total floor area in square metres?');
+  await demo.getByRole('button', { name: 'Log the enquiry', exact: true }).click();
+  await expect(demo.locator('#lead-status')).toHaveText('Awaiting review');
+  await expect(demo.locator('#lead-time')).toContainText('Logged');
+  await demo.getByRole('button', { name: 'Owner', exact: true }).click();
+  await expect(demo.locator('#owner-message')).toContainText('3 floors');
+  await expect(demo.locator('#owner-reply-state')).toHaveText('Draft, not sent');
+  await demo.getByRole('button', { name: 'Approve reply', exact: true }).click();
+  await expect(demo.locator('#owner-reply-state')).toHaveText('Approved, not sent');
+  await demo.getByLabel('Reply draft', { exact: true }).fill('A revised reply.');
+  await expect(demo.locator('#owner-reply-state')).toHaveText('Draft, not sent');
+  await expect(demo.getByRole('button', { name: 'Approve reply', exact: true })).toBeEnabled();
 });
 test('support: source citation and uncertainty handoff', async ({ page }) => {
   await page.goto('/work/support-assistant');
@@ -117,8 +126,8 @@ test('BuildZn workflow pages connect authorship, running code and public impleme
   await page.goto('/work/'+slug);
   await expect(page.getByRole('heading',{name:'Designed and built by BuildZn.'})).toBeVisible();
   await expect(page.getByRole('region',{name:'BuildZn-built interactive workflow'})).toBeVisible();
-  await expect(page.getByRole('link',{name:'Workflow logic built by BuildZn'})).toHaveAttribute('href','https://github.com/umair24171/dev_umair/blob/main/lib/demos.ts');
-  await expect(page.getByRole('link',{name:'Interactive interface and review gates'})).toHaveAttribute('href','https://github.com/umair24171/dev_umair/blob/main/app/components/DemoWorkbench.tsx');
+  await expect(page.getByRole('link',{name:'Workflow logic built by BuildZn'})).toHaveAttribute('href',slug==='inquiry-assistant'?'https://github.com/umair24171/dev_umair/blob/preview/sparkleclean-commercial-20261027/public/demos/inquiry-workflow/app.js':'https://github.com/umair24171/dev_umair/blob/main/lib/demos.ts');
+  await expect(page.getByRole('link',{name:'Interactive interface and review gates'})).toHaveAttribute('href',slug==='inquiry-assistant'?'https://github.com/umair24171/dev_umair/blob/preview/sparkleclean-commercial-20261027/app/components/CommercialInquiryDemo.tsx':'https://github.com/umair24171/dev_umair/blob/main/app/components/DemoWorkbench.tsx');
   await expect(page.getByRole('heading',{name:'What BuildZn can implement'})).toHaveCount(0);
  }
 });
