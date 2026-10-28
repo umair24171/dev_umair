@@ -2,7 +2,7 @@
   {
     "slug": "invoice-to-cash-agent",
     "name": "Invoice to cash agent",
-    "summary": "Match synthetic invoices and bank lines, retain exceptions, and prepare reminders that require approval.",
+    "summary": "Match invoices and bank lines, retain exceptions, and prepare reminders that require approval.",
     "problem": "Partial payments, duplicate bank lines and missing references make an invoice balance hard to trust. A reminder also needs to survive worker restarts without being delivered twice.",
     "architecture": [
       [
@@ -50,16 +50,17 @@
       "GitHub Actions"
     ],
     "image": {
-      "src": "/images/agent-portfolio/invoice-to-cash-agent.webp",
-      "alt": "Conceptual illustration of invoices matched with payment tokens and a reminder hourglass",
-      "width": 1672,
-      "height": 941
+      "src": "/images/agent-portfolio/recorded-invoice-to-cash-agent.png",
+      "alt": "Recorded CI output showing an invoice balance, approved reminder delivery and one mailbox record after retry.",
+      "width": 1600,
+      "height": 900,
+      "source": "https://github.com/umair24171/invoice-to-cash-agent/actions/runs/40029159866/job/120672787117"
     }
   },
   {
     "slug": "support-resolution-agent",
     "name": "Support resolution agent",
-    "summary": "Resolve synthetic store tickets with guarded refund, address-change and reschedule tools.",
+    "summary": "Resolve store tickets with guarded refund, address-change and reschedule tools.",
     "problem": "A helpful reply does not resolve a ticket when the store record still needs an action. Tool execution must check ownership, policy and limits, and recover safely when a response is lost.",
     "architecture": [
       [
@@ -107,10 +108,11 @@
       "GitHub Actions"
     ],
     "image": {
-      "src": "/images/agent-portfolio/support-resolution-agent.webp",
-      "alt": "Conceptual illustration of guarded support tools, a parcel and conversation bubbles",
-      "width": 1672,
-      "height": 941
+      "src": "/images/agent-portfolio/recorded-support-resolution-agent.png",
+      "alt": "Recorded CI output showing a guarded refund result, idempotent replay and the resulting audit record.",
+      "width": 1600,
+      "height": 900,
+      "source": "https://github.com/umair24171/support-resolution-agent/actions/runs/40030071043/job/120675856070"
     }
   },
   {
@@ -165,16 +167,17 @@
       "GitHub Actions"
     ],
     "image": {
-      "src": "/images/agent-portfolio/permission-aware-knowledge-search.webp",
-      "alt": "Conceptual illustration of searchable documents separated by a permission lock",
-      "width": 1672,
-      "height": 941
+      "src": "/images/agent-portfolio/recorded-permission-aware-knowledge-search.png",
+      "alt": "Recorded CI output showing access before and after revocation and an empty result for an outsider.",
+      "width": 1600,
+      "height": 900,
+      "source": "https://github.com/umair24171/permission-aware-knowledge-search/actions/runs/40030755414/job/120678126461"
     }
   },
   {
     "slug": "sales-call-to-crm-sync",
     "name": "Sales call to CRM sync",
-    "summary": "Turn synthetic transcripts into grounded CRM diffs and follow-up drafts, with approval required for every write.",
+    "summary": "Turn transcripts into grounded CRM diffs and follow-up drafts, with approval required for every write.",
     "problem": "Calls contain multiple speakers, missing facts and contradictory budgets or dates. A CRM update needs traceable evidence and review of the exact change to an existing record.",
     "architecture": [
       [
@@ -222,10 +225,11 @@
       "GitHub Actions"
     ],
     "image": {
-      "src": "/images/agent-portfolio/sales-call-to-crm-sync.webp",
-      "alt": "Conceptual illustration of a call transcript becoming reviewed CRM records",
-      "width": 1672,
-      "height": 941
+      "src": "/images/agent-portfolio/recorded-sales-call-to-crm-sync.png",
+      "alt": "Recorded CI output showing a proposed CRM diff, review flags, approval and an already-applied retry.",
+      "width": 1600,
+      "height": 900,
+      "source": "https://github.com/umair24171/sales-call-to-crm-sync/actions/runs/40031451224/job/120680419411"
     }
   }
 ]

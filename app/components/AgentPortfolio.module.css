@@ -28,7 +28,7 @@
 
 .cardBody { padding:28px; }
 .cardImageLink { display:block; background:#0b1518; border-bottom:1px solid var(--line); }
-.coverImage { display:block; width:100%; height:auto; aspect-ratio:1672/941; object-fit:cover; }
+.coverImage { display:block; width:100%; height:auto; aspect-ratio:16/9; object-fit:contain; }
 .cardImageLink:focus-visible { outline-offset:-4px; }
 .heroFigure { margin:0 0 42px; }
 .heroFigure img { border:1px solid var(--line); border-radius:14px; }

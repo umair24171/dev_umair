@@ -29,6 +29,7 @@ export type Lead = {
     id: string;
     name: string;
     email: string;
+    projectType?: string;
     company: string;
     message: string;
     tools: string;
@@ -97,6 +98,7 @@ export type State = {
     }>;
     dailyCalls: Record<string, number>;
     inquiryNotifications?: Record<string, import('./inquiry-mail').InquiryNotification>;
+    visitorReceipts?: Record<string, import('./inquiry-receipt').VisitorReceipt>;
     searchConsole?: {csv:string;range:string;importedAt:string};
     config: {
         jobsEnabled: boolean;
@@ -125,6 +127,9 @@ export function capture(s: State, data: Record<string, unknown>, actor = 'intake
         throw new OpsError('Use a valid email and a brief of at least 10 characters.');
     checkSecrets(message);
     const source = text(data.source, 'source', 80) || 'direct';
+    const projectType = text(data.projectType, 'service', 80);
+    if (projectType && !['Workflow automation', 'AI agents', 'API integrations', 'Automation repair', 'Something else'].includes(projectType))
+        throw new OpsError('Select a supported service.');
     const company = text(data.company, 'company', 160);
     const same = s.leads.find(l => l.email === email && !l.sample && data.sample !== true && l.message === message) || s.leads.find(l => l.email === email && l.message === message && l.sample === (data.sample === true));
     if (same)
@@ -135,7 +140,7 @@ export function capture(s: State, data: Record<string, unknown>, actor = 'intake
     const suppression = email ? s.suppressed[hash(email)] : undefined;
     const now = new Date().toISOString();
     const parsed = (label: string) => message.match(new RegExp(`^${label}:[ \\t]*([^\\r\\n]+)$`, 'im'))?.[1]?.trim() || '';
-    const l: Lead = { id: id(), name, email, company, message, tools: text(data.tools, 'tools', 600) || parsed('Tools'), volume: text(data.volume, 'volume', 200) || parsed('Volume'), budget: text(data.budget, 'budget', 200), timeline: text(data.timeline, 'timeline', 200), source, sourceDetail: text(data.sourceDetail, 'source detail', 500), sample: data.sample === true, stage: suppression ? 'lost' : 'inquiry', createdAt: now, updatedAt: now, missing: [], qualified: false, qualificationApproved: false, optedOut: suppression?.reason === 'opt-out', declined: suppression?.reason === 'decline', notes: '', notesApproved: false, evidence: [], drafts: [], nextAction: suppression ? 'Closed — no further contact' : 'Review requirements and missing information', dueAt: null, events: [], wonValue: null };
+    const l: Lead = { id: id(), name, email, projectType, company, message, tools: text(data.tools, 'tools', 600) || parsed('Tools'), volume: text(data.volume, 'volume', 200) || parsed('Volume'), budget: text(data.budget, 'budget', 200), timeline: text(data.timeline, 'timeline', 200), source, sourceDetail: text(data.sourceDetail, 'source detail', 500), sample: data.sample === true, stage: suppression ? 'lost' : 'inquiry', createdAt: now, updatedAt: now, missing: [], qualified: false, qualificationApproved: false, optedOut: suppression?.reason === 'opt-out', declined: suppression?.reason === 'decline', notes: '', notesApproved: false, evidence: [], drafts: [], nextAction: suppression ? 'Closed — no further contact' : 'Review requirements and missing information', dueAt: null, events: [], wonValue: null };
     qualify(l);
     s.leads.push(l);
     event(l, 'inquiry', 'Captured; no response sent');

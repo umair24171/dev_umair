@@ -2,12 +2,12 @@
   {
     "slug": "inquiry-assistant",
     "name": "Inquiry assistant",
-    "category": "Intake → review",
+    "category": "Inquiry intake and review",
     "image": "/demos/inquiry-assistant.png",
     "imageWidth": 1120,
-    "imageHeight": 1054,
-    "imageAlt": "BuildZn inquiry implementation with sample requirements, a lead record and a response awaiting human approval",
-    "summary": "We built an intake workflow that structures requirements, creates a lead record and prepares an editable response for human approval. Run it with sample data.",
+    "imageHeight": 999,
+    "imageAlt": "Inquiry workflow with an incoming request, structured fields and a reply draft for review",
+    "summary": "I built an intake workflow that structures requirements, creates a lead record and prepares an editable response for human approval. Try the workflow.",
     "scope": "Browser-based intake parsing, required-field checks, lead record creation and draft approval. Records stay in memory; nothing is sent to a CRM or inbox.",
     "features": [
       "Choose or edit a fictional inquiry",
@@ -23,7 +23,7 @@
     ],
     "limitations": "The public preview uses simple local parsing and a recorded response template, not a live language model. It cannot reliably interpret arbitrary prose. Production work would require model evaluation, authenticated CRM access, duplicate handling and consent rules.",
     "kind": "demo",
-    "label": "Built by BuildZn · Sample data",
+    "label": "Browser workflow",
     "sources": [
       {
         "title": "Workflow logic built by BuildZn",
@@ -39,21 +39,21 @@
       }
     ],
     "problem": "Service inquiries arrive with inconsistent details. Re-entering contacts and requirements makes it easy to miss the information needed before replying.",
-    "capture": "Actual screenshot of BuildZn’s running implementation, using fictional data.",
+    "capture": "The running workflow, showing its input and reviewed output.",
     "proof": "BuildZn-designed and implemented browser workflow. Run the code here, inspect the implementation and compare the actual outputs. Automated tests exercise successful inputs, review gates and failure cases.",
     "sourceFile": "lib/demos.ts + app/components/DemoWorkbench.tsx",
     "sourceExcerpt": "",
-    "capturedAt": "October 6, 2026"
+    "capturedAt": "2026-10-26"
   },
   {
     "slug": "support-assistant",
     "name": "Support assistant",
-    "category": "Knowledge → answer",
+    "category": "Support answers",
     "image": "/demos/support-assistant.png",
     "imageWidth": 1120,
-    "imageHeight": 550,
-    "imageAlt": "BuildZn support implementation showing an answer grounded in a sample knowledge base with source references",
-    "summary": "We built a source-linked support workflow that answers covered policy questions and prepares a human handoff for unsupported requests. Run it with sample data.",
+    "imageHeight": 495,
+    "imageAlt": "Support workflow with a customer question, a grounded answer and its policy source",
+    "summary": "I built a source-linked support workflow that answers covered policy questions and prepares a human handoff for unsupported requests. Try the workflow.",
     "scope": "A small fictional knowledge base, conservative local matching, recorded grounded answers and a visible human handoff.",
     "features": [
       "Read the sample knowledge base",
@@ -69,7 +69,7 @@
     ],
     "limitations": "This preview selects recorded answers using conservative phrase matching; it is not live semantic retrieval or an LLM. Handoffs are local previews and do not open tickets. Production needs approved sources, retrieval evaluation, ticket permissions and monitored escalation.",
     "kind": "demo",
-    "label": "Built by BuildZn · Sample data",
+    "label": "Browser workflow",
     "sources": [
       {
         "title": "Workflow logic built by BuildZn",
@@ -85,21 +85,21 @@
       }
     ],
     "problem": "Repeated support questions require checking the correct policy. Requests outside those policies need escalation rather than a confident unsupported reply.",
-    "capture": "Actual screenshot of BuildZn’s running implementation, using fictional data.",
+    "capture": "The running workflow, showing its input and reviewed output.",
     "proof": "BuildZn-designed and implemented browser workflow. Run the code here, inspect the implementation and compare the actual outputs. Automated tests exercise successful inputs, review gates and failure cases.",
     "sourceFile": "lib/demos.ts + app/components/DemoWorkbench.tsx",
     "sourceExcerpt": "",
-    "capturedAt": "October 6, 2026"
+    "capturedAt": "2026-10-26"
   },
   {
     "slug": "document-processing",
     "name": "Document processing",
-    "category": "Document → export",
+    "category": "Invoice review and export",
     "image": "/demos/document-processing.png",
     "imageWidth": 1120,
-    "imageHeight": 641,
-    "imageAlt": "BuildZn invoice implementation showing extracted sample fields, validation checks and a review step before export",
-    "summary": "We built a text-invoice processor with field extraction, validation, corrections, human review and working CSV/JSON downloads. Run it with sample data.",
+    "imageHeight": 564,
+    "imageAlt": "Document workflow with extracted invoice fields, validation and a reviewed export",
+    "summary": "I built a text-invoice processor with field extraction, validation, corrections, human review and working CSV/JSON downloads. Try the workflow.",
     "scope": "Text invoice parsing, required-field and arithmetic checks, editable extracted fields, explicit review and CSV/JSON export.",
     "features": [
       "Load or edit a fictional invoice",
@@ -115,7 +115,7 @@
     ],
     "limitations": "The public preview parses the shown text format locally. It does not perform OCR, verify a supplier, detect invoice fraud or post to accounting software. Production would require secure storage, OCR or model access, document evaluation and accounting approval controls.",
     "kind": "demo",
-    "label": "Built by BuildZn · Sample data",
+    "label": "Browser workflow",
     "sources": [
       {
         "title": "Workflow logic built by BuildZn",
@@ -131,16 +131,16 @@
       }
     ],
     "problem": "Copying invoice fields into a spreadsheet can hide missing data or incorrect totals. Extraction needs validation and review before export.",
-    "capture": "Actual screenshot of BuildZn’s running implementation, using fictional data.",
+    "capture": "The running workflow, showing its input and reviewed output.",
     "proof": "BuildZn-designed and implemented browser workflow. Run the code here, inspect the implementation and compare the actual outputs. Automated tests exercise successful inputs, review gates and failure cases.",
     "sourceFile": "lib/demos.ts + app/components/DemoWorkbench.tsx",
     "sourceExcerpt": "",
-    "capturedAt": "October 6, 2026"
+    "capturedAt": "2026-10-26"
   },
   {
     "slug": "nexusos-agent-operations",
     "name": "NexusOS agent operations",
-    "category": "Agents → visibility",
+    "category": "Agent operations",
     "summary": "A public backend and dashboard build for registering agents, inspecting activity and handling operational alerts.",
     "problem": "An agent can run successfully while its owner has little visibility into what it did, which tool it used or why it stopped.",
     "scope": "Source review covers Node.js / Express log ingestion, API-key authentication, MongoDB models, anomaly rules and the separate Next.js dashboard repository.",
@@ -173,12 +173,12 @@
     ],
     "proof": "Reviewed public implementation: authenticated ingestion, activity records and alert-rule evaluation.",
     "kind": "build",
-    "label": "Public build · Technical case study",
+    "label": "Public-source technical walkthrough",
     "image": "/demos/nexusos-agent-operations.png",
     "imageWidth": 1120,
     "imageHeight": 739,
     "imageAlt": "NexusOS agent operations technical walkthrough with evidence and implementation boundaries",
-    "capture": "Actual screenshot of this technical walkthrough. This explains reviewed source; it is not a screenshot of a connected production account.",
+    "capture": "The source walkthrough shown on this page.",
     "sourceFile": "src/middleware/apiKeyAuth.js",
     "sourceExcerpt": "if (agent.status === 'killed') {\n  return sendError(res, 'Agent is killed and cannot perform actions', 403, 'AGENT_KILLED');\n}\n\n// … later in the same middleware\nnext();",
     "capturedAt": "October 1, 2026"
@@ -186,7 +186,7 @@
   {
     "slug": "content-production-pipeline",
     "name": "Content production pipeline",
-    "category": "Research → channel drafts",
+    "category": "Editorial workflow",
     "summary": "A public multi-stage content system with research, ideation, channel-specific writing and Google Sheets records.",
     "problem": "Content preparation involves gathering material, choosing an angle, adapting the format and keeping a record of what was produced.",
     "scope": "Source review covers the separate researcher, ideator, scripter and analyst modules, channel adapters and Sheets-backed run records.",
@@ -215,12 +215,12 @@
     ],
     "proof": "Reviewed public source: separated research and analysis modules, integration adapters and a pipeline entry point.",
     "kind": "build",
-    "label": "Public build · Technical case study",
+    "label": "Public-source technical walkthrough",
     "image": "/demos/content-production-pipeline.png",
     "imageWidth": 1120,
     "imageHeight": 858,
     "imageAlt": "Content production pipeline technical walkthrough with evidence and implementation boundaries",
-    "capture": "Actual screenshot of this technical walkthrough. This explains reviewed source; it is not a screenshot of a connected production account.",
+    "capture": "The source walkthrough shown on this page.",
     "sourceFile": "agents/researcher.js",
     "sourceExcerpt": "async function runResearcher(runLabel = 'morning') {\n  // … source collection and topic selection\n}\n\n// Separate analysis stage: agents/analyst.js\nasync function runAnalyst() {\n  // … inspect stored topic and hook records\n}",
     "capturedAt": "October 1, 2026"
@@ -228,7 +228,7 @@
   {
     "slug": "video-production-pipeline",
     "name": "Video production pipeline",
-    "category": "Script → media artifact",
+    "category": "Video production",
     "summary": "A public pipeline that connects script generation, voice synthesis, video assembly, thumbnails and an upload adapter.",
     "problem": "Preparing a video crosses several tools and intermediate files. A single failed stage can leave unclear output and partial work.",
     "scope": "Source review covers the stage coordinator, FFmpeg assembly and the YouTube upload adapter. The coordinator passes voice timing and visual cues into video assembly.",
@@ -261,12 +261,12 @@
     ],
     "proof": "Reviewed public source: the real coordinator, media assembly implementation and upload adapter.",
     "kind": "build",
-    "label": "Public build · Technical case study",
+    "label": "Public-source technical walkthrough",
     "image": "/demos/video-production-pipeline.png",
     "imageWidth": 1120,
     "imageHeight": 834,
     "imageAlt": "Video production pipeline technical walkthrough with evidence and implementation boundaries",
-    "capture": "Actual screenshot of this technical walkthrough. This explains reviewed source; it is not a screenshot of a connected production account.",
+    "capture": "The source walkthrough shown on this page.",
     "sourceFile": "src/youtube_index.js",
     "sourceExcerpt": "const DRY_RUN = process.env.DRY_RUN === 'true';\n\n// … generation and media assembly run before this check\nif (!DRY_RUN) {\n  videoUrl = await uploadAgent.upload({\n    // … completed video and metadata\n  });\n}",
     "capturedAt": "October 1, 2026"
@@ -274,7 +274,7 @@
   {
     "slug": "seo-content-agent",
     "name": "BuildZn SEO content agent",
-    "category": "Evidence → reviewed draft",
+    "category": "Research and content drafts",
     "summary": "A business-aware editorial system that ranks problem topics, gathers primary sources and prepares drafts with a review report.",
     "problem": "A headline generator cannot know which problems fit a business, what evidence supports the answer or whether another article already covers the intent.",
     "scope": "Manual Node.js workflow with a business profile, project evidence, a topic backlog, optional Search Console signals, fresh source retrieval, structured generation and deterministic quality gates.",
@@ -303,12 +303,12 @@
     ],
     "proof": "Repository implementation and offline regression checks. See the operating guide in the linked source for provider setup and review requirements.",
     "kind": "build",
-    "label": "BuildZn system · Technical case study",
+    "label": "Own-system technical walkthrough",
     "image": "/demos/seo-content-agent.png",
     "imageWidth": 1120,
     "imageHeight": 815,
     "imageAlt": "BuildZn SEO content agent technical walkthrough with evidence and implementation boundaries",
-    "capture": "Actual screenshot of this technical walkthrough. This explains reviewed source; it is not a screenshot of a connected production account.",
+    "capture": "The source walkthrough shown on this page.",
     "sourceFile": "agent/lib/pipeline.js",
     "sourceExcerpt": "const sources = [];\nfor (const source of topic.sources) sources.push(await researcher(source));\n\n// … brief, generation, checks and independent review\nreport.status = 'ready-for-human-review';\n// draft.md stays unpublished; no publish operation exists.",
     "capturedAt": "October 1, 2026"
@@ -316,7 +316,7 @@
   {
     "slug": "buildzn-web-platform",
     "name": "BuildZn web platform",
-    "category": "Content → accessible website",
+    "category": "Studio platform",
     "summary": "The working studio site: structured service pages, reviewed content, interactive previews and a tested deployment workflow.",
     "problem": "A service website needs to explain scope, show credible evidence and keep drafts or outdated claims out of public search results.",
     "scope": "Next.js App Router site with shared service and project data, reviewed-only article loading, canonical metadata, sitemap generation, redirects and browser-tested sample workflows.",
@@ -349,12 +349,12 @@
     ],
     "proof": "Live website, working previews and automated browser checks for core flows, mobile layout and accessibility.",
     "kind": "build",
-    "label": "BuildZn system · Technical case study",
+    "label": "Own-system technical walkthrough",
     "image": "/demos/buildzn-web-platform.png",
     "imageWidth": 1120,
     "imageHeight": 749,
     "imageAlt": "BuildZn web platform technical walkthrough with evidence and implementation boundaries",
-    "capture": "Actual screenshot of this technical walkthrough. This explains reviewed source; it is not a screenshot of a connected production account.",
+    "capture": "The source walkthrough shown on this page.",
     "sourceFile": "lib/posts.ts",
     "sourceExcerpt": "if (data.status !== 'published' || data.reviewed !== true) return null;\n\nconst date = String(data.date || '');\nif (!date || Number.isNaN(Date.parse(date))) return null;",
     "capturedAt": "October 1, 2026"

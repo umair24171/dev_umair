@@ -4,7 +4,11 @@ import { hash, OpsError } from '@/lib/ops/core';
 import { transaction } from '@/lib/ops/store';
 export const runtime = 'nodejs';
 export const maxDuration = 60;
-export async function POST(request: Request) { try {
+export async function POST(request: Request) {
+    // Preview deployments inherit account variables, so intake stays closed until isolation is designed and reviewed.
+    if (process.env.VERCEL_ENV === 'preview')
+        return Response.json({ error: 'This preview cannot accept inquiries. Please use https://www.buildzn.com/contact.' }, { status: 503, headers: { 'Cache-Control': 'no-store' } });
+    try {
     sameOrigin(request);
     const data = await body(request);
     if (data._gotcha)

@@ -7,7 +7,7 @@ await page.addInitScript(()=>localStorage.setItem('buildzn-analytics-consent','d
 fs.mkdirSync('public/demos',{recursive:true});
 for(const slug of ['inquiry-assistant','support-assistant','document-processing']) {
   await page.goto(`${base}/work/${slug}`); await page.locator('.demo-workbench').waitFor();
-  if(slug==='inquiry-assistant') { await page.getByRole('button',{name:'Structure requirements'}).click(); await page.getByRole('button',{name:'Create sample lead',exact:true}).click(); }
+  if(slug==='inquiry-assistant') { await page.getByRole('button',{name:'Structure requirements'}).click(); await page.getByRole('button',{name:'Create lead record',exact:true}).click(); }
   if(slug==='support-assistant') await page.getByRole('button',{name:'Find grounded answer'}).click();
   if(slug==='document-processing') { await page.getByRole('button',{name:'Extract fields'}).click(); await page.getByRole('checkbox').check(); const download=page.waitForEvent('download'); await page.getByRole('button',{name:'Export JSON',exact:true}).click(); await (await download).saveAs('public/demos/document-processing-output.json'); }
   await page.evaluate(()=>document.fonts.ready);

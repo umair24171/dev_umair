@@ -1,0 +1,11 @@
+2026-10-23T21:46:58.9675314Z app-1  | All data synthetic. Transport: transactional demo mailbox.
+2026-10-23T21:46:58.9680675Z app-1  | Invoice 10000 USD minor units. Partial payment 4000. Remaining: 6000
+2026-10-23T21:46:58.9735080Z app-1  | Dry run: dry-run
+2026-10-23T21:46:58.9751571Z app-1  | Approved delivery: delivered
+2026-10-23T21:46:58.9767978Z app-1  | Retry: delivered
+2026-10-23T21:46:58.9772195Z app-1  | Mailbox records: 1
+2026-10-23T21:46:58.9777116Z app-1  | Persisted steps: [
+2026-10-23T21:46:58.9777745Z app-1  |   { job: 'reminder:demo-invoice', name: 'delivered' },
+2026-10-23T21:46:58.9778356Z app-1  |   { job: 'reminder:demo-invoice', name: 'drafted' },
+2026-10-23T21:46:58.9778846Z app-1  |   { job: 'reminder:demo-invoice', name: 'escalated' }
+2026-10-23T21:46:58.9779234Z app-1  | ]

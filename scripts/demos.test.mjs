@@ -33,5 +33,5 @@ test('intake creates a structured record and review draft only with required inf
   assert.equal(lead.requirements.tools, 'Website form, spreadsheet, CRM');
   assert.equal(lead.status, 'needs-human-review');
   assert.match(lead.draft, /Hi Alex Morgan/);
-  assert.match(lead.draft, /pending human review/);
+  assert.match(lead.draft, /Please review this draft before approval/);
 });

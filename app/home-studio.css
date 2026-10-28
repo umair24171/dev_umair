@@ -275,7 +275,7 @@ body:has(main[data-home-studio]) .site-footer .footer-bottom > div { gap: 24px; 
 
 main[data-home-studio] .home-capability { background:#0b1512; padding:24px 0 28px; }
 main[data-home-studio] .home-capability .shell { width:min(1280px,calc(100% - 96px)); display:flex; justify-content:space-between; color:#819c8f; font-size:12px; }
-main[data-home-studio] .home-capability .shell>div { display:flex; gap:24px; color:#b9cdc1; letter-spacing:1.4px; font-size:10px; text-transform:uppercase; }
+main[data-home-studio] .home-capability .shell>div { display:flex; gap:24px; color:#b9cdc1; letter-spacing:1.4px; font-size:10px;  }
 @media(max-width:1050px) { main[data-home-studio] .home-capability .shell {width:calc(100% - 64px);}main[data-home-studio] .home-capability .shell>div {gap:16px;} }
 @media(max-width:700px) {main[data-home-studio] .home-capability {padding:20px 0 27px;}main[data-home-studio] .home-capability .shell {width:calc(100% - 40px);flex-direction:column;gap:14px;font-size:11px;}main[data-home-studio] .home-capability .shell>div {font-size:8px;letter-spacing:.8px;gap:16px;}}
 @media(max-width:359px) {main[data-home-studio] .home-capability .shell>div {font-size:7px;gap:12px;}}

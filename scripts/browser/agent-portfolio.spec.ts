@@ -11,7 +11,7 @@ test('agent portfolio section links all four source-backed projects without chan
   await page.goto('/work');
   const section = page.getByRole('region', { name: 'Agents with database workflows.' });
   await expect(section.locator('.agent-portfolio-card')).toHaveCount(4);
-  await expect(section).toContainText('synthetic data');
+  await expect(section).toContainText('recorded Docker runs');
   for (const project of projects) {
     const cover = section.getByRole('img', { name: project.image.alt, exact: true });
     await cover.scrollIntoViewIfNeeded();
@@ -37,16 +37,17 @@ for (const project of projects) {
       const cover = page.getByRole('img', { name: project.image.alt, exact: true });
       await expect(cover).toBeVisible();
       await expect.poll(() => cover.evaluate(img => (img as HTMLImageElement).naturalWidth)).toBeGreaterThan(0);
-      await expect(page.getByText('Project illustration. All project data is synthetic.', { exact: true })).toBeVisible();
+      await expect(page.getByText('Recorded CI output.', { exact: false })).toBeVisible();
+      await expect(page.getByRole('link', { name: 'Open the source log ↗', exact: true })).toHaveAttribute('href', project.image.source);
       await expect(page.getByRole('heading', { level: 1, name: project.name, exact: true })).toBeVisible();
       for (const heading of ['Problem', 'Architecture', 'Tradeoffs', 'Test results', 'Recorded demo output', 'Known limits']) {
         await expect(page.getByRole('heading', { name: heading, exact: true })).toBeVisible();
       }
-      await expect(page.getByRole('main')).toContainText('Synthetic data.');
+      await expect(page.getByRole('main')).toContainText('deterministic mock provider');
       await expect(page.getByRole('main')).toContainText(`${project.distinct} distinct test cases`);
       await expect(page.getByRole('link', { name: 'View GitHub source ↗', exact: true })).toHaveAttribute('href', project.repoUrl);
       await expect(page.getByRole('link', { name: 'Inspect passing CI ↗', exact: true })).toHaveAttribute('href', project.ciUrl);
-      const output = page.getByLabel('Recorded synthetic Docker demo output', { exact: true });
+      const output = page.getByLabel('Recorded Docker demo output', { exact: true });
       await expect(output).toContainText('synthetic');
       await expect(output).toContainText(project.demoOutput.split('\n')[0]);
       await expect(page.getByRole('main').locator('a[href*="vercel.app"]')).toHaveCount(0);

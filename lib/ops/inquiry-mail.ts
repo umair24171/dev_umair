@@ -2,10 +2,12 @@ import crypto from 'node:crypto';
 import { capture, type State } from './core';
 import { transaction } from './store';
 import { site } from '../site';
+import { queueReceipt } from './inquiry-receipt';
 export type InquiryNotification = { status: 'pending' | 'sending' | 'accepted' | 'failed' | 'uncertain' | 'disabled'; attempts: number; createdAt: string; claim?: string; claimedAt?: string; finishedAt?: string; error?: string };
 export function notificationsEnabled() { return process.env.VERCEL === '1' && process.env.OPS_INQUIRY_NOTIFICATIONS !== 'disabled'; }
 export function captureWithNotification(s: State, data: Record<string, unknown>, enabled = notificationsEnabled()) {
   const result = capture(s, data, 'website');
+  if (!result.duplicate) queueReceipt(s, result.leadId);
   s.inquiryNotifications ||= {};
   if (!result.duplicate) s.inquiryNotifications[result.leadId] = { status: enabled ? 'pending' : 'disabled', attempts: 0, createdAt: new Date().toISOString() };
   return result;

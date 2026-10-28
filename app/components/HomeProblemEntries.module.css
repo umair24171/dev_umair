@@ -6,13 +6,13 @@
 .heading h2 > span { color: #a8ebcd; }
 .description { margin: 0; font-size: 15px; color: #a6b8af; line-height: 1.8; max-width: 420px; }
 .entries { border-top: 1px solid #476153; }
-.entry { display: grid; grid-template-columns: 58px minmax(0, 1fr) 270px; gap: 20px; align-items: center; padding: 28px 0; border-bottom: 1px solid #2e4237; }
+.entry { display: grid; grid-template-columns: minmax(0, 1fr) 270px; gap: 20px; align-items: center; padding: 28px 0; border-bottom: 1px solid #2e4237; }
 .number { color: #6c947f; font-size: 12px; align-self: start; margin-top: 6px; }
 .entry h3 { margin: 0 0 7px; font-size: 23px; font-weight: 500; line-height: 1.3; letter-spacing: -.035em; }
-.entry p { margin: 0; color: #92ab9d; font-size: 13px; line-height: 1.8; }
+.entry p { margin: 0; color: #b3c9bc; font-size: 13px; line-height: 1.8; }
 .links { display: flex; flex-direction: column; gap: 10px; padding-left: 28px; }
 .links a:first-child { color: #bde9d2; font-size: 12px; font-weight: 600; }
-.links a:last-child:not(:first-child) { color: #8aa697; font-size: 11px; }
+.links a:last-child:not(:first-child) { color: #b3c9bc; font-size: 11px; }
 .links a:hover { text-decoration: underline; text-underline-offset: 4px; }
 @media (max-width: 1050px) {
   .content { width: calc(100% - 64px); }

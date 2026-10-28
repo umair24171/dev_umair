@@ -1,0 +1,29 @@
+2026-10-23T22:07:14.6246437Z app-1  | All data synthetic. No external CRM writes or messages.
+2026-10-23T22:07:14.6246809Z app-1  | Review diff: {
+2026-10-23T22:07:14.6247051Z app-1  |   "contacts": {
+2026-10-23T22:07:14.6247282Z app-1  |     "after": [
+2026-10-23T22:07:14.6247491Z app-1  |       "Amina",
+2026-10-23T22:07:14.6247691Z app-1  |       "Bilal"
+2026-10-23T22:07:14.6247886Z app-1  |     ],
+2026-10-23T22:07:14.6248125Z app-1  |     "before": []
+2026-10-23T22:07:14.6248334Z app-1  |   },
+2026-10-23T22:07:14.6248531Z app-1  |   "nextStep": {
+2026-10-23T22:07:14.6248822Z app-1  |     "after": "send proposal next week",
+2026-10-23T22:07:14.6249109Z app-1  |     "before": null
+2026-10-23T22:07:14.6249292Z app-1  |   },
+2026-10-23T22:07:14.6249425Z app-1  |   "budgetMinor": {
+2026-10-23T22:07:14.6249591Z app-1  |     "after": 1000000,
+2026-10-23T22:07:14.6249740Z app-1  |     "before": 500000
+2026-10-23T22:07:14.6249872Z app-1  |   },
+2026-10-23T22:07:14.6250006Z app-1  |   "nextStepDate": {
+2026-10-23T22:07:14.6250173Z app-1  |     "after": "2026-01-26",
+2026-10-23T22:07:14.6250380Z app-1  |     "before": null
+2026-10-23T22:07:14.6250557Z app-1  |   }
+2026-10-23T22:07:14.6250672Z app-1  | }
+2026-10-23T22:07:14.6250915Z app-1  | Flags: [ 'crm-contradiction:budgetMinor', 'vague-next-week:2026-01-26' ]
+2026-10-23T22:07:14.6252455Z app-1  | Follow-up draft: Synthetic follow-up draft. Proposed next step: send proposal next week. Review flags: crm-contradiction:budgetMinor, vague-next-week:2026-01-26.
+2026-10-23T22:07:14.6255870Z app-1  | Before approval CRM version: 1
+2026-10-23T22:07:14.6283301Z app-1  | Dry run: dry-run
+2026-10-23T22:07:14.6302983Z app-1  | Explicitly approved apply: applied
+2026-10-23T22:07:14.6308920Z app-1  | Retry: already-applied
+2026-10-23T22:07:14.6312800Z app-1  | Audit records: 1
