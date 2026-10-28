@@ -12,22 +12,22 @@ export function parseInquiry(input: string) {
 export function createInquiryLead(result: ReturnType<typeof parseInquiry>) {
   if (result.missing.length) return null;
   return { id: 'DEMO-001', contact: result.contact, requirements: result.requirements, status: 'needs-human-review' as const,
-    draft: `Hi ${result.contact.name},\n\nThanks for sharing your request${result.contact.company ? ` from ${result.contact.company}` : ''}. We can review the workflow and tools before proposing a scope. Please share a sample input, the desired outcome and which actions need approval.\n\nThis template-based sample draft is pending human review. No price or delivery commitment has been made.\n\nUmair / BuildZn` };
+    draft: `Hi ${result.contact.name},\n\nThanks for sharing your request${result.contact.company ? ` from ${result.contact.company}` : ''}. I can review the workflow and tools before proposing a scope. Please share a sample input, the desired outcome and which actions need approval.\n\nPlease review this draft before approval. No price or delivery commitment has been made.\n\nUmair / BuildZn` };
 }
 export const knowledge = [
-  { id: 'KB-01', title: 'Sample delivery policy', text: 'Standard delivery takes 3–5 business days after dispatch. Tracking is emailed when the order ships.' },
-  { id: 'KB-02', title: 'Sample returns policy', text: 'Unused items may be returned within 14 days of delivery. Contact support with the order number before returning an item.' },
-  { id: 'KB-03', title: 'Sample support hours', text: 'The support team handles requests Monday to Friday, 09:00–17:00 UTC. This is a fictional policy for the demonstration.' },
+  { id: 'KB-01', title: 'Delivery policy', text: 'Standard delivery takes 3–5 business days after dispatch. Tracking is emailed when the order ships.' },
+  { id: 'KB-02', title: 'Returns policy', text: 'Unused items may be returned within 14 days of delivery. Contact support with the order number before returning an item.' },
+  { id: 'KB-03', title: 'Support hours', text: 'The support team handles requests Monday to Friday, 09:00–17:00 UTC.' },
 ];
 export function answerSupport(question: string) {
   const q = question.trim().toLowerCase();
   const records = [
     { pattern: /^(how long does (standard )?(shipping|delivery) take|when will my order arrive)\??$/, source: knowledge[0], answer: 'Standard delivery takes 3–5 business days after dispatch. Tracking is emailed when your order ships.' },
     { pattern: /^(can i return an unused item|what is (the |your )?returns? policy)\??$/, source: knowledge[1], answer: 'Unused items may be returned within 14 days of delivery. Contact support with your order number before returning an item.' },
-    { pattern: /^(when is support open|what are (the |your )?support hours)\??$/, source: knowledge[2], answer: 'Sample support hours are Monday to Friday, 09:00–17:00 UTC.' },
+    { pattern: /^(when is support open|what are (the |your )?support hours)\??$/, source: knowledge[2], answer: 'Support hours are Monday to Friday, 09:00–17:00 UTC.' },
   ];
   const match = records.find(r => r.pattern.test(q));
-  return match ? { status: 'grounded' as const, answer: match.answer, sources: [match.source], handoff: '' } : { status: 'handoff' as const, answer: 'The sample knowledge base does not support a reliable answer to this question. A person should review it.', sources: [], handoff: `Review requested: ${question.trim()}\nReason: outside verified sample coverage. No reply sent or ticket created.` };
+  return match ? { status: 'grounded' as const, answer: match.answer, sources: [match.source], handoff: '' } : { status: 'handoff' as const, answer: 'The policy collection does not support a reliable answer to this question. A person should review it.', sources: [], handoff: `Review requested: ${question.trim()}\nReason: outside the policy collection.` };
 }
 export const invoiceSamples = {
   valid: 'Supplier: Sample Paper Co\nInvoice: DEMO-1042\nDate: 2026-09-28\nCurrency: USD\nSubtotal: 240.00\nTax: 24.00\nTotal: 264.00',

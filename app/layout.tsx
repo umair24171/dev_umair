@@ -8,12 +8,12 @@ import PublicChrome from './components/PublicChrome';
 const font = Plus_Jakarta_Sans({ subsets: ['latin'], weight: ['400', '500', '600', '700', '800'], variable: '--font-plus-jakarta', display: 'swap' });
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.buildzn.com'),
-  title: { default: 'BuildZn — AI Agents & Business Automation', template: '%s | BuildZn' },
+  title: { default: 'BuildZn: AI Agents & Business Automation', template: '%s | BuildZn' },
   description: 'BuildZn builds AI agents and automations that handle repetitive business work. Workflow automation, API integrations and automation repair.',
   authors: [{ name: 'Umair Bilal', url: 'https://www.buildzn.com/about' }],
   creator: 'Umair Bilal',
-  openGraph: { type: 'website', locale: 'en_US', siteName: 'BuildZn', title: 'BuildZn — AI Agents & Business Automation', description: 'Work directly with Umair Bilal on bounded workflows, human review and documented handover.', images: [{ url: '/opengraph-image', width: 1200, height: 630, alt: 'BuildZn — AI agents and business automation' }] },
-  twitter: { card: 'summary_large_image', title: 'BuildZn — AI Agents & Business Automation', description: 'AI agents and business automation with Umair Bilal.', images: ['/opengraph-image'] },
+  openGraph: { type: 'website', locale: 'en_US', siteName: 'BuildZn', title: 'BuildZn: AI Agents & Business Automation', description: 'Work directly with Umair Bilal on bounded workflows, human review and documented handover.', images: [{ url: '/opengraph-image', width: 1200, height: 630, alt: 'BuildZn: AI agents and business automation' }] },
+  twitter: { card: 'summary_large_image', title: 'BuildZn: AI Agents & Business Automation', description: 'AI agents and business automation with Umair Bilal.', images: ['/opengraph-image'] },
   robots: { index: true, follow: true },
   verification: { google: 'DxcZGz0CMVtxATKxT5aQgk2uyzSkSqBXDcKhbV7lu6U' },
 };

@@ -19,7 +19,7 @@ I built FarahGPT, an AI gold trading system. It’s not about replacing traders,
 
 ## Umair's 3-Phase Human-AI Collaboration Blueprint
 
-This isn't theory. This is what we apply at buildzn.com, refined from building NexusOS and my other multi-agent systems. It's designed to proactively manage AI projects by putting human interaction at the center.
+This isn't theory. This is what I apply at buildzn.com, refined from building NexusOS and my other multi-agent systems. It's designed to proactively manage AI projects by putting human interaction at the center.
 
 ### Phase 1: Augment & Observe
 

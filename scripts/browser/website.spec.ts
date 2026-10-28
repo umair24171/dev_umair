@@ -9,17 +9,17 @@ test('inquiry: missing-data gate, local lead and approval reset', async ({ page 
   await page.getByRole('button', { name: 'Missing information', exact: true }).click();
   await page.getByRole('button', { name: 'Structure requirements' }).click();
   await expect(page.getByText('Needs clarification:', { exact: false })).toBeVisible();
-  await expect(page.getByRole('button', { name: 'Create sample lead', exact: true })).toHaveCount(0);
+  await expect(page.getByRole('button', { name: 'Create lead record', exact: true })).toHaveCount(0);
   await page.getByRole('button', { name: 'Complete inquiry', exact: true }).click();
   await page.getByRole('button', { name: 'Structure requirements' }).click();
-  await page.getByRole('button', { name: 'Create sample lead', exact: true }).click();
+  await page.getByRole('button', { name: 'Create lead record', exact: true }).click();
   await expect(page.locator('.demo-workbench pre')).toContainText('needs-human-review');
   await expect(page.locator('.demo-workbench pre')).toContainText('alex@example.com');
-  await page.getByRole('button', { name: 'Approve draft locally', exact: true }).click();
+  await page.getByRole('button', { name: 'Approve draft', exact: true }).click();
   await expect(page.locator('.demo-workbench pre')).toContainText('approved-locally');
-  await expect(page.getByText('Approved in this preview. Nothing has been sent.')).toBeVisible();
-  await page.getByLabel('Template draft · editable').fill('A revised sample draft');
-  await expect(page.getByRole('button', { name: 'Approve draft locally', exact: true })).toBeEnabled();
+  await expect(page.getByText('Draft approved.')).toBeVisible();
+  await page.getByLabel('Reply draft').fill('A revised sample draft');
+  await expect(page.getByRole('button', { name: 'Approve draft', exact: true })).toBeEnabled();
   await page.getByLabel('Inquiry text', { exact: true }).fill('Name: Sample');
   await expect(page.locator('.demo-workbench').getByText('Lead DEMO-001', { exact: false })).toHaveCount(0);
 });
@@ -75,7 +75,7 @@ test('contact: simulated private capture success and failure without real storag
 test('desktop and mobile: accessible routes, no overflow, keyboard menu', async ({ page }) => {
   for (const width of [1440, 390, 320]) {
     await page.setViewportSize({ width, height: 900 });
-    for (const route of ['/', '/services', '/services/ai-agents', '/services/workflow-automation', '/services/api-integrations', '/services/automation-repair', '/work', '/work/inquiry-assistant', '/work/support-assistant', '/work/document-processing', '/pricing', '/about', '/contact', '/blog', '/blog/n8n-webhook-not-working', '/work/nexusos-agent-operations', '/work/seo-content-agent', '/work/video-production-pipeline', '/work/content-production-pipeline', '/work/buildzn-web-platform', '/blog/ai-workflow-scope-human-review', '/blog/automation-operating-costs', '/blog/automation-validation-before-export', '/blog/ai-blog-writer-duplicate-topics', '/blog/agent-kill-boundary', '/privacy']) {
+    for (const route of ['/', '/services', '/services/ai-agents', '/services/workflow-automation', '/services/api-integrations', '/services/automation-repair', '/work', '/work/inquiry-assistant', '/work/support-assistant', '/work/document-processing', '/pricing', '/security', '/evidence', '/samples', '/samples/inquiry-pilot-scope', '/samples/inquiry-pilot-operating-notes', '/about', '/contact', '/blog', '/blog/n8n-webhook-not-working', '/work/nexusos-agent-operations', '/work/seo-content-agent', '/work/video-production-pipeline', '/work/content-production-pipeline', '/work/buildzn-web-platform', '/blog/ai-workflow-scope-human-review', '/blog/automation-operating-costs', '/blog/automation-validation-before-export', '/blog/ai-blog-writer-duplicate-topics', '/blog/agent-kill-boundary', '/privacy']) {
       await page.goto(route); await page.locator('h1').waitFor();
       expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBeTruthy();
       const scan = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa']).analyze();

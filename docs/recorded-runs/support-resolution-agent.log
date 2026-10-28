@@ -1,0 +1,17 @@
+2026-10-23T21:55:16.5708611Z app-1  | All data synthetic. No real store or money.
+2026-10-23T21:55:16.5786426Z app-1  | Guarded tool result: {
+2026-10-23T21:55:16.5787375Z app-1  |   status: 'resolved',
+2026-10-23T21:55:16.5788156Z app-1  |   action: { orderId: 'synthetic-demo-order', kind: 'refund', amount: 1000 }
+2026-10-23T21:55:16.5788628Z app-1  | }
+2026-10-23T21:55:16.5797139Z app-1  | Idempotent replay: {
+2026-10-23T21:55:16.5797898Z app-1  |   action: { kind: 'refund', amount: 1000, orderId: 'synthetic-demo-order' },
+2026-10-23T21:55:16.5798761Z app-1  |   status: 'resolved'
+2026-10-23T21:55:16.5799500Z app-1  | }
+2026-10-23T21:55:16.5802953Z app-1  | Order state: [ { id: 'synthetic-demo-order', refunded: 1000 } ]
+2026-10-23T21:55:16.5808537Z app-1  | Audit: [
+2026-10-23T21:55:16.5809196Z app-1  |   {
+2026-10-23T21:55:16.5810342Z app-1  |     ticket: 'synthetic-demo-ticket',
+2026-10-23T21:55:16.5811394Z app-1  |     event: 'action',
+2026-10-23T21:55:16.5812698Z app-1  |     detail: '{"orderId":"synthetic-demo-order","kind":"refund","amount":1000}'
+2026-10-23T21:55:16.5813672Z app-1  |   }
+2026-10-23T21:55:16.5814253Z app-1  | ]

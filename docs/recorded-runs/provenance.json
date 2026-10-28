@@ -1,0 +1,42 @@
+[
+  {
+    "slug": "invoice-to-cash-agent",
+    "name": "Invoice to cash agent",
+    "repo": "https://github.com/umair24171/invoice-to-cash-agent",
+    "run": 40029159866,
+    "codeCommit": "d3e973044a42f6f374a0f7a7882b49a0b5b1f09b",
+    "job": 120672787117,
+    "excerptSha256": "640c6d4c479b8470fe25c49e13ded03c5bb4a59d476068baf97c4f79a68466f6",
+    "sourceUrl": "https://github.com/umair24171/invoice-to-cash-agent/actions/runs/40029159866/job/120672787117"
+  },
+  {
+    "slug": "support-resolution-agent",
+    "name": "Support resolution agent",
+    "repo": "https://github.com/umair24171/support-resolution-agent",
+    "run": 40030071043,
+    "codeCommit": "2abd2161c5795c56bc7717fe126fa65054c8b47b",
+    "job": 120675856070,
+    "excerptSha256": "e17b6f612c13b8ae3be8b46c4bc683c2bb007a285e814efaed650855e605a232",
+    "sourceUrl": "https://github.com/umair24171/support-resolution-agent/actions/runs/40030071043/job/120675856070"
+  },
+  {
+    "slug": "permission-aware-knowledge-search",
+    "name": "Permission aware knowledge search",
+    "repo": "https://github.com/umair24171/permission-aware-knowledge-search",
+    "run": 40030755414,
+    "codeCommit": "88b632a9606d4042c304839780e8179cc747d726",
+    "job": 120678126461,
+    "excerptSha256": "d2e7ea773d0f902cf73524972fdb29646086ec3704b3d9bd0a8e7997dba7d101",
+    "sourceUrl": "https://github.com/umair24171/permission-aware-knowledge-search/actions/runs/40030755414/job/120678126461"
+  },
+  {
+    "slug": "sales-call-to-crm-sync",
+    "name": "Sales call to CRM sync",
+    "repo": "https://github.com/umair24171/sales-call-to-crm-sync",
+    "run": 40031451224,
+    "codeCommit": "cc1bc499c73958e810218b9baee00d2c6fd3f8e0",
+    "job": 120680419411,
+    "excerptSha256": "8975ab9b7065bc3f0b399baa4fdfde21d0246c4eea1c68ff3a17bf973b8f8c5d",
+    "sourceUrl": "https://github.com/umair24171/sales-call-to-crm-sync/actions/runs/40031451224/job/120680419411"
+  }
+]

@@ -1,6 +1,13 @@
 import projectRecords from '../content/business/projects.json';
 export const site = {
   url: 'https://www.buildzn.com', email: 'buildznofficial@gmail.com',
+  // Switch the public email only after verified two-way delivery and owner approval.
+  replyTime: null as string | null,
+  timezone: 'Asia/Karachi',
+  // Booking stays unpublished until the owner releases the hold.
+  bookingUrl: '',
+  pilotPrice: null as string | null,
+  discoveryFee: null as string | null,
   linkedin: 'https://www.linkedin.com/in/umair-bilal-/', github: 'https://github.com/umair24171',
   contact: '/contact', whatsapp: 'https://wa.me/923067128817?text=Hi%20Umair%2C%20I%20would%20like%20to%20discuss%20a%20business%20automation%20workflow.', formId: 'xykywokz',
 };
@@ -15,7 +22,7 @@ export const services = [
     description: 'Connect intake, routing, updates and reminders across the tools your team already uses.', audience: 'Operations teams moving the same information between forms, spreadsheets and business systems.',
     problem: 'A new request arrives, someone copies it into a tracker, assigns an owner and chases the next step. Manual handoffs make it easy to lose context.',
     deliverables: ['Workflow map with triggers, owners and review points', 'Configured workflow and agreed system connections', 'Duplicate protection, retries and visible failure handling', 'Acceptance examples, runbook and handover'],
-    boundaries: 'Access to your systems and representative sample data is required. Subscription fees, usage limits and ongoing operations are scoped separately. We agree which actions can run automatically.',
+    boundaries: 'Access to your systems and representative sample data is required. Subscription fees, usage limits and ongoing operations are scoped separately. I agree the permitted automatic actions with you.',
     questions: ['What starts the workflow?', 'Where does the information go next?', 'Who owns exceptions?', 'Which actions need approval?'] },
   { slug: 'ai-agents', number: '02', name: 'AI agents', short: 'Prepare the next step. Keep people in control.',
     description: 'Assistants that structure inquiries, retrieve approved knowledge and prepare work for human review.', audience: 'Service businesses and support teams handling repetitive questions, requests and documents.',
@@ -38,11 +45,12 @@ export const services = [
 ];
 export const projects = projectRecords;
 export const faqs = [
-  { question: 'Where should we start?', answer: 'Pick one repetitive task with a clear owner and outcome. Share a sample input, the tools involved and what a correct result looks like. Discovery checks feasibility before a wider build.' },
-  { question: 'Will an agent act without approval?', answer: 'Only within explicitly agreed boundaries. Sending replies, changing records and financial actions need permissions and review rules. The demonstrations do not execute external actions.' },
+  { question: 'What should I check before sharing data?', answer: 'Start with the website data flow, provider access and project approval boundaries.', href: '/security', linkText: 'Security and data handling' },
+  { question: 'Where should I start?', answer: 'Pick one repetitive task with a clear owner and outcome. Share a sample input, the tools involved and what a correct result looks like. Discovery checks feasibility before a wider build.' },
+  { question: 'Will an agent act without approval?', answer: 'Only within explicitly agreed boundaries. Sending replies, changing records and financial actions need permissions and review rules. Review the data and approval boundaries on the security page.' },
   { question: 'How do pricing and ongoing costs work?', answer: 'A proposal attaches a price to deliverables, dependencies and acceptance tests. Model usage, tool subscriptions, hosting and maintenance are identified separately. There are no guaranteed income or savings claims.' },
   { question: 'Can you repair our existing automation?', answer: 'Yes. Start with workflow access, logs and a reproducible failure. The review determines whether a focused repair or a larger change is appropriate.' },
-  { question: 'What does the portfolio prove?', answer: 'It includes three browser workflows built by BuildZn using sample data, BuildZn’s own web and editorial systems, and technical case studies linked to public source. Each page identifies its evidence and limits. Public builds are not presented as client results, security certifications or proof of business outcomes.' },
+  { question: 'What does the portfolio prove?', answer: 'See what the workflows, public-source walkthroughs and my own systems demonstrate, and where their evidence stops.', href: '/evidence', linkText: 'What this site does and does not show' },
 ];
 
 export const businessProblems = [

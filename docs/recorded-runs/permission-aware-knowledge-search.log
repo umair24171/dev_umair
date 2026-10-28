@@ -1,0 +1,15 @@
+2026-10-23T22:01:13.1617081Z app-1  | All documents, users and ACLs are synthetic.
+2026-10-23T22:01:13.1636234Z app-1  | Bob before revoke: [ 'deploy', 'leave-policy' ]
+2026-10-23T22:01:13.1651228Z app-1  | Bob after revoke: [ 'leave-policy' ]
+2026-10-23T22:01:13.1664013Z app-1  | Outsider restricted prompt: { text: 'No accessible evidence.', chunks: [] }
+2026-10-23T22:01:13.1672511Z app-1  | Carol refund evidence: {
+2026-10-23T22:01:13.1673172Z app-1  |   text: '[refund-policy] Refund policy: delivered orders can receive refunds within thirty days, maximum fifty dollars.',
+2026-10-23T22:01:13.1673769Z app-1  |   chunks: [
+2026-10-23T22:01:13.1674026Z app-1  |     {
+2026-10-23T22:01:13.1674331Z app-1  |       id: 'refund-policy:0',
+2026-10-23T22:01:13.1674730Z app-1  |       node: 'refund-policy',
+2026-10-23T22:01:13.1675432Z app-1  |       body: 'Refund policy: delivered orders can receive refunds within thirty days, maximum fifty dollars.',
+2026-10-23T22:01:13.1676107Z app-1  |       distance: 0.6077677297236319
+2026-10-23T22:01:13.1676388Z app-1  |     }
+2026-10-23T22:01:13.1676609Z app-1  |   ]
+2026-10-23T22:01:13.1676807Z app-1  | }

@@ -2,6 +2,7 @@
 import { GoogleAnalytics, sendGAEvent } from '@next/third-parties/google';
 import { useEffect, useSyncExternalStore } from 'react';
 import { usePathname } from 'next/navigation';
+import { analyticsParameters } from '@/lib/analytics';
 const key = 'buildzn-analytics-consent';
 let memoryChoice = 'pending';
 function getConsent() {
@@ -13,15 +14,18 @@ function subscribe(callback: () => void) {
   return () => { window.removeEventListener('buildzn-consent-changed', callback); window.removeEventListener('storage', callback); };
 }
 export function track(event: string, parameters: Record<string, string> = {}) {
-  if (getConsent() === 'accepted') sendGAEvent('event', event, parameters);
+  if (typeof window !== 'undefined' && !window.location.pathname.startsWith('/ops') && getConsent() === 'accepted')
+    sendGAEvent('event', event, analyticsParameters(window.location.pathname, parameters));
 }
 export default function Analytics() {
   const consent = useSyncExternalStore(subscribe, getConsent, () => 'server');
   const pathname = usePathname();
   useEffect(() => {
     if (consent !== 'accepted' || pathname.startsWith('/ops')) return;
-    if (pathname.startsWith('/services/')) track('service_viewed', { service: pathname.split('/').pop()! });
-    if (pathname.startsWith('/work/')) track('demonstration_viewed', { project: pathname.split('/').pop()! });
+    if (pathname.startsWith('/services/')) track('service_viewed');
+    if (pathname.startsWith('/work/')) track('demonstration_viewed');
+    if (pathname === '/pricing') track('pricing_view');
+    if (pathname === '/security') track('security_view');
   }, [consent, pathname]);
   function choose(value: string) {
     memoryChoice = value;
@@ -43,5 +47,6 @@ export function PrivacySettings() {
     memoryChoice = 'pending';
     try { localStorage.removeItem(key); } catch { /* Preferences still open for this visit. */ }
     window.dispatchEvent(new Event('buildzn-consent-changed'));
+    if (document.querySelector('script[src*="googletagmanager"]')) window.location.reload();
   }}>Analytics settings</button>;
 }
