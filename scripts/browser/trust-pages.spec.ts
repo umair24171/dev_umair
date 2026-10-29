@@ -97,7 +97,7 @@ test('new pages are discoverable while internal pilot drafts and the held bookin
   }
 });
 
-test('the hero draft works with keyboard input and reduced motion without a background API request', async ({ page }) => {
+test('the hero shows a readable workflow with reduced motion and no background API request', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' });
   const backgroundRequests: string[] = [];
   page.on('request', request => {
@@ -107,21 +107,29 @@ test('the hero draft works with keyboard input and reduced motion without a back
   });
   await page.goto('/');
   await page.waitForLoadState('networkidle');
-  const reply = page.getByRole('textbox', { name: 'Reply draft', exact: true });
-  await expect(reply).toBeVisible();
+  const workflow = page.locator('[aria-label="Inquiry workflow"]');
+  for (const title of ['Incoming inquiry', 'Structured record', 'Human approval']) {
+    await expect(workflow.getByRole('heading', { name: title, exact: true })).toBeVisible();
+  }
+  const portrait = workflow.getByRole('img', { name: 'Umair Bilal gesturing toward the inquiry workflow.' });
+  await expect(portrait).toBeVisible();
+  expect(await portrait.evaluate(image => (image as HTMLImageElement).naturalWidth)).toBeGreaterThan(0);
+  for (const width of [320, 360, 375, 390, 414, 768, 1280]) {
+    await page.setViewportSize({ width, height: 900 });
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth), width + 'px: horizontal overflow').toBe(true);
+    for (const card of await workflow.getByRole('listitem').all()) {
+      const bounds = await card.boundingBox();
+      expect(bounds, width + 'px: workflow card').not.toBeNull();
+      expect(bounds!.x).toBeGreaterThanOrEqual(0);
+      expect(bounds!.x + bounds!.width).toBeLessThanOrEqual(width);
+      expect(await card.evaluate(element => element.scrollWidth <= element.clientWidth), width + 'px: clipped card text').toBe(true);
+    }
+  }
   expect(backgroundRequests).toEqual([]);
-  expect(await page.locator('[aria-label="Inquiry workflow"]').evaluate(element => getComputedStyle(element).animationName)).toBe('none');
+  expect(await workflow.evaluate(element => getComputedStyle(element).animationName)).toBe('none');
   await page.getByRole('link', { name: 'Explore the work', exact: true }).focus();
-  await page.keyboard.press('Tab');
-  await expect(reply).toBeFocused();
-  await page.keyboard.press('ControlOrMeta+A');
-  const edited = 'Please confirm the workflow owner before I prepare the next step.';
-  await page.keyboard.type(edited);
-  await expect(reply).toHaveValue(edited);
-  await page.keyboard.press('Tab');
-  await expect(page.getByRole('link', { name: 'Open the inquiry workflow', exact: true })).toBeFocused();
   await page.keyboard.press('Enter');
-  await expect(page).toHaveURL(/\/work\/inquiry-assistant$/);
+  await expect(page).toHaveURL(new RegExp('/work$'));
 });
 
 test('unconfigured contact and commercial details stay out of public pages', async ({ page }) => {
