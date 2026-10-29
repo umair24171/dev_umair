@@ -1,16 +1,21 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import TrackedLink from './TrackedLink';
-import { createInquiryLead, inquirySamples, parseInquiry } from '@/lib/demos';
 import styles from './HomeHero.module.css';
 
-const input = inquirySamples.complete
-  .replace('Alex Morgan', 'Operations lead')
-  .replace('alex@example.com', 'intake@example.invalid')
-  .replace('Sample Studio', 'Local service team');
-const record = parseInquiry(input);
-const lead = createInquiryLead(record)!;
-const reply = lead.draft.split('Please review')[0].trim() + String.fromCharCode(10, 10) + 'Workflow owner';
+const steps = [
+  { title: 'Incoming inquiry', caption: 'Capture the request', icon: 'inquiry' },
+  { title: 'Structured record', caption: 'Organize the details', icon: 'record' },
+  { title: 'Human approval', caption: 'Review the reply', icon: 'approval' },
+] as const;
+
+function WorkflowIcon({ type }: { type: typeof steps[number]['icon'] }) {
+  return <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    {type === 'inquiry' && <><path d="M9 4h10l5 5v19H8V5a1 1 0 0 1 1-1Z"/><path d="M19 4v6h5M12 15h8M12 19h8M12 23h5"/></>}
+    {type === 'record' && <><rect x="5" y="5" width="22" height="7" rx="2"/><rect x="5" y="12" width="22" height="7" rx="2"/><rect x="5" y="19" width="22" height="7" rx="2"/><path d="M10 8.5h.01M10 15.5h.01M10 22.5h.01M15 8.5h7M15 15.5h7M15 22.5h7"/></>}
+    {type === 'approval' && <><circle cx="14" cy="10" r="5"/><path d="M4 27v-3a10 10 0 0 1 16-8M21 24l3 3 5-7"/></>}
+  </svg>;
+}
 
 export default function HomeHero() {
   return <section className={styles.hero} aria-labelledby="hero-heading">
@@ -27,20 +32,18 @@ export default function HomeHero() {
           <p>Work directly with Umair Bilal.<br/><span>Clear scope. Human review. Documented handover.</span></p>
         </div>
       </div>
-      <div className={styles.workbench} aria-label="Inquiry workflow">
-        <section className={styles.incoming} aria-labelledby="hero-inquiry-heading">
-          <h2 id="hero-inquiry-heading">Incoming inquiry</h2>
-          <p>{record.requirements.request}</p>
-          <dl><dt>Tools</dt><dd>{record.requirements.tools}</dd><dt>Volume</dt><dd>{record.requirements.volume}</dd></dl>
-        </section>
-        <section className={styles.record} aria-labelledby="hero-record-heading">
-          <h2 id="hero-record-heading">Structured record</h2>
-          <dl><dt>Contact</dt><dd>{record.contact.name}</dd><dt>Owner</dt><dd>Workflow owner</dd><dt>Next step</dt><dd>Review requirements and reply</dd><dt>Status</dt><dd>Awaiting approval</dd></dl>
-        </section>
-        <div className={styles.reply}>
-          <label htmlFor="hero-reply">Reply draft</label>
-          <textarea id="hero-reply" defaultValue={reply} rows={7} spellCheck={false}/>
-          <Link href="/work/inquiry-assistant">Open the inquiry workflow</Link>
+      <div className={styles.visual} role="group" aria-label="Inquiry workflow">
+        <ol className={styles.flow}>
+          {steps.map(step => <li className={styles.step} key={step.icon}>
+            <span className={styles.icon}><WorkflowIcon type={step.icon}/></span>
+            <div className={styles.stepCopy}>
+              <h2>{step.title}</h2>
+              <p>{step.caption}</p>
+            </div>
+          </li>)}
+        </ol>
+        <div className={styles.portrait}>
+          <Image src="/hero/umair-pointing.webp" alt="Umair Bilal gesturing toward the inquiry workflow." width={1024} height={1536} sizes="(max-width: 600px) 280px, (max-width: 1000px) 420px, 440px" priority/>
         </div>
       </div>
     </div>
